@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Residences & Pricing · Empathia Village · Seychelles</title>
+<meta name="description" content="Three villa designs — from $800,000. Private luxury residences on Mahé Island, Seychelles.">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { padding-top: 77px; }
+  .villa-tabs { display:flex; gap:3px; margin-bottom:3px; flex-wrap:wrap; }
+  .vtab { font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.5); padding:12px 24px; border:1px solid rgba(255,255,255,.1); cursor:pointer; transition:all .25s; background:transparent; font-family:var(--sans); font-weight:400; }
+  .vtab:hover { color:var(--gold); border-color:rgba(200,169,110,.3); }
+  .vtab.on { color:var(--gold); border-color:var(--gold); background:rgba(200,169,110,.06); }
+  .villa-panel { display:none; }
+  .villa-panel.show { display:block; }
+  .plan-img { background:var(--surface); padding:20px; text-align:center; }
+  .plan-img img { max-height:340px; object-fit:contain; margin:0 auto; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo1.png" class="nav-logo-img" alt="Empathia Village" loading="lazy">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Empathia Village</span>
+      <span class="nav-logo-sub">Private Living · Naturally Yours</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="pricing.html" class="nav-link active">Residences</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="construction.html" class="nav-link">Construction</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="agents.html" class="nav-link">Agents</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-nav">Private Enquiry</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <img src="hero-villa-day2.jpg" class="page-hero-img" alt="Empathia Village Residences" fetchpriority="high">
+  <div class="page-hero-vignette"></div>
+  <div class="page-hero-content">
+    <div class="wrap">
+      <div class="ew" style="color:#fff;opacity:.6">The Collection · Mahé Island</div>
+      <h1 class="h1">Residences<br>&amp; Pricing</h1>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INTRO ══ -->
+<section class="section section-charcoal" style="padding:72px 0">
+  <div class="wrap text-center">
+    <div class="ew ew-center">Three Villa Designs</div>
+    <h2 class="h2" style="margin-bottom:20px">Private Luxury on Your Terms</h2>
+    <p class="lead" style="max-width:620px;margin:0 auto 48px">Each residence is conceived for maximum privacy, panoramic views and effortless tropical living. Three designs — each available across a range of plot sizes from 600 to 2,000 m².</p>
+    <div class="villa-tabs" style="justify-content:center">
+      <button class="vtab on" onclick="showVilla('anna',this)">Villa Anna</button>
+      <button class="vtab" onclick="showVilla('georgette',this)">Villa Georgette</button>
+      <button class="vtab" onclick="showVilla('jane',this)">Villa Jane</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VILLA PANELS ══ -->
+<div id="p-anna" class="villa-panel show">
+  <div class="villa-card">
+    <div class="villa-card-img">
+      <img src="render-villa-front.jpg" alt="Villa Anna" loading="lazy">
+    </div>
+    <div class="villa-card-info">
+      <div class="ew">Residence</div>
+      <div class="villa-name">Villa Anna</div>
+      <div class="villa-type">Single Storey · Garden & Pool</div>
+      <div class="villa-specs">
+        <div class="vs"><div class="vs-n">180</div><div class="vs-l">m² Area</div></div>
+        <div class="vs"><div class="vs-n">3</div><div class="vs-l">Bedrooms</div></div>
+        <div class="vs"><div class="vs-n">3</div><div class="vs-l">Bathrooms</div></div>
+        <div class="vs"><div class="vs-n">28</div><div class="vs-l">m² Pool</div></div>
+      </div>
+      <p class="villa-desc">An elegant single-storey residence designed for seamless indoor-outdoor living. Panoramic glazing, master suite with dressing room, open-plan living and dining, private pool and sun terrace with unobstructed ocean views.</p>
+      <div class="villa-feats">
+        <div class="vf">Open-plan living & dining room</div>
+        <div class="vf">Master bedroom with dressing room</div>
+        <div class="vf">Private pool & sun terrace · 150 m²</div>
+        <div class="vf">Laundry & utility room</div>
+        <div class="vf">Parking for 2 vehicles</div>
+        <div class="vf">Fully landscaped garden</div>
+      </div>
+      <div class="villa-price">from $800,000</div>
+      <div class="villa-price-note">Starting price · Plot from 600 m²</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" class="btn-solid">Request Details</a>
+        <a href="contact.html" class="btn-ghost">Arrange a Visit</a>
+      </div>
+    </div>
+  </div>
+  <div class="plan-img">
+    <img src="villa anna.png" alt="Villa Anna Floor Plan" loading="lazy">
+    <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:12px">Floor Plan · Villa Anna · Scale 1:200</div>
+  </div>
+</div>
+
+<div id="p-georgette" class="villa-panel">
+  <div class="villa-card" style="flex-direction:row-reverse">
+    <div class="villa-card-img">
+      <img src="hero-villa-day.jpg" alt="Villa Georgette" loading="lazy">
+    </div>
+    <div class="villa-card-info">
+      <div class="ew">Signature Residence</div>
+      <div class="villa-name">Villa Georgette</div>
+      <div class="villa-type">Two Storeys · Panoramic Terraces</div>
+      <div class="villa-specs">
+        <div class="vs"><div class="vs-n">300</div><div class="vs-l">m² Area</div></div>
+        <div class="vs"><div class="vs-n">3</div><div class="vs-l">Bedrooms</div></div>
+        <div class="vs"><div class="vs-n">3</div><div class="vs-l">Bathrooms</div></div>
+        <div class="vs"><div class="vs-n">28</div><div class="vs-l">m² Pool</div></div>
+      </div>
+      <p class="villa-desc">A distinguished two-storey residence featuring wide balconies, panoramic terraces of 150 m² and a grand private pool. The finest residence in the collection — commanding views across the Indian Ocean from every principal room.</p>
+      <div class="villa-feats">
+        <div class="vf">Two floors with panoramic balconies</div>
+        <div class="vf">Terraces 150 m² · Private pool</div>
+        <div class="vf">Master suite with panoramic bathroom</div>
+        <div class="vf">Guest suite with private terrace</div>
+        <div class="vf">Parking for 2 vehicles</div>
+        <div class="vf">Landscaped garden & perimeter</div>
+      </div>
+      <div class="villa-price">from $1,900,000</div>
+      <div class="villa-price-note">On 2,000 m² plot · from 1,500 m²</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" class="btn-solid">Request Details</a>
+        <a href="contact.html" class="btn-ghost">Arrange a Visit</a>
+      </div>
+    </div>
+  </div>
+  <div class="plan-img">
+    <img src="villa georgette.png" alt="Villa Georgette Floor Plan" loading="lazy">
+    <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:12px">Floor Plan · Villa Georgette · Scale 1:200</div>
+  </div>
+</div>
+
+<div id="p-jane" class="villa-panel">
+  <div class="villa-card">
+    <div class="villa-card-img">
+      <img src="render-villa-dusk.jpg" alt="Villa Jane" loading="lazy">
+    </div>
+    <div class="villa-card-info">
+      <div class="ew">Residence</div>
+      <div class="villa-name">Villa Jane</div>
+      <div class="villa-type">Single Storey · Glazed Pavilion</div>
+      <div class="villa-specs">
+        <div class="vs"><div class="vs-n">180</div><div class="vs-l">m² Area</div></div>
+        <div class="vs"><div class="vs-n">3</div><div class="vs-l">Bedrooms</div></div>
+        <div class="vs"><div class="vs-n">3</div><div class="vs-l">Bathrooms</div></div>
+        <div class="vs"><div class="vs-n">28</div><div class="vs-l">m² Pool</div></div>
+      </div>
+      <p class="villa-desc">A refined single-storey residence with floor-to-ceiling glazing framing views of tropical vegetation and the ocean horizon. Generous terraces of 140 m², private pool and thoughtfully considered living spaces throughout.</p>
+      <div class="villa-feats">
+        <div class="vf">Panoramic floor-to-ceiling glazing</div>
+        <div class="vf">Terraces 140 m²</div>
+        <div class="vf">Private pool · Tropical garden</div>
+        <div class="vf">Laundry & utility room</div>
+        <div class="vf">Parking for 2 vehicles</div>
+        <div class="vf">Fully landscaped</div>
+      </div>
+      <div class="villa-price">from $1,600,000</div>
+      <div class="villa-price-note">On 1,800 m² plot · from 500 m²</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" class="btn-solid">Request Details</a>
+        <a href="contact.html" class="btn-ghost">Arrange a Visit</a>
+      </div>
+    </div>
+  </div>
+  <div class="plan-img">
+    <img src="villa Jane.png" alt="Villa Jane Floor Plan" loading="lazy">
+    <div style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:12px">Floor Plan · Villa Jane · Scale 1:200</div>
+  </div>
+</div>
+
+<!-- ══ PRICE INCLUDES ══ -->
+<section class="section" style="padding:64px 0">
+  <div class="wrap">
+    <div class="price-includes">
+      <div class="pi-title">Price includes:</div>
+      <div class="pi-items">
+        <div class="pi-item">Land plot & freehold title</div>
+        <div class="pi-item">Full villa construction</div>
+        <div class="pi-item">Turnkey interior finishing</div>
+        <div class="pi-item">Landscaping & garden</div>
+        <div class="pi-item">Estate infrastructure</div>
+        <div class="pi-item">Seychelles residency permit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAYMENT ══ -->
+<section class="section section-charcoal" style="padding:80px 0">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
+      <div style="background:var(--surface);padding:52px 48px">
+        <div class="ew">Acquisition Process</div>
+        <h2 class="h2" style="margin-bottom:28px">Flexible Payment<br>Structure</h2>
+        <p class="body-t" style="margin-bottom:32px">Payments are structured to align with construction milestones, giving buyers full confidence that funds are deployed in parallel with progress.</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;gap:20px;align-items:flex-start">
+            <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--gold);min-width:40px">1.</div>
+            <div>
+              <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--white);margin-bottom:4px">Reservation</div>
+              <div class="body-t" style="font-size:13px">Plot reserved and purchase agreement signed.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start">
+            <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--gold);min-width:40px">2.</div>
+            <div>
+              <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--white);margin-bottom:4px">Foundation Stage</div>
+              <div class="body-t" style="font-size:13px">Payment upon completion of foundation works.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start">
+            <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--gold);min-width:40px">3.</div>
+            <div>
+              <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--white);margin-bottom:4px">Structure Complete</div>
+              <div class="body-t" style="font-size:13px">Payment at roof completion stage.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start">
+            <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--gold);min-width:40px">4.</div>
+            <div>
+              <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--white);margin-bottom:4px">Key Handover</div>
+              <div class="body-t" style="font-size:13px">Final payment at completion and title transfer.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--forest);padding:52px 48px;display:flex;flex-direction:column;justify-content:center">
+        <div class="ew">Also Included</div>
+        <h3 class="h3" style="margin-bottom:28px;color:var(--white)">Seychelles<br>Residency Permit</h3>
+        <p class="body-t" style="margin-bottom:24px">Every villa purchase at Empathia Village grants an automatic Seychelles Residence Permit under the current foreign investment legislation.</p>
+        <p class="body-t" style="margin-bottom:32px">Residence permits are granted to the primary buyer and family members. Seychelles is a stable, tax-efficient jurisdiction with no income tax, no capital gains tax and no inheritance tax.</p>
+        <div class="gold-rule"></div>
+        <div style="margin-top:24px;font-size:13px;color:rgba(255,255,255,.5)">Payments accepted in USD or equivalent. Contact us for full purchase documentation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="section section-ink" style="padding:80px 0">
+  <div class="wrap text-center">
+    <div class="ew ew-center">Only 35 Plots · Intentionally Limited</div>
+    <h2 class="h2" style="margin-bottom:20px">Begin Your Journey</h2>
+    <p class="lead" style="max-width:500px;margin:0 auto 36px">Our team will respond within 24 hours with full villa specifications, plot availability and pricing documentation.</p>
+    <a href="contact.html" class="btn-solid" style="font-size:10px">Private Enquiry</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">Empathia Village</div>
+    <div class="footer-dev">Kensington Construction &amp; Development · Class 1 License · Seychelles</div>
+  </div>
+  <div class="footer-links">
+    <a href="index.html" class="footer-link">Home</a>
+    <a href="gallery.html" class="footer-link">Gallery</a>
+    <a href="construction.html" class="footer-link">Construction</a>
+    <a href="agents.html" class="footer-link">Agents</a>
+    <a href="about.html" class="footer-link">About</a>
+    <a href="contact.html" class="footer-link">Contact</a>
+  </div>
+</footer>
+
+<script>
+function showVilla(name, btn){
+  document.querySelectorAll('.vtab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  ['anna','georgette','jane'].forEach(n=>{
+    const el=document.getElementById('p-'+n);
+    if(el) el.classList.toggle('show', n===name);
+  });
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.padding=window.scrollY>60?'10px 48px':'16px 48px';
+});
+</script>
+</body>
+</html>

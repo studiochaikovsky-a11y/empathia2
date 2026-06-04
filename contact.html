@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact · Empathia Village · Seychelles</title>
+<meta name="description" content="Contact Empathia Village — private luxury residences on Mahé Island, Seychelles. Arrange a viewing or request information.">
+<link rel="stylesheet" href="style.css">
+<style>
+  body{padding-top:77px}
+  .map-wrap { position:relative; height:440px; overflow:hidden; background:var(--charcoal); }
+  .map-wrap iframe { width:100%; height:100%; border:0; filter:grayscale(30%) brightness(.85); }
+  .map-pin { position:absolute; top:50%; left:50%; transform:translate(-50%,-60%); pointer-events:none; text-align:center; }
+  .map-pin-dot { width:14px; height:14px; background:var(--gold); border-radius:50%; margin:0 auto 4px; box-shadow:0 0 0 4px rgba(200,169,110,.3); }
+  .map-pin-label { font-family:var(--serif); font-size:13px; font-style:italic; color:var(--white); text-shadow:0 1px 8px rgba(0,0,0,.8); white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo1.png" class="nav-logo-img" alt="Empathia Village" loading="lazy">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Empathia Village</span>
+      <span class="nav-logo-sub">Private Living · Naturally Yours</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="pricing.html" class="nav-link">Residences</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="construction.html" class="nav-link">Construction</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="agents.html" class="nav-link">Agents</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-nav active">Private Enquiry</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero" style="min-height:340px">
+  <img src="beach-baie-lazare.jpg" class="page-hero-img" alt="Baie Lazare Seychelles" fetchpriority="high">
+  <div class="page-hero-vignette"></div>
+  <div class="page-hero-content">
+    <div class="wrap">
+      <div class="ew" style="color:#fff;opacity:.6">Private Enquiry</div>
+      <h1 class="h1">Contact Us</h1>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="section" style="padding:80px 0">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start">
+
+      <!-- Left: info -->
+      <div>
+        <div class="ew">Get in Touch</div>
+        <h2 class="h2" style="margin-bottom:24px">Begin Your<br>Journey</h2>
+        <p class="lead" style="margin-bottom:40px">Our team responds to every enquiry within 24 hours. We can arrange a private consultation, send full documentation, or organise a discovery tour of the Seychelles estate.</p>
+
+        <div class="contact-channels">
+          <div class="ch-card">
+            <div class="ch-label">Seychelles Office</div>
+            <a href="tel:+2482715102" class="ch-value">+248 271 51 02</a>
+            <div class="ch-sub">Mon–Fri 08:00–17:00 SCT</div>
+          </div>
+          <div class="ch-card">
+            <div class="ch-label">Email</div>
+            <a href="mailto:studiochaikovsky@gmail.com" class="ch-value" style="font-size:18px;word-break:break-all">studiochaikovsky@gmail.com</a>
+            <div class="ch-sub">Response within 24 hours</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;margin-bottom:40px">
+          <a href="https://www.instagram.com/seychelles.empathia/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+          <a href="https://youtube.com/@seychelles_villa" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            YouTube
+          </a>
+        </div>
+
+        <div style="background:var(--charcoal);padding:24px 28px;border-left:2px solid var(--gold)">
+          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Discovery Tour</div>
+          <div style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.65">A private one-week visit to the Seychelles with accommodation on Eden Island and a guided tour of the Empathia Village site. Contact us to arrange your itinerary.</div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div>
+        <div class="ew">Send an Enquiry</div>
+        <h3 class="h3" style="margin-bottom:32px">Private Enquiry Form</h3>
+
+        <div class="form-grid">
+          <div class="field-wrap">
+            <label class="field-label">Full Name</label>
+            <input type="text" class="field" id="fn" placeholder="Your name">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Phone / WhatsApp</label>
+            <input type="tel" class="field" id="fp" placeholder="+1 000 000 0000">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Email Address</label>
+            <input type="email" class="field" id="fe" placeholder="your@email.com">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Interest</label>
+            <select class="field" id="fi">
+              <option value="">Select…</option>
+              <option>Villa Anna</option>
+              <option>Villa Georgette</option>
+              <option>Villa Jane</option>
+              <option>General information</option>
+              <option>Investment enquiry</option>
+              <option>Agent partnership</option>
+            </select>
+          </div>
+          <div class="field-wrap form-row">
+            <label class="field-label">Message (optional)</label>
+            <textarea class="field" id="fm" rows="4" placeholder="Tell us about your requirements, preferred timeline, or any questions you have…" style="resize:vertical;min-height:90px"></textarea>
+          </div>
+        </div>
+        <div style="margin-top:3px">
+          <button class="btn-solid" onclick="submitForm()" style="width:100%;justify-content:center;padding:18px">Send Enquiry</button>
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:16px;text-align:center">We respond to every enquiry within 24 hours. Your information is kept strictly confidential.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAP ══ -->
+<div class="map-wrap">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3762!2d55.4786!3d-4.7527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2296c73dcfb9cf31%3A0x0!2zNMKwNDUnMDkuNiJTIDU1wrAyOCc0My4xIkU!5e1!3m2!1sen!2s!4v1718000000000"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Empathia Village Location">
+  </iframe>
+</div>
+
+<!-- ══ MAP INFO ══ -->
+<section style="background:var(--charcoal);padding:40px 0">
+  <div class="wrap">
+    <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:center">
+      <div>
+        <div style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Address</div>
+        <div style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--white)">Baie Lazare, Mahé Island, Seychelles</div>
+      </div>
+      <div>
+        <div style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Nearest Landmark</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6)">Between Four Seasons &amp; Kempinski Resorts</div>
+      </div>
+      <div>
+        <div style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Elevation</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6)">50–100 metres above sea level</div>
+      </div>
+      <div style="margin-left:auto">
+        <a href="https://goo.gl/maps/seychelles" target="_blank" rel="noopener" class="btn-ghost" style="font-size:8px">Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">Empathia Village</div>
+    <div class="footer-dev">Kensington Construction &amp; Development · Class 1 License · Seychelles</div>
+  </div>
+  <div class="footer-links">
+    <a href="index.html" class="footer-link">Home</a>
+    <a href="pricing.html" class="footer-link">Residences</a>
+    <a href="gallery.html" class="footer-link">Gallery</a>
+    <a href="construction.html" class="footer-link">Construction</a>
+    <a href="agents.html" class="footer-link">Agents</a>
+    <a href="about.html" class="footer-link">About</a>
+  </div>
+</footer>
+
+<script>
+function submitForm(){
+  const n=document.getElementById('fn').value.trim();
+  const p=document.getElementById('fp').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  if(!n&&!p&&!e){alert('Please enter your name or contact details.');return;}
+  alert('Thank you'+(n?', '+n:'')+'.\n\nYour enquiry has been received. A member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.padding=window.scrollY>60?'10px 48px':'16px 48px';
+});
+</script>
+</body>
+</html>

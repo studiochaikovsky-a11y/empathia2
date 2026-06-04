@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery · Empathia Village · Seychelles</title>
+<meta name="description" content="Photography and renders of Empathia Village — luxury private residences on Mahé Island, Seychelles.">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { padding-top: 77px; }
+  .filter-bar { display:flex; gap:3px; flex-wrap:wrap; margin-bottom:3px; }
+  .ftab { font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.5); padding:11px 22px; border:1px solid rgba(255,255,255,.1); cursor:pointer; transition:all .25s; background:transparent; font-family:var(--sans); font-weight:400; }
+  .ftab:hover { color:var(--gold); border-color:rgba(200,169,110,.3); }
+  .ftab.on { color:var(--gold); border-color:var(--gold); background:rgba(200,169,110,.06); }
+  .grid-section { display:none; }
+  .grid-section.on { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+  @media(max-width:1024px){ .grid-section.on { grid-template-columns:1fr 1fr; } }
+  @media(max-width:600px){ .grid-section.on { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo1.png" class="nav-logo-img" alt="Empathia Village" loading="lazy">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Empathia Village</span>
+      <span class="nav-logo-sub">Private Living · Naturally Yours</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="pricing.html" class="nav-link">Residences</a>
+    <a href="gallery.html" class="nav-link active">Gallery</a>
+    <a href="construction.html" class="nav-link">Construction</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="agents.html" class="nav-link">Agents</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-nav">Private Enquiry</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <img src="hero-villa-day.jpg" class="page-hero-img" alt="Empathia Village" fetchpriority="high">
+  <div class="page-hero-vignette"></div>
+  <div class="page-hero-content">
+    <div class="wrap">
+      <div class="ew" style="color:#fff;opacity:.6">Photography & Film</div>
+      <h1 class="h1">Gallery</h1>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="section" style="padding-top:64px">
+  <div class="wrap">
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <button class="ftab on" onclick="filterGallery('all',this)">All</button>
+      <button class="ftab" onclick="filterGallery('renders',this)">Renders</button>
+      <button class="ftab" onclick="filterGallery('site',this)">Project Site</button>
+      <button class="ftab" onclick="filterGallery('construction',this)">Construction</button>
+      <button class="ftab" onclick="filterGallery('location',this)">Location</button>
+    </div>
+
+    <!-- ALL grid -->
+    <div id="grid-all" class="grid-section on">
+
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="hero-villa-day.jpg" alt="Empathia Village · Villa Render · Dusk" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa · Dusk Render</span></div>
+      </div>
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="hero-villa-day2.jpg" alt="Empathia Village · Villa Render · Day" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa · Daytime Render</span></div>
+      </div>
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="render-villa-front.jpg" alt="Empathia Village · Front Elevation" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa Anna · Front Elevation</span></div>
+      </div>
+
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="render-villa-dusk.jpg" alt="Empathia Village · Villa at Dusk" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa · Evening Light</span></div>
+      </div>
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="render-plan-day.jpg" alt="Empathia Village · Floor Plan Render" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa · Aerial Plan Render</span></div>
+      </div>
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="render-plan-night.jpg" alt="Empathia Village · Night Plan Render" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa · Night Plan Render</span></div>
+      </div>
+
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="5230968205017290749.jpg" alt="Empathia Village · Ocean View" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa · Infinity Pool · Ocean View</span></div>
+      </div>
+      <div class="photo-cell" data-cat="renders" onclick="lbOpen(this)">
+        <img src="5230968205017290748.jpg" alt="Empathia Village · Villa at Night" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Villa · Night Exterior</span></div>
+      </div>
+
+      <div class="photo-cell" data-cat="site" onclick="lbOpen(this)">
+        <img src="hero-site.jpg" alt="Empathia Village · Project Site from Ocean" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Project Site · View from the Ocean</span></div>
+      </div>
+
+      <div class="photo-cell" data-cat="construction" onclick="lbOpen(this)">
+        <img src="construction-1.jpg" alt="Construction Site · Ocean View" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Site Preparation · Ocean View</span></div>
+      </div>
+      <div class="photo-cell" data-cat="construction" onclick="lbOpen(this)">
+        <img src="construction-2.jpg" alt="Construction · Excavation Works" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Excavation & Foundation Works</span></div>
+      </div>
+
+      <div class="photo-cell" data-cat="location" onclick="lbOpen(this)">
+        <img src="beach-baie-lazare.jpg" alt="Baie Lazare Beach · Seychelles" loading="lazy">
+        <div class="photo-overlay"><span class="photo-cap">Baie Lazare Beach · 2 Minutes Away</span></div>
+      </div>
+
+    </div><!-- /grid-all -->
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="section section-charcoal" style="padding:80px 0">
+  <div class="wrap text-center">
+    <div class="ew ew-center">Private Residences · Mahé Island</div>
+    <h2 class="h2" style="margin-bottom:20px">Interested in a Residence?</h2>
+    <p class="lead" style="max-width:520px;margin:0 auto 36px">Our team will arrange a private consultation and, if desired, a discovery tour of the estate in Seychelles.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn-solid">Request Information</a>
+      <a href="pricing.html" class="btn-ghost">View Residences</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">Empathia Village</div>
+    <div class="footer-dev">Kensington Construction &amp; Development · Class 1 License · Seychelles</div>
+  </div>
+  <div class="footer-links">
+    <a href="index.html" class="footer-link">Home</a>
+    <a href="pricing.html" class="footer-link">Residences</a>
+    <a href="construction.html" class="footer-link">Construction</a>
+    <a href="agents.html" class="footer-link">Agents</a>
+    <a href="about.html" class="footer-link">About</a>
+    <a href="contact.html" class="footer-link">Contact</a>
+  </div>
+</footer>
+
+<!-- ══ LIGHTBOX ══ -->
+<div id="lb" onclick="if(event.target===this)lbClose()">
+  <button id="lb-close" onclick="lbClose()">&#215;</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+// Lightbox
+function lbOpen(cell){
+  const img = cell.querySelector('img');
+  document.getElementById('lb-img').src = img.src;
+  document.getElementById('lb-img').alt = img.alt;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function lbClose(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') lbClose(); });
+
+// Filter
+function filterGallery(cat, btn){
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const cells = document.querySelectorAll('#grid-all .photo-cell');
+  cells.forEach(c=>{
+    const show = cat==='all' || c.dataset.cat===cat;
+    c.style.display = show ? '' : 'none';
+  });
+}
+
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.padding = window.scrollY > 60 ? '10px 48px' : '16px 48px';
+});
+</script>
+</body>
+</html>

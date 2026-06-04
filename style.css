@@ -1,0 +1,264 @@
+/* ═══════════════════════════════════════════
+   Empathia Village — Shared Design System
+   ═══════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap');
+
+:root {
+  --ink:#0c0d0f; --surface:#111215; --charcoal:#18191d; --ivory:#f5f0e8;
+  --forest:#1a2e1e; --gold:#c8a96e; --gold-hi:#d4b483; --white:#fff;
+  --muted:rgba(255,255,255,.4); --muted-dk:rgba(0,0,0,.5);
+  --sans:'Jost',sans-serif; --serif:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--surface);color:var(--white);font-weight:300;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ── Typography ── */
+.h1{font-family:var(--serif);font-size:clamp(44px,6vw,84px);font-weight:300;font-style:italic;line-height:.95;color:var(--white)}
+.h2{font-family:var(--serif);font-size:clamp(30px,3.8vw,54px);font-weight:300;font-style:italic;line-height:1.1;color:var(--white)}
+.h2-dk{color:var(--ink)}
+.h3{font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;font-style:italic;color:var(--white)}
+.ew{font-family:var(--sans);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.ew::before{content:'';display:block;width:24px;height:1px;background:var(--gold);flex-shrink:0}
+.ew-dk{color:var(--gold)}
+.ew-center{justify-content:center}
+.ew-center::before{display:none}
+.lead{font-size:16px;line-height:1.78;font-weight:300;color:rgba(255,255,255,.6)}
+.lead-dk{color:rgba(0,0,0,.6)}
+.body-t{font-size:15px;line-height:1.75;color:rgba(255,255,255,.55)}
+.body-dk{color:rgba(0,0,0,.6)}
+.gold-rule{width:40px;height:1px;background:var(--gold);margin:24px 0}
+.gold-rule-c{width:40px;height:1px;background:var(--gold);margin:24px auto}
+.gold{color:var(--gold)}
+
+/* ── Layout ── */
+.wrap{max-width:1280px;margin:0 auto;padding:0 60px}
+.section{padding:110px 0}
+.section-ivory{background:var(--ivory)}
+.section-charcoal{background:var(--charcoal)}
+.section-forest{background:var(--forest)}
+.section-ink{background:var(--ink)}
+.text-center{text-align:center}
+
+/* ── Nav ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;
+  background:rgba(10,10,12,.94);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(200,169,110,.12);
+  transition:padding .3s var(--ease);
+}
+.nav-logo{display:flex;align-items:center;gap:13px;text-decoration:none}
+.nav-logo-img{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.9))}
+.nav-logo-text{display:flex;flex-direction:column;gap:2px}
+.nav-logo-name{font-family:var(--serif);font-size:17px;font-style:italic;font-weight:400;color:var(--white);line-height:1}
+.nav-logo-sub{font-family:var(--sans);font-size:7px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-link{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;transition:color .25s;font-weight:400;white-space:nowrap;padding:4px 0}
+.nav-link:hover,.nav-link.active{color:var(--gold)}
+.nav-actions{display:flex;align-items:center;gap:16px}
+.btn-nav{
+  background:var(--gold);color:var(--ink);
+  font-family:var(--sans);font-size:8px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+  border:none;cursor:pointer;padding:11px 22px;transition:background .25s;
+  text-decoration:none;display:inline-flex;align-items:center;white-space:nowrap;
+}
+.btn-nav:hover{background:var(--gold-hi)}
+
+/* ── Buttons ── */
+.btn-solid{
+  background:var(--gold);color:var(--ink);
+  font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+  border:none;cursor:pointer;padding:15px 34px;transition:all .3s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-solid:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;color:var(--white);
+  font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;font-weight:400;
+  border:1px solid rgba(255,255,255,.28);cursor:pointer;padding:15px 34px;transition:all .3s;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-ghost-dk{color:var(--ink);border-color:rgba(0,0,0,.28)}
+.btn-ghost-dk:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── Page Hero ── */
+.page-hero{
+  position:relative;height:56vh;min-height:400px;
+  display:flex;align-items:flex-end;overflow:hidden;margin-top:0;
+}
+.page-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.page-hero-vignette{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.2) 55%,transparent 100%);z-index:1}
+.page-hero-content{position:relative;z-index:2;width:100%;padding:0 0 60px}
+
+/* ── Photo Grid / Gallery ── */
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.photo-cell{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:zoom-in;background:var(--charcoal)}
+.photo-cell img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);display:block}
+.photo-cell:hover img{transform:scale(1.06)}
+.photo-overlay{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s;display:flex;align-items:flex-end}
+.photo-cell:hover .photo-overlay{background:rgba(0,0,0,.22)}
+.photo-cap{padding:14px 16px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.9);font-weight:400;opacity:0;transform:translateY(6px);transition:all .3s}
+.photo-cell:hover .photo-cap{opacity:1;transform:translateY(0)}
+.photo-cell.tall{aspect-ratio:3/4}
+.photo-cell.wide{grid-column:span 2}
+
+/* ── Filter tabs ── */
+.filter-tabs{display:flex;gap:3px;margin-bottom:24px}
+.ftab{
+  font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);
+  padding:10px 20px;border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .25s;
+  background:transparent;font-family:var(--sans);font-weight:400;
+}
+.ftab:hover{color:var(--gold);border-color:rgba(200,169,110,.3)}
+.ftab.on{color:var(--gold);border-color:var(--gold);background:rgba(200,169,110,.06)}
+
+/* ── Villa cards (pricing) ── */
+.villa-card{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px}
+.villa-card-img{position:relative;min-height:460px;overflow:hidden}
+.villa-card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.villa-card-info{background:var(--charcoal);padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+.villa-card-info-right{background:var(--charcoal)}
+.villa-name{font-family:var(--serif);font-size:52px;font-style:italic;font-weight:300;color:var(--white);margin-bottom:4px;line-height:1}
+.villa-type{font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:32px}
+.villa-specs{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(255,255,255,.07);margin-bottom:28px}
+.vs{padding:15px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.vs:last-child{border-right:none}
+.vs-n{font-family:var(--serif);font-size:24px;font-style:italic;color:var(--gold-hi);line-height:1}
+.vs-l{font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.villa-desc{font-size:14px;color:rgba(255,255,255,.5);line-height:1.78;margin-bottom:22px}
+.villa-feats{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.vf{font-size:12.5px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:10px}
+.vf::before{content:'';width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.villa-price{font-family:var(--serif);font-size:40px;font-style:italic;color:var(--gold-hi);line-height:1;margin-bottom:4px}
+.villa-price-note{font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:28px}
+
+/* ── Price includes ── */
+.price-includes{background:rgba(200,165,90,.07);border:1px solid rgba(200,165,90,.2);padding:32px 40px;display:flex;gap:40px;align-items:center;flex-wrap:wrap;margin-top:48px}
+.pi-title{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--white);flex-shrink:0}
+.pi-items{display:flex;flex-wrap:wrap;gap:8px 20px;flex:1}
+.pi-item{font-size:13px;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:7px}
+.pi-item::before{content:'✓';color:var(--gold);font-size:11px}
+
+/* ── Construction / Timeline ── */
+.timeline{position:relative;padding-left:56px}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1px;background:rgba(200,169,110,.2)}
+.t-item{position:relative;margin-bottom:56px}
+.t-num{
+  position:absolute;left:-56px;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:16px;font-style:italic;color:var(--gold);
+  background:var(--surface);z-index:1;
+}
+.t-title{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--white);margin-bottom:6px}
+.t-date{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.t-text{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75;max-width:560px}
+
+/* ── Progress bars ── */
+.progress-item{margin-bottom:20px}
+.progress-label{display:flex;justify-content:space-between;margin-bottom:8px}
+.progress-name{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.progress-pct{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--gold)}
+.progress-track{height:3px;background:rgba(255,255,255,.08)}
+.progress-fill{height:100%;background:linear-gradient(to right,var(--gold),var(--gold-hi));transition:width 1.2s var(--ease)}
+
+/* ── Stats row ── */
+.stats-row{display:flex;border:1px solid rgba(255,255,255,.07)}
+.stat-box{flex:1;padding:36px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.07)}
+.stat-box:last-child{border-right:none}
+.stat-n{font-family:var(--serif);font-size:46px;font-style:italic;font-weight:300;color:var(--gold-hi);line-height:1}
+.stat-l{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:6px}
+
+/* ── Agent / Benefits ── */
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.benefit-card{background:var(--charcoal);padding:40px 36px;border-top:2px solid var(--gold);transition:transform .3s}
+.benefit-card:hover{transform:translateY(-4px)}
+.b-icon{font-size:30px;margin-bottom:18px}
+.b-title{font-family:var(--serif);font-size:24px;font-style:italic;color:var(--white);margin-bottom:10px}
+.b-text{font-size:13px;color:rgba(255,255,255,.5);line-height:1.75}
+.commission-box{background:var(--forest);border:1px solid rgba(200,169,110,.2);padding:52px;text-align:center}
+.commission-n{font-family:var(--serif);font-size:80px;font-style:italic;font-weight:300;color:var(--gold-hi);line-height:1;margin-bottom:8px}
+
+/* ── Form ── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px}
+.form-row{grid-column:1/-1}
+.field-wrap{display:flex;flex-direction:column;gap:7px}
+.field-label{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.field{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  color:var(--white);font-family:var(--sans);font-size:13px;font-weight:300;
+  padding:16px 18px;width:100%;transition:border-color .25s;
+}
+.field:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.06)}
+.field::placeholder{color:rgba(255,255,255,.28)}
+select.field option{background:var(--charcoal)}
+
+/* ── Trust / About ── */
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.trust-card{background:var(--charcoal);padding:36px 30px;border-top:2px solid var(--gold)}
+.tc-n{font-family:var(--serif);font-size:42px;font-style:italic;color:var(--gold-hi);margin-bottom:10px;line-height:1}
+.tc-title{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--white);margin-bottom:10px;font-weight:500}
+.tc-text{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7}
+
+/* ── Contact channels ── */
+.contact-channels{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:40px}
+.ch-card{background:var(--charcoal);padding:36px;border-top:2px solid var(--gold)}
+.ch-label{font-size:8.5px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.ch-value{font-family:var(--serif);font-size:28px;font-style:italic;color:var(--white);text-decoration:none;transition:color .25s}
+.ch-value:hover{color:var(--gold)}
+.ch-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:6px}
+
+/* ── Lightbox ── */
+#lb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;cursor:pointer}
+#lb.open{display:flex}
+#lb-img{max-width:92vw;max-height:88vh;object-fit:contain;cursor:default}
+#lb-close{position:absolute;top:20px;right:24px;color:rgba(255,255,255,.6);font-size:34px;cursor:pointer;background:none;border:none;line-height:1;transition:color .2s;font-family:sans-serif}
+#lb-close:hover{color:var(--gold)}
+
+/* ── Footer ── */
+.footer{
+  background:var(--ink);border-top:1px solid rgba(200,169,110,.15);
+  padding:36px 60px;display:flex;align-items:center;justify-content:space-between;
+}
+.footer-logo{font-family:var(--serif);font-size:20px;font-style:italic;color:rgba(255,255,255,.55)}
+.footer-dev{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px}
+.footer-links{display:flex;gap:24px}
+.footer-link{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38);text-decoration:none;transition:color .25s}
+.footer-link:hover{color:var(--gold)}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .wrap{padding:0 24px}
+  .nav{padding:12px 20px}
+  .nav-links,.nav-actions .btn-nav{display:none}
+  .photo-grid{grid-template-columns:1fr 1fr}
+  .photo-cell.wide{grid-column:span 1}
+  .villa-card{grid-template-columns:1fr}
+  .villa-card-img{min-height:300px}
+  .villa-card-info{padding:36px 24px}
+  .villa-specs{grid-template-columns:repeat(2,1fr)}
+  .benefits-grid{grid-template-columns:1fr 1fr}
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .form-grid{grid-template-columns:1fr}
+  .contact-channels{grid-template-columns:1fr}
+  .stats-row{flex-wrap:wrap}
+  .stat-box{flex:0 0 50%;border-bottom:1px solid rgba(255,255,255,.07)}
+  .price-includes{flex-direction:column;gap:20px;padding:28px 24px}
+  .footer{flex-direction:column;gap:16px;text-align:center;padding:28px 20px}
+  .footer-links{justify-content:center}
+}
+@media(max-width:600px){
+  .photo-grid{grid-template-columns:1fr}
+  .section{padding:64px 0}
+  .benefits-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr}
+  .stat-box{flex:0 0 100%}
+  .page-hero{height:44vh}
+  .villa-specs{grid-template-columns:repeat(2,1fr)}
+}
