@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog · Empathia Village · Seychelles</title>
+<meta name="description" content="Latest news and updates from Empathia Village — luxury villa residences on Mahé Island, Seychelles.">
+<link rel="stylesheet" href="style.css">
+<style>
+body{padding-top:77px}
+.blog-hero{position:relative;height:44vh;min-height:280px;overflow:hidden}
+.blog-hero img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+.blog-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,10,.8) 0%,rgba(8,9,10,.25) 100%)}
+.blog-hero-text{position:absolute;bottom:52px;left:0;right:0;padding:0 72px}
+.blog-wrap{max-width:1280px;margin:0 auto;padding:80px 72px 100px;background:var(--ink)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
+.blog-card{background:var(--surface);border-radius:2px;overflow:hidden;transition:transform .4s var(--ease)}
+.blog-card:hover{transform:translateY(-6px)}
+.blog-card-img{position:relative;overflow:hidden;aspect-ratio:16/10}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform .6s var(--ease)}
+.blog-card:hover .blog-card-img img{transform:scale(1.04)}
+.blog-card-body{padding:28px 28px 32px}
+.blog-card-cat{font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.blog-card-title{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--white);line-height:1.35;margin-bottom:12px}
+.blog-card-text{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;font-weight:300;margin-bottom:18px}
+.blog-card-date{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.25);text-transform:uppercase}
+.blog-card-link{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;margin-top:14px;transition:gap .25s}
+.blog-card-link:hover{gap:14px}
+.featured-post{background:var(--lift);border-radius:2px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:52px}
+.featured-post-img{position:relative;overflow:hidden}
+.featured-post-img img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+.featured-post-body{padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
+.featured-label{font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.featured-title{font-family:var(--serif);font-size:clamp(22px,2.8vw,34px);font-style:italic;color:var(--white);line-height:1.25;margin-bottom:16px}
+.featured-text{font-size:14px;color:rgba(255,255,255,.5);line-height:1.72;font-weight:300;margin-bottom:24px}
+@media(max-width:900px){
+  .blog-grid{grid-template-columns:1fr}
+  .featured-post{grid-template-columns:1fr}
+  .featured-post-img{aspect-ratio:16/9}
+  .blog-hero-text,.blog-wrap{padding-left:24px;padding-right:24px}
+  .featured-post-body{padding:32px 24px}
+}
+@media(min-width:901px) and (max-width:1200px){
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/images/brand/logo-emblem.png" class="nav-logo-img" alt="Empathia Village" loading="lazy">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Empathia Village</span>
+      <span class="nav-logo-sub">Private Living · Naturally Yours</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="residencies.html" class="nav-link">Residencies</a>
+    <a href="gallery.html" class="nav-link">Gallery</a>
+    <a href="construction.html" class="nav-link">Construction</a>
+    <a href="blog.html" class="nav-link active">Blog</a>
+    <a href="faq.html" class="nav-link">FAQ</a>
+    <a href="contact.html" class="nav-link">Contacts</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-nav">Private Enquiry</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="blog-hero">
+  <img src="assets/images/location/ocean-2.jpg" alt="Индийский океан у берегов Сейшел — Empathia Village" fetchpriority="high">
+  <div class="blog-hero-overlay"></div>
+  <div class="blog-hero-text">
+    <div class="ew" style="color:rgba(255,255,255,.55)">News &amp; Updates</div>
+    <h1 class="h1">Blog</h1>
+  </div>
+</section>
+
+<!-- ══ CONTENT ══ -->
+<div class="blog-wrap">
+  <div>
+    <div class="ew">Empathia Village</div>
+    <h2 class="h2" style="margin-bottom:0">Latest from the Estate</h2>
+  </div>
+
+  <!-- FEATURED POST -->
+  <div class="featured-post" style="margin-top:52px">
+    <div class="featured-post-img">
+      <img src="assets/images/construction/villa-anna-real-1.png" alt="Строительство Empathia Village — реальное фото площадки" loading="lazy">
+    </div>
+    <div class="featured-post-body">
+      <div class="featured-label">Construction Update · June 2026</div>
+      <div class="featured-title">Site Preparation Reaches 60% — Roads at 25%</div>
+      <div class="featured-text">Construction at Empathia Village is progressing on schedule. Site preparation has reached 60% completion, with road infrastructure at 25%. The granite hillside terrain of Mahé Island is being carefully shaped to preserve the natural landscape while creating the terraced plots that will define each villa's panoramic ocean views.</div>
+      <a href="contact.html" class="btn-ghost" style="max-width:max-content;text-decoration:none;font-size:9.5px">Enquire About Progress</a>
+    </div>
+  </div>
+
+  <!-- BLOG GRID -->
+  <div class="blog-grid">
+
+    <div class="blog-card" data-reveal data-delay="1">
+      <div class="blog-card-img">
+        <img src="assets/images/construction/img0135.jpg" alt="Строительная площадка Empathia Village, Сейшелы" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Construction</div>
+        <div class="blog-card-title">Phase I Plots Secured — Phase II Now Open</div>
+        <div class="blog-card-text">The first phase of residences has been successfully reserved. Phase II plots are now available, offering Villa Jane, Anna and Georgette designs on plots from 600 m².</div>
+        <div class="blog-card-date">May 2026</div>
+        <a href="contact.html" class="blog-card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="blog-card" data-reveal data-delay="2">
+      <div class="blog-card-img">
+        <img src="assets/images/location/baie-lazare-beach.png" alt="Пляж Baie Lazare рядом с Empathia Village, Сейшелы" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Location</div>
+        <div class="blog-card-title">Baie Lazare: The Indian Ocean's Most Celebrated Bay</div>
+        <div class="blog-card-text">Consistently ranked among the world's finest beaches, Baie Lazare offers white sand, turquoise water and granite boulders — just two minutes from Empathia Village.</div>
+        <div class="blog-card-date">April 2026</div>
+        <a href="contact.html" class="blog-card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="blog-card" data-reveal data-delay="3">
+      <div class="blog-card-img">
+        <img src="assets/images/location/img0175.jpg" alt="Вид на Индийский океан из Empathia Village" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Investment</div>
+        <div class="blog-card-title">Freehold Title Now Available to Foreign Buyers</div>
+        <div class="blog-card-text">Under new Seychelles legislation, international buyers may now hold full freehold title to both villa and land. A rare opportunity in one of the world's most restricted luxury real estate markets.</div>
+        <div class="blog-card-date">March 2026</div>
+        <a href="contact.html" class="blog-card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="blog-card" data-reveal data-delay="4">
+      <div class="blog-card-img">
+        <img src="assets/images/lifestyle/lifestyle-yacht.png" alt="Яхта на Сейшелах — Empathia Village" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Lifestyle</div>
+        <div class="blog-card-title">Island Living: Yachts, Drives and Seychelles Experiences</div>
+        <div class="blog-card-text">From catamaran charters to convertible car hire, our concierge team assists owners with the full spectrum of island life on Mahé — the jewel of the Indian Ocean.</div>
+        <div class="blog-card-date">February 2026</div>
+        <a href="contact.html" class="blog-card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="blog-card" data-reveal data-delay="5">
+      <div class="blog-card-img">
+        <img src="assets/images/construction/img0161.jpg" alt="Строительная площадка Empathia Village, Сейшелы" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Construction</div>
+        <div class="blog-card-title">Kensington Construction: 30 Years of Tropical Building</div>
+        <div class="blog-card-text">The developer behind Empathia Village holds a Class 1 licence in Seychelles and has delivered over 350 homes across the Indian Ocean region over the past three decades.</div>
+        <div class="blog-card-date">January 2026</div>
+        <a href="contact.html" class="blog-card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="blog-card" data-reveal data-delay="6">
+      <div class="blog-card-img">
+        <img src="assets/images/lifestyle/lifestyle-turtle.png" alt="Гигантские черепахи на острове Маэ, Сейшелы" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Nature</div>
+        <div class="blog-card-title">Aldabra Giant Tortoises: Icons of Seychelles</div>
+        <div class="blog-card-text">The Aldabra giant tortoise is one of the most iconic symbols of the Seychelles archipelago. Owners at Empathia Village share their island with these extraordinary creatures.</div>
+        <div class="blog-card-date">December 2025</div>
+        <a href="contact.html" class="blog-card-link">Learn more →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CTA ══ -->
+<section style="background:var(--charcoal);padding:72px 0;text-align:center">
+  <div class="wrap">
+    <div class="ew" style="justify-content:center">Empathia Village</div>
+    <h2 class="h2" style="margin-bottom:16px">Ready to Begin?</h2>
+    <p class="lead" style="max-width:460px;margin:0 auto 32px">Our team will respond within 24 hours with full villa specifications and plot availability.</p>
+    <a href="contact.html" class="btn-solid" style="text-decoration:none;font-size:10px">Private Enquiry</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-logo">Empathia Village</div>
+  <div class="footer-mid">
+    <div class="footer-dev">Kensington Construction &amp; Development · Class 1 License · Seychelles</div>
+    <div class="footer-copy">© 2026 All rights reserved · Private Living · Naturally Yours</div>
+  </div>
+  <div class="footer-right">SEYCHELLES · MAHÉ</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('nav');
+  if(nav) nav.classList.toggle('solid',window.scrollY>60);
+});
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:0.08,rootMargin:'0px 0px -48px 0px'});
+document.querySelectorAll('[data-reveal]').forEach(el=>revObs.observe(el));
+</script>
+</body>
+</html>
