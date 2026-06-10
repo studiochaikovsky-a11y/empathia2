@@ -1120,11 +1120,8 @@ body {
 /* Topbar adjustments */
 #topbar { position: sticky; top: 0; z-index: 501; }
 .nav { top: 42px; }
-/* Hide topbar on mobile */
-@media(max-width:768px) {
-  #topbar { display: none !important; }
-  .nav { top: 0 !important; }
-}
+/* On mobile #topbar is hidden and .nav sits below the fixed .mob-topbar —
+   see the MOBILE NAV media block at the end of this file */
 /* ═══════════════════════════════════════════
    MOBILE RESPONSIVE - COMPLETE OVERHAUL
    Tested for: iPhone 12/13/14, Pixel 6/7, Samsung Galaxy
@@ -1312,6 +1309,7 @@ img { max-width: 100% !important; display: block !important; }
 
 /* ══════════════════════════════════════
    MOBILE NAV — BURGER + DRAWER
+   Markup is injected by the shared mobile-nav.js
    ══════════════════════════════════════ */
 .nav-burger {
   display: none;
@@ -1441,17 +1439,21 @@ img { max-width: 100% !important; display: block !important; }
   transition: color .2s, padding-left .2s;
 }
 .mob-link:hover { color: var(--gold); padding-left: 30px; }
+.mob-link.active { color: var(--gold); }
 
-/* MOBILE TOPBAR — simplified, show above nav */
+/* MOBILE TOPBAR — fixed above the nav (same approach as style.css) */
 .mob-topbar {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 502;
   background: #111;
   padding: 8px 20px;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(200,169,110,.12);
-  position: relative;
-  z-index: 501;
 }
 .mob-topbar-phone {
   display: flex;
@@ -1478,8 +1480,13 @@ img { max-width: 100% !important; display: block !important; }
 
 @media(max-width:1024px) {
   .nav-burger { display: flex; }
-  #topbar { display: none; }
+  /* !important needed: #topbar carries an inline display:flex */
+  #topbar { display: none !important; }
   .mob-topbar { display: flex; }
+  /* fixed topbar is 35px tall: nav slides below it, body compensates
+     so the hero still starts where the in-flow topbar used to end */
+  .nav { top: 35px; }
+  body { padding-top: 35px; }
 }
 
 /* ── Villa image fix — must come last to win cascade ──
