@@ -1307,6 +1307,10 @@ img { max-width: 100% !important; display: block !important; }
   #int-pool-cap { white-space: normal !important; width: 88% !important; max-width: 88% !important; font-size: clamp(13px,4vw,22px) !important; }
 }
 
+/* width/height attrs reserve space for lazy images (no collapse while
+   loading); zero-specificity :where lets any stylesheet height rule win */
+:where(img[width][height]){height:auto}
+
 /* ══════════════════════════════════════
    MOBILE NAV — BURGER + DRAWER
    Markup is injected by the shared mobile-nav.js

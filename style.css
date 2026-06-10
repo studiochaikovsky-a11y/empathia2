@@ -263,6 +263,10 @@ select.field option{background:var(--charcoal)}
   .villa-specs{grid-template-columns:repeat(2,1fr)}
 }
 
+/* width/height attrs reserve space for lazy images (no collapse while
+   loading); zero-specificity :where lets any stylesheet height rule win */
+:where(img[width][height]){height:auto}
+
 /* ══ MOBILE NAV — TOPBAR + BURGER + DRAWER ══
    Markup is injected by the shared mobile-nav.js on every page;
    index.html loads index.css, which has its own copy of these rules. */
