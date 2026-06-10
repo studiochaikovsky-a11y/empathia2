@@ -1482,10 +1482,11 @@ img { max-width: 100% !important; display: block !important; }
   .mob-topbar { display: flex; }
 }
 
-/* ── Villa card height fix — must come last to win cascade ── */
+/* ── Villa image fix — must come last to win cascade ──
+   Card images are square (1254x1254), detail renders are 1916x821.
+   On mobile the container follows the image's native aspect ratio,
+   so photos are never cropped or distorted. */
 @media(max-width:1024px) {
-  .villa-grid .vcard { height: 320px !important; aspect-ratio: unset !important; }
-}
-@media(max-width:600px) {
-  .villa-grid .vcard { height: 300px !important; }
+  .villa-grid .vcard { height: auto !important; aspect-ratio: 1/1 !important; }
+  .vd-hero-img { height: auto !important; min-height: 0 !important; aspect-ratio: 1916/821 !important; }
 }

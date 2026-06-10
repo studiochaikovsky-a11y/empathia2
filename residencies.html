@@ -41,12 +41,23 @@ body{padding-top:77px}
 .res-card-meta{font-size:12px;color:rgba(255,255,255,.5)}
 .customisation-bar{background:var(--charcoal);padding:64px 0}
 .customisation-inner{max-width:1280px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.res-interiors{max-width:1280px;margin:64px auto 0;padding:0 72px}
+.res-int-label{display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.res-int-label::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.res-int-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.res-int-grid.single{grid-template-columns:1fr}
+.res-int-grid img{width:100%;height:auto;display:block;border-radius:2px}
 @media(max-width:900px){
   .res-grid{grid-template-columns:1fr;padding:0 24px;gap:40px}
   .cards-grid{grid-template-columns:1fr;padding:0 24px}
+  /* card images are square — keep their native shape, no cropping */
+  .res-card{aspect-ratio:1/1}
+  .res-img img{aspect-ratio:auto}
   .res-specs{grid-template-columns:repeat(2,1fr)}
   .villa-hero-text{padding:0 24px;bottom:32px}
   .customisation-inner{grid-template-columns:1fr;padding:0 24px;gap:32px}
+  .res-interiors{padding:0 24px;margin-top:40px}
+  .res-int-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -155,6 +166,12 @@ body{padding-top:77px}
       <a href="contact.html" class="btn-solid" style="display:inline-flex;align-items:center;gap:10px;margin-top:28px;text-decoration:none">Request Details</a>
     </div>
   </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Interior Concept</div>
+    <div class="res-int-grid single">
+      <img src="assets/images/interiors/interior-01.webp" alt="Интерьер Villa Jane — кухня-гостиная с панорамным видом на океан" loading="lazy" decoding="async">
+    </div>
+  </div>
 </section>
 
 <!-- ══ VILLA ANNA ══ -->
@@ -184,6 +201,13 @@ body{padding-top:77px}
       </div>
       <div class="res-custom-note">House size, plot size and layout can be increased or adapted. Contact our team to discuss individual customisation options.</div>
       <a href="contact.html" class="btn-solid" style="display:inline-flex;align-items:center;gap:10px;margin-top:28px;text-decoration:none">Request Details</a>
+    </div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Interior Concept</div>
+    <div class="res-int-grid">
+      <img src="assets/images/interiors/interior-02.webp" alt="Интерьер Villa Anna — гостиная со сводчатым потолком, вечер" loading="lazy" decoding="async">
+      <img src="assets/images/interiors/interior-03.webp" alt="Интерьер Villa Anna — просторная гостиная с выходом к бассейну" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -218,6 +242,13 @@ body{padding-top:77px}
       </div>
       <div class="res-custom-note">Villa Georgette can be expanded, redesigned and fully customised to client specifications. Contact us to discuss your vision.</div>
       <a href="contact.html" class="btn-solid" style="display:inline-flex;align-items:center;gap:10px;margin-top:28px;text-decoration:none">Request Details</a>
+    </div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Interior Concept</div>
+    <div class="res-int-grid">
+      <img src="assets/images/interiors/interior-06.webp" alt="Интерьер Villa Georgette — двусветная гостиная с антресольным этажом" loading="lazy" decoding="async">
+      <img src="assets/images/interiors/interior-07.webp" alt="Интерьер Villa Georgette — гостиная двухэтажной виллы с видом на бассейн" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
