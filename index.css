@@ -790,7 +790,7 @@ button{font-family:var(--sans);cursor:pointer}
   font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
   color:rgba(255,255,255,.18);
 }
-.footer-disclaimer{flex:1 1 100%;max-width:920px;margin:24px auto 0;text-align:center;font-family:var(--sans);font-size:10px;line-height:1.75;color:rgba(255,255,255,.22);letter-spacing:.04em}
+.footer-disclaimer{flex:0 0 auto;width:100%;max-width:920px;margin:24px auto 0;text-align:center;font-family:var(--sans);font-size:10px;line-height:1.75;color:rgba(255,255,255,.22);letter-spacing:.04em}
 /* ── MOBILE ── */
 @media(max-width:1024px){
   .nav{padding:22px 28px} .nav.solid{padding:14px 28px}

@@ -186,6 +186,7 @@ a{color:inherit}
 .commission-n{font-family:var(--serif);font-size:80px;font-style:italic;font-weight:300;color:var(--gold-hi);line-height:1;margin-bottom:8px}
 
 /* ── Form ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px}
 .form-row{grid-column:1/-1}
 .field-wrap{display:flex;flex-direction:column;gap:7px}
@@ -227,7 +228,7 @@ select.field option{background:var(--charcoal)}
   padding:36px 60px;display:flex;align-items:center;justify-content:space-between;
   flex-wrap:wrap;
 }
-.footer-disclaimer{flex:1 1 100%;max-width:920px;margin:24px auto 0;text-align:center;font-size:10px;line-height:1.75;color:rgba(255,255,255,.22);letter-spacing:.04em}
+.footer-disclaimer{flex:0 0 auto;width:100%;max-width:920px;margin:24px auto 0;text-align:center;font-size:10px;line-height:1.75;color:rgba(255,255,255,.22);letter-spacing:.04em}
 .footer-logo{font-family:var(--serif);font-size:20px;font-style:italic;color:rgba(255,255,255,.55)}
 .footer-dev{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px}
 .footer-links{display:flex;gap:24px}
@@ -247,13 +248,14 @@ select.field option{background:var(--charcoal)}
   .villa-specs{grid-template-columns:repeat(2,1fr)}
   .benefits-grid{grid-template-columns:1fr 1fr}
   .trust-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;gap:48px}
   .form-grid{grid-template-columns:1fr}
   .contact-channels{grid-template-columns:1fr}
   .stats-row{flex-wrap:wrap}
   .stat-box{flex:0 0 50%;border-bottom:1px solid rgba(255,255,255,.07)}
   .price-includes{flex-direction:column;gap:20px;padding:28px 24px}
   .footer{flex-direction:column;gap:16px;text-align:center;padding:28px 20px}
-  .footer-links{justify-content:center}
+  .footer-links{justify-content:center;flex-wrap:wrap;gap:12px 20px}
 }
 @media(max-width:600px){
   .photo-grid{grid-template-columns:1fr}
