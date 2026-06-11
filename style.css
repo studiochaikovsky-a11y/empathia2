@@ -225,7 +225,9 @@ select.field option{background:var(--charcoal)}
 .footer{
   background:var(--ink);border-top:1px solid rgba(200,169,110,.15);
   padding:36px 60px;display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;
 }
+.footer-disclaimer{flex:1 1 100%;max-width:920px;margin:24px auto 0;text-align:center;font-size:10px;line-height:1.75;color:rgba(255,255,255,.22);letter-spacing:.04em}
 .footer-logo{font-family:var(--serif);font-size:20px;font-style:italic;color:rgba(255,255,255,.55)}
 .footer-dev{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px}
 .footer-links{display:flex;gap:24px}
