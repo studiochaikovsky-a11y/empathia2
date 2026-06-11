@@ -231,6 +231,9 @@ select.field option{background:var(--charcoal)}
 .footer-disclaimer{flex:0 0 auto;width:100%;max-width:920px;margin:24px auto 0;text-align:center;font-size:10px;line-height:1.75;color:rgba(255,255,255,.22);letter-spacing:.04em}
 .footer-logo{font-family:var(--serif);font-size:20px;font-style:italic;color:rgba(255,255,255,.55)}
 .footer-dev{font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-top:4px}
+.footer-mid{text-align:center}
+.footer-copy{font-size:10px;letter-spacing:.05em;color:rgba(255,255,255,.3);margin-top:6px}
+.footer-right{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3)}
 .footer-links{display:flex;gap:24px}
 .footer-link{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38);text-decoration:none;transition:color .25s}
 .footer-link:hover{color:var(--gold)}
