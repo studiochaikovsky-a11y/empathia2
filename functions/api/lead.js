@@ -40,15 +40,22 @@ export async function onRequestPost({ request, env }) {
   ].filter(Boolean);
   const text = lines.join('\n');
 
+  const status = { telegram: 'not configured', email: 'not configured' };
   const tasks = [];
 
   if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
     tasks.push(
-      fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN.trim()}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text }),
-      }).then((r) => r.ok)
+        body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID.trim(), text }),
+      })
+        .then(async (r) => {
+          const body = await r.text();
+          status.telegram = r.ok ? 'ok' : `failed: ${body.slice(0, 200)}`;
+          return r.ok;
+        })
+        .catch((e) => { status.telegram = `error: ${e.message}`; return false; })
     );
   }
 
@@ -58,29 +65,34 @@ export async function onRequestPost({ request, env }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: env.WEB3FORMS_KEY,
+          access_key: env.WEB3FORMS_KEY.trim(),
           subject: 'Новая заявка — Empathia Village',
           from_name: 'Empathia Village Website',
-          name: lead.name,
+          name: lead.name || 'Website visitor',
           phone: lead.phone,
-          email: lead.email || undefined,
-          interest: lead.interest,
+          email: lead.email || 'noreply@empathia-seychelles.com',
           message: text,
         }),
-      }).then((r) => r.ok)
+      })
+        .then(async (r) => {
+          const body = await r.text();
+          status.email = r.ok ? 'ok' : `failed: ${body.slice(0, 200)}`;
+          return r.ok;
+        })
+        .catch((e) => { status.email = `error: ${e.message}`; return false; })
     );
   }
 
   if (tasks.length === 0) {
-    // Channels not configured yet — accept the lead so the visitor
-    // still sees a success message, but report it in the response.
     return json({ ok: false, error: 'not configured' }, 503);
   }
 
   const results = await Promise.allSettled(tasks);
   const delivered = results.some((r) => r.status === 'fulfilled' && r.value === true);
 
-  return json({ ok: delivered }, delivered ? 200 : 502);
+  // Always 200 so Cloudflare doesn't replace the JSON body with its
+  // generic 5xx error page; the client checks the `ok` field.
+  return json({ ok: delivered, status });
 }
 
 function json(obj, status = 200) {
