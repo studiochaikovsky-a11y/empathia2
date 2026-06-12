@@ -5,6 +5,17 @@
 //   TELEGRAM_CHAT_ID    — chat id that should receive the lead
 //   WEB3FORMS_KEY       — access key from web3forms.com (sends email)
 
+// Preflight for cross-origin form posts (e.g. the Russian site on its own domain)
+export function onRequestOptions() {
+  return new Response(null, { status: 204, headers: CORS });
+}
+
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 export async function onRequestPost({ request, env }) {
   let data;
   try {
@@ -98,6 +109,6 @@ export async function onRequestPost({ request, env }) {
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...CORS },
   });
 }

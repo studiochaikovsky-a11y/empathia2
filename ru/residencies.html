@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Резиденции · Empathia Village · Baie Lazare · Сейшелы</title>
+<meta name="description" content="Три проекта вилл в Empathia Village — Villa Jane от $800 000, Villa Anna от $990 000, Villa Georgette от $2 100 000. Полная собственность (freehold) на Маэ, Сейшелы.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=20260612">
+<script src="mobile-nav.js?v=20260610" defer></script>
+<style>
+body{padding-top:77px}
+.villa-hero{position:relative;height:60vh;min-height:380px;overflow:hidden}
+.villa-hero img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+.villa-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,10,.75) 0%,rgba(8,9,10,.2) 60%,transparent 100%)}
+.villa-hero-text{position:absolute;bottom:52px;left:0;right:0;padding:0 72px}
+.res-section{background:var(--surface);padding:100px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.res-section:nth-child(even){background:var(--lift)}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;max-width:1280px;margin:0 auto;padding:0 72px}
+.res-img{border-radius:2px;overflow:hidden;position:relative}
+.res-img img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center center;display:block}
+.res-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+.res-spec{border-top:1px solid rgba(196,163,90,.25);padding-top:14px}
+.res-spec-v{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--gold-hi);line-height:1}
+.res-spec-k{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:4px}
+.res-price{font-family:var(--serif);font-size:36px;font-style:italic;color:var(--white);margin:20px 0 8px}
+.res-price-note{font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:28px}
+.res-feats{display:flex;flex-direction:column;gap:9px;margin:20px 0 32px}
+.res-feat{font-size:13px;color:rgba(255,255,255,.55);padding-left:16px;position:relative}
+.res-feat::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:10px}
+.res-custom-note{background:rgba(196,163,90,.06);border:1px solid rgba(196,163,90,.18);padding:20px 24px;border-radius:2px;font-size:13px;color:rgba(255,255,255,.5);line-height:1.65;margin-top:20px}
+.res-badge{display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.res-badge::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.cards-intro{background:var(--ink);padding:80px 0 0}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:1280px;margin:48px auto 0;padding:0 72px}
+.res-card{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer}
+.res-card img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform .7s var(--ease)}
+.res-card:hover img{transform:scale(1.04)}
+.res-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,10,.82) 0%,transparent 55%)}
+.res-card-body{position:absolute;bottom:28px;left:28px;right:28px}
+.res-card-name{font-family:var(--serif);font-size:26px;font-style:italic;color:var(--white);margin-bottom:6px}
+.res-card-price{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.res-card-meta{font-size:12px;color:rgba(255,255,255,.5)}
+.customisation-bar{background:var(--charcoal);padding:64px 0}
+.customisation-inner{max-width:1280px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.res-interiors{max-width:1280px;margin:64px auto 0;padding:0 72px}
+.res-int-label{display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.res-int-label::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.res-int-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.res-int-grid.single{grid-template-columns:1fr}
+.res-int-grid img{width:100%;height:auto;display:block;border-radius:2px}
+.res-plan-img{background:#fff;border-radius:2px;padding:10px}
+.res-plan-img img{width:100%;height:auto;display:block}
+.res-plan-caption{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:12px}
+@media(max-width:900px){
+  .res-grid{grid-template-columns:1fr;padding:0 24px;gap:40px}
+  .cards-grid{grid-template-columns:1fr;padding:0 24px}
+  /* card images are square — keep their native shape, no cropping */
+  .res-card{aspect-ratio:1/1}
+  .res-img img{aspect-ratio:auto}
+  .res-specs{grid-template-columns:repeat(2,1fr)}
+  .villa-hero-text{padding:0 24px;bottom:32px}
+  .customisation-inner{grid-template-columns:1fr;padding:0 24px;gap:32px}
+  .res-interiors{padding:0 24px;margin-top:40px}
+  .res-int-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/images/brand/logo-emblem.webp" class="nav-logo-img" alt="Empathia Village" loading="lazy" width="574" height="975">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Empathia Village</span>
+      <span class="nav-logo-sub">Private Living · Naturally Yours</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Главная</a>
+    <a href="residencies.html" class="nav-link active">Резиденции</a>
+    <a href="gallery.html" class="nav-link">Галерея</a>
+    <a href="construction.html" class="nav-link">Строительство</a>
+    <a href="blog.html" class="nav-link">Блог</a>
+    <a href="faq.html" class="nav-link">Вопросы</a>
+    <a href="contact.html" class="nav-link">Контакты</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-nav">Оставить заявку</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="villa-hero">
+  <img src="assets/images/lifestyle/lifestyle-evening.webp" alt="Empathia Village — вечерний вид на виллы, Сейшелы" fetchpriority="high">
+  <div class="villa-hero-overlay"></div>
+  <div class="villa-hero-text">
+    <div class="ew" style="color:rgba(255,255,255,.55)">Коллекция</div>
+    <h1 class="h1">Три проекта вилл</h1>
+    <p class="lead" style="max-width:520px;margin-top:14px">Частные резиденции класса люкс на острове Маэ, Сейшелы. Полная собственность (freehold). Все участки от 600 м². Возможна индивидуальная адаптация.</p>
+  </div>
+</section>
+
+<!-- ══ CARDS OVERVIEW ══ -->
+<div class="cards-intro">
+  <div style="max-width:1280px;margin:0 auto;padding:0 72px">
+    <div style="padding-top:80px">
+      <div class="ew">Empathia Village</div>
+      <h2 class="h2" style="margin-bottom:14px">Выберите свою резиденцию</h2>
+      <p class="body" style="max-width:600px">Каждая резиденция создана для максимальной приватности, панорамных видов и лёгкой тропической жизни. Каждый участок — не менее 600 м². Проекты могут быть индивидуально адаптированы под ваши требования.</p>
+    </div>
+  </div>
+  <div class="cards-grid">
+    <a href="#jane" class="res-card" style="text-decoration:none">
+      <img src="assets/images/villas/jane/villa-jane-card.webp" alt="Villa Jane в Empathia Village на Сейшелах" loading="lazy" decoding="async" width="1254" height="1254">
+      <div class="res-card-overlay"></div>
+      <div class="res-card-body">
+        <div class="res-card-name">Villa Jane</div>
+        <div class="res-card-price">От $800 000</div>
+        <div class="res-card-meta">2 спальни · от 100–150 м² · участок от 600 м²</div>
+      </div>
+    </a>
+    <a href="#anna" class="res-card" style="text-decoration:none">
+      <img src="assets/images/villas/anna/villa-anna-card.webp" alt="Villa Anna в проекте Empathia Village на Сейшелах" loading="lazy" decoding="async" width="1254" height="1254">
+      <div class="res-card-overlay"></div>
+      <div class="res-card-body">
+        <div class="res-card-name">Villa Anna</div>
+        <div class="res-card-price">От $990 000</div>
+        <div class="res-card-meta">от 200–250 м² · участок от 600 м²</div>
+      </div>
+    </a>
+    <a href="#georgette" class="res-card" style="text-decoration:none">
+      <img src="assets/images/villas/georgette/villa-georgette-card.webp" alt="Villa Georgette — флагманская вилла Empathia Village" loading="lazy" decoding="async" width="1254" height="1254">
+      <div class="res-card-overlay"></div>
+      <div class="res-card-body">
+        <div class="res-card-name">Villa Georgette</div>
+        <div class="res-card-price">От $2 100 000</div>
+        <div class="res-card-meta">4 спальни · от 300–450 м² · участок 1 500–2 000 м²</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ══ VILLA JANE ══ -->
+<section class="res-section" id="jane">
+  <div class="res-grid">
+    <div class="res-img" data-reveal="left">
+      <img src="assets/images/villas/jane/villa-jane-il.webp" alt="Villa Jane в Empathia Village на Сейшелах" loading="lazy" decoding="async" width="1600" height="685">
+    </div>
+    <div data-reveal="right">
+      <div class="res-badge">Резиденция</div>
+      <h2 class="h2">Villa Jane</h2>
+      <div class="res-price">От $800 000</div>
+      <div class="res-price-note">Участок от 600 м² · Не публичная оферта</div>
+      <div class="res-specs">
+        <div class="res-spec"><div class="res-spec-v">100–150</div><div class="res-spec-k">м² площадь</div></div>
+        <div class="res-spec"><div class="res-spec-v">2</div><div class="res-spec-k">Спальни</div></div>
+        <div class="res-spec"><div class="res-spec-v">от 600</div><div class="res-spec-k">м² участок</div></div>
+      </div>
+      <p class="body">Изысканная одноэтажная резиденция с панорамным остеклением, обрамляющим виды тропического ландшафта и Индийского океана. Самая доступная точка входа в коллекцию Empathia Village. Участок от 600 м². Проект можно расширить и индивидуально адаптировать под требования клиента.</p>
+      <div class="res-feats">
+        <div class="res-feat">Панорамное остекление в пол</div>
+        <div class="res-feat">2 спальни · частный бассейн</div>
+        <div class="res-feat">Участок от 600 м² (все участки от 600 м²)</div>
+        <div class="res-feat">Гостиная-столовая открытой планировки</div>
+        <div class="res-feat">Возможна индивидуальная адаптация</div>
+        <div class="res-feat">Парковка на 2 автомобиля</div>
+      </div>
+      <div class="res-custom-note">Проект может быть индивидуально адаптирован — планировка, площадь дома, размер участка и отделка подстраиваются под требования клиента. Свяжитесь с нами для обсуждения.</div>
+      <a href="contact.html" class="btn-solid" style="display:inline-flex;align-items:center;gap:10px;margin-top:28px;text-decoration:none">Запросить детали</a>
+    </div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Чертежи проекта</div>
+    <div class="res-plan-img">
+      <img src="assets/images/villas/jane/villa-jane-sheet.webp" alt="Чертежи Villa Jane — планы этажей, фасады и размеры" loading="lazy" decoding="async" width="1288" height="919">
+    </div>
+    <div class="res-plan-caption">Планы этажей и фасады · Villa Jane</div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Концепция интерьера</div>
+    <div class="res-int-grid single">
+      <img src="assets/images/interiors/interior-01.webp" alt="Интерьер Villa Jane — кухня-гостиная с панорамным видом на океан" loading="lazy" decoding="async" width="1672" height="941">
+    </div>
+  </div>
+</section>
+
+<!-- ══ VILLA ANNA ══ -->
+<section class="res-section" id="anna">
+  <div class="res-grid" style="direction:rtl">
+    <div class="res-img" data-reveal="right" style="direction:ltr">
+      <img src="assets/images/villas/anna/villa-anna-il.webp" alt="Villa Anna в проекте Empathia Village на Сейшелах" loading="lazy" decoding="async" width="1600" height="685">
+    </div>
+    <div data-reveal="left" style="direction:ltr">
+      <div class="res-badge">Резиденция</div>
+      <h2 class="h2">Villa Anna</h2>
+      <div class="res-price">От $990 000</div>
+      <div class="res-price-note">Участок от 600 м² · Не публичная оферта</div>
+      <div class="res-specs">
+        <div class="res-spec"><div class="res-spec-v">200–250</div><div class="res-spec-k">м² площадь</div></div>
+        <div class="res-spec"><div class="res-spec-v">Частный</div><div class="res-spec-k">Бассейн</div></div>
+        <div class="res-spec"><div class="res-spec-v">от 600</div><div class="res-spec-k">м² участок</div></div>
+      </div>
+      <p class="body">Элегантная одноэтажная резиденция, созданная для жизни без границы между домом и садом. Панорамное остекление, гостиная-столовая открытой планировки, частный бассейн и солнечная терраса. Проект может быть индивидуально адаптирован — включая увеличение площади дома, изменение планировки и выбор размера участка.</p>
+      <div class="res-feats">
+        <div class="res-feat">Гостиная-столовая открытой планировки</div>
+        <div class="res-feat">Мастер-спальня с гардеробной</div>
+        <div class="res-feat">Частный бассейн и солнечная терраса</div>
+        <div class="res-feat">Участок от 600 м² (все участки от 600 м²)</div>
+        <div class="res-feat">Возможна индивидуальная адаптация</div>
+        <div class="res-feat">Парковка на 2 автомобиля</div>
+      </div>
+      <div class="res-custom-note">Площадь дома, размер участка и планировку можно увеличить или адаптировать. Свяжитесь с нашей командой, чтобы обсудить варианты индивидуальной адаптации.</div>
+      <a href="contact.html" class="btn-solid" style="display:inline-flex;align-items:center;gap:10px;margin-top:28px;text-decoration:none">Запросить детали</a>
+    </div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Чертежи проекта</div>
+    <div class="res-plan-img">
+      <img src="assets/images/villas/anna/villa-anna-sheet.webp" alt="Чертежи Villa Anna — планы этажей, фасады и размеры" loading="lazy" decoding="async" width="1246" height="906">
+    </div>
+    <div class="res-plan-caption">Планы этажей и фасады · Villa Anna</div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Концепция интерьера</div>
+    <div class="res-int-grid">
+      <img src="assets/images/interiors/interior-02.webp" alt="Интерьер Villa Anna — гостиная со сводчатым потолком, вечер" loading="lazy" decoding="async" width="1536" height="1024">
+      <img src="assets/images/interiors/interior-03.webp" alt="Интерьер Villa Anna — просторная гостиная с выходом к бассейну" loading="lazy" decoding="async" width="1536" height="1024">
+    </div>
+  </div>
+</section>
+
+<!-- ══ VILLA GEORGETTE ══ -->
+<section class="res-section" id="georgette">
+  <div class="res-grid">
+    <div class="res-img" data-reveal="left">
+      <img src="assets/images/villas/georgette/villa-georgette-il.webp" alt="Villa Georgette — флагманская вилла Empathia Village" loading="lazy" decoding="async" width="1600" height="685">
+    </div>
+    <div data-reveal="right">
+      <div class="res-badge">Флагманская резиденция</div>
+      <h2 class="h2">Villa Georgette</h2>
+      <div class="res-price">От $2 100 000</div>
+      <div class="res-price-note">Участок 1 500–2 000 м² · Не публичная оферта</div>
+      <div class="res-specs">
+        <div class="res-spec"><div class="res-spec-v">300–450</div><div class="res-spec-k">м² площадь</div></div>
+        <div class="res-spec"><div class="res-spec-v">4</div><div class="res-spec-k">Спальни</div></div>
+        <div class="res-spec"><div class="res-spec-v">150</div><div class="res-spec-k">м² террасы</div></div>
+        <div class="res-spec"><div class="res-spec-v">1 500–2 000</div><div class="res-spec-k">м² участок</div></div>
+        <div class="res-spec"><div class="res-spec-v">Частный</div><div class="res-spec-k">Бассейн</div></div>
+        <div class="res-spec"><div class="res-spec-v">до 450</div><div class="res-spec-k">м² расширение</div></div>
+      </div>
+      <p class="body">Флагманская двухэтажная резиденция с широкими панорамными балконами, террасами 150 м² и большим частным бассейном. Лучшая резиденция коллекции — с беспрепятственными видами на Индийский океан. Возможно расширение до 450 м² и индивидуальная адаптация всех аспектов проекта.</p>
+      <div class="res-feats">
+        <div class="res-feat">Два этажа с панорамными балконами</div>
+        <div class="res-feat">Террасы 150 м² · частный бассейн</div>
+        <div class="res-feat">4 спальни · мастер-сьют</div>
+        <div class="res-feat">Участок 1 500–2 000 м²</div>
+        <div class="res-feat">Расширение до 450 м²</div>
+        <div class="res-feat">Индивидуальная адаптация планировки</div>
+      </div>
+      <div class="res-custom-note">Villa Georgette может быть расширена, перепроектирована и полностью адаптирована под требования клиента. Свяжитесь с нами, чтобы обсудить ваше видение.</div>
+      <a href="contact.html" class="btn-solid" style="display:inline-flex;align-items:center;gap:10px;margin-top:28px;text-decoration:none">Запросить детали</a>
+    </div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Чертежи проекта</div>
+    <div class="res-plan-img">
+      <img src="assets/images/villas/georgette/villa-georgette-sheet.webp" alt="Чертежи Villa Georgette — планы этажей, фасады и размеры" loading="lazy" decoding="async" width="1283" height="921">
+    </div>
+    <div class="res-plan-caption">Планы этажей и фасады · Villa Georgette</div>
+  </div>
+  <div class="res-interiors" data-reveal>
+    <div class="res-int-label">Концепция интерьера</div>
+    <div class="res-int-grid">
+      <img src="assets/images/interiors/interior-06.webp" alt="Интерьер Villa Georgette — двусветная гостиная с антресольным этажом" loading="lazy" decoding="async" width="1448" height="1086">
+      <img src="assets/images/interiors/interior-07.webp" alt="Интерьер Villa Georgette — гостиная двухэтажной виллы с видом на бассейн" loading="lazy" decoding="async" width="1448" height="1086">
+    </div>
+  </div>
+</section>
+
+<!-- ══ CUSTOMISATION BAR ══ -->
+<div class="customisation-bar">
+  <div class="customisation-inner">
+    <div>
+      <div class="ew">Индивидуальный подход</div>
+      <h2 class="h2" style="margin-bottom:20px">Индивидуальная адаптация</h2>
+      <p class="body" style="margin-bottom:0">Каждая резиденция Empathia Village может быть индивидуально адаптирована. Мы предлагаем возможность увеличить площадь дома, расширить участок, изменить планировку и доработать дизайн в соответствии с вашим личным видением. Все участки — не менее 600 м².</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="border-top:1px solid rgba(196,163,90,.25);padding-top:16px"><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Увеличение площади дома</div><div style="font-size:13px;color:rgba(255,255,255,.5)">Расширьте площадь под ваш образ жизни</div></div>
+      <div style="border-top:1px solid rgba(196,163,90,.25);padding-top:16px"><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Расширение участка</div><div style="font-size:13px;color:rgba(255,255,255,.5)">Выберите участок больше — все участки от 600 м²</div></div>
+      <div style="border-top:1px solid rgba(196,163,90,.25);padding-top:16px"><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Адаптация планировки</div><div style="font-size:13px;color:rgba(255,255,255,.5)">Измените расположение и состав комнат под ваши требования</div></div>
+      <div style="border-top:1px solid rgba(196,163,90,.25);padding-top:16px"><div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Доработка дизайна</div><div style="font-size:13px;color:rgba(255,255,255,.5)">Персонализируйте материалы, отделку и архитектурные детали</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CTA ══ -->
+<section style="background:var(--ink);padding:80px 0">
+  <div class="wrap" style="text-align:center">
+    <div class="ew" style="justify-content:center">Всего 35 участков · Сознательно ограничено</div>
+    <h2 class="h2" style="margin-bottom:20px">Начните свой путь</h2>
+    <p class="lead" style="max-width:500px;margin:0 auto 36px">Наша команда ответит в течение 24 часов и пришлёт полные характеристики вилл, доступность участков и документацию по ценам.</p>
+    <a href="contact.html" class="btn-solid" style="text-decoration:none;font-size:10px">Оставить заявку</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-logo">Empathia Village</div>
+  <div class="footer-mid">
+    <div class="footer-dev">Kensington Construction &amp; Development · Лицензия Class 1 · Сейшелы</div>
+    <div class="footer-copy">© 2026 Все права защищены · Private Living · Naturally Yours</div>
+  </div>
+  <div class="footer-right">СЕЙШЕЛЫ · МАЭ</div>
+  <div class="footer-disclaimer">Указанные на сайте цены, планировки, площади, изображения, условия приобретения и иная информация носят информационный характер и не являются публичной офертой. Актуальная стоимость, наличие объектов, комплектация, условия оплаты и порядок оформления сделки уточняются индивидуально по запросу.</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('nav');
+  if(nav) nav.classList.toggle('solid',window.scrollY>60);
+});
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:0.08,rootMargin:'0px 0px -48px 0px'});
+document.querySelectorAll('[data-reveal]').forEach(el=>revObs.observe(el));
+</script>
+</body>
+</html>

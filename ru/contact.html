@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Контакты · Empathia Village · Сейшелы</title>
+<meta name="description" content="Свяжитесь с Empathia Village — частные резиденции класса люкс на острове Маэ, Сейшелы. Организуйте показ или запросите информацию.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=20260612">
+<script src="mobile-nav.js?v=20260610" defer></script>
+<style>
+  body{padding-top:77px}
+  .map-wrap { position:relative; height:440px; overflow:hidden; background:var(--charcoal); }
+  .map-wrap iframe { width:100%; height:100%; border:0; filter:grayscale(30%) brightness(.85); }
+  .map-pin { position:absolute; top:50%; left:50%; transform:translate(-50%,-60%); pointer-events:none; text-align:center; }
+  .map-pin-dot { width:14px; height:14px; background:var(--gold); border-radius:50%; margin:0 auto 4px; box-shadow:0 0 0 4px rgba(200,169,110,.3); }
+  .map-pin-label { font-family:var(--serif); font-size:13px; font-style:italic; color:var(--white); text-shadow:0 1px 8px rgba(0,0,0,.8); white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/images/brand/logo-emblem.webp" class="nav-logo-img" alt="Empathia Village" loading="lazy" width="574" height="975">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Empathia Village</span>
+      <span class="nav-logo-sub">Private Living · Naturally Yours</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Главная</a>
+    <a href="residencies.html" class="nav-link">Резиденции</a>
+    <a href="gallery.html" class="nav-link">Галерея</a>
+    <a href="construction.html" class="nav-link">Строительство</a>
+    <a href="blog.html" class="nav-link">Блог</a>
+    <a href="faq.html" class="nav-link">Вопросы</a>
+    <a href="contact.html" class="nav-link active">Контакты</a>
+  </div>
+  <div class="nav-actions">
+    <a href="contact.html" class="btn-nav active">Оставить заявку</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero" style="min-height:340px">
+  <img src="assets/images/location/baie-lazare-beach.webp" class="page-hero-img" alt="Пляж Baie Lazare рядом с Empathia Village, Сейшелы" fetchpriority="high" style="object-position:center center">
+  <div class="page-hero-vignette"></div>
+  <div class="page-hero-content">
+    <div class="wrap">
+      <div class="ew" style="color:#fff;opacity:.6">Заявка</div>
+      <h1 class="h1">Контакты</h1>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="section" style="padding:80px 0">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div>
+        <div class="ew">Свяжитесь с нами</div>
+        <h2 class="h2" style="margin-bottom:24px">Начните<br>свой путь</h2>
+        <p class="lead" style="margin-bottom:40px">Наша команда отвечает на каждую заявку в течение 24 часов. Мы организуем частную консультацию, пришлём полную документацию или устроим ознакомительный тур по посёлку на Сейшелах.</p>
+
+        <div class="contact-channels">
+          <div class="ch-card">
+            <div class="ch-label">Офис на Сейшелах</div>
+            <a href="tel:+2482715102" class="ch-value">+248 271 51 02</a>
+            <div class="ch-sub">Пн–Пт 08:00–17:00 (UTC+4)</div>
+          </div>
+          <div class="ch-card">
+            <div class="ch-label">Email</div>
+            <a href="mailto:studiochaikovsky@gmail.com" class="ch-value" style="font-size:clamp(13px,4.5vw,18px);white-space:nowrap">studiochaikovsky@gmail.com</a>
+            <div class="ch-sub">Ответ в течение 24 часов</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;margin-bottom:40px">
+          <a href="https://www.instagram.com/seychelles.empathia/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+          <a href="https://youtube.com/@seychelles_villa" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s" onmouseover="this.style.color='#c8a96e'" onmouseout="this.style.color='rgba(255,255,255,.5)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+            YouTube
+          </a>
+        </div>
+
+        <div style="background:var(--charcoal);padding:24px 28px;border-left:2px solid var(--gold)">
+          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Ознакомительный тур</div>
+          <div style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.65">Частная недельная поездка на Сейшелы с проживанием на Eden Island и экскурсией по посёлку Empathia Village. Свяжитесь с нами, чтобы спланировать программу.</div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div>
+        <div class="ew">Отправить заявку</div>
+        <h3 class="h3" style="margin-bottom:32px">Форма заявки</h3>
+
+        <div class="form-grid">
+          <div class="field-wrap">
+            <label class="field-label">Имя</label>
+            <input type="text" class="field" id="fn" placeholder="Ваше имя">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Телефон / WhatsApp</label>
+            <input type="tel" class="field" id="fp" placeholder="+7 000 000 00 00">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Email</label>
+            <input type="email" class="field" id="fe" placeholder="your@email.com">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Что вас интересует</label>
+            <select class="field" id="fi">
+              <option value="">Выберите…</option>
+              <option>Villa Anna</option>
+              <option>Villa Georgette</option>
+              <option>Villa Jane</option>
+              <option>Общая информация</option>
+              <option>Инвестиции</option>
+              <option>Агентское партнёрство</option>
+            </select>
+          </div>
+          <div class="field-wrap form-row">
+            <label class="field-label">Сообщение (по желанию)</label>
+            <textarea class="field" id="fm" rows="4" placeholder="Расскажите о ваших пожеланиях, сроках или задайте вопрос…" style="resize:vertical;min-height:90px"></textarea>
+          </div>
+        </div>
+        <div style="margin-top:3px">
+          <button class="btn-solid" onclick="submitForm()" id="f-sub" style="width:100%;justify-content:center;padding:18px">Отправить заявку</button>
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:16px;text-align:center">Мы отвечаем на каждую заявку в течение 24 часов. Ваши данные строго конфиденциальны.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAP ══ -->
+<div class="map-wrap">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3762!2d55.4786!3d-4.7527!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2296c73dcfb9cf31%3A0x0!2zNMKwNDUnMDkuNiJTIDU1wrAyOCc0My4xIkU!5e1!3m2!1sru!2s!4v1718000000000"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Расположение Empathia Village">
+  </iframe>
+</div>
+
+<!-- ══ MAP INFO ══ -->
+<section style="background:var(--charcoal);padding:40px 0">
+  <div class="wrap">
+    <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:center">
+      <div>
+        <div style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Адрес</div>
+        <div style="font-family:var(--serif);font-size:18px;font-style:italic;color:var(--white)">Baie Lazare, остров Маэ, Сейшелы</div>
+      </div>
+      <div>
+        <div style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Ориентир</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6)">Между курортами Four Seasons и Kempinski</div>
+      </div>
+      <div>
+        <div style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Высота</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.6)">50–100 метров над уровнем моря</div>
+      </div>
+      <div style="margin-left:auto">
+        <a href="https://www.google.com/maps?q=-4.752667,55.478639" target="_blank" rel="noopener" class="btn-ghost" style="font-size:8px">Открыть в Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">Empathia Village</div>
+    <div class="footer-dev">Kensington Construction &amp; Development · Лицензия Class 1 · Сейшелы</div>
+  </div>
+  <div class="footer-links">
+    <a href="index.html" class="footer-link">Главная</a>
+    <a href="pricing.html" class="footer-link">Резиденции</a>
+    <a href="gallery.html" class="footer-link">Галерея</a>
+    <a href="construction.html" class="footer-link">Строительство</a>
+    <a href="agents.html" class="footer-link">Агентам</a>
+    <a href="about.html" class="footer-link">О нас</a>
+  </div>
+  <div class="footer-disclaimer">Указанные на сайте цены, планировки, площади, изображения, условия приобретения и иная информация носят информационный характер и не являются публичной офертой. Актуальная стоимость, наличие объектов, комплектация, условия оплаты и порядок оформления сделки уточняются индивидуально по запросу.</div>
+</footer>
+
+<script>
+async function submitForm(){
+  const n=document.getElementById('fn').value.trim();
+  const p=document.getElementById('fp').value.trim();
+  const e=document.getElementById('fe').value.trim();
+  if(!n&&!p&&!e){alert('Пожалуйста, укажите имя или контактные данные.');return;}
+  const i=document.getElementById('fi')?document.getElementById('fi').value:'';
+  const m=document.getElementById('fm')?document.getElementById('fm').value.trim():'';
+  const btn=document.getElementById('f-sub');
+  if(btn){btn.disabled=true;btn.textContent='Отправка…';}
+  const payload=JSON.stringify({name:n,phone:p,email:e,interest:i,message:m,page:'RU Контакты'});
+  let ok=false;
+  try{
+    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:payload});
+    ok=r.ok&&(await r.json()).ok===true;
+  }catch(err){}
+  if(!ok){
+    try{
+      const r2=await fetch('https://empathia-seychelles.com/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:payload});
+      ok=r2.ok&&(await r2.json()).ok===true;
+    }catch(err){}
+  }
+  if(btn){btn.disabled=false;btn.textContent='Отправить заявку';}
+  if(ok){
+    alert('Спасибо'+(n?', '+n:'')+'!\n\nВаша заявка получена. Наша команда свяжется с вами в течение 24 часов.\n\nEmpathia Village · Kensington Construction & Development');
+    ['fn','fp','fe','fm'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  }else{
+    alert('К сожалению, заявку сейчас отправить не удалось.\n\nСвяжитесь с нами напрямую:\nWhatsApp +248 271 51 02\nstudiochaikovsky@gmail.com');
+  }
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.padding=window.scrollY>60?'10px 48px':'16px 48px';
+});
+</script>
+</body>
+</html>
