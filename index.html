@@ -1073,11 +1073,24 @@ function toggleFaq(q) {
 }
 
 // ── FORM ──
-function submitForm() {
+async function submitForm() {
   const n = document.getElementById('fn').value.trim();
   const p = document.getElementById('fp').value.trim();
   if (!n && !p) { alert('Please enter your name or phone number.'); return; }
-  alert('Thank you' + (n ? ', '+n : '') + '.\n\nA member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
+  const btn = document.getElementById('f-sub');
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  let ok = false;
+  try {
+    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: n, phone: p, page: 'Home' }) });
+    ok = r.ok;
+  } catch (e) {}
+  if (btn) { btn.disabled = false; btn.textContent = 'Enquire'; }
+  if (ok) {
+    alert('Thank you' + (n ? ', '+n : '') + '.\n\nA member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
+    document.getElementById('fn').value = ''; document.getElementById('fp').value = '';
+  } else {
+    alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\nstudiochaikovsky@gmail.com');
+  }
 }
 
 // ── PERFORMANCE: lazy-load all non-hero images ──

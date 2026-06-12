@@ -215,12 +215,26 @@
 </footer>
 
 <script>
-function submitAgent(){
+async function submitAgent(){
   const n=document.getElementById('ag-name').value.trim();
   const e=document.getElementById('ag-email').value.trim();
   const p=document.getElementById('ag-phone').value.trim();
   if(!n||!e||!p){alert('Please fill in your name, email and phone number.');return;}
-  alert('Thank you, '+n+'.\n\nYour agent registration has been received. A member of our sales team will contact you within 24 hours.\n\nEmpathia Village · Agent Programme');
+  const c=document.getElementById('ag-company')?document.getElementById('ag-company').value.trim():'';
+  const co=document.getElementById('ag-country')?document.getElementById('ag-country').value.trim():'';
+  const s=document.getElementById('ag-source')?document.getElementById('ag-source').value:'';
+  const m=document.getElementById('ag-message')?document.getElementById('ag-message').value.trim():'';
+  const msg=['Заявка агента',c&&('Компания: '+c),co&&('Страна: '+co),s&&('Источник: '+s),m].filter(Boolean).join('\n');
+  let ok=false;
+  try{
+    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,email:e,interest:'Agent partnership',message:msg,page:'Agents'})});
+    ok=r.ok;
+  }catch(err){}
+  if(ok){
+    alert('Thank you, '+n+'.\n\nYour agent registration has been received. A member of our sales team will contact you within 24 hours.\n\nEmpathia Village · Agent Programme');
+  }else{
+    alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\nstudiochaikovsky@gmail.com');
+  }
 }
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').style.padding=window.scrollY>60?'10px 48px':'16px 48px';

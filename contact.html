@@ -197,12 +197,24 @@
 </footer>
 
 <script>
-function submitForm(){
+async function submitForm(){
   const n=document.getElementById('fn').value.trim();
   const p=document.getElementById('fp').value.trim();
   const e=document.getElementById('fe').value.trim();
   if(!n&&!p&&!e){alert('Please enter your name or contact details.');return;}
-  alert('Thank you'+(n?', '+n:'')+'.\n\nYour enquiry has been received. A member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
+  const i=document.getElementById('fi')?document.getElementById('fi').value:'';
+  const m=document.getElementById('fm')?document.getElementById('fm').value.trim():'';
+  let ok=false;
+  try{
+    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,phone:p,email:e,interest:i,message:m,page:'Contact'})});
+    ok=r.ok;
+  }catch(err){}
+  if(ok){
+    alert('Thank you'+(n?', '+n:'')+'.\n\nYour enquiry has been received. A member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
+    ['fn','fp','fe','fm'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  }else{
+    alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\nstudiochaikovsky@gmail.com');
+  }
 }
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').style.padding=window.scrollY>60?'10px 48px':'16px 48px';
