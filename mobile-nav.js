@@ -14,10 +14,12 @@
   var PAGES = [
     ['index.html', 'Home'],
     ['residencies.html', 'Residencies'],
+    ['pricing.html', 'Pricing'],
     ['gallery.html', 'Gallery'],
     ['construction.html', 'Construction'],
     ['blog.html', 'Blog'],
     ['faq.html', 'FAQ'],
+    ['agents.html', 'Agents'],
     ['contact.html', 'Contacts']
   ];
 
