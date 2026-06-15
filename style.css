@@ -339,3 +339,24 @@ select.field option{background:var(--charcoal)}
   /* fixed topbar (35px) + nav (69px); overrides the per-page 77px <style> rule */
   body{padding-top:104px !important}
 }
+
+/* ── 480px mobile polish ── */
+@media(max-width:480px){
+  .wrap{padding:0 16px}
+  .section{padding:48px 0}
+  .page-hero{height:36vh}
+  .villa-name{font-size:32px}
+  .villa-price{font-size:26px}
+  .villa-card-img{min-height:220px}
+  .villa-card-info{padding:24px 16px}
+  .villa-desc{font-size:14px}
+  .commission-n{font-size:52px}
+  .commission-box{padding:36px 20px}
+  .benefit-card{padding:28px 20px}
+  .b-title{font-size:20px}
+  .price-includes{padding:20px 16px;gap:16px}
+  .stat-n{font-size:32px}
+  .stat-box{padding:24px 16px}
+  .contact-grid{gap:32px}
+  .footer{padding:28px 16px}
+}
