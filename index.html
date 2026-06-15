@@ -482,7 +482,7 @@
       <p class="body" style="max-width:640px;margin-bottom:0" id="pr-lead">Three residences. Each priced to reflect plot size, design and ocean view. All prices include land, construction, finishing and landscaping. All plots are at least 600 m².</p>
     </div>
     <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="price-card" data-reveal data-delay="1">
+      <div class="price-card" data-reveal data-delay="1" onclick="showVilla('jane',document.querySelectorAll('.vtab')[3]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Jane</div>
         <div class="price-card-area">from 100–150 m² · 2 Bedrooms</div>
         <div class="price-main">From $800,000</div>
@@ -496,7 +496,7 @@
           <div class="pf">12 months construction</div>
         </div>
       </div>
-      <div class="price-card" data-reveal data-delay="2">
+      <div class="price-card" data-reveal data-delay="2" onclick="showVilla('anna',document.querySelectorAll('.vtab')[1]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Anna</div>
         <div class="price-card-area">from 200–250 m²</div>
         <div class="price-main">From $990,000</div>
@@ -510,7 +510,7 @@
           <div class="pf">12 months construction</div>
         </div>
       </div>
-      <div class="price-card" data-reveal data-delay="3">
+      <div class="price-card" data-reveal data-delay="3" onclick="showVilla('georgette',document.querySelectorAll('.vtab')[2]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Georgette</div>
         <div class="price-card-area">from 300–450 m² · 4 Bedrooms</div>
         <div class="price-main">From $2,100,000</div>
