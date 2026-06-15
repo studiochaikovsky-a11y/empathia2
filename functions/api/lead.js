@@ -94,13 +94,14 @@ export async function onRequestPost({ request, env }) {
     );
   }
 
-  // Save to D1 CRM database (non-blocking — don't fail the request if D1 is absent)
+  // Save to D1 CRM database — run in parallel with Telegram/email, await before responding
+  let dbPromise = Promise.resolve();
   if (env.DB) {
     const src = clean(data.source) || 'empathia-seychelles.com';
     const interest = lead.interest;
     const type = interest.toLowerCase().includes('agent') || lead.page.includes('agent')
       ? 'agent' : 'client';
-    env.DB.prepare(
+    dbPromise = env.DB.prepare(
       `INSERT INTO leads (source, name, phone, email, interest, message, page, type)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
     ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type)
@@ -108,10 +109,11 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (tasks.length === 0) {
+    await dbPromise;
     return json({ ok: false, error: 'not configured' }, 503);
   }
 
-  const results = await Promise.allSettled(tasks);
+  const [results] = await Promise.all([Promise.allSettled(tasks), dbPromise]);
   const delivered = results.some((r) => r.status === 'fulfilled' && r.value === true);
 
   // Always 200 so Cloudflare doesn't replace the JSON body with its
