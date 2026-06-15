@@ -24,7 +24,7 @@
   "name": "Empathia Village",
   "url": "https://empathia-seychelles.com/",
   "logo": "https://empathia-seychelles.com/apple-touch-icon.png",
-  "description": "Private luxury villa residences on Mahé, Seychelles. Baie Lazare, between Four Seasons and Kempinski. Freehold villas from $800,000 with Seychelles residency permit.",
+  "description": "Private luxury villa residences on Mahé, Seychelles. Baie Lazare, between Four Seasons and Kempinski. Freehold villas from $800,000.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Baie Lazare",
@@ -48,9 +48,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap"></noscript>
-<link rel="stylesheet" href="index.css?v=20260611b">
+<link rel="stylesheet" href="index.css?v=20260615">
 <script src="mobile-nav.js?v=20260610" defer></script>
 <link rel="preload" as="image" href="assets/images/lifestyle/lifestyle-evening.webp" fetchpriority="high">
+<style>
+@media(max-width:768px){
+  #why-seychelles{padding:72px 0!important}
+  .wy-grid{grid-template-columns:1fr!important}
+  #vs-eden{padding:72px 0!important}
+  .ve-grid{grid-template-columns:1fr!important}
+  #presentation{padding:72px 0!important}
+  .pr-grid{grid-template-columns:1fr!important;gap:48px!important}
+}
+</style>
 </head>
 <body>
 <!-- LIGHTBOX OVERLAY -->
@@ -199,7 +209,7 @@
     <h1 class="hero-h1">Empathia<br>Village</h1>
     <p class="hero-tagline" id="h-tag">Private Luxury Residences · Seychelles</p>
     <div class="hero-actions">
-      <button class="btn-solid" onclick="goTo('#contact')" id="h-cta1">Request Information</button>
+      <button class="btn-solid" onclick="goTo('#contact')" id="h-cta1">Request Full Presentation</button>
       <button class="btn-ghost" onclick="goTo('#villas')" id="h-cta2">View Residences</button>
     </div>
   </div>
@@ -263,7 +273,7 @@
   <div class="feat-cell" data-reveal data-delay="3">
     <div class="feat-rule"></div>
     <div class="feat-name" id="f3n">Residency</div>
-    <div class="feat-desc" id="f3d">Seychelles residence permit granted automatically upon completion of purchase</div>
+    <div class="feat-desc" id="f3d">Residence options may be available to eligible purchasers under Seychelles regulations, confirmed individually during the transaction process</div>
   </div>
   <div class="feat-cell" data-reveal data-delay="4">
     <div class="feat-rule"></div>
@@ -379,13 +389,59 @@
         <div class="mp-stats">
           <div class="mp-stat" data-reveal data-delay="1"><div class="mp-stat-n">35</div><div class="mp-stat-l" id="mps1">Total Plots</div></div>
           <div class="mp-stat" data-reveal data-delay="2"><div class="mp-stat-n">600–2,000 m²</div><div class="mp-stat-l" id="mps2">m² per Plot</div></div>
-          <div class="mp-stat" data-reveal data-delay="3"><div class="mp-stat-n">25%</div><div class="mp-stat-l" id="mps3">Phase I Complete</div></div>
+          <div class="mp-stat" data-reveal data-delay="3"><div class="mp-stat-n">25%</div><div class="mp-stat-l" id="mps3">Phase I Reserved</div></div>
           <div class="mp-stat" data-reveal data-delay="4"><div class="mp-stat-n">3 yrs</div><div class="mp-stat-l" id="mps4">Full Completion</div></div>
         </div>
       </div>
       <div class="mp-img" data-reveal="right">
         <img src="assets/images/project/masterplan.webp" alt="Генеральный план поселка Empathia Village" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#fff;padding:8px" loading="lazy" width="1920" height="1370">
         <div class="mp-img-badge" id="mp-badge">Estate Masterplan · 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="gold-rule-soft"></div>
+
+<!-- ══════════ WHY SEYCHELLES ══════════ -->
+<section style="background:var(--ivory);padding:120px 0" id="why-seychelles">
+  <div class="wrap">
+    <div data-reveal>
+      <div class="eyebrow eyebrow-dk">Investment Destination</div>
+      <h2 class="h2 h2-dk" style="margin-bottom:20px">Why Seychelles?</h2>
+      <p class="body-t body-dk" style="max-width:680px;margin-bottom:72px">Few destinations in the world offer the rare combination of natural beauty, political stability and genuine scarcity of premium land. Seychelles is one of them.</p>
+    </div>
+    <div class="wy-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px" data-reveal>
+      <div style="background:rgba(26,46,30,.07);padding:40px 32px;border-top:2px solid rgba(196,163,90,.35)">
+        <div style="font-family:var(--serif);font-size:30px;font-style:italic;color:#1a2e1e;margin-bottom:10px">Limited</div>
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#1a2e1e;font-weight:600;margin-bottom:12px">Land Supply</div>
+        <div style="font-size:14px;color:rgba(10,11,10,.6);line-height:1.75">Seychelles is an archipelago of 115 islands covering just 459 km². Developable oceanfront land is finite and irreplaceable — once acquired, it does not return to the market.</div>
+      </div>
+      <div style="background:rgba(26,46,30,.07);padding:40px 32px;border-top:2px solid rgba(196,163,90,.35)">
+        <div style="font-family:var(--serif);font-size:30px;font-style:italic;color:#1a2e1e;margin-bottom:10px">Stable</div>
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#1a2e1e;font-weight:600;margin-bottom:12px">Jurisdiction</div>
+        <div style="font-size:14px;color:rgba(10,11,10,.6);line-height:1.75">A secure, tax-efficient destination with no income tax, no capital gains tax and no inheritance tax. One of the most stable property markets in the Indian Ocean region.</div>
+      </div>
+      <div style="background:rgba(26,46,30,.07);padding:40px 32px;border-top:2px solid rgba(196,163,90,.35)">
+        <div style="font-family:var(--serif);font-size:30px;font-style:italic;color:#1a2e1e;margin-bottom:10px">Global</div>
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#1a2e1e;font-weight:600;margin-bottom:12px">Demand</div>
+        <div style="font-size:14px;color:rgba(10,11,10,.6);line-height:1.75">Year-round demand from European, Middle Eastern and Asian high-net-worth buyers. Seychelles is one of the world's foremost luxury travel and lifestyle destinations.</div>
+      </div>
+    </div>
+    <div class="wy-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:3px" data-reveal>
+      <div style="background:rgba(26,46,30,.07);padding:40px 32px;border-top:2px solid rgba(196,163,90,.35)">
+        <div style="font-family:var(--serif);font-size:30px;font-style:italic;color:#1a2e1e;margin-bottom:10px">Freehold</div>
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#1a2e1e;font-weight:600;margin-bottom:12px">Ownership</div>
+        <div style="font-size:14px;color:rgba(10,11,10,.6);line-height:1.75">Rare freehold title opportunities available to international buyers, subject to applicable approvals and transaction procedures confirmed individually with the legal team.</div>
+      </div>
+      <div style="background:rgba(26,46,30,.07);padding:40px 32px;border-top:2px solid rgba(196,163,90,.35)">
+        <div style="font-family:var(--serif);font-size:30px;font-style:italic;color:#1a2e1e;margin-bottom:10px">Premium</div>
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#1a2e1e;font-weight:600;margin-bottom:12px">Rental Potential</div>
+        <div style="font-size:14px;color:rgba(10,11,10,.6);line-height:1.75">Strong year-round demand for luxury villa rentals. Professional management available, allowing owners to generate income when the property is not in personal use.</div>
+      </div>
+      <div style="background:rgba(26,46,30,.07);padding:40px 32px;border-top:2px solid rgba(196,163,90,.35)">
+        <div style="font-family:var(--serif);font-size:30px;font-style:italic;color:#1a2e1e;margin-bottom:10px">Island</div>
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#1a2e1e;font-weight:600;margin-bottom:12px">Lifestyle</div>
+        <div style="font-size:14px;color:rgba(10,11,10,.6);line-height:1.75">Turquoise lagoons, tropical rainforest, world-class resorts and a pace of life that cannot be replicated. Seychelles is not just an investment — it is a complete way of living.</div>
       </div>
     </div>
   </div>
@@ -415,7 +471,7 @@
         <div class="vcard-body">
           <div class="vcard-name">Villa Anna</div>
           <div class="vcard-price">From $990,000</div>
-          <div class="vcard-meta"><span>from 200 m²</span><span>Pool</span><span>from 600 m² plot</span></div>
+          <div class="vcard-meta"><span>from 240 m²</span><span>Pool</span><span>from 600 m² plot</span></div>
           <div class="vcard-arrow" id="va-a1">Explore</div>
         </div>
       </div>
@@ -425,7 +481,7 @@
         <div class="vcard-body">
           <div class="vcard-name">Villa Georgette</div>
           <div class="vcard-price">From $2,100,000</div>
-          <div class="vcard-meta"><span>4 Bedrooms</span><span>Terrace 150 m²</span><span>from 300 m²</span></div>
+          <div class="vcard-meta"><span>4 Bedrooms</span><span>Terrace 150 m²</span><span>from 350 m²</span></div>
           <div class="vcard-arrow">Explore</div>
         </div>
       </div>
@@ -435,7 +491,7 @@
         <div class="vcard-body">
           <div class="vcard-name">Villa Jane</div>
           <div class="vcard-price">From $800,000</div>
-          <div class="vcard-meta"><span>2 Bedrooms</span><span>Pool</span><span>from 100 m²</span></div>
+          <div class="vcard-meta"><span>2 Bedrooms</span><span>Pool</span><span>from 140 m²</span></div>
           <div class="vcard-arrow">Explore</div>
         </div>
       </div>
@@ -443,17 +499,17 @@
     <!-- ANNA -->
     <div id="p-anna" class="vdetail">
       <img class="vd-hero-img" src="assets/images/villas/anna/villa-anna-il.webp" alt="Villa Anna в проекте Empathia Village на Сейшелах" loading="lazy" style="object-position:center center" width="1600" height="685">
-      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Anna</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">200–250</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">An elegant single-storey residence designed for seamless indoor-outdoor living. Panoramic glazing, master suite with dressing room, open-plan living and dining, private pool and sun terrace. The project can be individually tailored to client requirements.</p><div class="vd-feats"><div class="vd-feat">Open-plan living & dining room</div><div class="vd-feat">Master bedroom with dressing room</div><div class="vd-feat">Private pool & sun terrace</div><div class="vd-feat">Individual project customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Request Details</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/anna/villa-anna-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Anna — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1246" height="906"/></div><p class="vd-plan-note">From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.</p></div></div>
+      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Anna</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 240</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">An elegant single-storey residence designed for seamless indoor-outdoor living. Panoramic glazing, master suite with dressing room, open-plan living and dining, private pool and sun terrace. The project can be individually tailored to client requirements.</p><div class="vd-feats"><div class="vd-feat">Open-plan living & dining room</div><div class="vd-feat">Master bedroom with dressing room</div><div class="vd-feat">Private pool & sun terrace</div><div class="vd-feat">Individual project customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Get Villa Price List</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/anna/villa-anna-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Anna — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1246" height="906"/></div><p class="vd-plan-note">From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.</p></div></div>
     </div>
     <!-- GEORGETTE -->
     <div id="p-georgette" class="vdetail">
       <img class="vd-hero-img" src="assets/images/villas/georgette/villa-georgette-il.webp" alt="Villa Georgette — флагманская вилла Empathia Village" loading="lazy" style="object-position:center center" width="1600" height="685">
-      <div class="vd-cols"><div class="vd-left"><div class="ew">Signature Residence</div><h3 class="h3">Villa Georgette</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">300–450</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">4</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">150</div><div class="vd-spec-k">m² Terrace</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">1,500–2,000</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">The flagship two-storey residence featuring wide panoramic balconies, terraces of 150 m² and a grand private pool. The finest residence in the collection — commanding unobstructed views of the Indian Ocean. Can be expanded up to 450 m².</p><div class="vd-feats"><div class="vd-feat">Two floors with panoramic balconies</div><div class="vd-feat">Terraces 150 m² · Private pool</div><div class="vd-feat">4 bedrooms · Master suite</div><div class="vd-feat">Individual customisation up to 450 m²</div><div class="vd-feat">Plot 1,500–2,000 m²</div></div><button class="btn-solid" onclick="goTo('#contact')">Request Details</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/georgette/villa-georgette-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Georgette — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1283" height="921"/></div><p class="vd-plan-note">From $2,100,000. Plot 1,500–2,000 m². All designs can be individually adapted. Not a public offer.</p></div></div>
+      <div class="vd-cols"><div class="vd-left"><div class="ew">Signature Residence</div><h3 class="h3">Villa Georgette</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 350</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">4</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">150</div><div class="vd-spec-k">m² Terrace</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">1,500–2,000</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">The flagship two-storey residence featuring wide panoramic balconies, terraces of 150 m² and a grand private pool. The finest residence in the collection — commanding unobstructed views of the Indian Ocean. Can be expanded up to 450 m².</p><div class="vd-feats"><div class="vd-feat">Two floors with panoramic balconies</div><div class="vd-feat">Terraces 150 m² · Private pool</div><div class="vd-feat">4 bedrooms · Master suite</div><div class="vd-feat">Individual customisation up to 450 m²</div><div class="vd-feat">Plot 1,500–2,000 m²</div></div><button class="btn-solid" onclick="goTo('#contact')">Get Villa Price List</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/georgette/villa-georgette-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Georgette — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1283" height="921"/></div><p class="vd-plan-note">From $2,100,000. Plot 1,500–2,000 m². All designs can be individually adapted. Not a public offer.</p></div></div>
     </div>
     <!-- JANE -->
     <div id="p-jane" class="vdetail">
       <img class="vd-hero-img" src="assets/images/villas/jane/villa-jane-il.webp" alt="Villa Jane в Empathia Village" loading="lazy" style="object-position:center center" width="1600" height="685">
-      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Jane</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">100–150</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">Pool</div><div class="vd-spec-k">Private</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">A refined single-storey residence with panoramic glazing framing views of the tropical landscape and the Indian Ocean. The most accessible entry point to the Empathia Village collection. Plot from 600 m². Design can be extended and adapted.</p><div class="vd-feats"><div class="vd-feat">Panoramic floor-to-ceiling glazing</div><div class="vd-feat">2 bedrooms · Private pool</div><div class="vd-feat">Plot from 600 m²</div><div class="vd-feat">Individual customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Request Details</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/jane/villa-jane-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Jane — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1288" height="919"/></div><p class="vd-plan-note">From $800,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.</p></div></div>
+      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Jane</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 140</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">Pool</div><div class="vd-spec-k">Private</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">A refined single-storey residence with panoramic glazing framing views of the tropical landscape and the Indian Ocean. The most accessible entry point to the Empathia Village collection. Plot from 600 m². Design can be extended and adapted.</p><div class="vd-feats"><div class="vd-feat">Panoramic floor-to-ceiling glazing</div><div class="vd-feat">2 bedrooms · Private pool</div><div class="vd-feat">Plot from 600 m²</div><div class="vd-feat">Individual customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Get Villa Price List</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/jane/villa-jane-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Jane — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1288" height="919"/></div><p class="vd-plan-note">From $800,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.</p></div></div>
     </div>
     <!-- AMBER -->
     </section>
@@ -484,7 +540,7 @@
     <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr)">
       <div class="price-card" data-reveal data-delay="1" onclick="showVilla('jane',document.querySelectorAll('.vtab')[3]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Jane</div>
-        <div class="price-card-area">from 100–150 m² · 2 Bedrooms</div>
+        <div class="price-card-area">from 140 m² · 2 Bedrooms</div>
         <div class="price-main">From $800,000</div>
         <div class="price-note" id="pr-note1">Plot from 600 m² · Not a public offer</div>
         <div class="price-rule"></div>
@@ -498,7 +554,7 @@
       </div>
       <div class="price-card" data-reveal data-delay="2" onclick="showVilla('anna',document.querySelectorAll('.vtab')[1]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Anna</div>
-        <div class="price-card-area">from 200–250 m²</div>
+        <div class="price-card-area">from 240 m²</div>
         <div class="price-main">From $990,000</div>
         <div class="price-note" id="pr-note2">Plot from 600 m² · Not a public offer</div>
         <div class="price-rule"></div>
@@ -512,7 +568,7 @@
       </div>
       <div class="price-card" data-reveal data-delay="3" onclick="showVilla('georgette',document.querySelectorAll('.vtab')[2]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Georgette</div>
-        <div class="price-card-area">from 300–450 m² · 4 Bedrooms</div>
+        <div class="price-card-area">from 350 m² · 4 Bedrooms</div>
         <div class="price-main">From $2,100,000</div>
         <div class="price-note" id="pr-note3">Plot 1,500–2,000 m² · Not a public offer</div>
         <div class="price-rule"></div>
@@ -537,7 +593,7 @@
         <div class="pib-item" id="pil3">Interior finishing</div>
         <div class="pib-item" id="pil4">Landscaping &amp; garden</div>
         <div class="pib-item" id="pil5">Estate infrastructure</div>
-        <div class="pib-item" id="pil6">Seychelles residency</div>
+        <div class="pib-item" id="pil6">Residence application support</div>
       </div>
     </div>
   </div>
@@ -686,7 +742,7 @@
         <div class="inv-row"><div class="inv-num">i</div><div><div class="inv-title" id="iv1t">Restricted Supply</div><div class="inv-desc" id="iv1d">Seychelles is one of the world's most constrained luxury real estate markets. Oceanfront land is finite — once gone, it cannot be replaced</div></div></div>
         <div class="inv-row"><div class="inv-num">ii</div><div><div class="inv-title" id="iv2t">Consistent Value Growth</div><div class="inv-desc" id="iv2d">Land values in Seychelles have risen consistently, driven by limited supply and sustained international demand from HNWIs</div></div></div>
         <div class="inv-row"><div class="inv-num">iii</div><div><div class="inv-title" id="iv3t">Premium Rental Yield</div><div class="inv-desc" id="iv3d">Strong year-round demand for premium villa rental with professional management options</div></div></div>
-        <div class="inv-row"><div class="inv-num">iv</div><div><div class="inv-title" id="iv4t">Seychelles Residency</div><div class="inv-desc" id="iv4d">Residence permit granted automatically upon completion. Stable, tax-efficient jurisdiction. Children eligible for local international schooling</div></div></div>
+        <div class="inv-row"><div class="inv-num">iv</div><div><div class="inv-title" id="iv4t">Seychelles Residency</div><div class="inv-desc" id="iv4d">Residence options may be available to eligible purchasers under Seychelles regulations. Stable, tax-efficient jurisdiction. Details confirmed individually during the transaction process</div></div></div>
         <div class="inv-row"><div class="inv-num">v</div><div><div class="inv-title" id="iv5t">Freehold for Foreign Nationals</div><div class="inv-desc" id="iv5d">Under recently enacted Seychelles legislation, international buyers may now hold full freehold title to both villa and land</div></div></div>
         <div class="inv-row"><div class="inv-num">vi</div><div><div class="inv-title" id="iv6t">Only 35 Plots Available</div><div class="inv-desc" id="iv6d">The estate is intentionally limited to 35 residences to preserve privacy, exclusivity and long-term value appreciation for all owners</div></div></div>
       </div>
@@ -696,7 +752,7 @@
           <p class="ip-quote" id="ip-quote">"Your home by the ocean. Your private resort. Your sanctuary in the Indian Ocean."<br><br>— Kensington Construction &amp; Development</p>
           <div class="ip-grid">
             <div class="ip-stat"><div class="ip-stat-n">3 yrs</div><div class="ip-stat-l" id="ip1">Project Completion</div></div>
-            <div class="ip-stat"><div class="ip-stat-n">25%</div><div class="ip-stat-l" id="ip2">Phase I Complete</div></div>
+            <div class="ip-stat"><div class="ip-stat-n">25%</div><div class="ip-stat-l" id="ip2">Phase I Reserved</div></div>
             <div class="ip-stat"><div class="ip-stat-n">35</div><div class="ip-stat-l" id="ip3">Exclusive Plots</div></div>
             <div class="ip-stat"><div class="ip-stat-n">$800K</div><div class="ip-stat-l" id="ip4">Entry Price</div></div>
           </div>
@@ -717,7 +773,7 @@
     <div class="acq-grid">
       <div class="acq-card" data-reveal data-delay="1"><div class="acq-n">01</div><div class="acq-title" id="ac1t">Freehold Title</div><div class="acq-text" id="ac1d">Full ownership of villa and land under new Seychelles legislation removing restrictions on foreign buyers. Complete title transfer upon completion.</div></div>
       <div class="acq-card" data-reveal data-delay="2"><div class="acq-n">02</div><div class="acq-title" id="ac2t">Staged Payments</div><div class="acq-text" id="ac2d">Payment schedule aligned with construction milestones. Payments accepted in USD, EUR or GBP at the prevailing exchange rate.</div></div>
-      <div class="acq-card" data-reveal data-delay="3"><div class="acq-n">03</div><div class="acq-title" id="ac3t">Residency</div><div class="acq-text" id="ac3d">Seychelles residence permit granted automatically upon purchase completion. Children of residents may attend local international schools.</div></div>
+      <div class="acq-card" data-reveal data-delay="3"><div class="acq-n">03</div><div class="acq-title" id="ac3t">Residency</div><div class="acq-text" id="ac3d">Residence options may be available to eligible purchasers under Seychelles regulations. Confirmed individually with the legal team before transaction completion.</div></div>
       <div class="acq-card" data-reveal data-delay="4"><div class="acq-n">04</div><div class="acq-title" id="ac4t">Discovery Tour</div><div class="acq-text" id="ac4d">A private one-week visit to the Seychelles, staying on Eden Island. Our team arranges all logistics. Contact us to plan your itinerary.</div></div>
     </div>
   </div>
@@ -793,14 +849,13 @@
     <div class="news-grid" id="news-container">
       <div class="news-card" data-reveal data-delay="1">
         <img src="assets/images/construction/villa-anna-real.webp" alt="Строительная площадка Empathia Village — реальное фото" loading="lazy" style="width:100%;height:220px;object-fit:cover;object-position:center center;display:block" width="1448" height="1086">
-        <div class="news-body"><div class="news-date" id="nd1">May 2026</div><div class="news-title" id="nt1">Phase I: 25% sold — construction underway</div><div class="news-text" id="nx1">The first phase of villas is fully sold out. Construction is now actively underway on the first residences.</div></div>
+        <div class="news-body"><div class="news-date" id="nd1">May 2026</div><div class="news-title" id="nt1">Phase I: 25% of residences reserved — construction underway</div><div class="news-text" id="nx1">Phase I is now 25% reserved. Construction of the first residences at Empathia Village is actively underway on the Mahé hillside.</div></div>
       </div>
       <div class="news-card" data-reveal data-delay="2">
         <img src="assets/images/construction/img0161.webp" alt="Строительная площадка Empathia Village — Сейшелы" loading="lazy" style="width:100%;height:220px;object-fit:cover;display:block" width="1600" height="1066">
         <div class="news-body"><div class="news-date" id="nd3">March 2026</div><div class="news-title" id="nt3">Phase II plots now available</div><div class="news-text" id="nx3">Second phase plots are open for reservation. Villa Anna, Jane and Georgette designs available on plots from 600 to 2,000 m².</div></div>
       </div>
     </div>
-    <div class="news-hint" id="news-hint"><strong>To add news:</strong> find id="news-container" in the HTML and duplicate any news-card block. Update the date, title, text and image src.</div>
   </div>
 </section>
 <div class="gold-rule-soft"></div>
@@ -837,7 +892,87 @@
       <div class="media-cell"><div class="media-ph"><div class="media-ph-icon">▶</div><div class="media-ph-label" id="vid2">Construction Progress</div></div></div>
       <div class="media-cell"><div class="media-ph"><div class="media-ph-icon">▶</div><div class="media-ph-label" id="vid3">Estate Tour</div></div></div>
     </div>
-    <div class="gallery-hint" id="gal-hint"><strong>To add photos:</strong> find id="g-photo" and add a media-cell div with an img tag inside. <strong>For video:</strong> find id="g-video" and replace the media-ph placeholder with a YouTube or Vimeo iframe.</div>
+  </div>
+</section>
+<div class="gold-rule-soft"></div>
+
+<!-- ══════════ FOR AGENTS & PARTNERS ══════════ -->
+<section style="background:var(--ink);padding:110px 0" id="agents-block">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center">
+      <div data-reveal="left">
+        <div class="ew">Partner Programme</div>
+        <h2 class="h2" style="margin-bottom:24px">For Agents<br>&amp; Partners</h2>
+        <p class="lead" style="margin-bottom:28px">Empathia Village offers a premium product for international real estate agents, brokers and investment advisors working with high-net-worth clients.</p>
+        <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:36px">
+          <div class="vd-feat">Commission from 3% of transaction value</div>
+          <div class="vd-feat">Full sales materials and villa presentations</div>
+          <div class="vd-feat">Price lists and project documentation</div>
+          <div class="vd-feat">Co-brokerage opportunities</div>
+          <div class="vd-feat">Private client consultations and site visits</div>
+          <div class="vd-feat">International buyer assistance</div>
+          <div class="vd-feat">Dedicated project support throughout</div>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <a href="agents.html" class="btn-solid" style="text-decoration:none">Request Agent Pack</a>
+          <a href="agents.html" class="btn-ghost" style="text-decoration:none">View Agent Programme</a>
+        </div>
+      </div>
+      <div data-reveal="right">
+        <div style="background:rgba(200,169,110,.06);border:1px solid rgba(200,169,110,.2);padding:52px 44px">
+          <div class="ew" style="margin-bottom:12px">Agent Commission</div>
+          <div style="font-family:var(--serif);font-size:72px;font-style:italic;color:var(--gold-hi);line-height:1;margin-bottom:6px">3%</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.38);letter-spacing:.12em;text-transform:uppercase;margin-bottom:32px">of transaction value</div>
+          <div style="height:1px;background:rgba(200,169,110,.15);margin-bottom:28px"></div>
+          <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:8px">Minimum fee per transaction</div>
+          <div style="font-family:var(--serif);font-size:30px;font-style:italic;color:var(--white)">from $24,000</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.28);margin-top:4px">Starting villa price from $800,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="gold-rule-soft"></div>
+
+<!-- ══════════ EMPATHIA VS EDEN ISLAND ══════════ -->
+<section style="background:var(--charcoal);padding:110px 0" id="vs-eden">
+  <div class="wrap">
+    <div data-reveal style="max-width:720px;margin:0 auto 72px">
+      <div class="eyebrow">Choosing Your Seychelles Address</div>
+      <h2 class="h2" style="margin-bottom:20px">Empathia Village<br>vs Eden Island</h2>
+      <p class="body-t" style="opacity:.65">Two premium addresses in Seychelles — each suited to a different lifestyle and vision. Understanding the difference helps buyers make the right choice.</p>
+    </div>
+    <div class="ve-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3px" data-reveal>
+      <div style="background:rgba(26,46,30,.25);border:1px solid rgba(196,163,90,.18);padding:52px 44px">
+        <div style="font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">Empathia Village</div>
+        <div style="font-family:var(--serif);font-size:24px;color:var(--white);margin-bottom:28px;font-style:italic;line-height:1.4">Natural hillside living.<br>Privacy. Ocean views.</div>
+        <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:36px">
+          <div class="vd-feat">Natural hillside terrain — no reclaimed land</div>
+          <div class="vd-feat">Private villa plots from 600 m²</div>
+          <div class="vd-feat">Unobstructed Indian Ocean views</div>
+          <div class="vd-feat">Immersive tropical landscape</div>
+          <div class="vd-feat">Gated residential community · 35 plots</div>
+          <div class="vd-feat">Individual design customisation available</div>
+          <div class="vd-feat">Quiet, private south Mahé setting</div>
+        </div>
+        <a href="contact.html" class="btn-solid" style="text-decoration:none">Enquire About Empathia Village</a>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:52px 44px">
+        <div style="font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px">Eden Island</div>
+        <div style="font-family:var(--serif);font-size:24px;color:rgba(255,255,255,.45);margin-bottom:28px;font-style:italic;line-height:1.4">Marina lifestyle.<br>Urban resort atmosphere.</div>
+        <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:36px">
+          <div style="font-size:13px;color:rgba(255,255,255,.35);padding-left:16px;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.18)">—</span>Marina and waterfront setting</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.35);padding-left:16px;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.18)">—</span>Apartment and townhouse format</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.35);padding-left:16px;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.18)">—</span>Reclaimed island setting</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.35);padding-left:16px;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.18)">—</span>Closer to Victoria and city infrastructure</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.35);padding-left:16px;position:relative"><span style="position:absolute;left:0;color:rgba(255,255,255,.18)">—</span>More urban and resort-style atmosphere</div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,.28);border-top:1px solid rgba(255,255,255,.06);padding-top:20px;line-height:1.65">Eden Island is a well-established destination for buyers seeking a marina-facing apartment or townhouse lifestyle closer to Victoria.</div>
+      </div>
+    </div>
+    <div style="margin-top:3px;background:rgba(196,163,90,.05);border:1px solid rgba(196,163,90,.12);padding:32px 44px" data-reveal>
+      <p style="font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(255,255,255,.7);max-width:820px;margin:0 auto;line-height:1.75;text-align:center">Empathia Village is designed for buyers seeking privacy, nature, larger private plots and a quieter villa lifestyle — in one of Mahé's most prestigious coastal addresses, between Four Seasons and Kempinski.</p>
+    </div>
   </div>
 </section>
 <div class="gold-rule-soft"></div>
@@ -860,11 +995,11 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text" id="fq3">How long does construction take?</span><div class="faq-icon">+</div></div>
-        <div class="faq-a" id="fa3">Each villa takes approximately 12 months to construct from groundbreaking. The full estate is planned for completion within 3 years. Phase I (25% of residences) is already complete.</div>
+        <div class="faq-a" id="fa3">Each villa takes approximately 12 months to construct from groundbreaking. The full estate is planned for completion within 3 years. Phase I represents 25% of total plots and is currently under active construction.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text" id="fq4">Do I qualify for Seychelles residency?</span><div class="faq-icon">+</div></div>
-        <div class="faq-a" id="fa4">Yes. Seychelles residence permits are granted automatically to villa purchasers. This entitles the holder and their family to reside in Seychelles and allows children to attend local international schools.</div>
+        <div class="faq-a" id="fa4">Residence options may be available to eligible purchasers under Seychelles regulations. Eligibility and applicable requirements are confirmed individually with the legal team during the transaction process. We recommend consulting with a qualified Seychelles legal advisor for precise details.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text" id="fq5">Can I rent my villa when I'm not using it?</span><div class="faq-icon">+</div></div>
@@ -878,14 +1013,51 @@
   </div>
 </section>
 
+<!-- ══════════ DOWNLOAD PRESENTATION ══════════ -->
+<section style="background:var(--forest);padding:110px 0" id="presentation">
+  <div class="wrap">
+    <div class="pr-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div data-reveal="left">
+        <div class="ew">Detailed Documentation</div>
+        <h2 class="h2" style="margin-bottom:20px">Download Full<br>Presentation</h2>
+        <p class="lead" style="margin-bottom:28px;opacity:.75">Receive villa plans, pricing, location details and partnership terms. Our full presentation pack is sent directly to qualified buyers, investors and agents.</p>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div class="vd-feat">Villa floor plans &amp; architectural drawings</div>
+          <div class="vd-feat">Pricing &amp; plot availability</div>
+          <div class="vd-feat">Location &amp; masterplan documentation</div>
+          <div class="vd-feat">Investment overview</div>
+          <div class="vd-feat">Agent partnership terms</div>
+        </div>
+      </div>
+      <div data-reveal="right">
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(200,169,110,.2);padding:48px 40px">
+          <div style="font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Request Presentation</div>
+          <input type="text" id="pres-name" placeholder="Name" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:10px;outline:none;border-radius:1px;box-sizing:border-box;transition:border-color .25s" onfocus="this.style.borderColor='rgba(200,169,110,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+          <input type="email" id="pres-email" placeholder="Email" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:10px;outline:none;border-radius:1px;box-sizing:border-box;transition:border-color .25s" onfocus="this.style.borderColor='rgba(200,169,110,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+          <input type="tel" id="pres-whatsapp" placeholder="WhatsApp" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:10px;outline:none;border-radius:1px;box-sizing:border-box;transition:border-color .25s" onfocus="this.style.borderColor='rgba(200,169,110,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+          <select id="pres-interest" style="width:100%;background:rgba(8,9,10,.8);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:20px;outline:none;border-radius:1px;box-sizing:border-box;-webkit-appearance:none">
+            <option value="">I am a… Buyer / Investor / Agent / Partner</option>
+            <option value="Buyer">Buyer</option>
+            <option value="Investor">Investor</option>
+            <option value="Agent">Agent</option>
+            <option value="Partner">Partner</option>
+          </select>
+          <button onclick="submitPresentation()" style="width:100%;background:var(--gold);color:#0a0b0a;font-family:var(--sans);font-size:9px;letter-spacing:.24em;text-transform:uppercase;padding:17px;border:none;cursor:pointer;transition:background .25s;font-weight:600;border-radius:1px" onmouseover="this.style.background='#dfc088'" onmouseout="this.style.background='var(--gold)'">Request Presentation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="gold-rule-soft"></div>
+
 <!-- ══════════ ENQUIRY / CONTACT ══════════ -->
 <section class="contact-section" id="contact">
   <div class="contact-bg"></div>
   <div class="contact-inner">
     <div data-reveal>
-      <div class="ew" style="justify-content:center;margin-bottom:20px" id="ct-ew">Private Enquiry</div>
-      <h2 class="contact-h2" id="ct-h2">Begin Your Journey</h2>
-      <p class="contact-sub" id="ct-sub">Our team will respond to your enquiry within 24 hours. We can arrange a private viewing, a discovery tour of the estate, or a confidential consultation at your convenience.</p>
+      <div class="ew" style="justify-content:center;margin-bottom:20px" id="ct-ew">Private Consultation</div>
+      <h2 class="contact-h2" id="ct-h2">Request a Private Consultation</h2>
+      <p class="contact-sub" id="ct-sub">Get the full presentation, villa price list and availability. Our team responds within 24 hours.</p>
     </div>
     <div class="contact-channels" data-reveal>
       <div class="ch"><div class="ch-rule"></div><div class="ch-label" id="ch1l">Seychelles</div><div class="ch-val"><a href="tel:+2482715102">+248 271 51 02</a></div></div>
@@ -893,8 +1065,22 @@
     </div>
     <div class="enquiry-form" data-reveal>
       <input type="text" id="fn" placeholder="Your name" />
-      <input type="tel" id="fp" placeholder="Phone / WhatsApp" />
-      <button onclick="submitForm()" id="f-sub">Enquire</button>
+      <input type="email" id="fe" placeholder="Email address" />
+      <input type="tel" id="fp" placeholder="WhatsApp / Phone" />
+      <select id="fi" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);padding:14px 18px;font-family:var(--sans);font-size:13px;outline:none;width:100%;border-radius:1px;-webkit-appearance:none">
+        <option value="">I am a… Buyer / Investor / Agent / Partner</option>
+        <option value="Buyer">Buyer</option>
+        <option value="Investor">Investor</option>
+        <option value="Agent">Agent</option>
+        <option value="Partner">Partner</option>
+      </select>
+      <button onclick="submitForm()" id="f-sub">Send Request</button>
+    </div>
+    <div style="text-align:center;margin-top:20px">
+      <a href="https://wa.me/2482715102" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:14px 28px;border:1px solid rgba(255,255,255,.12);transition:all .25s" onmouseover="this.style.borderColor='#25d366';this.style.color='#25d366'" onmouseout="this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.5)'">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Contact via WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -1108,18 +1294,44 @@ function toggleFaq(q) {
 async function submitForm() {
   const n = document.getElementById('fn').value.trim();
   const p = document.getElementById('fp').value.trim();
-  if (!n && !p) { alert('Please enter your name or phone number.'); return; }
+  const e = (document.getElementById('fe') || {}).value ? document.getElementById('fe').value.trim() : '';
+  const i = (document.getElementById('fi') || {}).value || '';
+  if (!n && !p && !e) { alert('Please enter your name or contact details.'); return; }
   const btn = document.getElementById('f-sub');
   if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
   let ok = false;
   try {
-    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, phone: p, page: 'Home' }, _utm())) });
+    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, phone: p, email: e, interest: i, page: 'Home' }, _utm())) });
     ok = r.ok && (await r.json()).ok === true;
-  } catch (e) {}
-  if (btn) { btn.disabled = false; btn.textContent = 'Enquire'; }
+  } catch (err) {}
+  if (btn) { btn.disabled = false; btn.textContent = 'Send Request'; }
   if (ok) {
     alert('Thank you' + (n ? ', '+n : '') + '.\n\nA member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
-    document.getElementById('fn').value = ''; document.getElementById('fp').value = '';
+    ['fn','fp','fe'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    const sel = document.getElementById('fi'); if (sel) sel.value = '';
+  } else {
+    alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\nstudiochaikovsky@gmail.com');
+  }
+}
+
+async function submitPresentation() {
+  const n = document.getElementById('pres-name').value.trim();
+  const e = document.getElementById('pres-email').value.trim();
+  const w = document.getElementById('pres-whatsapp').value.trim();
+  const i = document.getElementById('pres-interest').value;
+  if (!n && !e && !w) { alert('Please enter your name or contact details.'); return; }
+  const btn = document.querySelector('#presentation button');
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  let ok = false;
+  try {
+    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, email: e, phone: w, interest: i || 'Presentation request', message: 'Requested full presentation pack', page: 'Home – Presentation' }, _utm())) });
+    ok = r.ok && (await r.json()).ok === true;
+  } catch (err) {}
+  if (btn) { btn.disabled = false; btn.textContent = 'Request Presentation'; }
+  if (ok) {
+    alert('Thank you' + (n ? ', ' + n : '') + '.\n\nWe will send you the full presentation shortly.\n\nEmpathia Village · Kensington Construction & Development');
+    ['pres-name','pres-email','pres-whatsapp'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    const sel = document.getElementById('pres-interest'); if (sel) sel.value = '';
   } else {
     alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\nstudiochaikovsky@gmail.com');
   }
