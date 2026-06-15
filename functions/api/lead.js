@@ -94,6 +94,19 @@ export async function onRequestPost({ request, env }) {
     );
   }
 
+  // Save to D1 CRM database (non-blocking — don't fail the request if D1 is absent)
+  if (env.DB) {
+    const src = clean(data.source) || 'empathia-seychelles.com';
+    const interest = lead.interest;
+    const type = interest.toLowerCase().includes('agent') || lead.page.includes('agent')
+      ? 'agent' : 'client';
+    env.DB.prepare(
+      `INSERT INTO leads (source, name, phone, email, interest, message, page, type)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type)
+      .run().catch(e => console.error('CRM D1 insert failed:', e.message));
+  }
+
   if (tasks.length === 0) {
     return json({ ok: false, error: 'not configured' }, 503);
   }
