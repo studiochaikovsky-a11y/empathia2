@@ -126,6 +126,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
 .btn-sm{padding:7px 16px;border-radius:6px;font-size:13px;font-weight:600;transition:.13s}
 .btn-sm.gold{background:var(--gold);color:#000}.btn-sm.gold:hover{opacity:.83}
 .btn-sm.ghost{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}.btn-sm.ghost:hover{color:var(--text)}
+.btn-sm.danger{background:rgba(239,68,68,.1);color:#f87171;border:1px solid rgba(239,68,68,.2)}.btn-sm.danger:hover{background:rgba(239,68,68,.2)}
 
 /* MODAL */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:flex;align-items:center;justify-content:center;padding:16px}
@@ -564,6 +565,9 @@ function renderPanel(l, notes) {
         <button class="btn-sm gold" onclick="addNote(${l.id})">Сохранить заметку</button>
       </div>
     </div>
+    <div class="psec" style="padding-top:12px">
+      <button class="btn-sm danger" onclick="deleteLead(${l.id}, '${esc(l.name || 'эту заявку')}')">Удалить заявку</button>
+    </div>
   `;
 }
 
@@ -597,6 +601,20 @@ async function addNote(id) {
     openPanel(id);
   } else {
     toast('Ошибка сохранения');
+  }
+}
+
+// ── DELETE LEAD
+async function deleteLead(id, name) {
+  if (!confirm(`Удалить заявку "${name}"?\n\nЭто действие нельзя отменить.`)) return;
+  const d = await api(`leads/${id}`, 'DELETE');
+  if (d.ok) {
+    closePanel();
+    toast('Заявка удалена');
+    if (!el('vLeads').hidden) reloadLeads();
+    if (!el('vDash').hidden) loadDashboard();
+  } else {
+    toast('Ошибка удаления');
   }
 }
 

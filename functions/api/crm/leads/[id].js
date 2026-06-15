@@ -29,7 +29,7 @@ export async function onRequestPatch({ params, request, env }) {
 }
 
 export async function onRequestDelete({ params, env }) {
-  await env.DB.prepare("UPDATE leads SET status = 'lost' WHERE id = ?").bind(params.id).run();
+  await env.DB.prepare('DELETE FROM leads WHERE id = ?').bind(params.id).run();
   return json({ ok: true });
 }
 
