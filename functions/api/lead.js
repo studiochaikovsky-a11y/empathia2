@@ -32,6 +32,9 @@ export async function onRequestPost({ request, env }) {
     interest: clean(data.interest),
     message: clean(data.message),
     page: clean(data.page),
+    utm_source: clean(data.utm_source),
+    utm_medium: clean(data.utm_medium),
+    utm_campaign: clean(data.utm_campaign),
   };
 
   if (!lead.name && !lead.phone && !lead.email) {
@@ -102,9 +105,10 @@ export async function onRequestPost({ request, env }) {
     const type = interest.toLowerCase().includes('agent') || lead.page.includes('agent')
       ? 'agent' : 'client';
     dbPromise = env.DB.prepare(
-      `INSERT INTO leads (source, name, phone, email, interest, message, page, type)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
-    ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type)
+      `INSERT INTO leads (source, name, phone, email, interest, message, page, type, utm_source, utm_medium, utm_campaign)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type,
+        lead.utm_source, lead.utm_medium, lead.utm_campaign)
       .run().catch(e => console.error('CRM D1 insert failed:', e.message));
   }
 

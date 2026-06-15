@@ -108,3 +108,18 @@
     init();
   }
 })();
+
+// UTM capture: store params on landing, persist across navigation via sessionStorage
+(function () {
+  const p = new URLSearchParams(location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
+    if (p.get(k)) sessionStorage.setItem(k, p.get(k));
+  });
+})();
+function _utm() {
+  return {
+    utm_source: sessionStorage.getItem('utm_source') || '',
+    utm_medium: sessionStorage.getItem('utm_medium') || '',
+    utm_campaign: sessionStorage.getItem('utm_campaign') || '',
+  };
+}

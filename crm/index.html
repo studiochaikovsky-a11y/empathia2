@@ -552,6 +552,13 @@ function renderPanel(l, notes) {
       ${irow('Тип', l.type === 'agent' ? 'Агент' : 'Клиент')}
       ${irow('Дата заявки', fmtDate(l.created_at, true))}
     </div>
+    ${(l.utm_source || l.utm_medium || l.utm_campaign) ? `
+    <div class="psec">
+      <h3>Источник трафика (UTM)</h3>
+      ${l.utm_source   ? irow('utm_source',   `<span class="villa-tag">${esc(l.utm_source)}</span>`)   : ''}
+      ${l.utm_medium   ? irow('utm_medium',   `<span style="font-size:13px">${esc(l.utm_medium)}</span>`)   : ''}
+      ${l.utm_campaign ? irow('utm_campaign', `<span style="font-size:13px">${esc(l.utm_campaign)}</span>`) : ''}
+    </div>` : ''}
     ${l.message ? `<div class="psec"><h3>Сообщение</h3><p style="font-size:14px;line-height:1.6;color:var(--muted)">${esc(l.message)}</p></div>` : ''}
     <div class="psec">
       <h3>Статус</h3>
