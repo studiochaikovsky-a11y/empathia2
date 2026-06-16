@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap"></noscript>
-<link rel="stylesheet" href="index.css?v=20260615b">
+<link rel="stylesheet" href="index.css?v=20260616b">
 <script src="mobile-nav.js?v=20260610" defer></script>
 <link rel="preload" as="image" href="assets/images/lifestyle/lifestyle-evening.webp" fetchpriority="high">
 <style>
@@ -457,42 +457,56 @@
       <p class="body" style="margin-bottom:52px" id="vil-body">Each residence is conceived for maximum privacy, panoramic views and effortless tropical living. Private pools, generous terraces and natural materials throughout.</p>
     </div>
     <div class="villa-nav" data-reveal>
-      <button class="vtab on" onclick="showVilla('all',this)" id="tab-all">All Residences</button>
-      <button class="vtab" onclick="showVilla('anna',this)">Villa Anna</button>
-      <button class="vtab" onclick="showVilla('georgette',this)">Villa Georgette</button>
-      <button class="vtab" onclick="showVilla('jane',this)">Villa Jane</button>
-      
+      <button class="vtab on" data-villa="all" onclick="showVilla('all')" id="tab-all">All Residences</button>
+      <button class="vtab" data-villa="jane" onclick="showVilla('jane')">Villa Jane</button>
+      <button class="vtab" data-villa="anna" onclick="showVilla('anna')">Villa Anna</button>
+      <button class="vtab" data-villa="georgette" onclick="showVilla('georgette')">Villa Georgette</button>
     </div>
     <!-- ALL -->
-    <div id="p-all" class="villa-grid" style="grid-template-columns:repeat(3,1fr);grid-template-rows:360px">
-      <div class="vcard" data-reveal data-delay="1" onclick="showVilla('anna',document.querySelectorAll('.vtab')[1])">
-        <img class="vcard-img" src="assets/images/villas/anna/villa-anna-card.webp" alt="Villa Anna at Empathia Village, Seychelles" loading="lazy" style="object-position:center center" width="1254" height="1254">
-        <div class="vcard-scrim"></div>
-        <div class="vcard-body">
-          <div class="vcard-name">Villa Anna</div>
-          <div class="vcard-price">From $990,000</div>
-          <div class="vcard-meta"><span>from 240 m²</span><span>Pool</span><span>from 600 m² plot</span></div>
-          <div class="vcard-arrow" id="va-a1">Explore</div>
+    <div id="p-all" class="villa-grid">
+      <div class="vcard" data-reveal data-delay="1" onclick="showVilla('jane')">
+        <div class="vcard-photo">
+          <img class="vcard-img" src="assets/images/villas/jane/villa-jane-card.webp" alt="Villa Jane at Empathia Village, Seychelles" loading="lazy" width="1254" height="1254">
         </div>
-      </div>
-      <div class="vcard" data-reveal data-delay="2" onclick="showVilla('georgette',document.querySelectorAll('.vtab')[2])">
-        <img class="vcard-img" src="assets/images/villas/georgette/villa-georgette-card.webp" alt="Villa Georgette — flagship villa at Empathia Village" loading="lazy" style="object-position:center center" width="1254" height="1254">
-        <div class="vcard-scrim"></div>
-        <div class="vcard-body">
-          <div class="vcard-name">Villa Georgette</div>
-          <div class="vcard-price">From $2,100,000</div>
-          <div class="vcard-meta"><span>4 Bedrooms</span><span>Terrace 150 m²</span><span>from 350 m²</span></div>
-          <div class="vcard-arrow">Explore</div>
-        </div>
-      </div>
-      <div class="vcard" data-reveal data-delay="3" onclick="showVilla('jane',document.querySelectorAll('.vtab')[3])">
-        <img class="vcard-img" src="assets/images/villas/jane/villa-jane-card.webp" alt="Villa Jane at Empathia Village, Seychelles" loading="lazy" style="object-position:center center" width="1254" height="1254">
-        <div class="vcard-scrim"></div>
-        <div class="vcard-body">
+        <div class="vcard-info">
           <div class="vcard-name">Villa Jane</div>
+          <div class="vcard-tagline">Entry-level private villa</div>
           <div class="vcard-price">From $800,000</div>
-          <div class="vcard-meta"><span>2 Bedrooms</span><span>Pool</span><span>from 140 m²</span></div>
-          <div class="vcard-arrow">Explore</div>
+          <div class="vcard-specs">Plot from 600 m² · House from 140 m² · 2 Bedrooms</div>
+          <div class="vcard-actions">
+            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('jane')">View Details</button>
+            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price List</a>
+          </div>
+        </div>
+      </div>
+      <div class="vcard" data-reveal data-delay="2" onclick="showVilla('anna')">
+        <div class="vcard-photo">
+          <img class="vcard-img" src="assets/images/villas/anna/villa-anna-card.webp" alt="Villa Anna at Empathia Village, Seychelles" loading="lazy" width="1254" height="1254">
+        </div>
+        <div class="vcard-info">
+          <div class="vcard-name">Villa Anna</div>
+          <div class="vcard-tagline">Elegant ocean-view villa</div>
+          <div class="vcard-price">From $990,000</div>
+          <div class="vcard-specs">Plot from 600 m² · House from 240 m²</div>
+          <div class="vcard-actions">
+            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('anna')">View Details</button>
+            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price List</a>
+          </div>
+        </div>
+      </div>
+      <div class="vcard" data-reveal data-delay="3" onclick="showVilla('georgette')">
+        <div class="vcard-photo">
+          <img class="vcard-img" src="assets/images/villas/georgette/villa-georgette-card.webp" alt="Villa Georgette — flagship villa at Empathia Village" loading="lazy" width="1254" height="1254">
+        </div>
+        <div class="vcard-info">
+          <div class="vcard-name">Villa Georgette</div>
+          <div class="vcard-tagline">Flagship residence</div>
+          <div class="vcard-price">From $2,100,000</div>
+          <div class="vcard-specs">Plot from 1,500 m² · House from 350 m² · 4 Bedrooms</div>
+          <div class="vcard-actions">
+            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('georgette')">View Details</button>
+            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price List</a>
+          </div>
         </div>
       </div>
     </div>
@@ -538,7 +552,7 @@
       <p class="body" style="max-width:640px;margin-bottom:0" id="pr-lead">Three residences. Each priced to reflect plot size, design and ocean view. All prices include land, construction, finishing and landscaping. All plots are at least 600 m².</p>
     </div>
     <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="price-card" data-reveal data-delay="1" onclick="showVilla('jane',document.querySelectorAll('.vtab')[3]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
+      <div class="price-card" data-reveal data-delay="1" onclick="showVilla('jane');document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Jane</div>
         <div class="price-card-area">from 140 m² · 2 Bedrooms</div>
         <div class="price-main">From $800,000</div>
@@ -552,7 +566,7 @@
           <div class="pf">12 months construction</div>
         </div>
       </div>
-      <div class="price-card" data-reveal data-delay="2" onclick="showVilla('anna',document.querySelectorAll('.vtab')[1]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
+      <div class="price-card" data-reveal data-delay="2" onclick="showVilla('anna');document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Anna</div>
         <div class="price-card-area">from 240 m²</div>
         <div class="price-main">From $990,000</div>
@@ -566,7 +580,7 @@
           <div class="pf">12 months construction</div>
         </div>
       </div>
-      <div class="price-card" data-reveal data-delay="3" onclick="showVilla('georgette',document.querySelectorAll('.vtab')[2]);document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
+      <div class="price-card" data-reveal data-delay="3" onclick="showVilla('georgette');document.getElementById('villas').scrollIntoView({behavior:'smooth'})">
         <div class="price-card-name">Villa Georgette</div>
         <div class="price-card-area">from 350 m² · 4 Bedrooms</div>
         <div class="price-main">From $2,100,000</div>
@@ -1259,7 +1273,8 @@ document.querySelectorAll('[data-reveal]').forEach(el => revObs.observe(el));
 // ── VILLA TABS ──
 function showVilla(name, btn) {
   document.querySelectorAll('.vtab').forEach(t => t.classList.remove('on'));
-  if (btn) btn.classList.add('on');
+  const activeBtn = btn || document.querySelector(`.vtab[data-villa="${name}"]`);
+  if (activeBtn) activeBtn.classList.add('on');
   ['all','anna','georgette','jane','amber'].forEach(p => {
     const el = document.getElementById('p-' + p);
     if (!el) return;
