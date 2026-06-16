@@ -1,5 +1,8 @@
 export async function onRequestGet({ env }) {
-  const [byStatus, byVilla, bySource, last30, byUtmSource, byUtmCampaign] = await Promise.all([
+  const [
+    byStatus, byVilla, bySource, last30, byUtmSource, byUtmCampaign,
+    clientTotals, clientsByVilla, upcomingPayments, overduePayments,
+  ] = await Promise.all([
     env.DB.prepare(
       'SELECT status, COUNT(*) AS count FROM leads GROUP BY status ORDER BY count DESC'
     ).all(),
@@ -24,7 +27,33 @@ export async function onRequestGet({ env }) {
        WHERE utm_campaign != '' AND utm_campaign IS NOT NULL
        GROUP BY utm_campaign ORDER BY count DESC LIMIT 10`
     ).all(),
+    env.DB.prepare(
+      `SELECT
+         COUNT(*) AS clients,
+         COALESCE(SUM(price), 0) AS contracted,
+         COALESCE((SELECT SUM(amount) FROM payments WHERE status = 'paid'), 0) AS collected
+       FROM clients WHERE status != 'cancelled'`
+    ).first(),
+    env.DB.prepare(
+      `SELECT villa, COUNT(*) AS count, COALESCE(SUM(price), 0) AS value
+       FROM clients WHERE status != 'cancelled' AND villa != '' AND villa IS NOT NULL
+       GROUP BY villa ORDER BY count DESC`
+    ).all(),
+    env.DB.prepare(
+      `SELECT p.id, p.milestone, p.amount, p.currency, p.due_date, c.id AS client_id, c.name AS client_name, c.villa
+       FROM payments p JOIN clients c ON c.id = p.client_id
+       WHERE p.status = 'pending' AND p.due_date IS NOT NULL
+         AND p.due_date <= date('now', '+30 days')
+       ORDER BY p.due_date ASC LIMIT 10`
+    ).all(),
+    env.DB.prepare(
+      `SELECT COUNT(*) AS count FROM payments
+       WHERE status = 'pending' AND due_date IS NOT NULL AND due_date < date('now')`
+    ).first(),
   ]);
+
+  const contracted = clientTotals?.contracted ?? 0;
+  const collected  = clientTotals?.collected ?? 0;
 
   return new Response(
     JSON.stringify({
@@ -35,6 +64,15 @@ export async function onRequestGet({ env }) {
       last_30_days: last30?.count ?? 0,
       by_utm_source:   byUtmSource.results,
       by_utm_campaign: byUtmCampaign.results,
+      sales: {
+        clients: clientTotals?.clients ?? 0,
+        contracted,
+        collected,
+        outstanding: Math.max(0, contracted - collected),
+        by_villa: clientsByVilla.results,
+        upcoming_payments: upcomingPayments.results,
+        overdue_count: overduePayments?.count ?? 0,
+      },
     }),
     { headers: { 'Content-Type': 'application/json' } }
   );
