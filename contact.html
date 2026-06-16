@@ -42,8 +42,8 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap"></noscript>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="style.css?v=20260615b">
 <script src="mobile-nav.js?v=20260610" defer></script>
 <style>
@@ -84,7 +84,7 @@
 
 <!-- ══ PAGE HERO ══ -->
 <section class="page-hero" style="min-height:340px">
-  <img src="assets/images/location/baie-lazare-beach.webp" class="page-hero-img" alt="Пляж Baie Lazare рядом с Empathia Village, Сейшелы" fetchpriority="high" style="object-position:center center">
+  <img src="assets/images/location/baie-lazare-beach.webp" class="page-hero-img" alt="Baie Lazare Beach near Empathia Village, Seychelles" fetchpriority="high" style="object-position:center center">
   <div class="page-hero-vignette"></div>
   <div class="page-hero-content">
     <div class="wrap">
@@ -138,7 +138,7 @@
       <!-- Right: form -->
       <div>
         <div class="ew">Send an Enquiry</div>
-        <h3 class="h3" style="margin-bottom:32px">Private Enquiry Form</h3>
+        <h3 class="h3" style="margin-bottom:32px">Request Full Presentation</h3>
 
         <div class="form-grid">
           <div class="field-wrap">
@@ -146,12 +146,12 @@
             <input type="text" class="field" id="fn" placeholder="Your name">
           </div>
           <div class="field-wrap">
-            <label class="field-label">Phone / WhatsApp</label>
-            <input type="tel" class="field" id="fp" placeholder="+1 000 000 0000">
-          </div>
-          <div class="field-wrap">
             <label class="field-label">Email Address</label>
             <input type="email" class="field" id="fe" placeholder="your@email.com">
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">WhatsApp</label>
+            <input type="tel" class="field" id="fp" placeholder="+1 000 000 0000">
           </div>
           <div class="field-wrap">
             <label class="field-label">Country</label>
@@ -161,12 +161,18 @@
             <label class="field-label">Interest</label>
             <select class="field" id="fi">
               <option value="">Select…</option>
+              <option>Buyer</option>
+              <option>Investor</option>
+            </select>
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Preferred Villa</label>
+            <select class="field" id="fv">
+              <option value="">Select…</option>
               <option>Villa Jane — from $800,000</option>
               <option>Villa Anna — from $990,000</option>
               <option>Villa Georgette — from $2,100,000</option>
-              <option>General information</option>
-              <option>Investment enquiry</option>
-              <option>Agent partnership</option>
+              <option>Not sure yet</option>
             </select>
           </div>
           <div class="field-wrap form-row">
@@ -175,7 +181,7 @@
           </div>
         </div>
         <div style="margin-top:3px">
-          <button class="btn-solid" onclick="submitForm()" style="width:100%;justify-content:center;padding:18px">Send Request</button>
+          <button class="btn-solid" onclick="submitForm()" style="width:100%;justify-content:center;padding:18px">Request Presentation</button>
         </div>
         <div style="margin-top:12px">
           <a href="https://wa.me/2482715102" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:10px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:14px;border:1px solid rgba(255,255,255,.1);transition:all .25s" onmouseover="this.style.borderColor='#25d366';this.style.color='#25d366'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.5)'">
@@ -245,17 +251,20 @@ async function submitForm(){
   const e=document.getElementById('fe').value.trim();
   if(!n&&!p&&!e){alert('Please enter your name or contact details.');return;}
   const i=document.getElementById('fi')?document.getElementById('fi').value:'';
+  const v=document.getElementById('fv')?document.getElementById('fv').value:'';
   const co=document.getElementById('fc')?document.getElementById('fc').value.trim():'';
   const m=document.getElementById('fm')?document.getElementById('fm').value.trim():'';
+  const msg=[co&&('Country: '+co),v&&('Preferred villa: '+v),m].filter(Boolean).join('\n');
   let ok=false;
   try{
-    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:n,phone:p,email:e,interest:i,message:(co?'Country: '+co+(m?'\n'+m:''): m),page:'Contact'},_utm()))});
+    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:n,phone:p,email:e,interest:i,message:msg,page:'Contact'},_utm()))});
     ok=r.ok&&(await r.json()).ok===true;
   }catch(err){}
   if(ok){
     alert('Thank you'+(n?', '+n:'')+'.\n\nYour request has been received. A member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
     ['fn','fp','fe','fc','fm'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
     const sel=document.getElementById('fi');if(sel)sel.value='';
+    const vsel=document.getElementById('fv');if(vsel)vsel.value='';
   }else{
     alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\nstudiochaikovsky@gmail.com');
   }
