@@ -55,7 +55,8 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="index.css?v=20260619">
 <script src="mobile-nav.js?v=20260610" defer></script>
-<link rel="preload" as="image" href="assets/images/lifestyle/lifestyle-evening.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/lifestyle/lifestyle-evening-mob.webp" fetchpriority="high" media="(max-width:800px)">
+<link rel="preload" as="image" href="assets/images/lifestyle/lifestyle-evening.webp" fetchpriority="high" media="(min-width:801px)">
 <style>
 @media(max-width:768px){
   #why-seychelles{padding:72px 0!important}
@@ -218,7 +219,7 @@
 <!-- ══════════ HERO ══════════ -->
 <section class="hero" id="hero">
     <div class="hero-reel" id="heroReel">
-    <img src="assets/images/lifestyle/lifestyle-evening.webp" class="active" alt="Empathia Village — evening view of the villa estate, Seychelles" fetchpriority="high" decoding="async" style="object-position:center center" width="1536" height="1024">
+    <img src="assets/images/lifestyle/lifestyle-evening.webp" srcset="assets/images/lifestyle/lifestyle-evening-mob.webp 800w, assets/images/lifestyle/lifestyle-evening.webp 1536w" sizes="100vw" class="active" alt="Empathia Village — evening view of the villa estate, Seychelles" fetchpriority="high" decoding="async" style="object-position:center center" width="1536" height="1024">
     <img src="assets/images/project/hero-village-1.webp" alt="Empathia Village — villa estate in Seychelles" loading="lazy" style="object-position:center center" width="1536" height="1024">
     <img src="assets/images/location/hero-ocean-1.webp" alt="Baie Lazare Beach near Empathia Village, Seychelles" loading="lazy" style="object-position:center 40%" width="1920" height="1440">
     <img src="assets/images/villas/anna/hero-anna-1.webp" alt="Villa Anna at Empathia Village, Seychelles" loading="lazy" style="object-position:center center" width="1536" height="1024">
