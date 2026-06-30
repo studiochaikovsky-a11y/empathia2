@@ -60,6 +60,11 @@ a{color:inherit}
 .nav-links{display:flex;gap:28px;align-items:center}
 .nav-link{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;transition:color .25s;font-weight:400;white-space:nowrap;padding:4px 0}
 .nav-link:hover,.nav-link.active{color:var(--gold)}
+.nav-item{position:relative;display:flex;align-items:center}
+.nav-sub{position:absolute;top:calc(100% + 14px);left:-16px;background:#0c110f;border:1px solid rgba(200,169,110,.18);border-top:2px solid var(--gold);min-width:168px;padding:6px 0;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .22s,transform .22s,visibility .22s;z-index:500}
+.nav-item:hover .nav-sub{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-sub a{display:block;padding:10px 18px;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;white-space:nowrap;transition:color .2s}
+.nav-sub a:hover,.nav-sub a.active{color:var(--gold)}
 .nav-actions{display:flex;align-items:center;gap:16px}
 .btn-nav{
   background:var(--gold);color:var(--ink);

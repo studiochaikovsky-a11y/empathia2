@@ -52,6 +52,34 @@
     nav.insertAdjacentHTML('beforeend',
       '<button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>');
 
+    // Patch desktop nav: group Residencies/Pricing/Construction into Villas dropdown
+    var navLinks = nav.querySelector('.nav-links');
+    if (navLinks) {
+      var subPages = [
+        {href:'residencies.html', label:'Residencies'},
+        {href:'pricing.html',     label:'Pricing'},
+        {href:'construction.html',label:'Construction'}
+      ];
+      var firstEl = null, found = [];
+      subPages.forEach(function(p) {
+        var el = navLinks.querySelector('a[href="'+p.href+'"],a[href="../'+p.href+'"]');
+        if (el) { found.push({el:el, label:p.label}); if (!firstEl) firstEl = el; }
+      });
+      if (firstEl) {
+        var isActive = found.some(function(f){ return f.el.classList.contains('active'); });
+        var subHtml = found.map(function(f){
+          var cls = f.el.classList.contains('active') ? ' class="active"' : '';
+          return '<a href="'+f.el.getAttribute('href')+'"'+cls+'>'+f.label+'</a>';
+        }).join('');
+        var dd = document.createElement('div');
+        dd.className = 'nav-item';
+        dd.innerHTML = '<span class="nav-link'+(isActive?' active':'')+'" style="cursor:default;user-select:none">Villas <span style="font-size:9px;opacity:.5">▾</span></span><div class="nav-sub">'+subHtml+'</div>';
+        navLinks.insertBefore(dd, firstEl);
+        found.forEach(function(f){ f.el.parentNode.removeChild(f.el); });
+      }
+    }
+
+    // Mobile drawer links (flat list, all items)
     var links = PAGES.map(function (p) {
       var active = p[0] === current ? ' active' : '';
       return '<a href="' + p[0] + '" class="mob-link' + active + '">' + p[1] + '</a>';
