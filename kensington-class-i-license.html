@@ -151,8 +151,8 @@ body{padding-top:112px}
 
 <!-- ══ HERO ══ -->
 <section class="art-hero">
-  <img src="assets/images/construction/construction-panorama.webp" alt="Empathia Village construction site — Kensington Construction &amp; Development, Class I licence, Mahé, Seychelles" fetchpriority="high">
-  <div class="art-hero-overlay"></div>
+  <img src="assets/images/brand/kensington-license.webp" alt="Kensington Construction Class I Building Contractor Licence — Seychelles Licensing Authority" fetchpriority="high" style="object-position:center top">
+  <div class="art-hero-overlay" style="background:linear-gradient(to top,rgba(8,9,10,.92) 0%,rgba(8,9,10,.55) 50%,rgba(8,9,10,.35) 100%)"></div>
   <div class="art-hero-text">
     <div class="ew" style="color:rgba(255,255,255,.55)">Developer</div>
     <h1 class="h1">Kensington Class I Licence:<br>Who Receives It and What It Authorises</h1>
@@ -168,7 +168,7 @@ body{padding-top:112px}
 
   <!-- LICENCE BLOCK -->
   <div class="art-lic">
-    <div class="art-lic-img">
+    <div class="art-lic-img" onclick="lbShow(this.querySelector('img'))" style="cursor:zoom-in" title="Click to enlarge">
       <img src="assets/images/brand/kensington-license.webp" alt="Kensington Construction Class I licence certificate — Seychelles Licensing Authority" loading="lazy" width="1600" height="2279">
     </div>
     <div class="art-lic-details">
@@ -183,7 +183,7 @@ body{padding-top:112px}
       <div class="art-lic-label">Issuing authority</div>
       <div class="art-lic-value">Seychelles Licensing Authority, Republic of Seychelles</div>
       <div class="art-lic-label">Valid</div>
-      <div class="art-lic-value">13 July 2023 – 12 July 2026</div>
+      <div class="art-lic-value">13 July 2023 – 12 July 2028</div>
     </div>
   </div>
 
@@ -254,6 +254,17 @@ window.addEventListener('scroll',()=>{
   const nav=document.getElementById('nav');
   if(nav) nav.classList.toggle('solid',window.scrollY>60);
 });
+function lbShow(img){
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;cursor:zoom-out;padding:24px';
+  const i=document.createElement('img');
+  i.src=img.src;
+  i.style.cssText='max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 24px 80px rgba(0,0,0,.8)';
+  ov.appendChild(i);
+  ov.addEventListener('click',()=>ov.remove());
+  document.addEventListener('keydown',function h(e){if(e.key==='Escape'){ov.remove();document.removeEventListener('keydown',h)}});
+  document.body.appendChild(ov);
+}
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7545a2296ed5439aae507657d6adc01f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
