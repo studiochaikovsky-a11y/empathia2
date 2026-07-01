@@ -51,6 +51,7 @@
 @media(max-width:600px){
   .hero-tagline{display:none !important}
   .hero-tags{display:none !important}
+  .hero-actions{justify-content:center !important}
 }
 
 /* ── Interiors section mobile grid fix ── */
