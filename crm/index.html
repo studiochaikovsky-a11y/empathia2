@@ -397,7 +397,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
 
 <script>
 // ── STATE
-let token = localStorage.getItem('crm_token') || '';
+let token = sessionStorage.getItem('crm_token') || '';
 let curPage = 1;
 let searchTimer = null;
 let curClientPage = 1;
@@ -517,7 +517,7 @@ async function doLogin(e) {
   const d = await r.json();
   if (d.ok) {
     token = d.token;
-    localStorage.setItem('crm_token', token);
+    sessionStorage.setItem('crm_token', token);
     showApp();
   } else {
     el('loginErr').textContent = 'Неверный пароль';
@@ -526,7 +526,7 @@ async function doLogin(e) {
 
 function doLogout() {
   token = '';
-  localStorage.removeItem('crm_token');
+  sessionStorage.removeItem('crm_token');
   closePanel();
   el('app').hidden = true;
   el('login').hidden = false;
