@@ -330,3 +330,101 @@ select.lead-input{
     min-height:34px !important;
   }
 }
+
+/* Desktop hero fixes */
+.mobile-sticky-cta{
+  display:none !important;
+}
+
+.hero-sale-line{
+  max-width:760px !important;
+  font-size:13px !important;
+  line-height:1.5 !important;
+  letter-spacing:.11em !important;
+  color:rgba(255,255,255,.78) !important;
+  text-shadow:0 2px 18px rgba(0,0,0,.5) !important;
+}
+
+.hero-proof{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  gap:10px !important;
+  max-width:760px !important;
+  margin:18px 0 30px !important;
+  color:#fff !important;
+}
+
+.hero-proof span{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:38px !important;
+  padding:0 16px !important;
+  border:1px solid rgba(196,163,90,.55) !important;
+  background:rgba(8,9,10,.5) !important;
+  color:#fff !important;
+  font-size:12px !important;
+  line-height:1.2 !important;
+  letter-spacing:.08em !important;
+  text-transform:none !important;
+  white-space:nowrap !important;
+  text-shadow:0 1px 12px rgba(0,0,0,.38) !important;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+@media(max-width:600px){
+  .mobile-sticky-cta{
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    z-index:9000 !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:0 !important;
+    padding:0 !important;
+    background:rgba(8,9,10,.94) !important;
+    border:0 !important;
+    border-top:1px solid rgba(196,163,90,.35) !important;
+    box-shadow:none !important;
+  }
+
+  .mobile-sticky-cta a,
+  .mobile-sticky-cta button{
+    min-height:58px !important;
+    border:0 !important;
+    border-right:1px solid rgba(255,255,255,.12) !important;
+    background:transparent !important;
+    color:#fff !important;
+    font-family:var(--sans) !important;
+    font-size:10px !important;
+    letter-spacing:.16em !important;
+    text-transform:uppercase !important;
+  }
+
+  .mobile-sticky-cta button{
+    border-right:0 !important;
+    background:var(--gold) !important;
+    color:#08090a !important;
+    font-weight:600 !important;
+  }
+
+  .hero-sale-line{
+    font-size:12px !important;
+    letter-spacing:.04em !important;
+  }
+
+  .hero-proof{
+    gap:8px !important;
+    margin-bottom:22px !important;
+  }
+
+  .hero-proof span{
+    min-height:32px !important;
+    padding:0 11px !important;
+    font-size:10.5px !important;
+    white-space:normal !important;
+  }
+}
