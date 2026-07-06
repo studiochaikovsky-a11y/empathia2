@@ -186,7 +186,7 @@
   </div>
 </div>
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img class="nav-logo-img" src="assets/images/brand/logo-emblem.webp" alt="Empathia Village" />
     <div class="nav-logo-text">
       <span class="nav-logo-name">Empathia Village</span>
@@ -212,9 +212,14 @@
       <a href="/ar/" style="color:rgba(255,255,255,.4);text-decoration:none" title="العربية">AR</a>
     </div>
     <div class="nav-actions">
-    <a class="nav-cta" href="contact.html">Private Enquiry</a>
+    <a class="nav-cta" href="#contact">Get Price List</a>
   </div>
 </nav>
+
+<div class="mobile-sticky-cta" aria-label="Quick enquiry actions">
+  <a href="https://wa.me/2482715102" target="_blank" rel="noopener">WhatsApp</a>
+  <button type="button" onclick="goTo('#contact')">Get Price List</button>
+</div>
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero" id="hero">
@@ -229,20 +234,19 @@
   <div class="hero-vignette"></div>
   <div class="hero-content">
     <div class="hero-chip" id="h-chip">Empathia Village · Baie Lazare, Mahé Island</div>
-    <h1 class="hero-h1">Freehold Villas<br>in Seychelles</h1>
-    <p class="hero-tagline hero-sale-line" id="h-tag">Private gated community in Baie Lazare. Villas from $800,000, between Four Seasons and Kempinski.</p>
+    <h1 class="hero-h1">Private Gated Villas<br>in Seychelles</h1>
+    <p class="hero-tagline hero-sale-line" id="h-tag">35 freehold villa plots between Four Seasons and Kempinski. From $800,000. Staged payments in USD, EUR or GBP.</p>
 
     <div class="hero-proof" aria-label="Key villa purchase facts">
-      <span>Freehold title</span>
-      <span>Baie Lazare, Mahé</span>
-      <span>35 private plots</span>
-      <span>From $800K</span>
+      <span>Class I licensed developer</span>
+      <span>Construction active</span>
+      <span>25% of Phase I reserved</span>
     </div>
 
     <div class="hero-actions">
-      <button class="btn-solid" onclick="goTo('#contact')" id="h-cta1">Request Availability</button>
-      <button class="btn-ghost" onclick="goTo('#presentation')" id="h-cta2">Get Villa Brochure</button>
-      <a href="https://wa.me/2482715102" target="_blank" rel="noopener" class="btn-ghost" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px" id="h-cta3"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</a>
+      <button class="btn-solid btn-primary-cta" onclick="goTo('#contact')" id="h-cta1">Get Price List &amp; Plot Availability</button>
+      <button class="btn-ghost" onclick="goTo('#villas')" id="h-cta2">View Villas</button>
+      <a href="https://wa.me/2482715102" target="_blank" rel="noopener" class="btn-ghost btn-whatsapp" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px" id="h-cta3"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp Advisor</a>
     </div>
   </div>
   <div class="hero-scroll-hint">
@@ -262,10 +266,10 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat" data-reveal data-delay="1"><div class="stat-n">35</div><div class="stat-l" id="st1">Private Plots</div></div>
-  <div class="stat" data-reveal data-delay="2"><div class="stat-n">from $800K</div><div class="stat-l" id="st2">Starting Price</div></div>
+  <div class="stat" data-reveal data-delay="2"><div class="stat-n">From $800K</div><div class="stat-l" id="st2">Entry Price</div></div>
   <div class="stat" data-reveal data-delay="3"><div class="stat-n">2 min</div><div class="stat-l" id="st3">To Beach</div></div>
-  <div class="stat" data-reveal data-delay="4"><div class="stat-n">30 yrs</div><div class="stat-l" id="st4">Developer Experience</div></div>
-  <div class="stat" data-reveal data-delay="5"><div class="stat-n">&gt;350</div><div class="stat-l" id="st5">Homes Delivered</div></div>
+  <div class="stat" data-reveal data-delay="4"><div class="stat-n">Approx. 12 months</div><div class="stat-l" id="st4">Per Villa</div></div>
+  <div class="stat" data-reveal data-delay="5"><div class="stat-n">Within 3 yrs</div><div class="stat-l" id="st5">Full Estate Completion</div></div>
 </div>
 
 <!-- ══════════ ABOUT / INTRO ══════════ -->
@@ -336,7 +340,7 @@
     <div class="ew" id="cin1-ew">The Setting</div>
     <h2 class="h2" id="cin1-h2">Between<br>Four Seasons<br>&amp; Kempinski</h2>
     <p class="body" style="margin-top:20px;margin-bottom:36px" id="cin1-body">An address defined by its neighbours. Baie Lazare is consistently ranked among the Indian Ocean's most beautiful bays — and Empathia Village occupies its finest elevated position.</p>
-    <button class="btn-ghost" onclick="goTo('#contact')" id="cin1-btn">Arrange a Private Visit</button>
+    <button class="btn-ghost" onclick="goTo('#contact')" id="cin1-btn">Schedule Private Consultation</button>
   </div>
 </div>
 
@@ -523,8 +527,8 @@
           <div class="vcard-price">From $800,000</div>
           <div class="vcard-specs">Plot from 600 m² · House from 140 m² · 2 Bedrooms</div>
           <div class="vcard-actions">
-            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('jane')">View Details</button>
-            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price List</a>
+            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('jane')">View Villa</button>
+            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price &amp; Availability</a>
           </div>
         </div>
       </div>
@@ -538,8 +542,8 @@
           <div class="vcard-price">From $990,000</div>
           <div class="vcard-specs">Plot from 600 m² · House from 240 m² · 3 Bedrooms</div>
           <div class="vcard-actions">
-            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('anna')">View Details</button>
-            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price List</a>
+            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('anna')">View Villa</button>
+            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price &amp; Availability</a>
           </div>
         </div>
       </div>
@@ -553,8 +557,8 @@
           <div class="vcard-price">From $2,100,000</div>
           <div class="vcard-specs">Plot from 1,500 m² · House from 350 m² · 4 Bedrooms</div>
           <div class="vcard-actions">
-            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('georgette')">View Details</button>
-            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price List</a>
+            <button class="vcard-btn" onclick="event.stopPropagation();showVilla('georgette')">View Villa</button>
+            <a class="vcard-link" onclick="event.stopPropagation();goTo('#contact')">Request Price &amp; Availability</a>
           </div>
         </div>
       </div>
@@ -562,17 +566,17 @@
     <!-- ANNA -->
     <div id="p-anna" class="vdetail">
       <img class="vd-hero-img" src="assets/images/villas/anna/villa-anna-il.webp" alt="Villa Anna at Empathia Village, Seychelles" loading="lazy" style="object-position:center center" width="1600" height="685">
-      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Anna</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 240</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">An elegant two-storey residence designed for seamless indoor-outdoor living. Panoramic glazing, master suite with dressing room, open-plan living and dining, private pool and sun terrace. The project can be individually tailored to client requirements.</p><div class="vd-feats"><div class="vd-feat">Open-plan living & dining room</div><div class="vd-feat">Master bedroom with dressing room</div><div class="vd-feat">Private pool & sun terrace</div><div class="vd-feat">Individual project customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Get Villa Price List</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/anna/villa-anna-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Anna — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1246" height="906"/></div><p class="vd-plan-note">From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.</p></div></div>
+      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Anna</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 240</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">3</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">An elegant two-storey residence designed for seamless indoor-outdoor living. Panoramic glazing, master suite with dressing room, open-plan living and dining, private pool and sun terrace. The project can be individually tailored to client requirements.</p><div class="vd-feats"><div class="vd-feat">Open-plan living & dining room</div><div class="vd-feat">Master bedroom with dressing room</div><div class="vd-feat">Private pool & sun terrace</div><div class="vd-feat">Individual project customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Request Price &amp; Availability</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/anna/villa-anna-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Anna — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1246" height="906"/></div><p class="vd-plan-note">From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.</p></div></div>
     </div>
     <!-- GEORGETTE -->
     <div id="p-georgette" class="vdetail">
       <img class="vd-hero-img" src="assets/images/villas/georgette/villa-georgette-il.webp" alt="Villa Georgette — flagship villa at Empathia Village" loading="lazy" style="object-position:center center" width="1600" height="685">
-      <div class="vd-cols"><div class="vd-left"><div class="ew">Signature Residence</div><h3 class="h3">Villa Georgette</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 350</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">4</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">150</div><div class="vd-spec-k">m² Terrace</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">from 1,500</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">The flagship two-storey residence featuring wide panoramic balconies, terraces of 150 m² and a grand private pool. The finest residence in the collection — commanding unobstructed views of the Indian Ocean. Can be expanded up to 450 m².</p><div class="vd-feats"><div class="vd-feat">Two floors with panoramic balconies</div><div class="vd-feat">Terraces 150 m² · Private pool</div><div class="vd-feat">4 bedrooms · Master suite</div><div class="vd-feat">Individual customisation up to 450 m²</div><div class="vd-feat">Plot from 1,500 m²</div></div><button class="btn-solid" onclick="goTo('#contact')">Get Villa Price List</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/georgette/villa-georgette-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Georgette — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1283" height="921"/></div><p class="vd-plan-note">From $2,100,000. Plot from 1,500 m². All designs can be individually adapted. Not a public offer.</p></div></div>
+      <div class="vd-cols"><div class="vd-left"><div class="ew">Signature Residence</div><h3 class="h3">Villa Georgette</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 350</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">4</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">150</div><div class="vd-spec-k">m² Terrace</div></div><div class="vd-spec"><div class="vd-spec-v">28</div><div class="vd-spec-k">m² Pool</div></div><div class="vd-spec"><div class="vd-spec-v">from 1,500</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">The flagship two-storey residence featuring wide panoramic balconies, terraces of 150 m² and a grand private pool. The finest residence in the collection — commanding unobstructed views of the Indian Ocean. Can be expanded up to 450 m².</p><div class="vd-feats"><div class="vd-feat">Two floors with panoramic balconies</div><div class="vd-feat">Terraces 150 m² · Private pool</div><div class="vd-feat">4 bedrooms · Master suite</div><div class="vd-feat">Individual customisation up to 450 m²</div><div class="vd-feat">Plot from 1,500 m²</div></div><button class="btn-solid" onclick="goTo('#contact')">Request Price &amp; Availability</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/georgette/villa-georgette-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Georgette — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1283" height="921"/></div><p class="vd-plan-note">From $2,100,000. Plot from 1,500 m². All designs can be individually adapted. Not a public offer.</p></div></div>
     </div>
     <!-- JANE -->
     <div id="p-jane" class="vdetail">
       <img class="vd-hero-img" src="assets/images/villas/jane/villa-jane-il.webp" alt="Villa Jane at Empathia Village" loading="lazy" style="object-position:center center" width="1600" height="685">
-      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Jane</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 140</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">Pool</div><div class="vd-spec-k">Private</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">A refined single-storey residence with panoramic glazing framing views of the tropical landscape and the Indian Ocean. The most accessible entry point to the Empathia Village collection. Plot from 600 m². Design can be extended and adapted.</p><div class="vd-feats"><div class="vd-feat">Panoramic floor-to-ceiling glazing</div><div class="vd-feat">2 bedrooms · Private pool</div><div class="vd-feat">Plot from 600 m²</div><div class="vd-feat">Individual customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Get Villa Price List</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/jane/villa-jane-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Jane — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1288" height="919"/></div><p class="vd-plan-note">From $800,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.</p></div></div>
+      <div class="vd-cols"><div class="vd-left"><div class="ew">Residence</div><h3 class="h3">Villa Jane</h3><div class="vd-specs"><div class="vd-spec"><div class="vd-spec-v">from 140</div><div class="vd-spec-k">m² Area</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bedrooms</div></div><div class="vd-spec"><div class="vd-spec-v">2</div><div class="vd-spec-k">Bathrooms</div></div><div class="vd-spec"><div class="vd-spec-v">Pool</div><div class="vd-spec-k">Private</div></div><div class="vd-spec"><div class="vd-spec-v">from 600</div><div class="vd-spec-k">m² Plot</div></div></div><p class="vd-desc">A refined single-storey residence with panoramic glazing framing views of the tropical landscape and the Indian Ocean. The most accessible entry point to the Empathia Village collection. Plot from 600 m². Design can be extended and adapted.</p><div class="vd-feats"><div class="vd-feat">Panoramic floor-to-ceiling glazing</div><div class="vd-feat">2 bedrooms · Private pool</div><div class="vd-feat">Plot from 600 m²</div><div class="vd-feat">Individual customisation available</div><div class="vd-feat">Parking for 2 vehicles</div></div><button class="btn-solid" onclick="goTo('#contact')">Request Price &amp; Availability</button></div><div class="vd-right"><div class="vd-plan-label">Architectural Project</div><div class="vd-plan" style="cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))"><img src="assets/images/villas/jane/villa-jane-sheet.webp" loading="lazy" decoding="async" alt="Architectural project Villa Jane — floor plans, elevations and renders" style="width:100%;display:block;border-radius:2px" width="1288" height="919"/></div><p class="vd-plan-note">From $800,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.</p></div></div>
     </div>
     <!-- AMBER -->
     </section>
@@ -586,7 +590,7 @@
     <div class="ew" style="justify-content:center" id="cin2-ew">Lifestyle</div>
     <h2 class="h2" id="cin2-h2">Where the Indian Ocean<br>Becomes Your Garden</h2>
     <p class="body" style="margin:20px auto 36px;text-align:center" id="cin2-body">Baie Lazare. White sand. Granite boulders. Turquoise water. Two of the world's finest resort hotels as your neighbours.</p>
-    <button class="btn-solid" onclick="goTo('#contact')" id="cin2-btn">Reserve Your Residence</button>
+    <button class="btn-solid" onclick="goTo('#contact')" id="cin2-btn">Get Price List &amp; Plot Availability</button>
   </div>
 </div>
 
@@ -831,7 +835,7 @@
           <div class="vd-feat" id="car-f3">Vehicle import &amp; customs clearance on Mahé</div>
           <div class="vd-feat" id="car-f4">Luxury convertibles &amp; premium cars delivered to villa</div>
         </div>
-        <button class="btn-primary" onclick="go('#contact')" id="car-btn">Enquire About Services <span class="btn-arrow">→</span></button>
+        <button class="btn-primary" onclick="goTo('#contact')" id="car-btn">Schedule Private Consultation <span class="btn-arrow">→</span></button>
       </div>
       <div style="overflow:hidden;cursor:zoom-in" onclick="lbOpen(this.querySelector('img'))">
       <img src="assets/images/lifestyle/lifestyle-concierge.webp" alt="Concierge and island service — Empathia Village" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block" width="1672" height="941">
@@ -939,8 +943,8 @@
       <div class="acq-card" data-reveal data-delay="6"><div class="acq-n">06</div><div class="acq-title" id="ac6t">Construction &amp; Handover</div><div class="acq-text" id="ac6d">Kensington Construction &amp; Development begins your villa. Estimated build time is approximately 12 months per residence. Regular progress updates provided throughout.</div></div>
     </div>
     <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:48px;justify-content:center" data-reveal>
-      <button class="btn-solid" onclick="goTo('#contact')">Begin Your Enquiry</button>
-      <a href="https://wa.me/2482715102" target="_blank" rel="noopener" class="btn-ghost" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp Us Now</a>
+      <button class="btn-solid" onclick="goTo('#contact')">Schedule Private Consultation</button>
+      <a href="https://wa.me/2482715102" target="_blank" rel="noopener" class="btn-ghost btn-whatsapp" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp Advisor</a>
     </div>
   </div>
 </section>
@@ -1138,13 +1142,13 @@
 </section>
 <div class="gold-rule-soft"></div>
 
-<!-- ══════════ EMPATHIA VS EDEN ISLAND ══════════ -->
+<!-- ══════════ HILLSIDE VILLAS VS MARINA LIVING ══════════ -->
 <section style="background:var(--charcoal);padding:110px 0" id="vs-eden">
   <div class="wrap">
     <div data-reveal style="max-width:720px;margin:0 auto 72px">
       <div class="eyebrow">Choosing Your Seychelles Address</div>
-      <h2 class="h2" style="margin-bottom:20px">Empathia Village<br>vs Eden Island</h2>
-      <p class="body-t" style="opacity:.65">Two premium addresses in Seychelles — each suited to a different lifestyle and vision. Understanding the difference helps buyers make the right choice.</p>
+      <h2 class="h2" style="margin-bottom:20px">Hillside Villas<br>vs Marina Living</h2>
+      <p class="body-t" style="opacity:.65">Two premium Seychelles lifestyles — each suited to a different buyer profile, setting and daily rhythm.</p>
     </div>
     <div class="ve-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3px" data-reveal>
       <div style="background:rgba(26,46,30,.25);border:1px solid rgba(196,163,90,.18);padding:52px 44px">
@@ -1159,7 +1163,7 @@
           <div class="vd-feat">Individual design customisation available</div>
           <div class="vd-feat">Quiet, private south Mahé setting</div>
         </div>
-        <a href="contact.html" class="btn-solid" style="text-decoration:none">Enquire About Empathia Village</a>
+        <a href="#contact" class="btn-solid" style="text-decoration:none">Schedule Private Consultation</a>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:52px 44px">
         <div style="font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px">Eden Island</div>
@@ -1175,7 +1179,7 @@
       </div>
     </div>
     <div style="margin-top:3px;background:rgba(196,163,90,.05);border:1px solid rgba(196,163,90,.12);padding:32px 44px" data-reveal>
-      <p style="font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(255,255,255,.7);max-width:820px;margin:0 auto;line-height:1.75;text-align:center">Empathia Village is designed for buyers seeking privacy, nature, larger private plots and a quieter villa lifestyle — in one of Mahé's most prestigious coastal addresses, between Four Seasons and Kempinski.</p>
+      <p style="font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(255,255,255,.7);max-width:820px;margin:0 auto;line-height:1.75;text-align:center">Empathia Village is designed for buyers seeking privacy, nature, larger private plots and a quieter hillside villa lifestyle — in one of Mahé's most prestigious coastal addresses, between Four Seasons and Kempinski.</p>
     </div>
   </div>
 </section>
@@ -1255,8 +1259,8 @@
     <div class="pr-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
       <div data-reveal="left">
         <div class="ew">Detailed Documentation</div>
-        <h2 class="h2" style="margin-bottom:20px">Download Full<br>Presentation</h2>
-        <p class="lead" style="margin-bottom:28px;opacity:.75">Receive villa plans, pricing, location details and partnership terms. Our full presentation pack is sent directly to qualified buyers, investors and agents.</p>
+        <h2 class="h2" style="margin-bottom:20px">Request Full Presentation,<br>Price List &amp; Plot Availability</h2>
+        <p class="lead" style="margin-bottom:28px;opacity:.75">Receive villa plans, current pricing, available plots, payment options and agent terms. Our team responds within 24 hours.</p>
         <div style="display:flex;flex-direction:column;gap:11px">
           <div class="vd-feat">Villa floor plans &amp; architectural drawings</div>
           <div class="vd-feat">Pricing &amp; plot availability</div>
@@ -1267,18 +1271,26 @@
       </div>
       <div data-reveal="right">
         <div style="background:rgba(255,255,255,.04);border:1px solid rgba(200,169,110,.2);padding:48px 40px">
-          <div style="font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Request Presentation</div>
-          <input type="text" id="pres-name" placeholder="Name" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:10px;outline:none;border-radius:1px;box-sizing:border-box;transition:border-color .25s" onfocus="this.style.borderColor='rgba(200,169,110,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
-          <input type="email" id="pres-email" placeholder="Email" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:10px;outline:none;border-radius:1px;box-sizing:border-box;transition:border-color .25s" onfocus="this.style.borderColor='rgba(200,169,110,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
-          <input type="tel" id="pres-whatsapp" placeholder="WhatsApp" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:10px;outline:none;border-radius:1px;box-sizing:border-box;transition:border-color .25s" onfocus="this.style.borderColor='rgba(200,169,110,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
-          <select id="pres-interest" style="width:100%;background:rgba(8,9,10,.8);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);padding:14px 16px;font-family:var(--sans);font-size:13px;margin-bottom:20px;outline:none;border-radius:1px;box-sizing:border-box;-webkit-appearance:none">
-            <option value="">I am a… Buyer / Investor / Agent / Partner</option>
+          <div style="font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:24px">Request Full Presentation</div>
+          <select id="pres-role" class="lead-input">
+            <option value="">I am a…</option>
             <option value="Buyer">Buyer</option>
             <option value="Investor">Investor</option>
             <option value="Agent">Agent</option>
             <option value="Partner">Partner</option>
           </select>
-          <button onclick="submitPresentation()" style="width:100%;background:var(--gold);color:#0a0b0a;font-family:var(--sans);font-size:9px;letter-spacing:.24em;text-transform:uppercase;padding:17px;border:none;cursor:pointer;transition:background .25s;font-weight:600;border-radius:1px" onmouseover="this.style.background='#dfc088'" onmouseout="this.style.background='var(--gold)'">Request Presentation</button>
+          <input type="text" id="pres-name" class="lead-input" placeholder="Name">
+          <input type="email" id="pres-email" class="lead-input" placeholder="Email">
+          <input type="tel" id="pres-whatsapp" class="lead-input" placeholder="WhatsApp / Phone">
+          <select id="pres-interest" class="lead-input">
+            <option value="">Interested in…</option>
+            <option value="Villa Jane">Villa Jane</option>
+            <option value="Villa Anna">Villa Anna</option>
+            <option value="Villa Georgette">Villa Georgette</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+          <textarea id="pres-message" class="lead-input lead-textarea" placeholder="Message"></textarea>
+          <button onclick="submitPresentation()" class="lead-submit">Request Presentation &amp; Price List</button>
         </div>
       </div>
     </div>
@@ -1292,30 +1304,38 @@
   <div class="contact-inner">
     <div data-reveal>
       <div class="ew" style="justify-content:center;margin-bottom:20px" id="ct-ew">Private Consultation</div>
-      <h2 class="contact-h2" id="ct-h2">Request a Private Consultation</h2>
-      <p class="contact-sub" id="ct-sub">Get the full presentation, villa price list and availability. Our team responds within 24 hours.</p>
+      <h2 class="contact-h2" id="ct-h2">Request Full Presentation,<br>Price List &amp; Plot Availability</h2>
+      <p class="contact-sub" id="ct-sub">Receive villa plans, current pricing, available plots, payment options and agent terms. Our team responds within 24 hours.</p>
     </div>
     <div class="contact-channels" data-reveal>
       <div class="ch"><div class="ch-rule"></div><div class="ch-label" id="ch1l">Seychelles</div><div class="ch-val"><a href="tel:+2482715102">+248 271 51 02</a></div></div>
       <div class="ch"><div class="ch-rule"></div><div class="ch-label">Email</div><div class="ch-val"><a href="mailto:info@empathia-seychelles.com">info@empathia-seychelles.com</a></div></div>
     </div>
-    <div class="enquiry-form" data-reveal>
-      <input type="text" id="fn" placeholder="Your name" />
-      <input type="email" id="fe" placeholder="Email address" />
-      <input type="tel" id="fp" placeholder="WhatsApp / Phone" />
-      <select id="fi" style="flex:1;background:var(--lift);border:none;border-top:1px solid rgba(196,163,90,.2);color:rgba(255,255,255,.75);padding:20px 24px;font-family:var(--sans);font-size:14px;outline:none;width:100%;min-width:0;border-radius:0;-webkit-appearance:none">
+    <div class="enquiry-form lead-form" data-reveal>
+      <select id="fr" class="lead-input">
         <option value="">I am a…</option>
         <option value="Buyer">Buyer</option>
         <option value="Investor">Investor</option>
         <option value="Agent">Agent</option>
         <option value="Partner">Partner</option>
       </select>
-      <button onclick="submitForm()" id="f-sub">Request Presentation</button>
+      <input type="text" id="fn" class="lead-input" placeholder="Name" />
+      <input type="email" id="fe" class="lead-input" placeholder="Email" />
+      <input type="tel" id="fp" class="lead-input" placeholder="WhatsApp / Phone" />
+      <select id="fi" class="lead-input">
+        <option value="">Interested in…</option>
+        <option value="Villa Jane">Villa Jane</option>
+        <option value="Villa Anna">Villa Anna</option>
+        <option value="Villa Georgette">Villa Georgette</option>
+        <option value="Not sure yet">Not sure yet</option>
+      </select>
+      <textarea id="fm" class="lead-input lead-textarea" placeholder="Message"></textarea>
+      <button onclick="submitForm()" id="f-sub" class="lead-submit">Request Presentation &amp; Price List</button>
     </div>
     <div style="text-align:center;margin-top:20px">
       <a href="https://wa.me/2482715102" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:14px 28px;border:1px solid rgba(255,255,255,.12);transition:all .25s" onmouseover="this.style.borderColor='#25d366';this.style.color='#25d366'" onmouseout="this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.5)'">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Contact via WhatsApp
+        WhatsApp Advisor
       </a>
     </div>
   </div>
@@ -1532,19 +1552,23 @@ async function submitForm() {
   const n = document.getElementById('fn').value.trim();
   const p = document.getElementById('fp').value.trim();
   const e = (document.getElementById('fe') || {}).value ? document.getElementById('fe').value.trim() : '';
+  const role = (document.getElementById('fr') || {}).value || '';
   const i = (document.getElementById('fi') || {}).value || '';
+  const msg = (document.getElementById('fm') || {}).value ? document.getElementById('fm').value.trim() : '';
   if (!n && !p && !e) { alert('Please enter your name or contact details.'); return; }
   const btn = document.getElementById('f-sub');
   if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
   let ok = false;
   try {
-    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, phone: p, email: e, interest: i, page: 'Home' }, _utm())) });
+    const message = [role && `Role: ${role}`, msg].filter(Boolean).join('\n');
+    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, phone: p, email: e, interest: i || role, message, page: 'Home' }, _utm())) });
     ok = r.ok && (await r.json()).ok === true;
   } catch (err) {}
-  if (btn) { btn.disabled = false; btn.textContent = 'Send Request'; }
+  if (btn) { btn.disabled = false; btn.textContent = 'Request Presentation & Price List'; }
   if (ok) {
-    alert('Thank you' + (n ? ', '+n : '') + '.\n\nA member of our team will be in touch within 24 hours.\n\nEmpathia Village · Kensington Construction & Development');
-    ['fn','fp','fe'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    alert('Thank you' + (n ? ', '+n : '') + '.\n\nOur team will contact you within 24 hours with the full presentation, current pricing and plot availability.\n\nEmpathia Village · Kensington Construction & Development');
+    ['fn','fp','fe','fm'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    const roleSel = document.getElementById('fr'); if (roleSel) roleSel.value = '';
     const sel = document.getElementById('fi'); if (sel) sel.value = '';
   } else {
     alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\ninfo@empathia-seychelles.com');
@@ -1552,22 +1576,26 @@ async function submitForm() {
 }
 
 async function submitPresentation() {
+  const role = document.getElementById('pres-role').value;
   const n = document.getElementById('pres-name').value.trim();
   const e = document.getElementById('pres-email').value.trim();
   const w = document.getElementById('pres-whatsapp').value.trim();
   const i = document.getElementById('pres-interest').value;
+  const msg = document.getElementById('pres-message').value.trim();
   if (!n && !e && !w) { alert('Please enter your name or contact details.'); return; }
   const btn = document.querySelector('#presentation button');
   if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
   let ok = false;
   try {
-    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, email: e, phone: w, interest: i || 'Presentation request', message: 'Requested full presentation pack', page: 'Home – Presentation' }, _utm())) });
+    const message = [role && `Role: ${role}`, msg || 'Requested full presentation pack'].filter(Boolean).join('\n');
+    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, email: e, phone: w, interest: i || role || 'Presentation request', message, page: 'Home – Presentation' }, _utm())) });
     ok = r.ok && (await r.json()).ok === true;
   } catch (err) {}
-  if (btn) { btn.disabled = false; btn.textContent = 'Request Presentation'; }
+  if (btn) { btn.disabled = false; btn.textContent = 'Request Presentation & Price List'; }
   if (ok) {
-    alert('Thank you' + (n ? ', ' + n : '') + '.\n\nWe will send you the full presentation shortly.\n\nEmpathia Village · Kensington Construction & Development');
-    ['pres-name','pres-email','pres-whatsapp'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    alert('Thank you' + (n ? ', ' + n : '') + '.\n\nOur team will contact you within 24 hours with the full presentation, current pricing and plot availability.\n\nEmpathia Village · Kensington Construction & Development');
+    ['pres-name','pres-email','pres-whatsapp','pres-message'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    const roleSel = document.getElementById('pres-role'); if (roleSel) roleSel.value = '';
     const sel = document.getElementById('pres-interest'); if (sel) sel.value = '';
   } else {
     alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\ninfo@empathia-seychelles.com');

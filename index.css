@@ -135,3 +135,198 @@
     max-width:none !important;
   }
 }
+
+/* Conversion flow refinements */
+.btn-solid,
+.btn-ghost,
+.btn-primary,
+.nav-cta,
+.vcard-btn,
+.lead-submit,
+.mobile-sticky-cta a,
+.mobile-sticky-cta button{
+  border-radius:4px !important;
+}
+.btn-solid,
+.lead-submit,
+.nav-cta{
+  box-shadow:0 14px 34px rgba(196,163,90,.14);
+}
+.btn-solid:hover,
+.lead-submit:hover,
+.nav-cta:hover{
+  box-shadow:0 18px 48px rgba(196,163,90,.28) !important;
+}
+.btn-primary-cta{
+  padding-left:52px !important;
+  padding-right:52px !important;
+  background:linear-gradient(135deg,var(--gold-hi),var(--gold)) !important;
+  color:#08090a !important;
+  font-weight:650 !important;
+}
+.btn-whatsapp{
+  border-color:rgba(255,255,255,.22) !important;
+  color:rgba(255,255,255,.72) !important;
+  background:rgba(8,9,10,.18) !important;
+}
+.btn-whatsapp:hover{
+  border-color:rgba(37,211,102,.55) !important;
+  color:#d8ffe7 !important;
+  background:rgba(37,211,102,.08) !important;
+}
+.hero-sale-line{
+  font-size:14px !important;
+  max-width:820px !important;
+}
+.hero-proof{
+  gap:8px !important;
+  max-width:820px !important;
+  margin-bottom:34px !important;
+}
+.hero-proof span{
+  min-height:34px !important;
+  font-size:11px !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  color:rgba(255,255,255,.78) !important;
+}
+.stat-n{
+  white-space:normal !important;
+}
+.lead-input{
+  width:100%;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  color:#fff;
+  padding:15px 16px;
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.3;
+  margin-bottom:10px;
+  outline:none;
+  border-radius:4px;
+  box-sizing:border-box;
+  transition:border-color .25s,background .25s;
+  -webkit-appearance:none;
+}
+.lead-input:focus{
+  border-color:rgba(200,169,110,.58);
+  background:rgba(255,255,255,.085);
+}
+select.lead-input{
+  color:rgba(255,255,255,.72);
+  background-color:rgba(8,9,10,.72);
+}
+.lead-textarea{
+  min-height:96px;
+  resize:vertical;
+}
+.lead-submit{
+  width:100%;
+  background:linear-gradient(135deg,var(--gold-hi),var(--gold));
+  color:#0a0b0a;
+  font-family:var(--sans);
+  font-size:9.5px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  padding:18px 20px;
+  border:none;
+  cursor:pointer;
+  transition:transform .25s,box-shadow .25s,filter .25s;
+  font-weight:700;
+}
+.lead-submit:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.04);
+}
+.lead-submit:disabled{
+  opacity:.65;
+  cursor:default;
+  transform:none;
+}
+.lead-form{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px !important;
+  max-width:980px;
+  margin:0 auto;
+}
+.lead-form .lead-input{
+  margin-bottom:0;
+  min-width:0;
+}
+.lead-form .lead-textarea,
+.lead-form .lead-submit{
+  grid-column:1 / -1;
+}
+.mobile-sticky-cta{
+  display:none;
+}
+@media(min-width:1025px){
+  .nav-cta{
+    background:rgba(196,163,90,.12) !important;
+    border-color:rgba(196,163,90,.62) !important;
+    color:var(--gold-hi) !important;
+  }
+}
+@media(max-width:1024px){
+  body{
+    padding-bottom:76px;
+  }
+  .mobile-sticky-cta{
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    z-index:760;
+    display:grid;
+    grid-template-columns:1fr 1.25fr;
+    gap:8px;
+    padding:8px;
+    background:rgba(8,9,10,.88);
+    border:1px solid rgba(196,163,90,.2);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    box-shadow:0 18px 50px rgba(0,0,0,.42);
+  }
+  .mobile-sticky-cta a,
+  .mobile-sticky-cta button{
+    min-height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.04);
+    color:rgba(255,255,255,.82);
+    font-family:var(--sans);
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+  }
+  .mobile-sticky-cta button{
+    background:var(--gold);
+    color:#08090a;
+    border-color:var(--gold);
+    font-weight:700;
+  }
+  .hero-actions{
+    align-items:stretch !important;
+  }
+  .hero-actions a,
+  .hero-actions button{
+    min-height:52px;
+  }
+  .lead-form{
+    grid-template-columns:1fr !important;
+  }
+}
+@media(max-width:600px){
+  .hero-sale-line{
+    font-size:13px !important;
+  }
+  .hero-proof span{
+    white-space:normal !important;
+    min-height:34px !important;
+  }
+}
