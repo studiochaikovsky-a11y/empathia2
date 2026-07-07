@@ -428,3 +428,109 @@ select.lead-input{
     white-space:normal !important;
   }
 }
+
+/* Mobile hero cleanup - English */
+@media(max-width:600px){
+  .hero{
+    min-height:820px !important;
+    height:auto !important;
+  }
+
+  .hero-content{
+    justify-content:flex-start !important;
+    padding:46px 24px 118px !important;
+    min-height:820px !important;
+  }
+
+  .hero-chip{
+    margin-bottom:18px !important;
+    font-size:8px !important;
+    line-height:1.4 !important;
+    letter-spacing:.2em !important;
+  }
+
+  .hero-h1{
+    font-size:clamp(44px,13vw,58px) !important;
+    line-height:.98 !important;
+    margin-bottom:20px !important;
+  }
+
+  .hero-sale-line{
+    max-width:100% !important;
+    font-size:16px !important;
+    line-height:1.55 !important;
+    letter-spacing:.03em !important;
+    text-transform:none !important;
+    margin-bottom:22px !important;
+    color:rgba(255,255,255,.82) !important;
+  }
+
+  .hero-proof{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    width:100% !important;
+    max-width:100% !important;
+    gap:8px !important;
+    margin:0 0 24px !important;
+  }
+
+  .hero-proof span{
+    width:100% !important;
+    min-height:44px !important;
+    padding:8px 10px !important;
+    font-size:11px !important;
+    line-height:1.25 !important;
+    letter-spacing:.08em !important;
+    text-align:center !important;
+    white-space:normal !important;
+  }
+
+  .hero-proof span:last-child{
+    grid-column:1 / -1 !important;
+    justify-self:start !important;
+    width:min(100%,260px) !important;
+  }
+
+  .hero-actions{
+    display:flex !important;
+    flex-direction:column !important;
+    width:100% !important;
+    max-width:100% !important;
+    gap:12px !important;
+    align-items:stretch !important;
+  }
+
+  .hero-actions .btn-solid,
+  .hero-actions .btn-ghost{
+    width:100% !important;
+    max-width:100% !important;
+    min-height:58px !important;
+    padding:0 18px !important;
+    font-size:10px !important;
+    line-height:1.25 !important;
+    letter-spacing:.16em !important;
+    text-align:center !important;
+    white-space:normal !important;
+    overflow-wrap:normal !important;
+  }
+
+  .hero-actions .btn-primary-cta{
+    font-size:0 !important;
+  }
+
+  .hero-actions .btn-primary-cta::after{
+    content:"Get Price List";
+    font-size:10px !important;
+    line-height:1.25 !important;
+    letter-spacing:.16em !important;
+  }
+
+  .hero-actions .btn-whatsapp{
+    display:none !important;
+  }
+
+  .hero-scroll-hint,
+  .hero-dots{
+    display:none !important;
+  }
+}
