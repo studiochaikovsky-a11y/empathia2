@@ -514,17 +514,6 @@ select.lead-input{
     overflow-wrap:normal !important;
   }
 
-  .hero-actions .btn-primary-cta{
-    font-size:0 !important;
-  }
-
-  .hero-actions .btn-primary-cta::after{
-    content:"Get Price List";
-    font-size:10px !important;
-    line-height:1.25 !important;
-    letter-spacing:.16em !important;
-  }
-
   .hero-actions .btn-whatsapp{
     display:none !important;
   }
