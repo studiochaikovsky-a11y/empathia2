@@ -523,3 +523,35 @@ select.lead-input{
     display:none !important;
   }
 }
+
+/* Kensington developer logo */
+.dev-badge{
+  align-items:center !important;
+  gap:22px !important;
+}
+
+.dev-badge .dev-logo-kensington{
+  width:150px !important;
+  height:92px !important;
+  object-fit:contain !important;
+  flex-shrink:0 !important;
+  border-radius:4px !important;
+  padding:12px 14px !important;
+  background:#061a43 !important;
+  border:1px solid rgba(196,163,90,.24) !important;
+  filter:none !important;
+  opacity:1 !important;
+}
+
+@media(max-width:600px){
+  .dev-badge{
+    align-items:flex-start !important;
+    gap:14px !important;
+  }
+
+  .dev-badge .dev-logo-kensington{
+    width:112px !important;
+    height:76px !important;
+    padding:10px !important;
+  }
+}
