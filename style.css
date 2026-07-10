@@ -365,3 +365,26 @@ select.field option{background:var(--charcoal)}
   .contact-grid{gap:32px}
   .footer{padding:28px 16px}
 }
+
+/* Inline form statuses */
+.form-status{
+  margin-top:12px;
+  padding:14px 16px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.045);
+  color:rgba(255,255,255,.72);
+  font-size:12px;
+  line-height:1.65;
+  letter-spacing:.04em;
+}
+.form-status[hidden]{display:none!important}
+.form-status-success{border-color:rgba(196,163,90,.42);background:rgba(196,163,90,.1);color:rgba(255,255,255,.86)}
+.form-status-error{border-color:rgba(204,104,88,.52);background:rgba(204,104,88,.1);color:rgba(255,230,224,.9)}
+
+/* Mobile form consistency */
+@media(max-width:600px){
+  .form-grid{gap:10px!important}
+  .field,.btn-solid{min-height:50px}
+  .form-status{font-size:12px!important;margin-top:10px!important;padding:12px 14px!important}
+  .mob-drawer .btn-solid,.mob-link{white-space:normal!important}
+}

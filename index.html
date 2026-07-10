@@ -1434,6 +1434,7 @@
           </select>
           <textarea id="pres-message" class="lead-input lead-textarea" placeholder="Message"></textarea>
           <button onclick="submitPresentation()" class="lead-submit">Request Presentation &amp; Price List</button>
+          <div id="pres-status" class="form-status" aria-live="polite" hidden></div>
         </div>
       </div>
     </div>
@@ -1474,6 +1475,7 @@
       </select>
       <textarea id="fm" class="lead-input lead-textarea" placeholder="Message"></textarea>
       <button onclick="submitForm()" id="f-sub" class="lead-submit">Request Presentation &amp; Price List</button>
+      <div id="contact-status" class="form-status" aria-live="polite" hidden></div>
     </div>
     <div style="text-align:center;margin-top:20px">
       <a href="https://wa.me/2482715102" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:14px 28px;border:1px solid rgba(255,255,255,.12);transition:all .25s" onmouseover="this.style.borderColor='#25d366';this.style.color='#25d366'" onmouseout="this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.5)'">
@@ -1691,6 +1693,13 @@ function toggleFaq(q) {
 }
 
 // ── FORM ──
+function setFormStatus(id, type, text) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.className = 'form-status' + (type ? ' form-status-' + type : '');
+  el.textContent = text || '';
+  el.hidden = !text;
+}
 async function submitForm() {
   const n = document.getElementById('fn').value.trim();
   const p = document.getElementById('fp').value.trim();
@@ -1698,9 +1707,13 @@ async function submitForm() {
   const role = (document.getElementById('fr') || {}).value || '';
   const i = (document.getElementById('fi') || {}).value || '';
   const msg = (document.getElementById('fm') || {}).value ? document.getElementById('fm').value.trim() : '';
-  if (!n && !p && !e) { alert('Please enter your name or contact details.'); return; }
+  if (!n && !p && !e) {
+    setFormStatus('contact-status', 'error', 'Please enter your name or contact details.');
+    return;
+  }
+  setFormStatus('contact-status', '', '');
   const btn = document.getElementById('f-sub');
-  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
   let ok = false;
   try {
     const message = [role && `Role: ${role}`, msg].filter(Boolean).join('\n');
@@ -1709,15 +1722,14 @@ async function submitForm() {
   } catch (err) {}
   if (btn) { btn.disabled = false; btn.textContent = 'Request Presentation & Price List'; }
   if (ok) {
-    alert('Thank you' + (n ? ', '+n : '') + '.\n\nOur team will contact you within 24 hours with the full presentation, current pricing and plot availability.\n\nEmpathia Village · Kensington Construction & Development');
+    setFormStatus('contact-status', 'success', 'Thank you' + (n ? ', ' + n : '') + '. Our team will contact you within 24 hours with the full presentation, current pricing and plot availability.');
     ['fn','fp','fe','fm'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
     const roleSel = document.getElementById('fr'); if (roleSel) roleSel.value = '';
     const sel = document.getElementById('fi'); if (sel) sel.value = '';
   } else {
-    alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\ninfo@empathia-seychelles.com');
+    setFormStatus('contact-status', 'error', 'Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }
 }
-
 async function submitPresentation() {
   const role = document.getElementById('pres-role').value;
   const n = document.getElementById('pres-name').value.trim();
@@ -1725,26 +1737,29 @@ async function submitPresentation() {
   const w = document.getElementById('pres-whatsapp').value.trim();
   const i = document.getElementById('pres-interest').value;
   const msg = document.getElementById('pres-message').value.trim();
-  if (!n && !e && !w) { alert('Please enter your name or contact details.'); return; }
+  if (!n && !e && !w) {
+    setFormStatus('pres-status', 'error', 'Please enter your name or contact details.');
+    return;
+  }
+  setFormStatus('pres-status', '', '');
   const btn = document.querySelector('#presentation button');
-  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
   let ok = false;
   try {
     const message = [role && `Role: ${role}`, msg || 'Requested full presentation pack'].filter(Boolean).join('\n');
-    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, email: e, phone: w, interest: i || role || 'Presentation request', message, page: 'Home – Presentation' }, _utm())) });
+    const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ name: n, email: e, phone: w, interest: i || role || 'Presentation request', message, page: 'Home - Presentation' }, _utm())) });
     ok = r.ok && (await r.json()).ok === true;
   } catch (err) {}
   if (btn) { btn.disabled = false; btn.textContent = 'Request Presentation & Price List'; }
   if (ok) {
-    alert('Thank you' + (n ? ', ' + n : '') + '.\n\nOur team will contact you within 24 hours with the full presentation, current pricing and plot availability.\n\nEmpathia Village · Kensington Construction & Development');
+    setFormStatus('pres-status', 'success', 'Thank you' + (n ? ', ' + n : '') + '. Our team will contact you within 24 hours with the full presentation, current pricing and plot availability.');
     ['pres-name','pres-email','pres-whatsapp','pres-message'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
     const roleSel = document.getElementById('pres-role'); if (roleSel) roleSel.value = '';
     const sel = document.getElementById('pres-interest'); if (sel) sel.value = '';
   } else {
-    alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\ninfo@empathia-seychelles.com');
+    setFormStatus('pres-status', 'error', 'Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }
 }
-
 // ── PERFORMANCE: lazy-load all non-hero images ──
 (function(){
   var heroImgs = document.querySelectorAll('#heroReel img');

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -34,6 +34,27 @@
 <link rel="stylesheet" href="style.css?v=20260615b">
 <script src="mobile-nav.js?v=20260630b" defer></script>
 <style>body{padding-top:112px}</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://empathia-seychelles.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Agent Programme",
+      "item": "https://empathia-seychelles.com/agents"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -114,7 +135,7 @@
       <a href="/ar/" style="color:rgba(255,255,255,.4);text-decoration:none" title="العربية">AR</a>
     </div>
     <div class="nav-actions">
-    <a href="contact.html" class="btn-nav">Private Enquiry</a>
+    <a href="contact.html" class="btn-nav">Get Price List</a>
   </div>
 </nav>
 
@@ -245,6 +266,7 @@
       </div>
       <div style="margin-top:3px">
         <button class="btn-solid" onclick="submitAgent()" style="width:100%;justify-content:center;padding:18px">Request Agent Pack</button>
+        <div id="agent-status" class="form-status" aria-live="polite" hidden></div>
       </div>
     </div>
   </div>
@@ -293,11 +315,21 @@
 </footer>
 
 <script>
+function setFormStatus(id,type,text){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.className='form-status'+(type?' form-status-'+type:'');
+  el.textContent=text||'';
+  el.hidden=!text;
+}
 async function submitAgent(){
   const n=document.getElementById('ag-name').value.trim();
   const e=document.getElementById('ag-email').value.trim();
   const p=document.getElementById('ag-phone').value.trim();
-  if(!n||!e||!p){alert('Please fill in your name, email and phone number.');return;}
+  if(!n||!e||!p){setFormStatus('agent-status','error','Please fill in your name, email and phone number.');return;}
+  setFormStatus('agent-status','','');
+  const btn=document.querySelector('button[onclick="submitAgent()"]');
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
   const c=document.getElementById('ag-company')?document.getElementById('ag-company').value.trim():'';
   const co=document.getElementById('ag-country')?document.getElementById('ag-country').value.trim():'';
   const s=document.getElementById('ag-source')?document.getElementById('ag-source').value:'';
@@ -308,10 +340,13 @@ async function submitAgent(){
     const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:n,phone:p,email:e,interest:'Agent partnership',message:msg,page:'Agents'},_utm()))});
     ok=r.ok&&(await r.json()).ok===true;
   }catch(err){}
+  if(btn){btn.disabled=false;btn.textContent='Request Agent Pack';}
   if(ok){
-    alert('Thank you, '+n+'.\n\nYour agent registration has been received. A member of our sales team will contact you within 24 hours.\n\nEmpathia Village · Agent Programme');
+    setFormStatus('agent-status','success','Thank you, '+n+'. Our sales team will contact you within 24 hours with the full agent pack, commission structure and supporting materials.');
+    ['ag-name','ag-email','ag-phone','ag-company','ag-country','ag-message'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    const source=document.getElementById('ag-source');if(source)source.value='';
   }else{
-    alert('Sorry, the form could not be sent right now.\n\nPlease contact us directly:\nWhatsApp +248 271 51 02\ninfo@empathia-seychelles.com');
+    setFormStatus('agent-status','error','Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }
 }
 window.addEventListener('scroll',()=>{
