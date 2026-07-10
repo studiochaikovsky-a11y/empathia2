@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://empathia-seychelles.com/</loc><lastmod>2026-06-15</lastmod><priority>1.0</priority></url>
-  <url><loc>https://empathia-seychelles.com/residencies</loc><lastmod>2026-06-12</lastmod><priority>0.9</priority></url>
-  <url><loc>https://empathia-seychelles.com/pricing</loc><lastmod>2026-06-12</lastmod><priority>0.9</priority></url>
-  <url><loc>https://empathia-seychelles.com/gallery</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/construction</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/about</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://empathia-seychelles.com/agents</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority></url>
-  <url><loc>https://empathia-seychelles.com/faq</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/blog</loc><lastmod>2026-06-15</lastmod><priority>0.5</priority></url>
-  <url><loc>https://empathia-seychelles.com/buying-property-in-seychelles</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/seychelles-residency-by-investment</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/freehold-property-seychelles</loc><lastmod>2026-06-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/phase-i-construction-update</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/baie-lazare-beach-seychelles</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/seychelles-island-lifestyle</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/kensington-construction-seychelles</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/aldabra-giant-tortoises-seychelles</loc><lastmod>2026-06-15</lastmod><priority>0.7</priority></url>
-  <url><loc>https://empathia-seychelles.com/contact</loc><lastmod>2026-06-12</lastmod><priority>0.8</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://empathia-seychelles.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://empathia-seychelles.com/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://empathia-seychelles.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://empathia-seychelles.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://empathia-seychelles.com/" />
+    <lastmod>2026-07-10</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url><loc>https://empathia-seychelles.com/fr/</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://empathia-seychelles.com/ar/</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://empathia-seychelles.com/residencies</loc><lastmod>2026-07-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://empathia-seychelles.com/pricing</loc><lastmod>2026-07-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://empathia-seychelles.com/gallery</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://empathia-seychelles.com/construction</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://empathia-seychelles.com/about</loc><lastmod>2026-07-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://empathia-seychelles.com/agents</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://empathia-seychelles.com/faq</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://empathia-seychelles.com/contact</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://empathia-seychelles.com/blog</loc><lastmod>2026-07-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://empathia-seychelles.com/buying-property-in-seychelles</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://empathia-seychelles.com/freehold-property-seychelles</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://empathia-seychelles.com/baie-lazare-beach-seychelles</loc><lastmod>2026-07-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://empathia-seychelles.com/kensington-class-i-license</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://empathia-seychelles.com/kensington-construction-seychelles</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://empathia-seychelles.com/phase-i-construction-update</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://empathia-seychelles.com/seychelles-residency-by-investment</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://empathia-seychelles.com/seychelles-island-lifestyle</loc><lastmod>2026-07-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://empathia-seychelles.com/aldabra-giant-tortoises-seychelles</loc><lastmod>2026-07-10</lastmod><priority>0.5</priority></url>
 </urlset>

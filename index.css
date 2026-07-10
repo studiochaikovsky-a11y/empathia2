@@ -555,3 +555,86 @@ select.lead-input{
     padding:10px !important;
   }
 }
+
+/* SEO buyer guide links */
+.seo-pathways{
+  background:var(--deep);
+  padding:96px 0 !important;
+}
+
+.seo-pathways-inner{
+  display:grid;
+  grid-template-columns:minmax(280px,.9fr) 1.25fr;
+  gap:56px;
+  align-items:start;
+}
+
+.seo-pathways-copy .body{
+  max-width:500px;
+}
+
+.seo-pathways-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:2px;
+}
+
+.seo-pathway-card{
+  min-height:138px;
+  padding:28px 30px;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.025);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:background .28s var(--ease), border-color .28s var(--ease), transform .28s var(--ease);
+}
+
+.seo-pathway-card span{
+  font-size:9px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.36);
+}
+
+.seo-pathway-card strong{
+  font-family:var(--serif);
+  font-size:24px;
+  line-height:1.12;
+  font-style:italic;
+  font-weight:300;
+  color:var(--white);
+}
+
+.seo-pathway-card:hover{
+  background:rgba(196,163,90,.08);
+  border-color:rgba(196,163,90,.32);
+  transform:translateY(-2px);
+}
+
+.seo-pathway-card:hover strong{
+  color:var(--gold-hi);
+}
+
+@media(max-width:900px){
+  .seo-pathways-inner{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+}
+
+@media(max-width:600px){
+  .seo-pathways{
+    padding:72px 0 86px !important;
+  }
+  .seo-pathways-grid{
+    grid-template-columns:1fr;
+  }
+  .seo-pathway-card{
+    min-height:112px;
+    padding:24px 22px;
+  }
+  .seo-pathway-card strong{
+    font-size:22px;
+  }
+}
