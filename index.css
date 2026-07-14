@@ -556,33 +556,6 @@ select.lead-input{
   }
 }
 
-/* Brighter home hero imagery */
-.hero-reel img{
-  filter:brightness(1.08) saturate(1.06) contrast(1.02) !important;
-}
-
-.hero-vignette{
-  background:
-    linear-gradient(90deg,rgba(8,9,10,.5) 0%,rgba(8,9,10,.26) 34%,rgba(8,9,10,.06) 66%,rgba(8,9,10,.1) 100%),
-    linear-gradient(180deg,rgba(8,9,10,.1) 0%,rgba(8,9,10,.12) 48%,rgba(8,9,10,.42) 100%) !important;
-}
-
-.hero-content{
-  text-shadow:0 2px 22px rgba(0,0,0,.55) !important;
-}
-
-@media(max-width:600px){
-  .hero-reel img{
-    filter:brightness(1.04) saturate(1.04) contrast(1.01) !important;
-  }
-
-  .hero-vignette{
-    background:
-      linear-gradient(90deg,rgba(8,9,10,.34),rgba(8,9,10,.12)),
-      linear-gradient(180deg,rgba(8,9,10,.1) 0%,rgba(8,9,10,.24) 48%,rgba(8,9,10,.56) 100%) !important;
-  }
-}
-
 /* SEO buyer guide links */
 .seo-pathways{
   background:var(--deep);
