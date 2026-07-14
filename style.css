@@ -388,3 +388,12 @@ select.field option{background:var(--charcoal)}
   .form-status{font-size:12px!important;margin-top:10px!important;padding:12px 14px!important}
   .mob-drawer .btn-solid,.mob-link{white-space:normal!important}
 }
+/* Desktop dropdown hover stability */
+@media (min-width:1025px){
+  .nav-item{position:relative}
+  .nav-item::after{content:"";position:absolute;left:-18px;right:-18px;top:100%;height:18px;display:block}
+  .nav-sub{top:calc(100% + 8px)!important;pointer-events:auto}
+  .nav-item:hover .nav-sub,
+  .nav-item:focus-within .nav-sub,
+  .nav-sub:hover{opacity:1;visibility:visible;transform:translateY(0)}
+}
