@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -407,14 +407,42 @@ let clientPlanRows = [];    // working state for the new/convert client modal's 
 let currentPanelLead = null;   // lead object currently shown in #panel, for "Сделать клиентом"
 let currentPanelClientId = null; // client id currently shown in #panel, for payment/note actions
 
+const CRM_SOURCES = [
+  ['empathia-seychelles.com', 'empathia-seychelles.com'],
+  ['empathiavillage.ru', 'empathiavillage.ru'],
+  ['james-edition', 'James Edition'],
+  ['prian', 'Prian'],
+  ['avito', 'Avito'],
+  ['rightmove', 'Rightmove'],
+  ['luxury-estate', 'Luxury Estate'],
+  ['hgf', 'HGF'],
+  ['agents', 'Agents'],
+  ['manual', 'Телефон / вручную'],
+];
+
 // ── INIT
 window.addEventListener('DOMContentLoaded', () => {
+  populateSourceSelects();
   if (token) showApp(); else el('login').hidden = false;
 });
 
 // ── UTILS
 const el = id => document.getElementById(id);
 const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+function sourceOptions(includeAll = false) {
+  const all = includeAll ? '<option value="">Все источники</option>' : '';
+  return all + CRM_SOURCES.map(([value, label]) =>
+    `<option value="${esc(value)}">${esc(label)}</option>`
+  ).join('');
+}
+
+function populateSourceSelects() {
+  const sourceFilter = el('sourceFilter');
+  const newLeadSource = el('nl-source');
+  if (sourceFilter) sourceFilter.innerHTML = sourceOptions(true);
+  if (newLeadSource) newLeadSource.innerHTML = sourceOptions(false);
+}
 
 function fmtDate(str, full = false) {
   if (!str) return '—';
@@ -452,7 +480,17 @@ function villaTag(interest) {
 function srcTag(source) {
   if (!source || source === 'empathia-seychelles.com') return '<span class="src-tag src-en">EN</span>';
   if (source.includes('.ru')) return '<span class="src-tag src-ru">RU</span>';
-  return '<span class="src-tag src-manual">—</span>';
+  const labels = {
+    'james-edition': 'JE',
+    prian: 'Prian',
+    avito: 'Avito',
+    rightmove: 'RM',
+    'luxury-estate': 'LE',
+    hgf: 'HGF',
+    agents: 'Agents',
+    manual: 'Manual',
+  };
+  return `<span class="src-tag src-manual">${esc(labels[source] || source || '—')}</span>`;
 }
 
 function money(amount, currency) {
@@ -626,10 +664,10 @@ function renderStats(stats) {
   ];
 
   const bySource = stats.by_source || [];
-  const enCount = bySource.find(x => x.source === 'empathia-seychelles.com')?.count || 0;
-  const ruCount = bySource.find(x => x.source === 'empathiavillage.ru')?.count || 0;
-  if (enCount) cards.push({ val: enCount, lbl: '.com (EN)', cls: 'link', action: "filterSource('empathia-seychelles.com')" });
-  if (ruCount) cards.push({ val: ruCount, lbl: '.ru (RU)',  cls: 'link', action: "filterSource('empathiavillage.ru')" });
+  for (const [value, label] of CRM_SOURCES) {
+    const count = bySource.find(x => x.source === value)?.count || 0;
+    if (count) cards.push({ val: count, lbl: label, cls: 'link', action: `filterSource('${value}')` });
+  }
 
   const byVilla = stats.by_villa || [];
   for (const v of byVilla.slice(0, 3)) {
