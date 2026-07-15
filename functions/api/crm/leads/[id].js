@@ -9,11 +9,12 @@ export async function onRequestGet({ params, env }) {
 }
 
 export async function onRequestPatch({ params, request, env }) {
+  await ensureLeadCountryColumn(env);
   let data;
   try { data = await request.json(); }
   catch { return json({ ok: false, error: 'bad request' }, 400); }
 
-  const allowed = ['status', 'name', 'phone', 'email', 'interest', 'type', 'source', 'created_at'];
+  const allowed = ['status', 'name', 'phone', 'email', 'interest', 'type', 'source', 'created_at', 'country'];
   const sets = [];
   const vals = [];
 
@@ -33,6 +34,10 @@ export async function onRequestDelete({ params, env }) {
   return json({ ok: true });
 }
 
+async function ensureLeadCountryColumn(env) {
+  try { await env.DB.prepare('ALTER TABLE leads ADD COLUMN country TEXT').run(); }
+  catch (err) { if (!String(err?.message || err).includes('duplicate column')) throw err; }
+}
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
     status,

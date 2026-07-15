@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS leads (
   id          INTEGER PRIMARY KEY AUTOINCREMENT,
   created_at  TEXT    DEFAULT (datetime('now')),
   source      TEXT    DEFAULT 'empathia-seychelles.com',
+  country     TEXT,
   name        TEXT,
   phone       TEXT,
   email       TEXT,

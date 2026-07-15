@@ -305,6 +305,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
       <div class="field"><label>Имя *</label><input class="input-base" id="nl-name" type="text" required></div>
       <div class="field"><label>Телефон</label><input class="input-base" id="nl-phone" type="tel"></div>
       <div class="field"><label>Email</label><input class="input-base" id="nl-email" type="email"></div>
+      <div class="field"><label>Страна заявки</label><input class="input-base" id="nl-country" type="text" placeholder="Например: UAE, UK, Russia"></div>
       <div class="field"><label>Интерес к вилле</label>
         <select class="sel-base" id="nl-interest" style="width:100%">
           <option value="">—</option>
@@ -860,6 +861,7 @@ function renderPanel(l, notes) {
       ${irow('Телефон', l.phone ? `<a href="tel:${esc(l.phone)}">${esc(l.phone)}</a>` : '—')}
       ${irow('Email',   l.email ? `<a href="mailto:${esc(l.email)}">${esc(l.email)}</a>` : '—')}
       ${irow('Интерес', villaTag(l.interest))}
+      ${irow('Страна заявки', `<input class="input-base" type="text" value="${esc(l.country || '')}" placeholder="Страна" onchange="updateLeadField(${l.id}, 'country', this.value.trim(), 'Страна заявки обновлена')">`)}
       ${irow('Источник', `<select class="ssel" onchange="updateLeadField(${l.id}, 'source', this.value)">${leadSourceOptions}</select>`)}
       ${l.page ? irow('Страница', `<span style="font-size:12px">${esc(l.page)}</span>`) : ''}
       ${irow('Тип', l.type === 'agent' ? 'Агент' : 'Клиент')}
@@ -963,6 +965,7 @@ async function saveNewLead(e) {
     name:     el('nl-name').value.trim(),
     phone:    el('nl-phone').value.trim(),
     email:    el('nl-email').value.trim(),
+    country:  el('nl-country').value.trim(),
     interest: el('nl-interest').value,
     source:   el('nl-source').value,
     message:  el('nl-message').value.trim(),
