@@ -67,7 +67,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
 .sel-base:focus{border-color:var(--gold)}
 
 .lead-table{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.trow{display:grid;grid-template-columns:120px 1fr 160px 130px 72px 100px;align-items:center;padding:13px 18px;border-bottom:1px solid var(--border);gap:12px;cursor:pointer;transition:.13s background}
+.trow{display:grid;grid-template-columns:110px 1fr 150px 120px 130px 70px 100px;align-items:center;padding:13px 18px;border-bottom:1px solid var(--border);gap:12px;cursor:pointer;transition:.13s background}
 .trow:last-child{border-bottom:none}
 .trow:hover{background:var(--surface2)}
 .trow.thead{cursor:default;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:10px 18px}
@@ -242,7 +242,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
   <!-- LEADS -->
   <main id="vLeads" hidden>
     <div class="filters">
-      <input class="input-base" type="search" id="searchInput" placeholder="Поиск по имени, email, телефону…" oninput="onSearch()">
+      <input class="input-base" type="search" id="searchInput" placeholder="Поиск по имени, email, телефону, стране…" oninput="onSearch()">
       <select class="sel-base" id="statusFilter" onchange="reloadLeads()">
         <option value="">Все статусы</option>
         <option value="new">Новые</option>
@@ -725,7 +725,7 @@ function renderLeads(leads, total, pages) {
     el('pageEl').innerHTML = '';
     return;
   }
-  const head = `<div class="trow thead"><span>Дата</span><span>Клиент</span><span>Контакт</span><span>Вилла</span><span>Ист.</span><span>Статус</span></div>`;
+  const head = `<div class="trow thead"><span>Дата</span><span>Клиент</span><span>Контакт</span><span>Страна</span><span>Вилла</span><span>Ист.</span><span>Статус</span></div>`;
   el('leadsTable').innerHTML = `<div class="lead-table">${head}${leads.map(leadRow).join('')}</div>`;
   renderPagination(pages);
 }
@@ -735,6 +735,7 @@ function leadRow(l) {
     <span class="td-date">${fmtDate(l.created_at)}</span>
     <span class="td-name">${esc(l.name || 'Без имени')}</span>
     <span class="td-contact">${esc(l.phone || l.email || '—')}</span>
+    <span class="td-contact">${esc(l.country || '—')}</span>
     <span>${villaTag(l.interest)}</span>
     <span>${srcTag(l.source)}</span>
     <span>${statusBadge(l.status)}</span>
