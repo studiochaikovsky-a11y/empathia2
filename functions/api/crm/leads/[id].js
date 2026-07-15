@@ -13,7 +13,7 @@ export async function onRequestPatch({ params, request, env }) {
   try { data = await request.json(); }
   catch { return json({ ok: false, error: 'bad request' }, 400); }
 
-  const allowed = ['status', 'name', 'phone', 'email', 'interest', 'type', 'source'];
+  const allowed = ['status', 'name', 'phone', 'email', 'interest', 'type', 'source', 'created_at'];
   const sets = [];
   const vals = [];
 
