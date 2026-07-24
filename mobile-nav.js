@@ -68,27 +68,23 @@
       if (firstEl) {
         var isActive = found.some(function(f){ return f.el.classList.contains('active'); });
         var dd = document.createElement('div');
-        dd.style.cssText = 'position:relative;display:flex;align-items:center';
-        var toggle = document.createElement('span');
+        dd.className = 'nav-item';
+        var toggle = document.createElement('a');
+        toggle.href = firstEl.getAttribute('href');
         toggle.className = 'nav-link' + (isActive ? ' active' : '');
-        toggle.style.cssText = 'cursor:default;user-select:none';
+        toggle.setAttribute('aria-haspopup', 'true');
         toggle.innerHTML = 'Villas <span style="font-size:9px;opacity:.5">▾</span>';
         var sub = document.createElement('div');
-        sub.style.cssText = 'display:none;position:absolute;top:calc(100% + 14px);left:-16px;background:#0c110f;border:1px solid rgba(200,169,110,.18);border-top:2px solid #c8a96e;min-width:168px;padding:6px 0;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.5)';
+        sub.className = 'nav-sub';
         found.forEach(function(f) {
           var a = document.createElement('a');
           a.href = f.el.getAttribute('href');
           a.textContent = f.label;
-          if (f.el.classList.contains('active')) a.style.color = '#c8a96e';
-          a.style.cssText = 'display:block;padding:10px 18px;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;white-space:nowrap;font-family:inherit' + (f.el.classList.contains('active') ? ';color:#c8a96e' : '');
-          a.addEventListener('mouseover', function(){ this.style.color='#c8a96e'; });
-          a.addEventListener('mouseout',  function(){ this.style.color = f.el.classList.contains('active') ? '#c8a96e' : 'rgba(255,255,255,.6)'; });
+          if (f.el.classList.contains('active')) a.className = 'active';
           sub.appendChild(a);
         });
         dd.appendChild(toggle);
         dd.appendChild(sub);
-        dd.addEventListener('mouseenter', function(){ sub.style.display='block'; });
-        dd.addEventListener('mouseleave', function(){ sub.style.display='none'; });
         navLinks.insertBefore(dd, firstEl);
         found.forEach(function(f){ f.el.parentNode.removeChild(f.el); });
       }
