@@ -139,7 +139,7 @@
   </a>
   <div class="nav-links">
     <a href="index.html" class="nav-link">Home</a>
-    <a href="residencies.html" class="nav-link">Residencies</a>
+    <a href="residencies.html" class="nav-link">Residences</a>
     <a href="pricing.html" class="nav-link">Pricing</a>
     <a href="gallery.html" class="nav-link">Gallery</a>
     <a href="construction.html" class="nav-link">Construction</a>
@@ -220,46 +220,26 @@
 
         <div class="form-grid">
           <div class="field-wrap">
-            <label class="field-label">Full Name</label>
-            <input type="text" class="field" id="fn" placeholder="Your name">
+            <label class="field-label" for="fn">Name *</label>
+            <input type="text" class="field" id="fn" autocomplete="name" required>
           </div>
           <div class="field-wrap">
-            <label class="field-label">Email Address</label>
-            <input type="email" class="field" id="fe" placeholder="your@email.com">
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">WhatsApp</label>
-            <input type="tel" class="field" id="fp" placeholder="+1 000 000 0000">
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Country</label>
-            <input type="text" class="field" id="fc" placeholder="Your country">
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Interest</label>
-            <select class="field" id="fi">
-              <option value="">Select…</option>
-              <option>Buyer</option>
-              <option>Investor</option>
-            </select>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Preferred Villa</label>
-            <select class="field" id="fv">
-              <option value="">Select…</option>
-              <option>Villa Jane — from $800,000</option>
-              <option>Villa Anna — from $990,000</option>
-              <option>Villa Georgette — from $2,100,000</option>
-              <option>Not sure yet</option>
-            </select>
+            <label class="field-label" for="fcnt">WhatsApp or Email *</label>
+            <input type="text" class="field" id="fcnt" autocomplete="email" required>
           </div>
           <div class="field-wrap form-row">
-            <label class="field-label">Message (optional)</label>
-            <textarea class="field" id="fm" rows="4" placeholder="Tell us about your requirements, preferred timeline, or any questions you have…" style="resize:vertical;min-height:90px"></textarea>
+            <label class="field-label" for="fi">I am interested in</label>
+            <select class="field" id="fi">
+              <option value="">Choose (optional)</option>
+              <option>Villa Jane</option>
+              <option>Villa Anna</option>
+              <option>Villa Georgette</option>
+              <option>Available plots</option>
+            </select>
           </div>
         </div>
         <div style="margin-top:3px">
-          <button class="btn-solid" onclick="submitForm()" style="width:100%;justify-content:center;padding:18px">Request Presentation &amp; Price List</button>
+          <button class="btn-solid" onclick="submitForm()" style="width:100%;justify-content:center;padding:18px">Send Price List</button>
           <div id="contact-status" class="form-status" aria-live="polite" hidden></div>
         </div>
         <div style="margin-top:12px">
@@ -333,28 +313,24 @@ function setFormStatus(id,type,text){
 }
 async function submitForm(){
   const n=document.getElementById('fn').value.trim();
-  const p=document.getElementById('fp').value.trim();
-  const e=document.getElementById('fe').value.trim();
-  if(!n&&!p&&!e){setFormStatus('contact-status','error','Please enter your name or contact details.');return;}
+  const contact=document.getElementById('fcnt').value.trim();
+  if(!n||!contact){setFormStatus('contact-status','error','Please enter your name and a WhatsApp number or email address.');(!n?document.getElementById('fn'):document.getElementById('fcnt')).focus();return;}
   setFormStatus('contact-status','','');
   const btn=document.querySelector('button[onclick="submitForm()"]');
+  if(btn&&btn.disabled)return;
   if(btn){btn.disabled=true;btn.textContent='Sending...';}
   const i=document.getElementById('fi')?document.getElementById('fi').value:'';
-  const v=document.getElementById('fv')?document.getElementById('fv').value:'';
-  const co=document.getElementById('fc')?document.getElementById('fc').value.trim():'';
-  const m=document.getElementById('fm')?document.getElementById('fm').value.trim():'';
-  const msg=[co&&('Country: '+co),v&&('Preferred villa: '+v),m].filter(Boolean).join('\n');
+  const isEmail=contact.includes('@');
   let ok=false;
   try{
-    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:n,phone:p,email:e,interest:i,message:msg,page:'Contact'},_utm()))});
+    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:n,phone:isEmail?'':contact,email:isEmail?contact:'',interest:i,page:'Contact'},_utm()))});
     ok=r.ok&&(await r.json()).ok===true;
   }catch(err){}
-  if(btn){btn.disabled=false;btn.textContent='Request Presentation & Price List';}
+  if(btn){btn.disabled=false;btn.textContent='Send Price List';}
   if(ok){
-    setFormStatus('contact-status','success','Thank you'+(n?', '+n:'')+'. Our team will contact you within 24 hours with the full presentation, current pricing and plot availability.');
-    ['fn','fp','fe','fc','fm'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    setFormStatus('contact-status','success','Thank you. Our advisor will contact you shortly and send the current price list and available plots.');
+    ['fn','fcnt'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
     const sel=document.getElementById('fi');if(sel)sel.value='';
-    const vsel=document.getElementById('fv');if(vsel)vsel.value='';
   }else{
     setFormStatus('contact-status','error','Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }

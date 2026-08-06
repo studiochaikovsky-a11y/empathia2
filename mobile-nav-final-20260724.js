@@ -11,9 +11,9 @@
   var TG_HREF = 'https://t.me/seychellas_villa';
   var IG_HREF = 'https://www.instagram.com/seychelles.empathia/';
 
-  var PAGES = [
+  var EN_PAGES = [
     ['index.html', 'Home'],
-    ['residencies.html', 'Residencies'],
+    ['residencies.html', 'Residences'],
     ['pricing.html', 'Pricing'],
     ['gallery.html', 'Gallery'],
     ['construction.html', 'Construction'],
@@ -38,6 +38,17 @@
     if (!nav || document.getElementById('mobDrawer')) return;
 
     var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var lang = (document.documentElement.lang || 'en').toLowerCase();
+    var isFr = lang.indexOf('fr') === 0;
+    var isAr = lang.indexOf('ar') === 0;
+    var pages = isFr ? [
+      ['#hero', 'Accueil'], ['#construction', 'Construction'], ['#villas', 'Résidences'],
+      ['#masterplan', 'Plan masse'], ['#location', 'Localisation'], ['#faq', 'FAQ'], ['#contact', 'Contact']
+    ] : isAr ? [
+      ['#hero', 'الرئيسية'], ['#construction', 'البناء'], ['#villas', 'الفلل'],
+      ['#masterplan', 'المخطط العام'], ['#location', 'الموقع'], ['#faq', 'الأسئلة'], ['#contact', 'التواصل']
+    ] : EN_PAGES;
+    var labels = isFr ? {menu:'Menu', close:'Fermer', price:'Recevoir les prix'} : isAr ? {menu:'القائمة', close:'إغلاق', price:'قائمة الأسعار'} : {menu:'Menu', close:'Close', price:'Price List'};
 
     document.body.insertAdjacentHTML('afterbegin',
       '<div class="mob-topbar">' +
@@ -91,7 +102,7 @@
     }
 
     // Mobile drawer links (flat list, all items)
-    var links = PAGES.map(function (p) {
+    var links = pages.map(function (p) {
       var active = p[0] === current ? ' active' : '';
       return '<a href="' + p[0] + '" class="mob-link' + active + '">' + p[1] + '</a>';
     }).join('');
@@ -101,7 +112,7 @@
       '<div class="mob-drawer" id="mobDrawer">' +
         '<div class="mob-drawer-top">' +
           '<span class="mob-drawer-brand">Empathia Village</span>' +
-          '<button class="mob-drawer-close" aria-label="Close">✕</button>' +
+          '<button class="mob-drawer-close" aria-label="' + labels.close + '">✕</button>' +
         '</div>' +
         '<div class="mob-contacts-bar">' +
           '<a href="' + PHONE_HREF + '" class="mob-contact-link">' + icon('phone', 15) + PHONE_DISPLAY + '</a>' +
@@ -110,25 +121,34 @@
         '</div>' +
         '<nav class="mob-links">' + links + '</nav>' +
         '<div style="padding:24px 28px">' +
-          '<a href="contact.html" class="btn-solid" style="display:block;text-align:center;padding:16px">Get Price List</a>' +
+          '<a href="' + (isFr || isAr ? '#contact' : 'contact.html') + '" class="btn-solid" style="display:block;text-align:center;padding:16px">' + labels.price + '</a>' +
         '</div>' +
       '</div>');
 
     var drawer = document.getElementById('mobDrawer');
     var overlay = document.getElementById('mobOverlay');
     var burger = document.getElementById('navBurger');
+    burger.setAttribute('aria-label', labels.menu);
+    burger.setAttribute('aria-controls', 'mobDrawer');
+    burger.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
 
     function closeMobileNav() {
       drawer.classList.remove('open');
       overlay.classList.remove('open');
       burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
     burger.addEventListener('click', function () {
       var open = drawer.classList.toggle('open');
       overlay.classList.toggle('open', open);
       burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      drawer.setAttribute('aria-hidden', String(!open));
       document.body.style.overflow = open ? 'hidden' : '';
+      if (open) drawer.querySelector('.mob-drawer-close').focus();
     });
     overlay.addEventListener('click', closeMobileNav);
     drawer.querySelector('.mob-drawer-close').addEventListener('click', closeMobileNav);
@@ -139,6 +159,20 @@
     window.addEventListener('resize', function () {
       if (window.innerWidth > 1024) closeMobileNav();
     });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && drawer.classList.contains('open')) {
+        closeMobileNav();
+        burger.focus();
+      }
+    });
+
+    if (!document.querySelector('.upgrade-mobile-cta, .mobile-sticky-cta')) {
+      document.body.insertAdjacentHTML('beforeend',
+        '<div class="mobile-sticky-cta" aria-label="Quick contact">' +
+          '<a href="' + (isFr || isAr ? '#contact' : 'contact.html') + '">' + labels.price + '</a>' +
+          '<a href="' + WA_HREF + '" target="_blank" rel="noopener">WhatsApp</a>' +
+        '</div>');
+    }
   }
 
   if (document.readyState === 'loading') {
