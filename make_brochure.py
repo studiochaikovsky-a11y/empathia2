@@ -18,7 +18,7 @@ DIM = HexColor('#6E7072')
 
 SITE = 'empathia-seychelles.com'
 PHONE = '+248 271 51 02'
-EMAIL = 'studiochaikovsky@gmail.com'
+EMAIL = 'info@empathia-seychelles.com'
 
 def img_reader(path, crop_ratio=None):
     """Open image (any format PIL knows), optionally center-crop to ratio w/h."""
@@ -126,7 +126,7 @@ y -= 30
 spaced(c, W / 2, y, 'AGENT SALES PACK · 2026', size=9, color=MUT, track=3.5, center=True)
 
 # key stats row
-stats = [('35', 'PLOTS ONLY'), ('FREEHOLD', 'FULL TITLE'), ('FROM $800,000', 'VILLA & LAND'), ('3%', 'AGENT COMMISSION')]
+stats = [('30', 'AVAILABLE PLOTS'), ('FREEHOLD', 'FULL TITLE'), ('FROM $800,000', 'VILLA & LAND'), ('FROM 3%', 'AGENT COMMISSION')]
 bw = (W - 96) / 4
 sy = 96
 c.setStrokeColor(HexColor('#3A3C3E'))
@@ -149,27 +149,28 @@ c.drawString(48, H - 94, 'A Private Village Above Baie Lazare')
 
 y = H - 124
 y = para(c, 48, y,
-    'Empathia Village is a private estate of 35 villa plots on the granite hillside above Baie Lazare — '
-    'one of the most celebrated bays of the Indian Ocean — on the south-west coast of Mahé, Seychelles. '
+    'Empathia Village is a private estate of 30 available villa plots on the granite hillside above Baie Lazare. '
+    'Adjacent plots can be combined for a larger private estate, subject to technical review and final documentation. '
+    'The project is set on one of the most celebrated bays of the Indian Ocean, on the south-west coast of Mahé, Seychelles. '
     'The estate is positioned between the Four Seasons and Kempinski resorts, around 30 minutes from the '
     'international airport with direct connections to Europe, the Middle East and Asia.', max_w=500)
 y -= 4
 y = para(c, 48, y,
     'Following new Seychelles legislation that lifted the moratorium on foreign property ownership, '
     'international buyers receive full freehold title to both villa and land — transferable, inheritable '
-    'and mortgageable. A Seychelles residence permit for the owner and immediate family accompanies '
-    'every purchase.', max_w=500)
+    'and mortgageable, subject to the applicable approvals. Residency support is available, while eligibility '
+    'is determined by the relevant Seychelles authorities for each buyer.', max_w=500)
 
 # facts grid
 facts = [
-    ('35', 'Plots · intentionally limited'),
+    ('30', 'Available plots'),
     ('600–2,000 m²', 'Plot sizes'),
     ('Freehold', 'Villa and land, full title'),
-    ('From $800,000', 'Turnkey, incl. residency'),
-    ('12 months', 'Construction per villa'),
-    ('Class 1', 'Licensed developer'),
+    ('From $800,000', 'Villa and plot'),
+    ('2030', 'Estate completion'),
+    ('Class 1', 'Licence valid through 2028'),
     ('USD · EUR · GBP', 'Payment currencies'),
-    ('3% / $24,000+', 'Agent commission'),
+    ('From 3%', 'Commission per completed client'),
 ]
 gx, gy = 48, y - 30
 colw = (W - 96) / 4
@@ -227,24 +228,24 @@ villas = [
         'img': 'assets/images/villas/jane/villa-jane-il.jpg',
         'name': 'Villa Jane',
         'tag': 'SINGLE STOREY · GLAZED PAVILION',
-        'specs': '100–150 m² · 2 bedrooms · private pool · plot from 600 m²',
+        'specs': 'from 140 m² · 2 bedrooms · private pool · plot from 600 m²',
         'desc': 'A refined single-storey residence with panoramic floor-to-ceiling glazing framing the tropical landscape and the Indian Ocean. The entry point to the collection.',
         'price': 'From $800,000',
     },
     {
         'img': 'assets/images/villas/anna/villa-anna-il.jpg',
         'name': 'Villa Anna',
-        'tag': 'SINGLE STOREY · GARDEN & POOL',
-        'specs': '200–250 m² · master suite with dressing room · plot from 600 m²',
-        'desc': 'An elegant single-storey residence designed for seamless indoor-outdoor living: open-plan living and dining, private pool and sun terrace.',
+        'tag': 'TWO STOREYS · GARDEN & POOL',
+        'specs': 'from 240 m² · 3 bedrooms · private pool · plot from 600 m²',
+        'desc': 'An elegant two-storey residence designed for seamless indoor-outdoor living: open-plan living and dining, private pool and sun terrace.',
         'price': 'From $990,000',
     },
     {
         'img': 'assets/images/villas/georgette/villa-georgette-il.jpg',
         'name': 'Villa Georgette',
-        'tag': 'SIGNATURE · TWO STOREYS · PANORAMIC TERRACES',
-        'specs': '300–450 m² · 4 bedrooms · terraces 150 m² · plot 1,500–2,000 m²',
-        'desc': 'The flagship two-storey residence with wide panoramic balconies and a grand private pool, commanding unobstructed views of the Indian Ocean.',
+        'tag': 'SIGNATURE · THREE STOREYS · PANORAMIC TERRACES',
+        'specs': 'from 350 m² · 4 bedrooms · private pool · plot from 1,500 m²',
+        'desc': 'The flagship three-storey residence with wide panoramic terraces and a grand private pool, commanding unobstructed views of the Indian Ocean.',
         'price': 'From $2,100,000',
     },
 ]
@@ -304,16 +305,16 @@ c.setLineWidth(1)
 c.line(bx, byy, bx, byy + bh)
 c.setFont('Times-Italic', 34)
 c.setFillColor(GOLD)
-c.drawString(bx + 28, byy + bh - 46, '3%')
+c.drawString(bx + 28, byy + bh - 46, 'From 3%')
 c.setFont('Helvetica', 8.5)
 c.setFillColor(MUT)
-c.drawString(bx + 28, byy + bh - 62, 'of transaction value, paid upon completion · no cap')
+c.drawString(bx + 28, byy + bh - 62, 'per introduced client who completes a purchase')
 c.setFont('Times-Italic', 17)
 c.setFillColor(WHITE)
-c.drawRightString(bx + bw_ - 28, byy + bh - 46, 'from $24,000')
+c.drawRightString(bx + bw_ - 28, byy + bh - 46, 'Partner terms')
 c.setFont('Helvetica', 8.5)
 c.setFillColor(MUT)
-c.drawRightString(bx + bw_ - 28, byy + bh - 62, 'minimum referral fee per transaction')
+c.drawRightString(bx + bw_ - 28, byy + bh - 62, 'rate and timing recorded in the agreement')
 
 # benefits two columns
 y = byy - 30

@@ -4,7 +4,9 @@
   const DATA = {
     project: {
       name: 'Empathia Village',
-      plots: 35,
+      plots: 30,
+      allMasterplanPlotsAvailable: true,
+      adjacentPlotsCanBeCombined: true,
       plotMin: 600,
       plotMax: 2000,
       ownership: 'Freehold ownership, subject to applicable approvals',
@@ -15,10 +17,13 @@
       constructionStatus: 'Construction underway',
       constructionStage: 'Phase I foundation works are underway',
       constructionUpdated: 'June 2026',
+      estateCompletionYear: 2030,
       developer: 'Kensington Construction & Development',
       developerExperience: 'Over 30 years of international experience',
       licenseClass: 'Class I Building Contractor',
       licenseNumber: '322704',
+      licenseValidThrough: 2028,
+      agentCommissionFromPercent: 3,
       contactEmail: 'info@empathia-seychelles.com',
       contactPhone: '+248 271 51 02',
       whatsapp: 'https://wa.me/2482715102'
