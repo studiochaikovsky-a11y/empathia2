@@ -67,10 +67,11 @@
     document.querySelectorAll('[data-lightbox]').forEach(function (button) {
       button.addEventListener('click', function () {
         const source = button.querySelector('img');
-        if (!source) return;
+        const imageSource = button.getAttribute('data-lightbox-src') || (source && (source.currentSrc || source.src));
+        if (!imageSource) return;
         opener = button;
-        image.src = source.currentSrc || source.src;
-        image.alt = source.alt || '';
+        image.src = imageSource;
+        image.alt = button.getAttribute('data-lightbox-alt') || (source && source.alt) || '';
         box.classList.add('open');
         box.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';

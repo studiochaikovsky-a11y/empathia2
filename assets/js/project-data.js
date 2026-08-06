@@ -5,7 +5,7 @@
     project: {
       name: 'Empathia Village',
       plots: 30,
-      allMasterplanPlotsAvailable: true,
+      availabilityShownOnMasterplan: true,
       adjacentPlotsCanBeCombined: true,
       plotMin: 600,
       plotMax: 2000,

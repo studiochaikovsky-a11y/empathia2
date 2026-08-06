@@ -126,7 +126,7 @@ y -= 30
 spaced(c, W / 2, y, 'AGENT SALES PACK · 2026', size=9, color=MUT, track=3.5, center=True)
 
 # key stats row
-stats = [('30', 'AVAILABLE PLOTS'), ('FREEHOLD', 'FULL TITLE'), ('FROM $800,000', 'VILLA & LAND'), ('FROM 3%', 'AGENT COMMISSION')]
+stats = [('30', 'PRIVATE PLOTS'), ('FREEHOLD', 'FULL TITLE'), ('FROM $800,000', 'VILLA & LAND'), ('FROM 3%', 'AGENT COMMISSION')]
 bw = (W - 96) / 4
 sy = 96
 c.setStrokeColor(HexColor('#3A3C3E'))
@@ -149,8 +149,8 @@ c.drawString(48, H - 94, 'A Private Village Above Baie Lazare')
 
 y = H - 124
 y = para(c, 48, y,
-    'Empathia Village is a private estate of 30 available villa plots on the granite hillside above Baie Lazare. '
-    'Adjacent plots can be combined for a larger private estate, subject to technical review and final documentation. '
+    'Empathia Village is a private estate of 30 villa plots on the granite hillside above Baie Lazare. Current availability is shown on the masterplan. '
+    'Adjacent available plots can be combined for a larger private estate, subject to technical review and final documentation. '
     'The project is set on one of the most celebrated bays of the Indian Ocean, on the south-west coast of Mahé, Seychelles. '
     'The estate is positioned between the Four Seasons and Kempinski resorts, around 30 minutes from the '
     'international airport with direct connections to Europe, the Middle East and Asia.', max_w=500)

@@ -110,8 +110,8 @@ def page_one(c):
     c.line(48, H - 176, 118, H - 176)
     c.setFillColor(white)
     c.setFont("Helvetica", 11)
-    c.drawString(48, 108, "30 available freehold villa plots")
-    c.drawString(48, 88, "Adjacent plots can be combined")
+    c.drawString(48, 108, "30 private freehold villa plots")
+    c.drawString(48, 88, "Adjacent available plots can be combined")
     c.drawString(48, 68, "Villas from $800,000 - estate completion planned for 2030")
     c.showPage()
 
@@ -125,16 +125,16 @@ def page_two(c):
     c.drawString(42, H - 82, "A private hillside community")
     y = paragraph(c,
         "Empathia Village is set above Baie Lazare between Four Seasons Resort Seychelles and Kempinski Seychelles Resort. "
-        "All 30 plots shown on the current masterplan are available. Neighbouring plots can be combined to create a larger private estate, subject to technical review and final documentation.",
+        "The current masterplan shows all 30 plots and their sale status. Neighbouring available plots can be combined to create a larger private estate, subject to technical review and final documentation.",
         42, H - 112, W - 84, 9.5, 14)
     image_y = 278
     image_h = y - image_y - 18
     c.setFillColor(PAPER)
     c.roundRect(42, image_y, W - 84, image_h, 5, stroke=0, fill=1)
-    fit_image(c, "assets/images/project/masterplan-available-2026.webp", 48, image_y + 6, W - 96, image_h - 12)
+    fit_image(c, "assets/images/project/masterplan.jpg", 48, image_y + 6, W - 96, image_h - 12)
 
     facts = [
-        ("30", "available private plots"),
+        ("30", "private plots in the estate"),
         ("600-2,000 m2", "plot range"),
         ("Freehold", "villa and land, subject to approvals"),
         ("2030", "full estate completion planned"),
