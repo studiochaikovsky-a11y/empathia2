@@ -50,8 +50,8 @@ def fix_meta_fr(html):
         '<title>Luxury Villas for Sale in Seychelles | Empathia Village Baie Lazare</title>',
         '<title>Villas de Luxe à Vendre aux Seychelles | Empathia Village Baie Lazare</title>'
     )
-    old_desc = 'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $800,000. Staged payments. Agent programme from 3%."'
-    new_desc = 'content="Villas en pleine propriété à vendre à Baie Lazare, Seychelles. Communauté privée entre Four Seasons &amp; Kempinski — 35 parcelles dès 600 m², villas à partir de $800 000. Paiements échelonnés. Programme agent dès 3 %."'
+    old_desc = 'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $990,000. Staged payments. Agent programme from 3%."'
+    new_desc = 'content="Villas en pleine propriété à vendre à Baie Lazare, Seychelles. Communauté privée entre Four Seasons &amp; Kempinski — 35 parcelles dès 600 m², villas à partir de $990 000. Paiements échelonnés. Programme agent dès 3 %."'
     html = html.replace(old_desc, new_desc)
     return html
 
@@ -73,8 +73,8 @@ def fix_meta_ar(html):
         '<title>Luxury Villas for Sale in Seychelles | Empathia Village Baie Lazare</title>',
         '<title>فلل فاخرة للبيع في جزر سيشيل | Empathia Village</title>'
     )
-    old_desc = 'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $800,000. Staged payments. Agent programme from 3%."'
-    new_desc = 'content="فلل فاخرة بملكية حرة للبيع في Baie Lazare، جزر سيشيل. 35 قطعة خاصة من 600 م²، فلل تبدأ من $800,000. دفعات مرحلية. برنامج الوكلاء من 3٪."'
+    old_desc = 'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $990,000. Staged payments. Agent programme from 3%."'
+    new_desc = 'content="فلل فاخرة بملكية حرة للبيع في Baie Lazare، جزر سيشيل. 35 قطعة خاصة من 600 م²، فلل تبدأ من $990,000. دفعات مرحلية. برنامج الوكلاء من 3٪."'
     html = html.replace(old_desc, new_desc)
     # Insert RTL styles after <head>
     rtl_style = '''<style id="rtl-overrides">
@@ -123,7 +123,7 @@ FR = [
     ('Freehold Title · Staged Payments · Between Four Seasons &amp; Kempinski',
      'Pleine propriété · Paiements échelonnés · Entre Four Seasons &amp; Kempinski'),
     ('35 Private Plots', '35 Parcelles privées'),
-    ('From $800,000', 'À partir de $800 000'),
+    ('From $990,000', 'À partir de $990 000'),
     ('12 Months Build', 'Construction 12 mois'),
     ('Rental Potential', 'Potentiel locatif'),
     ('Request Full Presentation', 'Demander la présentation complète'),
@@ -284,8 +284,8 @@ FR = [
     ('Individual project customisation available', 'Personnalisation individuelle du projet disponible'),
     ('Parking for 2 vehicles', 'Parking pour 2 véhicules'),
     ('Architectural Project', 'Projet Architectural'),
-    ('From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.',
-     'À partir de $990 000. Parcelle dès 600 m². Ajustements individuels du design, de la taille et de la disposition disponibles sur demande. Pas une offre publique.'),
+    ('From $1,500,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.',
+     'À partir de $1 500 000. Parcelle dès 600 m². Ajustements individuels du design, de la taille et de la disposition disponibles sur demande. Pas une offre publique.'),
 
     # Villa Georgette desc
     ('The flagship two-storey residence featuring wide panoramic balconies, terraces of 150 m² and a grand private pool. The finest residence in the collection — commanding unobstructed views of the Indian Ocean. Can be expanded up to 450 m².',
@@ -302,8 +302,8 @@ FR = [
     ('Panoramic floor-to-ceiling glazing', 'Vitrage panoramique sol-plafond'),
     ('2 bedrooms · Private pool', '2 chambres · Piscine privée'),
     ('Individual customisation available', 'Personnalisation individuelle disponible'),
-    ('From $800,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.',
-     'À partir de $800 000. Parcelle dès 600 m². Le design, la taille et la disposition peuvent être adaptés individuellement. Pas une offre publique.'),
+    ('From $990,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.',
+     'À partir de $990 000. Parcelle dès 600 m². Le design, la taille et la disposition peuvent être adaptés individuellement. Pas une offre publique.'),
 
     # Pricing
     ('Pricing', 'Tarifs'),
@@ -542,7 +542,7 @@ FR = [
     ('Agent Commission', 'Commission Agent'),
     ('of transaction value', 'de la valeur de la transaction'),
     ('Minimum fee per transaction', 'Frais minimum par transaction'),
-    ('Starting villa price from $800,000', 'Prix de départ villa dès $800 000'),
+    ('Starting villa price from $990,000', 'Prix de départ villa dès $990 000'),
     ('What You Receive', 'Ce que vous recevez'),
     ('Full villa presentation deck (PDF &amp; print-ready)', 'Dossier de présentation villa complet (PDF et prêt à imprimer)'),
     ('Floor plans &amp; architectural renders per villa', 'Plans et rendus architecturaux par villa'),
@@ -715,7 +715,7 @@ AR = [
     ('Freehold Title · Staged Payments · Between Four Seasons &amp; Kempinski',
      'ملكية حرة · دفعات متدرجة · بين Four Seasons و Kempinski'),
     ('35 Private Plots', '35 قطعة خاصة'),
-    ('From $800,000', 'تبدأ من $800,000'),
+    ('From $990,000', 'تبدأ من $990,000'),
     ('12 Months Build', 'البناء 12 شهراً'),
     ('Rental Potential', 'إمكانية الإيجار'),
     ('Request Full Presentation', 'طلب العرض الكامل'),
@@ -901,7 +901,7 @@ AR = [
     ('Agent Commission', 'عمولة الوكيل'),
     ('of transaction value', 'من قيمة الصفقة'),
     ('Minimum fee per transaction', 'الحد الأدنى للرسوم لكل صفقة'),
-    ('Starting villa price from $800,000', 'سعر الفيلا يبدأ من $800,000'),
+    ('Starting villa price from $990,000', 'سعر الفيلا يبدأ من $990,000'),
     ('What You Receive', 'ما ستحصل عليه'),
     ('Request Agent Pack', 'طلب حقيبة الوكيل'),
     ('View Full Agent Programme', 'عرض برنامج الوكيل الكامل'),

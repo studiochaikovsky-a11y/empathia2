@@ -32,7 +32,7 @@
       jane: {
         slug: 'jane',
         name: 'Villa Jane',
-        price: 800000,
+        price: 990000,
         area: 140,
         plot: 600,
         bedrooms: 2,
@@ -50,7 +50,7 @@
       anna: {
         slug: 'anna',
         name: 'Villa Anna',
-        price: 990000,
+        price: 1500000,
         area: 240,
         plot: 600,
         bedrooms: 3,

@@ -126,7 +126,7 @@ y -= 30
 spaced(c, W / 2, y, 'AGENT SALES PACK · 2026', size=9, color=MUT, track=3.5, center=True)
 
 # key stats row
-stats = [('30', 'PRIVATE PLOTS'), ('FREEHOLD', 'FULL TITLE'), ('FROM $800,000', 'VILLA & LAND'), ('FROM 3%', 'AGENT COMMISSION')]
+stats = [('30', 'PRIVATE PLOTS'), ('FREEHOLD', 'FULL TITLE'), ('FROM $990,000', 'VILLA & LAND'), ('FROM 3%', 'AGENT COMMISSION')]
 bw = (W - 96) / 4
 sy = 96
 c.setStrokeColor(HexColor('#3A3C3E'))
@@ -166,7 +166,7 @@ facts = [
     ('30', 'Available plots'),
     ('600–2,000 m²', 'Plot sizes'),
     ('Freehold', 'Villa and land, full title'),
-    ('From $800,000', 'Villa and plot'),
+    ('From $990,000', 'Villa and plot'),
     ('2030', 'Estate completion'),
     ('Class 1', 'Licence valid through 2028'),
     ('USD · EUR · GBP', 'Payment currencies'),
@@ -230,7 +230,7 @@ villas = [
         'tag': 'SINGLE STOREY · GLAZED PAVILION',
         'specs': 'from 140 m² · 2 bedrooms · private pool · plot from 600 m²',
         'desc': 'A refined single-storey residence with panoramic floor-to-ceiling glazing framing the tropical landscape and the Indian Ocean. The entry point to the collection.',
-        'price': 'From $800,000',
+        'price': 'From $990,000',
     },
     {
         'img': 'assets/images/villas/anna/villa-anna-il.jpg',
@@ -238,7 +238,7 @@ villas = [
         'tag': 'TWO STOREYS · GARDEN & POOL',
         'specs': 'from 240 m² · 3 bedrooms · private pool · plot from 600 m²',
         'desc': 'An elegant two-storey residence designed for seamless indoor-outdoor living: open-plan living and dining, private pool and sun terrace.',
-        'price': 'From $990,000',
+        'price': 'From $1,500,000',
     },
     {
         'img': 'assets/images/villas/georgette/villa-georgette-il.jpg',

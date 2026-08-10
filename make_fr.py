@@ -31,11 +31,11 @@ def fix_meta(h):
     h = h.replace('<link rel="alternate" hreflang="x-default" href="https://empathia-seychelles.com/fr/">',
                   '<link rel="alternate" hreflang="x-default" href="https://empathia-seychelles.com/">')
     h = h.replace(
-        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $800,000. Staged payments. Agent programme from 3%."',
-        'content="Villas en pleine propriété à vendre à Baie Lazare, Seychelles. Communauté privée entre Four Seasons &amp; Kempinski — 35 parcelles dès 600 m², villas à partir de $800 000. Paiements échelonnés. Programme agent dès 3 %."')
+        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $990,000. Staged payments. Agent programme from 3%."',
+        'content="Villas en pleine propriété à vendre à Baie Lazare, Seychelles. Communauté privée entre Four Seasons &amp; Kempinski — 35 parcelles dès 600 m², villas à partir de $990 000. Paiements échelonnés. Programme agent dès 3 %."')
     h = h.replace(
-        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. 35 private plots from 600 m², villas from $800,000. Between Four Seasons &amp; Kempinski. Staged payments. Agent programme from 3%."',
-        'content="Villas en pleine propriété à vendre à Baie Lazare, Seychelles. 35 parcelles dès 600 m², villas à partir de $800 000. Entre Four Seasons &amp; Kempinski. Paiements échelonnés."')
+        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. 35 private plots from 600 m², villas from $990,000. Between Four Seasons &amp; Kempinski. Staged payments. Agent programme from 3%."',
+        'content="Villas en pleine propriété à vendre à Baie Lazare, Seychelles. 35 parcelles dès 600 m², villas à partir de $990 000. Entre Four Seasons &amp; Kempinski. Paiements échelonnés."')
     h = h.replace(
         'content="Luxury Villas for Sale in Seychelles | Empathia Village Baie Lazare"',
         'content="Villas de Luxe à Vendre aux Seychelles | Empathia Village Baie Lazare"')
@@ -43,8 +43,8 @@ def fix_meta(h):
         'name="keywords" content="luxury villas Seychelles, property for sale Seychelles, Baie Lazare villas, freehold property Seychelles, Empathia Village, villas Mahe Seychelles, Seychelles real estate investment, luxury villa rental Seychelles"',
         'name="keywords" content="villas de luxe Seychelles, immobilier Seychelles, villas Baie Lazare, pleine propriété Seychelles, Empathia Village, villas Mahé Seychelles, investissement immobilier Seychelles"')
     h = h.replace(
-        '"description": "Private luxury villa residences on Mahé, Seychelles. Baie Lazare, between Four Seasons and Kempinski. Freehold villas from $800,000."',
-        '"description": "Résidences de villas de luxe à Mahé, Seychelles. Baie Lazare, entre Four Seasons et Kempinski. Villas en pleine propriété à partir de $800 000."')
+        '"description": "Private luxury villa residences on Mahé, Seychelles. Baie Lazare, between Four Seasons and Kempinski. Freehold villas from $990,000."',
+        '"description": "Résidences de villas de luxe à Mahé, Seychelles. Baie Lazare, entre Four Seasons et Kempinski. Villas en pleine propriété à partir de $990 000."')
     h = h.replace('"availableLanguage": ["English"]', '"availableLanguage": ["French"]')
     return h
 
@@ -290,8 +290,8 @@ PAIRS = [
   ("Open-plan living &amp; dining room", "Séjour et salle à manger ouverts"),
   ("Master bedroom with dressing room", "Suite parentale avec dressing"),
   ("Individual project customisation available", "Personnalisation individuelle du projet disponible"),
-  ("From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.",
-   "À partir de $990 000. Parcelle dès 600 m². Ajustements individuels du design, de la taille et de la disposition disponibles sur demande. Pas une offre publique."),
+  ("From $1,500,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.",
+   "À partir de $1 500 000. Parcelle dès 600 m². Ajustements individuels du design, de la taille et de la disposition disponibles sur demande. Pas une offre publique."),
   ("From $2,100,000. Plot from 1,500 m². All designs can be individually adapted. Not a public offer.",
    "À partir de $2 100 000. Parcelle dès 1 500 m². Tous les designs peuvent être adaptés individuellement. Pas une offre publique."),
   ("Two floors with panoramic balconies", "Deux étages avec balcons panoramiques"),
@@ -402,7 +402,7 @@ PAIRS = [
   ("Agent Commission", "Commission Agent"),
   ("of transaction value", "de la valeur de la transaction"),
   ("Minimum fee per transaction", "Frais minimum par transaction"),
-  ("Starting villa price from $800,000", "Prix de départ villa dès $800 000"),
+  ("Starting villa price from $990,000", "Prix de départ villa dès $990 000"),
   ("What You Receive", "Ce que vous recevez"),
   ("How to Register", "Comment s'inscrire"),
   ("Year-Round Demand", "Demande Toute l'Année"),
@@ -454,7 +454,7 @@ PAIRS = [
    "Pleine propriété · Paiements échelonnés · Entre Four Seasons &amp; Kempinski"),
   ("35 Private Plots", "35 Parcelles privées"),
   ("12 Months Build", "Construction 12 mois"),
-  ("From $800,000", "À partir de $800 000"),
+  ("From $990,000", "À partir de $990 000"),
   # Cinematic
   ("Where the Indian Ocean<br>Becomes Your Garden", "Là où l'Océan Indien<br>devient votre jardin"),
   ("Baie Lazare. White sand. Granite boulders. Turquoise water. Two of the world's finest resort hotels as your neighbours.",

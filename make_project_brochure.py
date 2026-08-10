@@ -112,7 +112,7 @@ def page_one(c):
     c.setFont("Helvetica", 11)
     c.drawString(48, 108, "30 private freehold villa plots")
     c.drawString(48, 88, "Adjacent available plots can be combined")
-    c.drawString(48, 68, "Villas from $800,000 - estate completion planned for 2030")
+    c.drawString(48, 68, "Villas from $990,000 - estate completion planned for 2030")
     c.showPage()
 
 
@@ -165,8 +165,8 @@ def page_three(c):
     c.setFont("Times-Roman", 27)
     c.drawString(42, H - 82, "Three villa designs")
     villas = [
-        ("Villa Jane", "From $800,000", "2 bedrooms - 1 floor - from 140 m2 - plot from 600 m2", "assets/images/villas/jane/villa-jane-card.webp"),
-        ("Villa Anna", "From $990,000", "3 bedrooms - 2 floors - from 240 m2 - plot from 600 m2", "assets/images/villas/anna/villa-anna-card.webp"),
+        ("Villa Jane", "From $990,000", "2 bedrooms - 1 floor - from 140 m2 - plot from 600 m2", "assets/images/villas/jane/villa-jane-card.webp"),
+        ("Villa Anna", "From $1,500,000", "3 bedrooms - 2 floors - from 240 m2 - plot from 600 m2", "assets/images/villas/anna/villa-anna-card.webp"),
         ("Villa Georgette", "From $2,100,000", "4 bedrooms - 3 floors - from 350 m2 - plot from 1,500 m2", "assets/images/villas/georgette/villa-georgette-card.webp"),
     ]
     y = H - 126

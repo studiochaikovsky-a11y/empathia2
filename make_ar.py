@@ -30,11 +30,11 @@ def fix_meta(h):
     h = h.replace('<link rel="alternate" hreflang="x-default" href="https://empathia-seychelles.com/ar/">',
                   '<link rel="alternate" hreflang="x-default" href="https://empathia-seychelles.com/">')
     h = h.replace(
-        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $800,000. Staged payments. Agent programme from 3%."',
-        'content="فلل فاخرة بملكية حرة للبيع في Baie Lazare، جزر سيشيل. مجمع خاص بين Four Seasons و Kempinski — 35 قطعة من 600 م²، فلل تبدأ من $800,000. دفعات متدرجة."')
+        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. Private gated community between Four Seasons &amp; Kempinski — 35 private plots from 600 m², villas from $990,000. Staged payments. Agent programme from 3%."',
+        'content="فلل فاخرة بملكية حرة للبيع في Baie Lazare، جزر سيشيل. مجمع خاص بين Four Seasons و Kempinski — 35 قطعة من 600 م²، فلل تبدأ من $990,000. دفعات متدرجة."')
     h = h.replace(
-        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. 35 private plots from 600 m², villas from $800,000. Between Four Seasons &amp; Kempinski. Staged payments. Agent programme from 3%."',
-        'content="فلل فاخرة بملكية حرة في Baie Lazare، سيشيل. 35 قطعة من 600 م²، فلل تبدأ من $800,000. بين Four Seasons و Kempinski."')
+        'content="Luxury freehold villas for sale in Baie Lazare, Seychelles. 35 private plots from 600 m², villas from $990,000. Between Four Seasons &amp; Kempinski. Staged payments. Agent programme from 3%."',
+        'content="فلل فاخرة بملكية حرة في Baie Lazare، سيشيل. 35 قطعة من 600 م²، فلل تبدأ من $990,000. بين Four Seasons و Kempinski."')
     h = h.replace(
         'content="Luxury Villas for Sale in Seychelles | Empathia Village Baie Lazare"',
         'content="فلل فاخرة للبيع في جزر سيشيل | Empathia Village"')
@@ -42,8 +42,8 @@ def fix_meta(h):
         'name="keywords" content="luxury villas Seychelles, property for sale Seychelles, Baie Lazare villas, freehold property Seychelles, Empathia Village, villas Mahe Seychelles, Seychelles real estate investment, luxury villa rental Seychelles"',
         'name="keywords" content="فلل فاخرة سيشيل، عقارات سيشيل، فلل Baie Lazare، ملكية حرة سيشيل، Empathia Village، استثمار عقاري سيشيل"')
     h = h.replace(
-        '"description": "Private luxury villa residences on Mahé, Seychelles. Baie Lazare, between Four Seasons and Kempinski. Freehold villas from $800,000."',
-        '"description": "فلل فاخرة في ماهيه، سيشيل. Baie Lazare، بين Four Seasons و Kempinski. ملكية حرة تبدأ من $800,000."')
+        '"description": "Private luxury villa residences on Mahé, Seychelles. Baie Lazare, between Four Seasons and Kempinski. Freehold villas from $990,000."',
+        '"description": "فلل فاخرة في ماهيه، سيشيل. Baie Lazare، بين Four Seasons و Kempinski. ملكية حرة تبدأ من $990,000."')
     h = h.replace('"availableLanguage": ["English"]', '"availableLanguage": ["Arabic"]')
     # Insert RTL styles + Arabic font before </head>
     rtl = '''<style id="rtl-overrides">
@@ -303,8 +303,8 @@ PAIRS = [
   ("Open-plan living &amp; dining room", "غرفة معيشة وطعام مفتوحة"),
   ("Master bedroom with dressing room", "غرفة نوم رئيسية مع غرفة ملابس"),
   ("Individual project customisation available", "التخصيص الفردي للمشروع متاح"),
-  ("From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.",
-   "من $990,000. قطعة من 600 م². تعديلات فردية على التصميم والحجم والتخطيط متاحة عند الطلب. ليست عرضاً عاماً."),
+  ("From $1,500,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.",
+   "من $1,500,000. قطعة من 600 م². تعديلات فردية على التصميم والحجم والتخطيط متاحة عند الطلب. ليست عرضاً عاماً."),
   ("From $2,100,000. Plot from 1,500 m². All designs can be individually adapted. Not a public offer.",
    "من $2,100,000. قطعة من 1,500 م². جميع التصاميم يمكن تكييفها فردياً. ليست عرضاً عاماً."),
   ("Two floors with panoramic balconies", "طابقان مع شرفات بانورامية"),
@@ -450,7 +450,7 @@ PAIRS = [
   ("Agent Commission", "عمولة الوكيل"),
   ("of transaction value", "من قيمة الصفقة"),
   ("Minimum fee per transaction", "الحد الأدنى للرسوم لكل صفقة"),
-  ("Starting villa price from $800,000", "سعر الفيلا يبدأ من $800,000"),
+  ("Starting villa price from $990,000", "سعر الفيلا يبدأ من $990,000"),
   ("What You Receive", "ما ستحصل عليه"),
   ("How to Register", "كيفية التسجيل"),
   ("Year-Round Demand", "طلب على مدار العام"),
@@ -502,7 +502,7 @@ PAIRS = [
    "ملكية حرة · دفعات متدرجة · بين Four Seasons و Kempinski"),
   ("35 Private Plots", "35 قطعة خاصة"),
   ("12 Months Build", "البناء 12 شهراً"),
-  ("From $800,000", "تبدأ من $800,000"),
+  ("From $990,000", "تبدأ من $990,000"),
   # Cinematic
   ("Where the Indian Ocean<br>Becomes Your Garden", "حيث يصبح المحيط الهندي<br>حديقتك الخاصة"),
   ("Baie Lazare. White sand. Granite boulders. Turquoise water. Two of the world's finest resort hotels as your neighbours.",

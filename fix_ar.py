@@ -65,8 +65,8 @@ AR_EXTRA = [
     ('Private pool &amp; sun terrace', 'مسبح خاص وتراس شمسي'),
     ('Individual project customisation available', 'التخصيص الفردي للمشروع متاح'),
     ('Parking for 2 vehicles', 'موقف لسيارتين'),
-    ('From $990,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.',
-     'من $990,000. قطعة من 600 م². تعديلات فردية على التصميم والحجم والتخطيط متاحة عند الطلب. ليست عرضاً عاماً.'),
+    ('From $1,500,000. Plot from 600 m². Individual adjustments to design, size and layout available on request. Not a public offer.',
+     'من $1,500,000. قطعة من 600 م². تعديلات فردية على التصميم والحجم والتخطيط متاحة عند الطلب. ليست عرضاً عاماً.'),
     ('The flagship two-storey residence featuring wide panoramic balconies, terraces of 150 m² and a grand private pool. The finest residence in the collection — commanding unobstructed views of the Indian Ocean. Can be expanded up to 450 m².',
      'المسكن الرئيسي من طابقين يتميز بشرفات بانورامية واسعة وتراسات 150 م² ومسبح خاص فخم. أرقى مسكن في المجموعة — بإطلالات خالية على المحيط الهندي. يمكن توسيعه حتى 450 م².'),
     ('Two floors with panoramic balconies', 'طابقان مع شرفات بانورامية'),
@@ -79,8 +79,8 @@ AR_EXTRA = [
     ('Panoramic floor-to-ceiling glazing', 'زجاج بانورامي من الأرض إلى السقف'),
     ('2 bedrooms · Private pool', 'غرفتا نوم · مسبح خاص'),
     ('Individual customisation available', 'التخصيص الفردي متاح'),
-    ('From $800,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.',
-     'من $800,000. قطعة من 600 م². التصميم والحجم والتخطيط يمكن تخصيصها فردياً. ليست عرضاً عاماً.'),
+    ('From $990,000. Plot from 600 m². Design, size and layout can be individually tailored. Not a public offer.',
+     'من $990,000. قطعة من 600 م². التصميم والحجم والتخطيط يمكن تخصيصها فردياً. ليست عرضاً عاماً.'),
 
     # Pricing section
     ('Three residences. Each priced to reflect plot size, design and ocean view. All prices include land, construction, finishing and landscaping. All plots are at least 600 m².',
