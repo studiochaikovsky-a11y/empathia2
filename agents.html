@@ -327,7 +327,9 @@ async function submitAgent(){
   const n=document.getElementById('ag-name').value.trim();
   const e=document.getElementById('ag-email').value.trim();
   const p=document.getElementById('ag-phone').value.trim();
-  if(!n||!e||!p){setFormStatus('agent-status','error','Please fill in your name, email and phone number.');return;}
+  if(!n||!e||!p){setFormStatus('agent-status','error','Please fill in your name, email and phone number.');(!n?document.getElementById('ag-name'):!p?document.getElementById('ag-phone'):document.getElementById('ag-email')).focus();return;}
+  if(p.replace(/\D/g,'').length<7){setFormStatus('agent-status','error','Please enter a valid phone number.');document.getElementById('ag-phone').focus();return;}
+  if(!document.getElementById('ag-email').checkValidity()){setFormStatus('agent-status','error','Please enter a valid email address.');document.getElementById('ag-email').focus();return;}
   setFormStatus('agent-status','','');
   const btn=document.querySelector('button[onclick="submitAgent()"]');
   if(btn){btn.disabled=true;btn.textContent='Sending...';}

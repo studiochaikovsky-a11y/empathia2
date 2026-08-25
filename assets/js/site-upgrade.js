@@ -3,21 +3,27 @@
 
   const TEXT = {
     en: {
-      required: 'Please enter your name and a WhatsApp number or email address.',
+      required: 'Please enter your name, phone number and email address.',
+      invalidPhone: 'Please enter a valid phone number.',
+      invalidEmail: 'Please enter a valid email address.',
       sending: 'Sending…',
       button: 'Send Price List',
       success: 'Thank you. Our advisor will contact you shortly and send the current price list and available plots.',
       error: 'The form could not be sent. Please try again or contact us on WhatsApp.'
     },
     fr: {
-      required: 'Veuillez saisir votre nom et un numéro WhatsApp ou une adresse e-mail.',
+      required: 'Veuillez saisir votre nom, votre numéro de téléphone et votre adresse e-mail.',
+      invalidPhone: 'Veuillez saisir un numéro de téléphone valide.',
+      invalidEmail: 'Veuillez saisir une adresse e-mail valide.',
       sending: 'Envoi…',
       button: 'Recevoir les prix',
       success: 'Merci. Notre conseiller vous contactera prochainement avec les prix actuels et les terrains disponibles.',
       error: 'Le formulaire n’a pas pu être envoyé. Réessayez ou contactez-nous sur WhatsApp.'
     },
     ar: {
-      required: 'يرجى إدخال الاسم ورقم واتساب أو البريد الإلكتروني.',
+      required: 'يرجى إدخال الاسم ورقم الهاتف والبريد الإلكتروني.',
+      invalidPhone: 'يرجى إدخال رقم هاتف صالح.',
+      invalidEmail: 'يرجى إدخال بريد إلكتروني صالح.',
       sending: 'جارٍ الإرسال…',
       button: 'إرسال قائمة الأسعار',
       success: 'شكرًا لك. سيتواصل معك مستشارنا قريبًا ويرسل قائمة الأسعار الحالية والأراضي المتاحة.',
@@ -90,7 +96,8 @@
     const t = TEXT[locale()];
     document.querySelectorAll('[data-lead-form]').forEach(function (form) {
       const name = form.querySelector('[name="name"]');
-      const contact = form.querySelector('[name="contact"]');
+      const phone = form.querySelector('[name="phone"]');
+      const email = form.querySelector('[name="email"]');
       const interest = form.querySelector('[name="interest"]');
       const button = form.querySelector('button[type="submit"]');
       const status = form.querySelector('[role="status"]');
@@ -106,10 +113,21 @@
         event.preventDefault();
         if (sending) return;
         const nameValue = name.value.trim();
-        const contactValue = contact.value.trim();
-        if (!nameValue || !contactValue) {
+        const phoneValue = phone.value.trim();
+        const emailValue = email.value.trim();
+        if (!nameValue || !phoneValue || !emailValue) {
           message('error', t.required);
-          (!nameValue ? name : contact).focus();
+          (!nameValue ? name : !phoneValue ? phone : email).focus();
+          return;
+        }
+        if (phoneValue.replace(/\D/g, '').length < 7) {
+          message('error', t.invalidPhone);
+          phone.focus();
+          return;
+        }
+        if (!email.checkValidity()) {
+          message('error', t.invalidEmail);
+          email.focus();
           return;
         }
 
@@ -117,11 +135,10 @@
         button.disabled = true;
         button.textContent = t.sending;
         message('', '');
-        const isEmail = contactValue.indexOf('@') !== -1;
         const payload = Object.assign({
           name: nameValue,
-          email: isEmail ? contactValue : '',
-          phone: isEmail ? '' : contactValue,
+          email: emailValue,
+          phone: phoneValue,
           interest: interest ? interest.value : '',
           page: document.title
         }, tracking());

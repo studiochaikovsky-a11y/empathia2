@@ -37,8 +37,10 @@ export async function onRequestPost({ request, env }) {
     utm_campaign: clean(data.utm_campaign),
   };
 
-  if (!lead.name && !lead.phone && !lead.email) {
-    return json({ ok: false, error: 'empty' }, 400);
+  const phoneDigits = lead.phone.replace(/\D/g, '');
+  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email);
+  if (phoneDigits.length < 7 || !emailIsValid) {
+    return json({ ok: false, error: 'phone_and_email_required' }, 400);
   }
 
   const lines = [
@@ -84,7 +86,7 @@ export async function onRequestPost({ request, env }) {
           from_name: 'Empathia Village Website',
           name: lead.name || 'Website visitor',
           phone: lead.phone,
-          email: lead.email || 'noreply@empathia-seychelles.com',
+          email: lead.email,
           message: text,
         }),
       })
