@@ -41,10 +41,10 @@
         hero: 'assets/images/villas/jane/villa-jane-il.webp',
         plan: 'assets/images/villas/jane/villa-jane-sheet.webp',
         page: 'villa-jane.html',
-        description: 'A refined single-storey residence with panoramic glazing, two bedrooms, a private pool and an effortless indoor-outdoor plan.',
+        description: 'A refined single-storey residence with panoramic glazing, two bedrooms and an effortless indoor-outdoor plan. A private pool is available as an optional upgrade.',
         descriptions: {
-          fr: 'Une résidence raffinée de plain-pied avec vitrage panoramique, deux chambres, piscine privée et espaces ouverts sur l’extérieur.',
-          ar: 'فيلا راقية من طابق واحد بزجاج بانورامي وغرفتي نوم ومسبح خاص وتصميم منفتح على المساحات الخارجية.'
+          fr: 'Une résidence raffinée de plain-pied avec vitrage panoramique, deux chambres et espaces ouverts sur l’extérieur. Une piscine privée est disponible en option.',
+          ar: 'فيلا راقية من طابق واحد بزجاج بانورامي وغرفتي نوم وتصميم منفتح على المساحات الخارجية. يتوفر مسبح خاص كخيار إضافي.'
         }
       },
       anna: {
@@ -59,10 +59,10 @@
         hero: 'assets/images/villas/anna/villa-anna-il.webp',
         plan: 'assets/images/villas/anna/villa-anna-sheet.webp',
         page: 'villa-anna.html',
-        description: 'An elegant two-storey villa with generous living spaces, panoramic glazing, a private pool and a sun terrace.',
+        description: 'An elegant two-storey villa with generous living spaces and panoramic glazing. A private pool and sun terrace are available as optional upgrades.',
         descriptions: {
-          fr: 'Une élégante villa sur deux niveaux avec de généreux espaces, vitrage panoramique, piscine privée et terrasse ensoleillée.',
-          ar: 'فيلا أنيقة من طابقين بمساحات واسعة وزجاج بانورامي ومسبح خاص وتراس شمسي.'
+          fr: 'Une élégante villa sur deux niveaux avec de généreux espaces et vitrage panoramique. Une piscine privée et une terrasse sont disponibles en option.',
+          ar: 'فيلا أنيقة من طابقين بمساحات واسعة وزجاج بانورامي. يتوفر مسبح خاص وتراس شمسي كخيارات إضافية.'
         }
       },
       georgette: {
@@ -77,10 +77,10 @@
         hero: 'assets/images/villas/georgette/villa-georgette-il.webp',
         plan: 'assets/images/villas/georgette/villa-georgette-sheet.webp',
         page: 'villa-georgette.html',
-        description: 'The signature three-storey villa with four bedrooms, panoramic terraces, a private pool and elevated Indian Ocean views.',
+        description: 'The signature three-storey villa with four bedrooms, panoramic terraces and elevated Indian Ocean views. A private pool is available as an optional upgrade.',
         descriptions: {
-          fr: 'La villa signature sur trois niveaux avec quatre chambres, terrasses panoramiques, piscine privée et vue sur l’océan Indien.',
-          ar: 'الفيلا الرئيسية من ثلاثة طوابق، بأربع غرف نوم وتراسات بانورامية ومسبح خاص وإطلالات مرتفعة على المحيط الهندي.'
+          fr: 'La villa signature sur trois niveaux avec quatre chambres, terrasses panoramiques et vue sur l’océan Indien. Une piscine privée est disponible en option.',
+          ar: 'الفيلا الرئيسية من ثلاثة طوابق، بأربع غرف نوم وتراسات بانورامية وإطلالات مرتفعة على المحيط الهندي. يتوفر مسبح خاص كخيار إضافي.'
         }
       }
     },
@@ -245,7 +245,7 @@
         const price = panel.querySelector('.villa-price');
         const note = panel.querySelector('.villa-price-note');
         const description = panel.querySelector('.villa-desc');
-        if (type) type.textContent = villa.floors + ' ' + (villa.floors === 1 ? 'Floor' : 'Floors') + ' · Private Pool';
+        if (type) type.textContent = villa.floors + ' ' + (villa.floors === 1 ? 'Floor' : 'Floors') + ' · Optional Private Pool';
         if (specs) specs.innerHTML =
           '<div class="vs"><div class="vs-n">from ' + villa.area + '</div><div class="vs-l">m² Area</div></div>' +
           '<div class="vs"><div class="vs-n">' + villa.bedrooms + '</div><div class="vs-l">Bedrooms</div></div>' +

@@ -248,6 +248,82 @@ body.upgrade-page {
 .upgrade-masterplan-media img { width: 100%; height: auto; background: #fff; box-shadow: 0 22px 60px rgba(0,0,0,.2); }
 .upgrade-masterplan-note { margin-top: 14px; color: rgba(255,255,255,.38); font-size: 11px; }
 
+.upgrade-masterplan-interactive {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 42px;
+}
+
+.upgrade-masterplan-scroll { min-width: 0; overflow-x: auto; overscroll-behavior-inline: contain; }
+
+.upgrade-masterplan-canvas {
+  position: relative;
+  min-width: 0;
+  background: #fff;
+  box-shadow: 0 22px 60px rgba(0,0,0,.2);
+}
+.upgrade-masterplan-canvas img { display: block; width: 100%; height: auto; }
+.upgrade-plot-marker {
+  position: absolute;
+  z-index: 2;
+  width: clamp(25px, 2.15vw, 34px);
+  height: clamp(25px, 2.15vw, 34px);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.82);
+  border-radius: 50%;
+  background: rgba(24, 39, 31, .9);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  font: 600 clamp(7px, .62vw, 10px)/1 var(--sans);
+  cursor: pointer;
+}
+.upgrade-plot-marker.is-sold { background: rgba(159, 62, 51, .92); }
+.upgrade-plot-marker:hover,
+.upgrade-plot-marker.is-active { transform: translate(-50%, -50%) scale(1.25); background: var(--gold); color: var(--ink); }
+
+.upgrade-plot-panel {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 38px);
+  border: 1px solid var(--upgrade-line);
+  background: rgba(255,255,255,.035);
+}
+.upgrade-plot-panel h3 { margin: 0 0 10px; color: #fff; font: italic 300 38px/1 var(--serif); }
+.upgrade-plot-status { margin: 0 0 28px; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
+.upgrade-plot-status.is-available { color: #9bc9a4; }
+.upgrade-plot-status.is-sold { color: #e4a098; }
+.upgrade-plot-fact { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.1); }
+.upgrade-plot-fact span { display: block; margin-bottom: 4px; color: rgba(255,255,255,.36); font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
+.upgrade-plot-fact strong { color: #fff; font: italic 300 21px/1.25 var(--serif); }
+.upgrade-plot-panel p { color: rgba(255,255,255,.56); font-size: 13px; line-height: 1.7; }
+.upgrade-plot-panel .btn-solid { margin-top: auto; text-align: center; }
+.upgrade-plot-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+.upgrade-plot-chip { min-width: 39px; padding: 8px 9px; border: 1px solid rgba(255,255,255,.12); background: transparent; color: rgba(255,255,255,.68); font: 500 9px/1 var(--sans); cursor: pointer; }
+.upgrade-plot-chip.is-sold { color: #d78e85; border-color: rgba(215,142,133,.28); }
+
+.upgrade-confidence-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  gap: clamp(38px, 7vw, 96px);
+  align-items: start;
+}
+.upgrade-confidence-list { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--upgrade-line); border-left: 1px solid var(--upgrade-line); }
+.upgrade-confidence-item { padding: clamp(24px, 3vw, 34px); border-right: 1px solid var(--upgrade-line); border-bottom: 1px solid var(--upgrade-line); }
+.upgrade-confidence-item strong { display: block; margin-bottom: 10px; color: var(--gold-hi); font: italic 300 25px/1.12 var(--serif); }
+.upgrade-confidence-item p { margin: 0; color: rgba(255,255,255,.57); font-size: 13px; line-height: 1.7; }
+.upgrade-proof-bar { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 28px; border-top: 1px solid var(--upgrade-line); border-bottom: 1px solid var(--upgrade-line); }
+.upgrade-proof-bar div { padding: 18px; text-align: center; border-right: 1px solid var(--upgrade-line); }
+.upgrade-proof-bar div:last-child { border-right: 0; }
+.upgrade-proof-bar strong { display: block; color: #fff; font: italic 300 25px/1 var(--serif); }
+.upgrade-proof-bar span { display: block; margin-top: 7px; color: rgba(255,255,255,.38); font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+.upgrade-legal-source { margin-top: 18px; color: rgba(255,255,255,.4); font-size: 11px; line-height: 1.65; }
+.upgrade-legal-source a { color: var(--gold-hi); text-decoration: underline; text-underline-offset: 3px; }
+
 .upgrade-location-grid {
   display: grid;
   grid-template-columns: .8fr 1.2fr;
@@ -330,6 +406,7 @@ body.upgrade-page {
 .upgrade-field select { color-scheme: dark; }
 .upgrade-form .btn-solid { width: 100%; min-height: 54px; margin-top: 6px; }
 .upgrade-form-note { margin: 0; color: rgba(255, 255, 255, .4); font-size: 11px; line-height: 1.6; }
+.upgrade-form-note a { color: var(--gold-hi); text-decoration: underline; text-underline-offset: 3px; }
 .upgrade-form-status { padding: 14px 16px; border: 1px solid var(--upgrade-line); color: #fff; font-size: 13px; }
 .upgrade-form-status[hidden] { display: none; }
 .upgrade-form-status.error { border-color: rgba(210, 103, 89, .6); color: #ffd8d0; }
@@ -369,6 +446,29 @@ body.upgrade-page {
 
 .upgrade-breadcrumbs { margin: 0 0 22px; color: rgba(255,255,255,.56); font-size: 11px; letter-spacing: .08em; }
 .upgrade-breadcrumbs a { color: var(--gold-hi); }
+.upgrade-guide-hero { min-height: 58vh; display: grid; align-items: end; padding: 190px 0 88px; background: linear-gradient(90deg,rgba(8,9,10,.93),rgba(8,9,10,.46)),url('assets/images/project/hero-5-hero.webp') center/cover; }
+.upgrade-guide-hero h1 { max-width: 860px; margin: 0; color: #fff; font: italic 300 clamp(48px,7vw,96px)/.94 var(--serif); }
+.upgrade-guide-hero .body { max-width: 720px; margin-top: 24px; }
+.upgrade-guide-layout { display: grid; grid-template-columns: minmax(220px,.34fr) minmax(0,.66fr); gap: clamp(42px,8vw,120px); align-items: start; }
+.upgrade-guide-nav { position: sticky; top: 120px; display: grid; gap: 1px; border: 1px solid var(--upgrade-line); }
+.upgrade-guide-nav a { padding: 14px 17px; background: rgba(255,255,255,.03); color: rgba(255,255,255,.64); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.upgrade-guide-nav a:hover { color: var(--gold-hi); background: rgba(255,255,255,.06); }
+.upgrade-guide-content { display: grid; gap: 50px; }
+.upgrade-guide-block { scroll-margin-top: 120px; padding-bottom: 42px; border-bottom: 1px solid var(--upgrade-line); }
+.upgrade-guide-block:last-child { border-bottom: 0; }
+.upgrade-guide-block h2 { margin: 0 0 18px; color: #fff; font: italic 300 clamp(30px,4vw,47px)/1.03 var(--serif); }
+.upgrade-guide-block h3 { margin: 28px 0 12px; color: var(--gold-hi); font: italic 300 24px/1.15 var(--serif); }
+.upgrade-guide-block p,.upgrade-guide-block li { color: rgba(255,255,255,.62); font-size: 14px; line-height: 1.82; }
+.upgrade-guide-block ul { margin: 16px 0 0; padding-left: 20px; }
+.upgrade-guide-callout { margin-top: 22px; padding: 22px 24px; border-left: 2px solid var(--gold); background: rgba(255,255,255,.04); }
+.upgrade-guide-callout p { margin: 0; }
+.upgrade-guide-table { width: 100%; margin-top: 22px; border-collapse: collapse; }
+.upgrade-guide-table th,.upgrade-guide-table td { padding: 15px; border: 1px solid var(--upgrade-line); text-align: left; vertical-align: top; }
+.upgrade-guide-table th { color: var(--gold-hi); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+.upgrade-guide-table td { color: rgba(255,255,255,.65); font-size: 13px; line-height: 1.65; }
+.upgrade-source-list { display: grid; gap: 10px; margin-top: 24px; }
+.upgrade-source-list a { color: var(--gold-hi); text-decoration: underline; text-underline-offset: 4px; }
+.upgrade-privacy-copy { max-width: 860px; }
 .upgrade-villa-hero { min-height: 78svh; }
 .upgrade-villa-hero .upgrade-hero-content { padding-bottom: 64px; }
 .upgrade-detail-specs { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 34px; border-top: 1px solid var(--upgrade-line); }
@@ -384,9 +484,13 @@ body.upgrade-page {
   .upgrade-page .nav-actions { display: none; }
   .upgrade-construction-grid,
   .upgrade-masterplan,
+  .upgrade-masterplan-interactive,
   .upgrade-location-grid,
   .upgrade-contact-grid,
-  .upgrade-developer-grid { grid-template-columns: 1fr; }
+  .upgrade-developer-grid,
+  .upgrade-confidence-grid,
+  .upgrade-guide-layout { grid-template-columns: 1fr; }
+  .upgrade-guide-nav { position: static; grid-template-columns: repeat(2,minmax(0,1fr)); }
   .upgrade-villa-grid { grid-template-columns: 1fr; }
   .upgrade-villa-card { display: grid; grid-template-columns: minmax(240px, .8fr) 1.2fr; }
   .upgrade-villa-image { height: 100%; aspect-ratio: auto; }
@@ -437,6 +541,7 @@ body.upgrade-page {
   .upgrade-actions .btn-ghost { width: 100%; padding: 15px 18px; white-space: normal; text-align: center; }
   .upgrade-trust { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
   .upgrade-trust span { min-width: 47vw; min-height: 62px; scroll-snap-align: start; }
+  .upgrade-section { padding: 58px 0; }
   .upgrade-heading-row { display: block; }
   .upgrade-heading-row .body { margin-top: 18px; }
   .upgrade-photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 210px 150px; }
@@ -450,6 +555,17 @@ body.upgrade-page {
   .upgrade-location-media picture:first-child { grid-column: 1 / -1; grid-row: auto; }
   .upgrade-included-grid,
   .upgrade-process-grid { grid-template-columns: 1fr; }
+  .upgrade-masterplan-interactive { margin-top: 28px; }
+  .upgrade-masterplan-scroll { margin-right: -22px; padding-right: 22px; }
+  .upgrade-masterplan-canvas { width: 760px; min-width: 760px; }
+  .upgrade-masterplan-canvas > img { width: 100%; max-width: none; }
+  .upgrade-plot-marker { width: 28px; height: 28px; font-size: 8px; }
+  .upgrade-confidence-list { grid-template-columns: 1fr; }
+  .upgrade-proof-bar { grid-template-columns: 1fr; }
+  .upgrade-proof-bar div { border-right: 0; border-bottom: 1px solid var(--upgrade-line); }
+  .upgrade-proof-bar div:last-child { border-bottom: 0; }
+  .upgrade-location-media { grid-template-rows: 200px 120px; }
+  .upgrade-form { gap: 12px; padding: 22px; }
   .upgrade-map { min-height: 260px; }
   .upgrade-detail-specs { grid-template-columns: repeat(2, 1fr); }
   .upgrade-floating-whatsapp { display: none; }
@@ -462,13 +578,13 @@ body.upgrade-page {
     display: grid;
     grid-template-columns: 1.2fr .8fr;
     gap: 1px;
-    padding: 7px max(10px, env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+    padding: 5px max(8px, env(safe-area-inset-right)) calc(5px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
     background: rgba(8, 9, 10, .96);
     border-top: 1px solid var(--upgrade-line);
     backdrop-filter: blur(18px);
   }
   .upgrade-mobile-cta a {
-    min-height: 48px;
+    min-height: 44px;
     display: grid;
     place-items: center;
     background: var(--gold);
@@ -481,6 +597,10 @@ body.upgrade-page {
   .upgrade-mobile-cta a:last-child { background: #1f8f52; color: #fff; }
   .upgrade-lightbox { padding: 50px 12px; }
   .upgrade-faq summary { font-size: 14px; }
+  .upgrade-guide-hero { min-height: 52vh; padding: 145px 0 62px; }
+  .upgrade-guide-nav { grid-template-columns: 1fr; }
+  .upgrade-guide-table,.upgrade-guide-table tbody,.upgrade-guide-table tr,.upgrade-guide-table th,.upgrade-guide-table td { display: block; width: 100%; }
+  .upgrade-guide-table th { border-bottom: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

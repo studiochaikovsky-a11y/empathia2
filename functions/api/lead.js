@@ -5,7 +5,7 @@
 //   TELEGRAM_CHAT_ID    — chat id that should receive the lead
 //   WEB3FORMS_KEY       — access key from web3forms.com (sends email)
 
-// Preflight for cross-origin form posts (e.g. the Russian site on its own domain)
+// Preflight for cross-origin form posts from approved campaign or language pages.
 export function onRequestOptions() {
   return new Response(null, { status: 204, headers: CORS });
 }
@@ -38,9 +38,8 @@ export async function onRequestPost({ request, env }) {
   };
 
   const phoneDigits = lead.phone.replace(/\D/g, '');
-  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email);
-  if (phoneDigits.length < 7 || !emailIsValid) {
-    return json({ ok: false, error: 'phone_and_email_required' }, 400);
+  if (phoneDigits.length < 7) {
+    return json({ ok: false, error: 'phone_required' }, 400);
   }
 
   const lines = [
@@ -86,7 +85,7 @@ export async function onRequestPost({ request, env }) {
           from_name: 'Empathia Village Website',
           name: lead.name || 'Website visitor',
           phone: lead.phone,
-          email: lead.email,
+          ...(lead.email ? { email: lead.email } : {}),
           message: text,
         }),
       })

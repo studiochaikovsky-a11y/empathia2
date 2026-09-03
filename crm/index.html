@@ -305,7 +305,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
       <div class="field"><label>Имя *</label><input class="input-base" id="nl-name" type="text" required></div>
       <div class="field"><label>Телефон</label><input class="input-base" id="nl-phone" type="tel"></div>
       <div class="field"><label>Email</label><input class="input-base" id="nl-email" type="email"></div>
-      <div class="field"><label>Страна заявки</label><input class="input-base" id="nl-country" type="text" placeholder="Например: UAE, UK, Russia"></div>
+      <div class="field"><label>Страна заявки</label><input class="input-base" id="nl-country" type="text" placeholder="Например: UAE, UK, France"></div>
       <div class="field"><label>Интерес к вилле</label>
         <select class="sel-base" id="nl-interest" style="width:100%">
           <option value="">—</option>
@@ -689,6 +689,18 @@ function renderStats(stats) {
     else if (i.includes('anna')) lbl = 'Villa Anna';
     else if (i.includes('georgette')) lbl = 'Villa Georgette';
     cards.push({ val: v.count, lbl, cls: '', action: '' });
+  }
+
+  const eventLabels = {
+    lead_submit_success: 'Форм отправлено',
+    price_list_click: 'Кликов «Прайс-лист»',
+    whatsapp_click: 'Кликов WhatsApp',
+    phone_click: 'Кликов по телефону',
+    brochure_download: 'Скачиваний буклета',
+    masterplan_plot_select: 'Выборов участка'
+  };
+  for (const item of (stats.events_30_days || [])) {
+    if (eventLabels[item.event]) cards.push({ val: item.count, lbl: eventLabels[item.event] + ' · 30 дней', cls: '', action: '' });
   }
 
   el('statsRow').innerHTML = cards.map(c =>

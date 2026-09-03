@@ -75,7 +75,7 @@
   ]
 }
 </script>
-<script src="/marketing-events.js?v=20260724" defer></script>
+<script src="/marketing-events.js?v=20260902" defer></script>
 </head>
 <body>
 
@@ -220,26 +220,8 @@
 
         <div class="form-grid">
           <div class="field-wrap">
-            <label class="field-label" for="fn">Name *</label>
-            <input type="text" class="field" id="fn" autocomplete="name" required>
-          </div>
-          <div class="field-wrap">
             <label class="field-label" for="fp">Phone / WhatsApp *</label>
             <input type="tel" class="field" id="fp" autocomplete="tel" inputmode="tel" required>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label" for="fe">Email *</label>
-            <input type="email" class="field" id="fe" autocomplete="email" inputmode="email" required>
-          </div>
-          <div class="field-wrap form-row">
-            <label class="field-label" for="fi">I am interested in</label>
-            <select class="field" id="fi">
-              <option value="">Choose (optional)</option>
-              <option>Villa Jane</option>
-              <option>Villa Anna</option>
-              <option>Villa Georgette</option>
-              <option>Available plots</option>
-            </select>
           </div>
         </div>
         <div style="margin-top:3px">
@@ -252,7 +234,7 @@
             Contact via WhatsApp
           </a>
         </div>
-        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:14px;text-align:center">We respond to every enquiry within 24 hours. Your information is kept strictly confidential.</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:14px;text-align:center;line-height:1.6">By submitting, you agree to be contacted about Empathia Village and acknowledge our <a href="privacy.html" style="color:var(--gold);text-decoration:underline">Privacy Notice</a>.</div>
       </div>
 
     </div>
@@ -294,7 +276,7 @@
 <footer class="footer">
   <div>
     <div class="footer-logo">Empathia Village</div>
-    <div class="footer-dev">Kensington Construction &amp; Development · Class 1 License · Seychelles</div>
+    <div class="footer-dev">Kensington Construction &amp; Development · Class I Licence · Seychelles</div>
   </div>
   <div class="footer-links">
     <a href="index.html" class="footer-link">Home</a>
@@ -316,27 +298,23 @@ function setFormStatus(id,type,text){
   el.hidden=!text;
 }
 async function submitForm(){
-  const n=document.getElementById('fn').value.trim();
   const p=document.getElementById('fp').value.trim();
-  const e=document.getElementById('fe').value.trim();
-  if(!n||!p||!e){setFormStatus('contact-status','error','Please enter your name, phone number and email address.');(!n?document.getElementById('fn'):!p?document.getElementById('fp'):document.getElementById('fe')).focus();return;}
+  if(!p){setFormStatus('contact-status','error','Please enter your phone or WhatsApp number.');document.getElementById('fp').focus();return;}
   if(p.replace(/\D/g,'').length<7){setFormStatus('contact-status','error','Please enter a valid phone number.');document.getElementById('fp').focus();return;}
-  if(!document.getElementById('fe').checkValidity()){setFormStatus('contact-status','error','Please enter a valid email address.');document.getElementById('fe').focus();return;}
   setFormStatus('contact-status','','');
   const btn=document.querySelector('button[onclick="submitForm()"]');
   if(btn&&btn.disabled)return;
   if(btn){btn.disabled=true;btn.textContent='Sending...';}
-  const i=document.getElementById('fi')?document.getElementById('fi').value:'';
   let ok=false;
   try{
-    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:n,phone:p,email:e,interest:i,page:'Contact'},_utm()))});
+    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({phone:p,interest:'General contact enquiry',page:'Contact'},_utm()))});
     ok=r.ok&&(await r.json()).ok===true;
   }catch(err){}
   if(btn){btn.disabled=false;btn.textContent='Send Price List';}
   if(ok){
     setFormStatus('contact-status','success','Thank you. Our advisor will contact you shortly and send the current price list and available plots.');
-    ['fn','fp','fe'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-    const sel=document.getElementById('fi');if(sel)sel.value='';
+    document.getElementById('fp').value='';
+    if(window.evTrack)window.evTrack('lead_submit_success',{interest:'General contact enquiry',page_title:document.title});
   }else{
     setFormStatus('contact-status','error','Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }

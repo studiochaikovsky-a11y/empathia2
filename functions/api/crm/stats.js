@@ -1,7 +1,23 @@
 export async function onRequestGet({ env }) {
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS analytics_events (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      event TEXT NOT NULL,
+      page TEXT DEFAULT '',
+      page_title TEXT DEFAULT '',
+      label TEXT DEFAULT '',
+      href TEXT DEFAULT '',
+      interest TEXT DEFAULT '',
+      utm_source TEXT DEFAULT '',
+      utm_medium TEXT DEFAULT '',
+      utm_campaign TEXT DEFAULT '',
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    )`
+  ).run();
+
   const [
     byStatus, byVilla, bySource, last30, byUtmSource, byUtmCampaign,
-    clientTotals, clientsByVilla, upcomingPayments, overduePayments,
+    clientTotals, clientsByVilla, upcomingPayments, overduePayments, eventTotals,
   ] = await Promise.all([
     env.DB.prepare(
       'SELECT status, COUNT(*) AS count FROM leads GROUP BY status ORDER BY count DESC'
@@ -50,6 +66,11 @@ export async function onRequestGet({ env }) {
       `SELECT COUNT(*) AS count FROM payments
        WHERE status = 'pending' AND due_date IS NOT NULL AND due_date < date('now')`
     ).first(),
+    env.DB.prepare(
+      `SELECT event, COUNT(*) AS count FROM analytics_events
+       WHERE created_at >= datetime('now', '-30 days')
+       GROUP BY event ORDER BY count DESC`
+    ).all(),
   ]);
 
   const contracted = clientTotals?.contracted ?? 0;
@@ -64,6 +85,7 @@ export async function onRequestGet({ env }) {
       last_30_days: last30?.count ?? 0,
       by_utm_source:   byUtmSource.results,
       by_utm_campaign: byUtmCampaign.results,
+      events_30_days: eventTotals.results,
       sales: {
         clients: clientTotals?.clients ?? 0,
         contracted,

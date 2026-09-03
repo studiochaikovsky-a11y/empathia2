@@ -3,27 +3,24 @@
 
   const TEXT = {
     en: {
-      required: 'Please enter your name, phone number and email address.',
+      required: 'Please enter your phone or WhatsApp number.',
       invalidPhone: 'Please enter a valid phone number.',
-      invalidEmail: 'Please enter a valid email address.',
       sending: 'Sending…',
       button: 'Send Price List',
       success: 'Thank you. Our advisor will contact you shortly and send the current price list and available plots.',
       error: 'The form could not be sent. Please try again or contact us on WhatsApp.'
     },
     fr: {
-      required: 'Veuillez saisir votre nom, votre numéro de téléphone et votre adresse e-mail.',
+      required: 'Veuillez saisir votre numéro de téléphone ou WhatsApp.',
       invalidPhone: 'Veuillez saisir un numéro de téléphone valide.',
-      invalidEmail: 'Veuillez saisir une adresse e-mail valide.',
       sending: 'Envoi…',
       button: 'Recevoir les prix',
       success: 'Merci. Notre conseiller vous contactera prochainement avec les prix actuels et les terrains disponibles.',
       error: 'Le formulaire n’a pas pu être envoyé. Réessayez ou contactez-nous sur WhatsApp.'
     },
     ar: {
-      required: 'يرجى إدخال الاسم ورقم الهاتف والبريد الإلكتروني.',
+      required: 'يرجى إدخال رقم الهاتف أو واتساب.',
       invalidPhone: 'يرجى إدخال رقم هاتف صالح.',
-      invalidEmail: 'يرجى إدخال بريد إلكتروني صالح.',
       sending: 'جارٍ الإرسال…',
       button: 'إرسال قائمة الأسعار',
       success: 'شكرًا لك. سيتواصل معك مستشارنا قريبًا ويرسل قائمة الأسعار الحالية والأراضي المتاحة.',
@@ -34,6 +31,14 @@
   function locale() {
     const lang = (document.documentElement.lang || 'en').toLowerCase();
     return lang.startsWith('fr') ? 'fr' : lang.startsWith('ar') ? 'ar' : 'en';
+  }
+
+  function ensureMarketingEvents() {
+    if (window.evTrack || document.querySelector('script[src*="marketing-events.js"]')) return;
+    const script = document.createElement('script');
+    script.src = '/marketing-events.js?v=20260902';
+    script.defer = true;
+    document.head.appendChild(script);
   }
 
   function tracking() {
@@ -95,9 +100,7 @@
   function initForms() {
     const t = TEXT[locale()];
     document.querySelectorAll('[data-lead-form]').forEach(function (form) {
-      const name = form.querySelector('[name="name"]');
       const phone = form.querySelector('[name="phone"]');
-      const email = form.querySelector('[name="email"]');
       const interest = form.querySelector('[name="interest"]');
       const button = form.querySelector('button[type="submit"]');
       const status = form.querySelector('[role="status"]');
@@ -112,12 +115,10 @@
       form.addEventListener('submit', async function (event) {
         event.preventDefault();
         if (sending) return;
-        const nameValue = name.value.trim();
         const phoneValue = phone.value.trim();
-        const emailValue = email.value.trim();
-        if (!nameValue || !phoneValue || !emailValue) {
+        if (!phoneValue) {
           message('error', t.required);
-          (!nameValue ? name : !phoneValue ? phone : email).focus();
+          phone.focus();
           return;
         }
         if (phoneValue.replace(/\D/g, '').length < 7) {
@@ -125,19 +126,11 @@
           phone.focus();
           return;
         }
-        if (!email.checkValidity()) {
-          message('error', t.invalidEmail);
-          email.focus();
-          return;
-        }
-
         sending = true;
         button.disabled = true;
         button.textContent = t.sending;
         message('', '');
         const payload = Object.assign({
-          name: nameValue,
-          email: emailValue,
           phone: phoneValue,
           interest: interest ? interest.value : '',
           page: document.title
@@ -153,6 +146,7 @@
           if (!response.ok || result.ok !== true) throw new Error('Delivery failed');
           form.reset();
           message('success', t.success);
+          if (window.evTrack) window.evTrack('lead_submit_success', { interest: payload.interest || '', page_title: document.title });
         } catch (error) {
           message('error', t.error);
         } finally {
@@ -195,6 +189,7 @@
   }
 
   function init() {
+    ensureMarketingEvents();
     tracking();
     initNav();
     initLightbox();
