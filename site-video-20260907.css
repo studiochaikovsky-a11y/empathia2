@@ -1,0 +1,23 @@
+.ev-construction-media { min-width: 0; }
+.ev-construction-video { margin: 26px 0 0; }
+.ev-video-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin-bottom: 13px; font: 500 11px/1.6 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: #d1b679; }
+.ev-video-heading time { color: #bdc4bc; font-weight: 400; letter-spacing: .04em; }
+.ev-video-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #080d0b; border: 1px solid #4c513d; }
+.ev-video-launch { display: block; width: 100%; height: 100%; color: #fff; }
+.ev-video-launch::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.15) 45%,rgba(0,0,0,.76)); pointer-events: none; }
+.ev-video-frame .ev-video-launch img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ev-video-play { position: absolute; z-index: 1; inset: 50% auto auto 50%; transform: translate(-50%,-50%); display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; border: 1px solid #ead9ad; background: #ceb378; color: #101a16; transition: background .2s ease; }
+.ev-video-play svg { width: 25px; height: 25px; fill: currentColor; }
+.ev-video-launch:hover .ev-video-play { background: #e2c991; }
+.ev-video-launch:focus-visible { outline: 3px solid #e2c991; outline-offset: -4px; }
+.ev-video-caption { position: absolute; z-index: 1; inset: auto 18px 16px; text-align: start; font: 500 13px/1.5 var(--sans); }
+.ev-video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.ev-video-external { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; color: #bdc4bc; font: 400 12px/1.5 var(--sans); text-decoration: none; }
+.ev-video-external:hover { color: #e2c991; }
+.ev-video-external:focus-visible { outline: 2px solid #e2c991; outline-offset: 3px; }
+@media(max-width: 600px) {
+  .ev-construction-video { margin-top: 22px; }
+  .ev-video-play { width: 52px; height: 52px; }
+  .ev-video-caption { inset: auto 14px 12px; font-size: 12px; }
+}
+@media(prefers-reduced-motion: reduce) { .ev-video-play { transition: none; } }
