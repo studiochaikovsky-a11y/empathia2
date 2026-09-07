@@ -163,6 +163,9 @@
         <h3 class="h3" style="margin-bottom:32px">Request Full Presentation</h3>
 
         <div class="form-grid">
+          <div class="field-wrap"><label class="field-label" for="fn">Name</label><input type="text" class="field" id="fn" name="name" autocomplete="name" maxlength="120"></div>
+          <div class="field-wrap"><label class="field-label" for="fe">Email</label><input type="email" class="field" id="fe" name="email" autocomplete="email" inputmode="email" maxlength="254"></div>
+          <div class="field-wrap"><label class="field-label" for="fv">Villa of interest (optional)</label><select class="field" id="fv" name="villa"><option value="">Not decided yet</option><option value="Villa Jane">Villa Jane</option><option value="Villa Anna">Villa Anna</option><option value="Villa Georgette">Villa Georgette</option></select></div>
           <div class="field-wrap">
             <label class="field-label" for="fp">Phone / WhatsApp *</label>
             <input type="tel" class="field" id="fp" autocomplete="tel" inputmode="tel" required>
@@ -245,20 +248,23 @@ async function submitForm(){
   const p=document.getElementById('fp').value.trim();
   if(!p){setFormStatus('contact-status','error','Please enter your phone or WhatsApp number.');document.getElementById('fp').focus();return;}
   if(p.replace(/\D/g,'').length<7){setFormStatus('contact-status','error','Please enter a valid phone number.');document.getElementById('fp').focus();return;}
+  const email=document.getElementById('fe');
+  if(email.value.trim()&&!email.validity.valid){setFormStatus('contact-status','error','Please enter a valid email address or leave this field empty.');email.focus();return;}
+  const interest=document.getElementById('fv').value||'General contact enquiry';
   setFormStatus('contact-status','','');
   const btn=document.querySelector('button[onclick="submitForm()"]');
   if(btn&&btn.disabled)return;
   if(btn){btn.disabled=true;btn.textContent='Sending...';}
   let ok=false;
   try{
-    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({phone:p,interest:'General contact enquiry',page:'Contact'},_utm()))});
+    const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:document.getElementById('fn').value.trim(),email:email.value.trim(),phone:p,interest:interest,page:'Contact'},_utm()))});
     ok=r.ok&&(await r.json()).ok===true;
   }catch(err){}
   if(btn){btn.disabled=false;btn.textContent='Send Price List';}
   if(ok){
     setFormStatus('contact-status','success','Thank you. Our advisor will contact you shortly and send the current price list and available plots.');
-    document.getElementById('fp').value='';
-    if(window.evTrack)window.evTrack('lead_submit_success',{interest:'General contact enquiry',page_title:document.title});
+    ['fn','fe','fp','fv'].forEach(id=>{document.getElementById(id).value='';});
+    if(window.evTrack)window.evTrack('lead_submit_success',{interest:interest,page_title:document.title});
   }else{
     setFormStatus('contact-status','error','Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }
