@@ -3,25 +3,25 @@
 
   var plots = [
     { id: 'W4', area: 603.74, x: 24.7, y: 19 },
-    { id: 'W3', area: 516.59, x: 32.5, y: 24 },
-    { id: 'W2', area: 530.94, x: 38.0, y: 24 },
+    { id: 'W3', area: 600, areaIsMinimum: true, publishedArea: 516.59, x: 32.5, y: 24 },
+    { id: 'W2', area: 600, areaIsMinimum: true, publishedArea: 530.94, x: 38.0, y: 24 },
     { id: 'W1', area: 1471.51, x: 43.5, y: 24 },
     { id: 'W8', area: 1016.19, x: 24.8, y: 34 },
-    { id: 'W7', area: 571.10, x: 32.7, y: 42 },
-    { id: 'W6', area: 596.41, x: 38.5, y: 42 },
-    { id: 'W5', area: 574.05, x: 44.5, y: 42 },
-    { id: 'H11', area: 497.87, x: 48.4, y: 29 },
-    { id: 'H12', area: 509.47, x: 53.3, y: 33 },
-    { id: 'H9', area: 523.50, x: 59.0, y: 33 },
-    { id: 'H10', area: 545.73, x: 59.0, y: 40 },
+    { id: 'W7', area: 600, areaIsMinimum: true, publishedArea: 571.10, x: 32.7, y: 42 },
+    { id: 'W6', area: 600, areaIsMinimum: true, publishedArea: 596.41, x: 38.5, y: 42 },
+    { id: 'W5', area: 600, areaIsMinimum: true, publishedArea: 574.05, x: 44.5, y: 42 },
+    { id: 'H11', area: 600, areaIsMinimum: true, publishedArea: 497.87, x: 48.4, y: 29 },
+    { id: 'H12', area: 600, areaIsMinimum: true, publishedArea: 509.47, x: 53.3, y: 33 },
+    { id: 'H9', area: 600, areaIsMinimum: true, publishedArea: 523.50, x: 59.0, y: 33 },
+    { id: 'H10', area: 600, areaIsMinimum: true, publishedArea: 545.73, x: 59.0, y: 40 },
     { id: 'H8', area: null, x: 65.0, y: 40, status: 'sold' },
-    { id: 'H7', area: 593.80, x: 69.0, y: 32 },
+    { id: 'H7', area: 600, areaIsMinimum: true, publishedArea: 593.80, x: 69.0, y: 32 },
     { id: 'H6', area: null, x: 72.2, y: 41, status: 'sold' },
     { id: 'H4', area: 652.48, x: 74.6, y: 35 },
     { id: 'H5', area: 792.77, x: 77.0, y: 42 },
-    { id: 'H1', area: 564.00, x: 86.1, y: 31 },
-    { id: 'H2', area: 536.93, x: 86.1, y: 39 },
-    { id: 'H3', area: 490.10, x: 84.2, y: 47 },
+    { id: 'H1', area: 600, areaIsMinimum: true, publishedArea: 564.00, x: 86.1, y: 31 },
+    { id: 'H2', area: 600, areaIsMinimum: true, publishedArea: 536.93, x: 86.1, y: 39 },
+    { id: 'H3', area: 600, areaIsMinimum: true, publishedArea: 490.10, x: 84.2, y: 47 },
     { id: 'L10', area: 1901.74, x: 32.0, y: 48 },
     { id: 'L9', area: 1780.83, x: 32.0, y: 57 },
     { id: 'L8', area: 2217.67, x: 43.0, y: 62 },
@@ -34,7 +34,9 @@
     { id: 'L1', area: 2044.60, x: 73.0, y: 82, status: 'sold' }
   ];
 
-  function moneyArea(value) {
+  // Current offering starts at 600 m²; retain archived drawing areas separately.
+  function moneyArea(value, isMinimum) {
+    if (isMinimum) return 'From 600 m²';
     return value ? value.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' m²' : 'Confirmed in the current plot pack';
   }
 
@@ -52,12 +54,17 @@
 
     function select(plot, button) {
       if (active) active.classList.remove('is-active');
+      root.querySelectorAll('.upgrade-plot-marker, .upgrade-plot-chip').forEach(function (control) {
+        var selected = control.getAttribute('data-plot-id') === plot.id;
+        control.setAttribute('aria-pressed', String(selected));
+        control.classList.toggle('is-active', selected);
+      });
       active = button;
       if (active) active.classList.add('is-active');
       title.textContent = 'Plot ' + plot.id;
       status.textContent = plot.status === 'sold' ? 'Sold on the published masterplan' : 'Shown as on sale';
       status.className = 'upgrade-plot-status ' + (plot.status === 'sold' ? 'is-sold' : 'is-available');
-      area.textContent = moneyArea(plot.area);
+      area.textContent = moneyArea(plot.area, plot.areaIsMinimum);
       note.textContent = plot.status === 'sold'
         ? 'Ask our advisor to compare neighbouring available plots with a similar position.'
         : 'Availability, exact surveyed area, suitable villa design and the option to combine adjacent plots are confirmed individually.';
@@ -75,6 +82,7 @@
       marker.style.left = plot.x + '%';
       marker.style.top = plot.y + '%';
       marker.textContent = plot.id;
+      marker.setAttribute('data-plot-id', plot.id);
       marker.setAttribute('aria-label', 'Plot ' + plot.id + ', ' + (plot.status === 'sold' ? 'sold' : 'shown as on sale'));
       marker.addEventListener('click', function () { select(plot, marker); });
       canvas.appendChild(marker);
@@ -83,7 +91,9 @@
       chip.type = 'button';
       chip.className = 'upgrade-plot-chip ' + (plot.status === 'sold' ? 'is-sold' : 'is-available');
       chip.textContent = plot.id;
-      chip.addEventListener('click', function () { select(plot, marker); marker.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' }); });
+      chip.setAttribute('data-plot-id', plot.id);
+      chip.setAttribute('aria-label', 'Select plot ' + plot.id);
+      chip.addEventListener('click', function () { select(plot, marker); var scroller = canvas.parentElement; scroller.scrollTo({ left: canvas.offsetWidth * plot.x / 100 - scroller.clientWidth / 2, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' }); });
       list.appendChild(chip);
     });
 
