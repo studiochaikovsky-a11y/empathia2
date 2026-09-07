@@ -1,0 +1,72 @@
+/* Mobile layout guard shared by every public page. */
+@media (max-width: 720px) {
+  html, body { max-width: 100%; overflow-x: clip; }
+  body { padding-bottom: 78px !important; }
+
+  body :where(section, article, aside, form, div),
+  body :where(section, article, aside, form, div) > * { min-width: 0; }
+
+  body :where(h1, h2, h3, h4, p, li, dt, dd, label, a, button) {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  /* Several legacy pages use two- and three-column grids in inline styles.
+     Inline declarations bypassed their original mobile media queries. */
+  body [style*="display:grid"][style*="grid-template-columns:1fr 1fr"],
+  body [style*="display: grid"][style*="grid-template-columns: 1fr 1fr"],
+  body [style*="display:grid"][style*="grid-template-columns:repeat(3,1fr)"],
+  body [style*="display: grid"][style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 40px !important;
+  }
+
+  body [style*="padding:52px 48px"],
+  body [style*="padding: 52px 48px"] { padding: 34px 22px !important; }
+  body [style*="padding:0 72px"],
+  body [style*="padding: 0 72px"] { padding-inline: 20px !important; }
+
+  .upgrade-section-paper .body.dark { color: #4a4640 !important; }
+  .upgrade-section-paper .body.dark a { color: #2f4c3c; }
+
+  .progress-label { align-items: flex-start; gap: 10px; }
+  .progress-name { min-width: 0; }
+  .progress-pct { max-width: 46%; text-align: end; line-height: 1.45; }
+
+  .art-lic-details { grid-template-columns: minmax(0, 1fr) !important; gap: 3px !important; }
+  .art-lic-value { margin-bottom: 13px; }
+
+  :where(input, textarea, select, button) { min-width: 0; max-width: 100%; }
+
+  .mobile-sticky-cta,
+  .upgrade-mobile-cta {
+    position: fixed !important;
+    inset: auto 0 0 !important;
+    z-index: 700 !important;
+    display: grid !important;
+    width: 100% !important;
+    max-width: none !important;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr) !important;
+    min-height: 68px;
+    background: #111a16;
+    border-top: 1px solid rgba(206,180,125,.3);
+  }
+  .mobile-sticky-cta a,
+  .upgrade-mobile-cta a {
+    min-width: 0;
+    padding: 12px 8px !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    letter-spacing: .12em !important;
+    text-align: center;
+    white-space: normal !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .ev-header-inner { padding-inline: 16px; }
+  .ev-brand { gap: 9px; }
+  .ev-brand-name { font-size: 22px; }
+  .ev-brand-tagline { font-size: 7.5px; letter-spacing: .055em; }
+}
