@@ -1,0 +1,28 @@
+{
+  "lastReviewed": "2026-09-30",
+  "name": "Empathia Village",
+  "location": "Baie Lazare, Mahé, Seychelles",
+  "developer": "Kensington Construction & Development",
+  "contractorLicence": { "class": "Class I", "number": "322704", "verification": "buyer should request current licence copy" },
+  "privatePlots": { "approximately": 30, "mayChangeIfCombined": true },
+  "minimumPlotAreaSqm": 600,
+  "villas": {
+    "jane": { "name": "Villa Jane", "priceFromUsd": 990000, "houseAreaFromSqm": 140, "plotAreaFromSqm": 600, "bedrooms": 2 },
+    "anna": { "name": "Villa Anna", "priceFromUsd": 1500000, "houseAreaFromSqm": 240, "plotAreaFromSqm": 600, "bedrooms": 3 },
+    "georgette": { "name": "Villa Georgette", "priceFromUsd": 2100000, "houseAreaFromSqm": 350, "plotAreaFromSqm": 1500, "bedrooms": 4 }
+  },
+  "baseScope": ["plot", "villa construction", "finished interior", "fencing", "fitted kitchen", "parking", "specified utility connections"],
+  "baseScopeToConfirmInContract": ["exact fencing and works specification"],
+  "optionalAtAdditionalCost": ["pool", "furniture", "premium finishes", "professional landscaping", "garage or carport", "extensions", "design changes"],
+  "taxesAndDuties": "separate from advertised property prices; transaction-specific estimate before proceeding",
+  "governmentSanctionCost": "obtaining Government Sanction included in villa price when buyer meets agreed conditions",
+  "reservationRefund": "if Government Sanction cannot be obtained despite buyer meeting agreed conditions, the amount paid to reserve the plot is refunded; terms and procedure are set out in the reservation agreement",
+  "foreignBuyer": "Government Sanction process before relevant subsequent contractual stages; decision by Seychelles authority",
+  "freehold": "subject to applicable Government Sanction and legal procedure",
+  "plotLegalDocumentation": "project reports that documentation for its proposed plots, including 600 sqm, is available privately for buyer and independent Seychelles lawyer review; not independently verified for this audit",
+  "residence": "application support offered; user reports previous clients received permits; individual eligibility and decision rest with Seychelles authorities",
+  "rental": "owner may choose to let the villa; letting is not prohibited within the estate; applicable licences and taxes depend on intended rental use; no guaranteed return",
+  "construction": "project reports 70% of plots prepared; first house roof and utilities underway; second house foundation started",
+  "estateDevelopmentPlannedThrough": 2030,
+  "individualVillaCompletion": "contract-specific schedule"
+}

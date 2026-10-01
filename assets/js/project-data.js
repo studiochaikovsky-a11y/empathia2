@@ -4,7 +4,8 @@
   const DATA = {
     project: {
       name: 'Empathia Village',
-      plots: 30,
+      plotsApproximate: 30,
+      plotCountMayChangeIfCombined: true,
       availabilityShownOnMasterplan: true,
       adjacentPlotsCanBeCombined: true,
       plotMin: 600,
@@ -15,8 +16,8 @@
       beachTime: '2 minutes',
       airportTime: '30 minutes by car',
       constructionStatus: 'Construction underway',
-      constructionStage: 'Phase I foundation works are underway',
-      constructionUpdated: 'June 2026',
+      constructionStage: '70% of plots prepared; first house roof and utilities underway; second house foundation started',
+      constructionUpdated: 'September 2026',
       estateCompletionYear: 2030,
       developer: 'Kensington Construction & Development',
       developerExperience: 'Over 30 years of international experience',
@@ -85,8 +86,8 @@
       }
     },
     legal: {
-      residence: 'Residency support is available. Eligibility is subject to approval by the relevant Seychelles authorities.',
-      rental: 'Rental rates and occupancy figures are indicative only and are not guaranteed.',
+      residence: 'Purchasers may receive help preparing a Residence Permit application. Individual eligibility and the final decision rest with Seychelles authorities.',
+      rental: 'Owners may choose to let their villa; this is not prohibited within the estate. Applicable licences and taxes depend on the intended rental use. No return is guaranteed.',
       pricing: 'Prices and availability are confirmed individually and do not constitute a public offer.'
     }
   };
