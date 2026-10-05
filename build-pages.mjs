@@ -2,6 +2,7 @@ import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, readFileSync,
 import { dirname, extname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runInNewContext } from 'node:vm';
+import { renderVillaGrid } from './scripts/render-villa-grid.mjs';
 
 const projectRoot = dirname(fileURLToPath(import.meta.url));
 const outputRoot = resolve(projectRoot, 'dist');
@@ -68,8 +69,7 @@ for (const file of contentPages) {
     const lang = file.startsWith('fr/') ? 'fr' : file.startsWith('ar/') ? 'ar' : 'en';
     const context = { window: {}, location: { pathname: '/' + file }, document: { readyState: 'loading', addEventListener() {} } };
     runInNewContext(readFileSync(join(projectRoot, 'assets/js/project-data.js'), 'utf8'), context);
-    html = html.replace(/(<div class="upgrade-villa-grid" data-villa-grid>)[\s\S]*?(<\/div><\/div><\/section>)/,
-      '$1' + context.window.EmpathiaRenderVillaCards(lang) + '$2');
+    html = renderVillaGrid(html, context.window.EmpathiaRenderVillaCards(lang));
     writeFileSync(destination, html);
   }
 }
