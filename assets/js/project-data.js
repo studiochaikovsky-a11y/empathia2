@@ -123,9 +123,10 @@
   function villaCard(villa, lang) {
     const c = COPY[lang];
     const prefix = rootPrefix();
+    const responsive = prefix + 'assets/images/responsive/' + villa.image.replace('assets/images/', '').replaceAll('/', '-').replace(/\.[^.]+$/, '');
     return '<article class="upgrade-villa-card">' +
       '<a class="upgrade-villa-image" href="' + prefix + villa.page + '">' +
-        '<img src="' + prefix + villa.image + '" alt="' + villa.name + ' at Empathia Village in Baie Lazare" loading="lazy" decoding="async" width="1254" height="1254">' +
+        '<img src="' + responsive + '-960.webp" srcset="' + responsive + '-640.webp 640w, ' + responsive + '-960.webp 960w" sizes="(max-width:720px) 100vw, (max-width:1100px) 50vw, 600px" alt="' + villa.name + ' at Empathia Village in Baie Lazare" loading="lazy" decoding="async" width="1254" height="1254">' +
       '</a>' +
       '<div class="upgrade-villa-copy">' +
         '<p class="upgrade-kicker">' + c.residence + '</p>' +
@@ -152,7 +153,7 @@
       return villaCard(DATA.villas[key], lang);
     }).join('');
     document.querySelectorAll('[data-villa-grid]').forEach(function (grid) {
-      grid.innerHTML = html;
+      if (!grid.querySelector('.upgrade-villa-card')) grid.innerHTML = html;
     });
   }
 
@@ -260,6 +261,10 @@
   }
 
   window.EmpathiaData = DATA;
+  // Also used by the public build, so cards arrive in HTML with current facts.
+  window.EmpathiaRenderVillaCards = function (lang) {
+    return Object.values(DATA.villas).map(function (villa) { return villaCard(villa, lang); }).join('');
+  };
   window.EmpathiaMoney = money;
 
   function init() {

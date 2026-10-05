@@ -49,3 +49,7 @@
   .upgrade-plot-chip { min-width: 44px; min-height: 44px; font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) { .ev-footer a { transition: none; } }
+
+.ev-footer{--sans:Jost,Arial,sans-serif;--serif:"Cormorant Garamond",Georgia,serif}
+.ev-footer>.upgrade-wrap{max-width:1280px;margin-inline:auto;padding-inline:24px}
+.upgrade-section-paper .body{color:#4a4640}

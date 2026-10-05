@@ -5,6 +5,7 @@
     en: {
       required: 'Please enter your phone or WhatsApp number.',
       invalidPhone: 'Please enter a valid phone number.',
+      invalidEmail: 'Please enter a valid email address or leave this field empty.',
       sending: 'Sending…',
       button: 'Send Price List',
       success: 'Thank you. Our advisor will contact you shortly and send the current price list and available plots.',
@@ -13,6 +14,7 @@
     fr: {
       required: 'Veuillez saisir votre numéro de téléphone ou WhatsApp.',
       invalidPhone: 'Veuillez saisir un numéro de téléphone valide.',
+      invalidEmail: 'Saisissez une adresse e-mail valide ou laissez ce champ vide.',
       sending: 'Envoi…',
       button: 'Recevoir les prix',
       success: 'Merci. Notre conseiller vous contactera prochainement avec les prix actuels et les terrains disponibles.',
@@ -21,6 +23,7 @@
     ar: {
       required: 'يرجى إدخال رقم الهاتف أو واتساب.',
       invalidPhone: 'يرجى إدخال رقم هاتف صالح.',
+      invalidEmail: 'يرجى إدخال بريد إلكتروني صحيح أو ترك الحقل فارغًا.',
       sending: 'جارٍ الإرسال…',
       button: 'إرسال قائمة الأسعار',
       success: 'شكرًا لك. سيتواصل معك مستشارنا قريبًا ويرسل قائمة الأسعار الحالية والأراضي المتاحة.',
@@ -101,6 +104,15 @@
     const t = TEXT[locale()];
     document.querySelectorAll('[data-lead-form]').forEach(function (form) {
       const phone = form.querySelector('[name="phone"]');
+      const name = form.querySelector('[name="name"]');
+      const email = form.querySelector('[name="email"]');
+      const villa = form.querySelector('[name="villa"]');
+      document.querySelectorAll('[data-interest]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          const value = link.getAttribute('data-interest');
+          if (villa && ['Villa Jane', 'Villa Anna', 'Villa Georgette'].includes(value)) villa.value = value;
+        });
+      });
       const interest = form.querySelector('[name="interest"]');
       const button = form.querySelector('button[type="submit"]');
       const status = form.querySelector('[role="status"]');
@@ -126,13 +138,25 @@
           phone.focus();
           return;
         }
+        if (email && email.value.trim() && !email.validity.valid) {
+          message('error', t.invalidEmail);
+          email.focus();
+          return;
+        }
+        const context = interest ? interest.value : '';
+        const selectedVilla = villa ? villa.value : '';
+        const requestedInterest = selectedVilla
+          ? (context.startsWith('Plot ') ? context + ' · ' + selectedVilla : selectedVilla)
+          : context;
         sending = true;
         button.disabled = true;
         button.textContent = t.sending;
         message('', '');
         const payload = Object.assign({
+          name: name ? name.value.trim() : '',
+          email: email ? email.value.trim() : '',
           phone: phoneValue,
-          interest: interest ? interest.value : '',
+          interest: requestedInterest,
           page: document.title
         }, tracking());
 

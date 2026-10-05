@@ -8,20 +8,37 @@
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
-    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 32px; background: #0d1210; color: #f7f3e9; font-family: Arial, sans-serif; }
-    main { width: min(100%, 620px); text-align: center; }
-    img { width: 70px; height: 70px; margin: 0 auto 20px; object-fit: contain; }
+    body { min-height: 100vh; margin: 0; display: block; padding: 0; background: #0d1210; color: #f7f3e9; font-family: Arial, sans-serif; }
+    main { width: min(100%, 620px); margin: 70px auto; padding: 24px; text-align: center; }
+    main img { width: 70px; height: 70px; margin: 0 auto 20px; object-fit: contain; }
     .brand { margin: 0; color: #d7bb78; font-size: 13px; letter-spacing: .25em; text-transform: uppercase; }
     .code { margin: 42px 0 0; color: #d7bb78; font-size: 16px; letter-spacing: .25em; }
     h1 { margin: 12px 0 18px; font: italic 400 clamp(44px, 8vw, 72px)/1 Georgia, serif; }
-    p { margin: 0 auto; max-width: 440px; color: #c7c9c1; line-height: 1.7; }
-    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 38px; }
-    a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 11px 20px; border: 1px solid #bfa15e; color: #f7f3e9; text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
-    a:first-child { background: #bfa15e; color: #0d1210; }
-    a:hover, a:focus-visible { outline: 2px solid #f7f3e9; outline-offset: 3px; }
+    main p { margin: 0 auto; max-width: 440px; color: #c7c9c1; line-height: 1.7; }
+    main nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 38px; }
+    main a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 11px 20px; border: 1px solid #bfa15e; color: #f7f3e9; text-decoration: none; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    main a:first-child { background: #bfa15e; color: #0d1210; }
+    main a:hover, main a:focus-visible { outline: 2px solid #f7f3e9; outline-offset: 3px; }
   </style>
-</head>
-<body>
+<link rel="stylesheet" href="/site-header-20261005.css"><link rel="stylesheet" href="/site-fonts-20261005.css"><link rel="stylesheet" href="/site-refinement-20260907.css?v=20261005"><link rel="stylesheet" href="/site-mobile-20261005.css"><script src="/site-header-20261005.js" defer></script></head>
+<body class="ev-header-page"><header class="ev-header" id="site-header" dir="ltr" data-contact-label="Contacts">
+  <div class="ev-header-inner">
+    <a class="ev-brand" href="/index.html" aria-label="Empathia Village — Home"><img src="/assets/images/brand/logo-emblem.webp" alt="" width="35" height="60"><span class="ev-brand-copy"><span class="ev-brand-name">Empathia Village</span><span class="ev-brand-tagline">Private Living · Naturally Yours</span></span></a>
+    <button type="button" class="ev-menu-toggle" aria-label="Menu" aria-controls="ev-menu-panel" aria-expanded="false"><span class="ev-menu-label">Menu</span><span class="ev-menu-icon" aria-hidden="true"></span></button>
+    <div class="ev-panel" id="ev-menu-panel">
+      <nav class="ev-links" aria-label="Main navigation">
+        <a href="/index.html#hero" class="ev-link">Home</a>
+        <details class="ev-group"><summary>Villas</summary><div class="ev-submenu"><a href="/residencies.html">All villas</a><a href="/villa-anna.html">Villa Anna</a><a href="/villa-jane.html">Villa Jane</a><a href="/villa-georgette.html">Villa Georgette</a></div></details>
+        <details class="ev-group"><summary>The estate</summary><div class="ev-submenu"><a href="/construction.html">Construction</a><a href="/index.html#masterplan">Masterplan</a><a href="/index.html#location">Location</a><a href="/about.html">About the developer</a><a href="/blog.html">Journal</a></div></details>
+        <a href="/gallery.html" class="ev-link">Gallery</a>
+        <details class="ev-group"><summary>Buying</summary><div class="ev-submenu"><a href="/pricing.html">Pricing</a><a href="/buyer-due-diligence.html">Buyer guide</a><a href="/project-facts.html">Official project facts</a><a href="/faq.html">FAQ</a><a href="/agents.html">For agents</a></div></details>
+        <a href="/contact.html" class="ev-link">Contacts</a>
+      </nav>
+      <div class="ev-controls"><div class="ev-languages" aria-label="Language"><a href="/index.html" lang="en" hreflang="en" title="English" aria-current="true">EN</a><a href="/fr/index.html" lang="fr" hreflang="fr" title="Français">FR</a><a href="/ar/index.html" lang="ar" hreflang="ar" title="العربية">AR</a></div><a class="ev-price" href="/index.html#contact">Request price list</a></div>
+      <div class="ev-contact-links"><a class="ev-phone" href="tel:+2482715102">+248 271 51 02</a><a href="mailto:info@empathia-seychelles.com">info@empathia-seychelles.com</a><a href="https://wa.me/2482715102" target="_blank" rel="noopener">WhatsApp</a></div>
+    </div>
+  </div>
+</header>
   <main>
     <img src="/assets/images/brand/logo-emblem.webp" alt="" width="70" height="70">
     <p class="brand">Empathia Village · Baie Lazare, Mahé</p>
@@ -34,5 +51,30 @@
       <a href="/contact">Contact</a>
     </nav>
   </main>
-</body>
+<footer class="ev-footer">
+  <div class="upgrade-wrap">
+    <div class="ev-footer-main">
+      <div class="ev-footer-identity">
+        <a class="ev-footer-brand" href="/index.html#hero" dir="ltr"><img src="/assets/images/brand/logo-emblem.webp" alt="" width="35" height="60"><span>Empathia Village</span></a>
+        <p class="ev-footer-tagline">Private living. Naturally yours.</p>
+        <p class="ev-footer-address">Baie Lazare · Mahé · Seychelles</p>
+      </div>
+      <nav class="ev-footer-nav" aria-label="Explore the estate">
+        <h2 class="ev-footer-label">Explore the estate</h2>
+        <a href="/residencies.html">Residences</a>
+        <a href="/construction.html">Construction progress</a>
+        <a href="/index.html#masterplan">Masterplan</a>
+        <a href="/buyer-due-diligence.html">Buyer guide</a>
+      <a href="/project-facts.html">Official project facts</a></nav>
+      <div class="ev-footer-contact">
+        <h2 class="ev-footer-label">Get in touch</h2>
+        <a class="ev-footer-phone" href="tel:+2482715102"><bdi>+248 271 51 02</bdi></a>
+        <a class="ev-footer-email" href="mailto:info@empathia-seychelles.com">info@empathia-seychelles.com</a>
+        <div class="ev-footer-socials"><a href="https://wa.me/2482715102" target="_blank" rel="noopener">WhatsApp ↗</a><a href="https://www.instagram.com/seychelles.empathia/" target="_blank" rel="noopener">Instagram ↗</a></div>
+      </div>
+    </div>
+    <div class="ev-footer-bottom"><p>© 2026 Empathia Village</p><p class="ev-footer-developer">Kensington Construction &amp; Development · Class I</p><a href="/privacy.html">Privacy notice</a><a href="/index.html#hero">Back to top ↑</a></div>
+    <p class="ev-footer-disclaimer">Prices, areas, images, availability and purchase terms are for general information only and do not constitute a public offer. Ownership, residency and rental use are subject to applicable approvals, licensing and individual circumstances. Independent legal, tax and technical advice is recommended.</p>
+  </div>
+</footer></body>
 </html>
