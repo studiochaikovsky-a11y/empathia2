@@ -72,6 +72,13 @@ for (const file of contentPages) {
     html = renderVillaGrid(html, context.window.EmpathiaRenderVillaCards(lang));
     writeFileSync(destination, html);
   }
+  for (const [, href] of html.matchAll(/\bhref=["']([^"']+)["']/g)) {
+    if (href.startsWith('#')) continue;
+    const target = new URL(href, 'https://empathia-seychelles.com/' + file);
+    if (target.origin === 'https://empathia-seychelles.com' && target.pathname.endsWith('.html')) {
+      throw new Error(`Non-canonical internal link in ${file}: ${href}`);
+    }
+  }
 }
 
 for (const required of [

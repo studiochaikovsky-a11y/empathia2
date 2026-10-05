@@ -12,15 +12,15 @@
   var IG_HREF = 'https://www.instagram.com/seychelles.empathia/';
 
   var EN_PAGES = [
-    ['index.html', 'Home'],
-    ['residencies.html', 'Residences'],
-    ['pricing.html', 'Pricing'],
-    ['gallery.html', 'Gallery'],
-    ['construction.html', 'Construction'],
-    ['blog.html', 'Blog'],
-    ['faq.html', 'FAQ'],
-    ['agents.html', 'Agents'],
-    ['contact.html', 'Contacts']
+    ['/', 'Home'],
+    ['/residencies', 'Residences'],
+    ['/pricing', 'Pricing'],
+    ['/gallery', 'Gallery'],
+    ['/construction', 'Construction'],
+    ['/blog', 'Blog'],
+    ['/faq', 'FAQ'],
+    ['/agents', 'Agents'],
+    ['/contact', 'Contacts']
   ];
 
   function icon(name, size) {
@@ -37,7 +37,7 @@
     var nav = document.querySelector('nav.nav');
     if (!nav || document.getElementById('mobDrawer')) return;
 
-    var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var current = location.pathname.replace(/\/index\.html$/i, '/').replace(/\.html$/i, '').toLowerCase();
     var lang = (document.documentElement.lang || 'en').toLowerCase();
     var isFr = lang.indexOf('fr') === 0;
     var isAr = lang.indexOf('ar') === 0;
@@ -67,9 +67,9 @@
     var navLinks = nav.querySelector('.nav-links');
     if (navLinks) {
       var subPages = [
-        {href:'residencies.html', label:'Residencies'},
-        {href:'pricing.html',     label:'Pricing'},
-        {href:'construction.html',label:'Construction'}
+        {href:'/residencies', label:'Residencies'},
+        {href:'/pricing',     label:'Pricing'},
+        {href:'/construction',label:'Construction'}
       ];
       var firstEl = null, found = [];
       subPages.forEach(function(p) {
@@ -121,7 +121,7 @@
         '</div>' +
         '<nav class="mob-links">' + links + '</nav>' +
         '<div style="padding:24px 28px">' +
-          '<a href="' + (isFr || isAr ? '#contact' : 'contact.html') + '" class="btn-solid" style="display:block;text-align:center;padding:16px">' + labels.price + '</a>' +
+          '<a href="' + (isFr || isAr ? '#contact' : '/contact') + '" class="btn-solid" style="display:block;text-align:center;padding:16px">' + labels.price + '</a>' +
         '</div>' +
       '</div>');
 
@@ -169,7 +169,7 @@
     if (!document.querySelector('.upgrade-mobile-cta, .mobile-sticky-cta')) {
       document.body.insertAdjacentHTML('beforeend',
         '<div class="mobile-sticky-cta" aria-label="Quick contact">' +
-          '<a href="' + (isFr || isAr ? '#contact' : 'contact.html') + '">' + labels.price + '</a>' +
+          '<a href="' + (isFr || isAr ? '#contact' : '/contact') + '">' + labels.price + '</a>' +
           '<a href="' + WA_HREF + '" target="_blank" rel="noopener">WhatsApp</a>' +
         '</div>');
     }

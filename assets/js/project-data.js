@@ -41,7 +41,7 @@
         image: 'assets/images/villas/jane/villa-jane-card.webp',
         hero: 'assets/images/villas/jane/villa-jane-il.webp',
         plan: 'assets/images/villas/jane/villa-jane-sheet.webp',
-        page: 'villa-jane.html',
+        page: 'villa-jane',
         description: 'A refined single-storey residence with panoramic glazing, two bedrooms and an effortless indoor-outdoor plan. A private pool is available as an optional upgrade.',
         descriptions: {
           fr: 'Une résidence raffinée de plain-pied avec vitrage panoramique, deux chambres et espaces ouverts sur l’extérieur. Une piscine privée est disponible en option.',
@@ -59,7 +59,7 @@
         image: 'assets/images/villas/anna/villa-anna-card.webp',
         hero: 'assets/images/villas/anna/villa-anna-il.webp',
         plan: 'assets/images/villas/anna/villa-anna-sheet.webp',
-        page: 'villa-anna.html',
+        page: 'villa-anna',
         description: 'An elegant two-storey villa with generous living spaces and panoramic glazing. A private pool and sun terrace are available as optional upgrades.',
         descriptions: {
           fr: 'Une élégante villa sur deux niveaux avec de généreux espaces et vitrage panoramique. Une piscine privée et une terrasse sont disponibles en option.',
@@ -77,7 +77,7 @@
         image: 'assets/images/villas/georgette/villa-georgette-card.webp',
         hero: 'assets/images/villas/georgette/villa-georgette-il.webp',
         plan: 'assets/images/villas/georgette/villa-georgette-sheet.webp',
-        page: 'villa-georgette.html',
+        page: 'villa-georgette',
         description: 'The signature three-storey villa with four bedrooms, panoramic terraces and elevated Indian Ocean views. A private pool is available as an optional upgrade.',
         descriptions: {
           fr: 'La villa signature sur trois niveaux avec quatre chambres, terrasses panoramiques et vue sur l’océan Indien. Une piscine privée est disponible en option.',
