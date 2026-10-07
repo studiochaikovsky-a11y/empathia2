@@ -1,3 +1,9 @@
 # Superseded PDFs contain outdated scope and residence/rental claims.
 /Empathia_Village_Brochure_EN.pdf /project-facts 301
 /empathia-village-agent-brochure.pdf /agents 301
+
+# Legacy relative links from the French homepage, reported by Search Console.
+/fr/faq.html /fr/#faq 301
+/fr/faq /fr/#faq 301
+/fr/blog.html /blog 301
+/fr/blog /blog 301
