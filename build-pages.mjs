@@ -16,6 +16,15 @@ const publicExtensions = new Set([
 ]);
 const publicDirectories = ['ar', 'assets', 'crm', 'fr', 'optimized'];
 const specialFiles = ['_headers', '_redirects', 'data/project-facts.json'];
+// Keep the Google Ads tag identical across all public content pages.
+const googleTag = `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18528545143"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18528545143');
+</script>`;
 let copied = 0;
 
 function copyPublicFile(relativePath) {
@@ -57,6 +66,10 @@ const contentPages = readdirSync(projectRoot).filter(file => file.endsWith('.htm
 for (const file of contentPages) {
   const destination = join(outputRoot, file);
   let html = readFileSync(destination, 'utf8');
+  if (!/<head(?:\s[^>]*)?>/i.test(html) || /googletagmanager\.com\/(?:gtag\/js|gtm\.js)/i.test(html)) {
+    throw new Error(`Missing head or duplicate Google tag: ${file}`);
+  }
+  html = html.replace(/<head(?:\s[^>]*)?>/i, head => head + '\n' + googleTag);
   if ((html.match(/id="site-header"/g) || []).length !== 1 ||
       !html.includes('site-header-20261005.css') || !html.includes('site-mobile-20261005.css') ||
       html.includes('<nav class="nav"') || html.includes('static.cloudflareinsights.com/beacon')) {
@@ -70,7 +83,6 @@ for (const file of contentPages) {
     const context = { window: {}, location: { pathname: '/' + file }, document: { readyState: 'loading', addEventListener() {} } };
     runInNewContext(readFileSync(join(projectRoot, 'assets/js/project-data.js'), 'utf8'), context);
     html = renderVillaGrid(html, context.window.EmpathiaRenderVillaCards(lang));
-    writeFileSync(destination, html);
   }
   for (const [, href] of html.matchAll(/\bhref=["']([^"']+)["']/g)) {
     if (href.startsWith('#')) continue;
@@ -79,6 +91,7 @@ for (const file of contentPages) {
       throw new Error(`Non-canonical internal link in ${file}: ${href}`);
     }
   }
+  writeFileSync(destination, html);
 }
 
 for (const required of [
