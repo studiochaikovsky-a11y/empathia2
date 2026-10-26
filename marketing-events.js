@@ -45,6 +45,15 @@
     deliver(details);
   };
 
+  window.evTrackLeadSuccess = function (params) {
+    window.evTrack('lead_submit_success', params);
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18528545143/7NAqCKzfqqQdEPfSjINF'
+      });
+    }
+  };
+
   document.addEventListener('click', function (event) {
     var target = event.target.closest('a,button');
     if (!target) return;

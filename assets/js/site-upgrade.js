@@ -39,7 +39,7 @@
   function ensureMarketingEvents() {
     if (window.evTrack || document.querySelector('script[src*="marketing-events.js"]')) return;
     const script = document.createElement('script');
-    script.src = '/marketing-events.js?v=20260902';
+    script.src = '/marketing-events.js?v=20261026';
     script.defer = true;
     document.head.appendChild(script);
   }
@@ -170,7 +170,7 @@
           if (!response.ok || result.ok !== true) throw new Error('Delivery failed');
           form.reset();
           message('success', t.success);
-          if (window.evTrack) window.evTrack('lead_submit_success', { interest: payload.interest || '', page_title: document.title });
+          if (window.evTrackLeadSuccess) window.evTrackLeadSuccess({ interest: payload.interest || '', page_title: document.title });
         } catch (error) {
           message('error', t.error);
         } finally {
