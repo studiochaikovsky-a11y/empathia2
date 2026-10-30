@@ -46,8 +46,17 @@
   };
 
   window.evTrackLeadSuccess = function (params) {
-    window.evTrack('lead_submit_success', params);
+    try { window.evTrack('lead_submit_success', params); } catch (error) {}
     if (typeof window.gtag === 'function') {
+      // Called only after /api/lead confirms delivery. Never send form values
+      // (name, phone, email, free text) to Google Analytics.
+      if (location.hostname === 'empathia-seychelles.com' || location.hostname === 'www.empathia-seychelles.com') {
+        window.gtag('event', 'generate_lead', {
+          send_to: 'G-3G2W4S48YP',
+          method: 'website_form',
+          form_id: /^\/contact(?:\.html)?\/?$/.test(location.pathname) ? 'contact' : 'enquiry'
+        });
+      }
       window.gtag('event', 'conversion', {
         send_to: 'AW-18528545143/7NAqCKzfqqQdEPfSjINF'
       });

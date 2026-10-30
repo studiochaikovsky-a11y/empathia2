@@ -39,7 +39,7 @@
   function ensureMarketingEvents() {
     if (window.evTrack || document.querySelector('script[src*="marketing-events.js"]')) return;
     const script = document.createElement('script');
-    script.src = '/marketing-events.js?v=20261026';
+    script.src = '/marketing-events.js?v=20261030-ga4';
     script.defer = true;
     document.head.appendChild(script);
   }
