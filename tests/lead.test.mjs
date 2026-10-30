@@ -19,6 +19,7 @@ async function submit({ telegramOk = true, emailOk = true, crmOk = true } = {}) 
     TELEGRAM_CHAT_ID: 'test-chat',
     WEB3FORMS_KEY: 'test-key',
     DB: {
+      batch: async () => [],
       prepare() {
         return {
           bind() {

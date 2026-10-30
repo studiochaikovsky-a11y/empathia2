@@ -4,6 +4,7 @@
 //   TELEGRAM_BOT_TOKEN  — token from @BotFather
 //   TELEGRAM_CHAT_ID    — chat id that should receive the lead
 //   WEB3FORMS_KEY       — access key from web3forms.com (sends email)
+import {deliveryResult} from '../_lib/delivery-result.js';
 
 // Preflight for cross-origin form posts from approved campaign or language pages.
 export function onRequestOptions() {
@@ -43,6 +44,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   const status = { telegram: 'not configured', email: 'not configured', crm: 'not configured' };
+  const diagnostics={};
   let leadReference='';
   // Save first so all delivery channels carry the same durable receipt number.
   let dbPromise = Promise.resolve();
@@ -86,12 +88,12 @@ export async function onRequestPost({ request, env }) {
         body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID.trim(), text }),
       })
         .then(async (r) => {
-          const body = await r.json().catch(() => ({}));
-          const ok = r.ok && body.ok !== false;
+          const result=await deliveryResult(r,'telegram');diagnostics.telegram=result;
+          const ok=result.ok;
           status.telegram = ok ? 'ok' : 'failed';
           return ok;
         })
-        .catch((e) => { console.error('Lead Telegram delivery failed:', e); status.telegram = 'failed'; return false; })
+        .catch(() => { diagnostics.telegram={ok:false,httpStatus:null,code:'network_uncertain'};status.telegram = 'failed'; return false; })
     );
   }
 
@@ -111,12 +113,12 @@ export async function onRequestPost({ request, env }) {
         }),
       })
         .then(async (r) => {
-          const body = await r.json().catch(() => ({}));
-          const ok = r.ok && body.success !== false;
+          const result=await deliveryResult(r,'email');diagnostics.email=result;
+          const ok=result.ok;
           status.email = ok ? 'ok' : 'failed';
           return ok;
         })
-        .catch((e) => { console.error('Lead email delivery failed:', e); status.email = 'failed'; return false; })
+        .catch(() => { diagnostics.email={ok:false,httpStatus:null,code:'network_uncertain'};status.email = 'failed'; return false; })
     );
   }
 
@@ -128,6 +130,10 @@ export async function onRequestPost({ request, env }) {
 
   const [results] = await Promise.all([Promise.allSettled(tasks), dbPromise]);
   const delivered = results.some((r) => r.status === 'fulfilled' && r.value === true);
+  if(leadReference&&env.DB){
+    try{await env.DB.batch(Object.entries(diagnostics).map(([channel,d])=>env.DB.prepare('INSERT INTO lead_delivery(lead_id,channel,state,http_status,code,updated_at) VALUES(?,?,?,?,?,?) ON CONFLICT(lead_id,channel) DO UPDATE SET state=excluded.state,http_status=excluded.http_status,code=excluded.code,updated_at=excluded.updated_at').bind(Number(leadReference.split(':').at(-1)),channel,d.ok?'accepted':d.code==='network_uncertain'?'uncertain':'failed',d.httpStatus,d.code,new Date().toISOString())));}
+    catch{console.error('Lead delivery audit unavailable');}
+  }
 
   if (Object.values(status).some(value => value !== 'ok')) {
     const warning = [
