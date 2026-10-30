@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { onRequestPost } from '../functions/api/lead.js';
 
-async function submit({ telegramOk = true, emailOk = true, crmOk = true } = {}) {
+async function submit({ telegramOk = true, emailOk = true, crmOk = true, source, origin } = {}) {
   const calls = [];
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async (url, options) => {
@@ -38,7 +38,8 @@ async function submit({ telegramOk = true, emailOk = true, crmOk = true } = {}) 
     const response = await onRequestPost({
       request: new Request('https://example.test/api/lead', {
         method: 'POST',
-        body: JSON.stringify({ phone: '+248 271 51 02', page: 'Contact' }),
+        headers: origin ? {Origin:origin} : {},
+        body: JSON.stringify({ source, phone: '+248 271 51 02', page: 'Contact' }),
       }),
       env,
     });
@@ -101,3 +102,6 @@ test('two failed delivery channels do not report success', async () => {
     console.error = originalError;
   }
 });
+
+test('Russian forms carry a distinct site label, URL and receipt in both channels',async()=>{const {result,calls}=await submit({source:'empathiavillage.ru',origin:'https://empathiavillage.ru'});assert.equal(result.ok,true);assert.match(calls[0].body.text,/Эмпатия — русский сайт/);assert.match(calls[0].body.text,/Сайт: https:\/\/empathiavillage\.ru\//);assert.match(calls[0].body.text,/site:empathia-ru:123/);assert.match(calls[1].body.subject,/русский сайт/);assert.match(calls[1].body.message,/site:empathia-ru:123/);});
+test('English origin controls classification even if payload claims Russian',async()=>{const {calls}=await submit({source:'empathiavillage.ru',origin:'https://empathia-seychelles.com'});assert.match(calls[0].body.text,/Эмпатия — английский сайт/);assert.match(calls[0].body.text,/site:empathia-en:123/);assert.match(calls[1].body.subject,/английский сайт/);});

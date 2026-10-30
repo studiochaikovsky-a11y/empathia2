@@ -5,6 +5,7 @@
 //   TELEGRAM_CHAT_ID    — chat id that should receive the lead
 //   WEB3FORMS_KEY       — access key from web3forms.com (sends email)
 import {deliveryResult} from '../_lib/delivery-result.js';
+import {leadSource} from '../_lib/lead-source.js';
 
 // Preflight for cross-origin form posts from approved campaign or language pages.
 export function onRequestOptions() {
@@ -44,12 +45,13 @@ export async function onRequestPost({ request, env }) {
   }
 
   const status = { telegram: 'not configured', email: 'not configured', crm: 'not configured' };
+  const site=leadSource(request,data);
   const diagnostics={};
   let leadReference='';
   // Save first so all delivery channels carry the same durable receipt number.
   let dbPromise = Promise.resolve();
   if (env.DB) {
-    const src = clean(data.source) || 'empathia-seychelles.com';
+    const src = site.domain;
     const interest = lead.interest;
     const type = interest.toLowerCase().includes('agent') || lead.page.includes('agent')
       ? 'agent' : 'client';
@@ -58,16 +60,17 @@ export async function onRequestPost({ request, env }) {
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type,
         lead.utm_source, lead.utm_medium, lead.utm_campaign)
-      .run()).then((result) => { status.crm = 'ok'; const id=Number(result?.meta?.last_row_id); if(Number.isSafeInteger(id)&&id>0) leadReference=`site:empathia-en:${id}`; })
+      .run()).then((result) => { status.crm = 'ok'; const id=Number(result?.meta?.last_row_id); if(Number.isSafeInteger(id)&&id>0) leadReference=site.refPrefix+id; })
       .catch(e => { console.error('CRM D1 insert failed:', e); status.crm = 'failed'; });
   }
 
   await dbPromise;
 
   const lines = [
-    '🌴 Новая заявка с сайта Empathia Village',
+    `🌴 Новая заявка — ${site.label}`,
     '',
     leadReference && `UACC-REF: ${leadReference}`,
+    `Сайт: ${site.url}`,
     lead.name && `Имя: ${lead.name}`,
     lead.phone && `Телефон: ${lead.phone}`,
     lead.email && `Email: ${lead.email}`,
@@ -104,7 +107,7 @@ export async function onRequestPost({ request, env }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: env.WEB3FORMS_KEY.trim(),
-          subject: 'Новая заявка — Empathia Village',
+          subject: `Новая заявка — Empathia Village · ${site.domain==='empathiavillage.ru'?'русский сайт':'английский сайт'}`,
           from_name: 'Empathia Village Website',
           name: lead.name || 'Website visitor',
           phone: lead.phone,
@@ -137,7 +140,8 @@ export async function onRequestPost({ request, env }) {
 
   if (Object.values(status).some(value => value !== 'ok')) {
     const warning = [
-      '⚠️ Empathia: заявка доставлена не во все каналы',
+      `⚠️ ${site.label}: заявка доставлена не во все каналы`,
+      `Сайт: ${site.url}`,
       `Telegram: ${status.telegram}; email: ${status.email}; CRM: ${status.crm}`,
       `Страница: ${lead.page || 'не указана'}; телефон оканчивается на ${lead.phone.slice(-4)}`,
       'Проверьте заявку в доступном канале и восстановите сбойный.'
