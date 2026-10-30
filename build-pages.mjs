@@ -16,7 +16,7 @@ const publicExtensions = new Set([
 ]);
 const publicDirectories = ['ar', 'assets', 'crm', 'fr', 'optimized'];
 const specialFiles = ['_headers', '_redirects', 'data/project-facts.json'];
-// Keep the Google Ads tag identical across all public content pages.
+// Keep the Google Ads and Analytics tag identical across all public content pages.
 const googleTag = `<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18528545143"></script>
 <script>
@@ -24,6 +24,7 @@ const googleTag = `<!-- Google tag (gtag.js) -->
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'AW-18528545143');
+  gtag('config', 'G-3G2W4S48YP');
 </script>`;
 let copied = 0;
 
