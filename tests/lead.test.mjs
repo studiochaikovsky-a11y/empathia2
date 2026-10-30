@@ -25,6 +25,7 @@ async function submit({ telegramOk = true, emailOk = true, crmOk = true } = {}) 
             return {
               run: async () => {
                 if (!crmOk) throw new Error('test database outage');
+                return {meta:{last_row_id:123}};
               },
             };
           },
@@ -52,6 +53,8 @@ test('complete delivery succeeds without a warning', async () => {
   assert.deepEqual(result.status, { telegram: 'ok', email: 'ok', crm: 'ok' });
   assert.equal(result.ok, true);
   assert.equal(calls.length, 2);
+  assert.match(calls[0].body.text, /UACC-REF: site:empathia-en:123/);
+  assert.match(calls[1].body.message, /UACC-REF: site:empathia-en:123/);
 });
 
 test('email failure warns through Telegram', async () => {

@@ -42,9 +42,30 @@ export async function onRequestPost({ request, env }) {
     return json({ ok: false, error: 'phone_required' }, 400);
   }
 
+  const status = { telegram: 'not configured', email: 'not configured', crm: 'not configured' };
+  let leadReference='';
+  // Save first so all delivery channels carry the same durable receipt number.
+  let dbPromise = Promise.resolve();
+  if (env.DB) {
+    const src = clean(data.source) || 'empathia-seychelles.com';
+    const interest = lead.interest;
+    const type = interest.toLowerCase().includes('agent') || lead.page.includes('agent')
+      ? 'agent' : 'client';
+    dbPromise = Promise.resolve().then(() => env.DB.prepare(
+      `INSERT INTO leads (source, name, phone, email, interest, message, page, type, utm_source, utm_medium, utm_campaign)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type,
+        lead.utm_source, lead.utm_medium, lead.utm_campaign)
+      .run()).then((result) => { status.crm = 'ok'; const id=Number(result?.meta?.last_row_id); if(Number.isSafeInteger(id)&&id>0) leadReference=`site:empathia-en:${id}`; })
+      .catch(e => { console.error('CRM D1 insert failed:', e); status.crm = 'failed'; });
+  }
+
+  await dbPromise;
+
   const lines = [
     '🌴 Новая заявка с сайта Empathia Village',
     '',
+    leadReference && `UACC-REF: ${leadReference}`,
     lead.name && `Имя: ${lead.name}`,
     lead.phone && `Телефон: ${lead.phone}`,
     lead.email && `Email: ${lead.email}`,
@@ -55,7 +76,6 @@ export async function onRequestPost({ request, env }) {
   ].filter(Boolean);
   const text = lines.join('\n');
 
-  const status = { telegram: 'not configured', email: 'not configured', crm: 'not configured' };
   const tasks = [];
 
   if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
@@ -100,21 +120,6 @@ export async function onRequestPost({ request, env }) {
     );
   }
 
-  // Save to D1 CRM database — run in parallel with Telegram/email, await before responding
-  let dbPromise = Promise.resolve();
-  if (env.DB) {
-    const src = clean(data.source) || 'empathia-seychelles.com';
-    const interest = lead.interest;
-    const type = interest.toLowerCase().includes('agent') || lead.page.includes('agent')
-      ? 'agent' : 'client';
-    dbPromise = Promise.resolve().then(() => env.DB.prepare(
-      `INSERT INTO leads (source, name, phone, email, interest, message, page, type, utm_source, utm_medium, utm_campaign)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type,
-        lead.utm_source, lead.utm_medium, lead.utm_campaign)
-      .run()).then(() => { status.crm = 'ok'; })
-      .catch(e => { console.error('CRM D1 insert failed:', e); status.crm = 'failed'; });
-  }
 
   if (tasks.length === 0) {
     await dbPromise;
