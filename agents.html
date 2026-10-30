@@ -55,7 +55,7 @@
   ]
 }
 </script>
-<script src="/marketing-events.js?v=20261026" defer></script>
+<script src="/marketing-events.js?v=20261030-ads" defer></script>
 <link rel="stylesheet" href="site-header-20261005.css">
 <script src="site-header-20261005.js" defer></script>
 <link rel="stylesheet" href="site-refinement-20260907.css?v=20261005">
@@ -297,17 +297,17 @@ async function submitAgent(){
   const s=document.getElementById('ag-source')?document.getElementById('ag-source').value:'';
   const m=document.getElementById('ag-message')?document.getElementById('ag-message').value.trim():'';
   const msg=['Agent registration',c&&('Company: '+c),co&&('Country: '+co),s&&('Client market: '+s),m].filter(Boolean).join('\n');
-  let ok=false;
+  let ok=false,leadReference=null;
   try{
     const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:n,phone:p,email:e,interest:'Agent partnership',message:msg,page:'Agents'},_utm()))});
-    ok=r.ok&&(await r.json()).ok===true;
+    const result=await r.json();ok=r.ok&&result.ok===true;leadReference=result.lead_reference;
   }catch(err){}
   if(btn){btn.disabled=false;btn.textContent='Request Agent Pack';}
   if(ok){
     setFormStatus('agent-status','success','Thank you, '+n+'. Our sales team will contact you within 24 hours with the full agent pack, commission structure and supporting materials.');
     ['ag-name','ag-email','ag-phone','ag-company','ag-country','ag-message'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
     const source=document.getElementById('ag-source');if(source)source.value='';
-    if(window.evTrackLeadSuccess)window.evTrackLeadSuccess({interest:'Agent partnership',page_title:document.title});
+    if(window.evTrackLeadSuccess)window.evTrackLeadSuccess({lead_reference:leadReference});
   }else{
     setFormStatus('agent-status','error','Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }

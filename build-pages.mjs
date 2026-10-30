@@ -23,8 +23,8 @@ const googleTag = `<!-- Google tag (gtag.js) -->
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'AW-18528545143');
   if (location.hostname === 'empathia-seychelles.com' || location.hostname === 'www.empathia-seychelles.com') {
+    gtag('config', 'AW-18528545143');
     gtag('config', 'G-3G2W4S48YP');
   }
 </script>`;
@@ -73,8 +73,9 @@ for (const file of contentPages) {
     throw new Error(`Missing head or duplicate Google tag: ${file}`);
   }
   html = html.replace(/<head(?:\s[^>]*)?>/i, head => head + '\n' + googleTag);
-  html = html.replace(/marketing-events\.js\?v=[^"'\s<>]+/g, 'marketing-events.js?v=20261030-ga4')
-    .replace(/site-upgrade\.js\?v=[^"'\s<>]+/g, 'site-upgrade.js?v=20261030-ga4');
+  html = html.replace(/marketing-events\.js\?v=[^"'\s<>]+/g, 'marketing-events.js?v=20261030-ads')
+    .replace(/mobile-nav\.js\?v=[^"'\s<>]+/g, 'mobile-nav.js?v=20261030-ads')
+    .replace(/site-upgrade\.js\?v=[^"'\s<>]+/g, 'site-upgrade.js?v=20261030-ads');
   if ((html.match(/id="site-header"/g) || []).length !== 1 ||
       !html.includes('site-header-20261005.css') || !html.includes('site-mobile-20261005.css') ||
       html.includes('<nav class="nav"') || html.includes('static.cloudflareinsights.com/beacon')) {

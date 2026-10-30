@@ -3,19 +3,28 @@
 
   var keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
-  function attribution() {
-    var query = new URLSearchParams(location.search);
-    var result = {};
-    keys.forEach(function (key) {
-      try {
-        if (query.get(key)) sessionStorage.setItem(key, query.get(key));
-        result[key] = sessionStorage.getItem(key) || '';
-      } catch (error) {
-        result[key] = '';
-      }
-    });
-    return result;
+  var clickKeys=['gclid','gbraid','wbraid'];
+  var campaignKeys=keys.concat(['utm_id','campaign_id']);
+  var attributionKey='empathia.ad-attribution.v1';
+  var memoryAttribution=null,lastQuery=null;
+  function leadAttribution(){
+    var query=new URLSearchParams(location.search),now=Date.now(),saved=memoryAttribution;
+    if(!saved)try{saved=JSON.parse(localStorage.getItem(attributionKey)||'null');}catch(error){}
+    if(!saved||!Number.isFinite(Date.parse(saved.captured_at))||now-Date.parse(saved.captured_at)>30*86400000||Date.parse(saved.captured_at)>now+300000)saved={};
+    var fresh={};
+    clickKeys.forEach(function(key){var v=query.get(key)||'';if(/^[A-Za-z0-9_-]{5,512}$/.test(v))fresh[key]=v;});
+    campaignKeys.forEach(function(key){var v=query.get(key)||'';if(v&&v.length<=200&&!/[\u0000-\u001f]/.test(v))fresh[key]=v;});
+    if(Object.keys(fresh).length&&lastQuery!==location.search){
+      // A new campaign replaces the previous touch; old Google click IDs must not
+      // leak into a later non-Google campaign. Direct page navigation preserves it.
+      saved=Object.assign(fresh,{captured_at:new Date(now).toISOString(),landing_page:location.pathname});
+      try{localStorage.setItem(attributionKey,JSON.stringify(saved));}catch(error){}
+    }
+    lastQuery=location.search;memoryAttribution=saved;
+    return Object.assign({},saved);
   }
+  function attribution(){var a=leadAttribution(),out={};keys.forEach(function(key){out[key]=a[key]||'';});return out;}
+  window.evLeadAttribution=leadAttribution;
 
   function deliver(details) {
     var payload = JSON.stringify(details);
@@ -45,7 +54,12 @@
     deliver(details);
   };
 
+  var reportedReceipts=Object.create(null);
   window.evTrackLeadSuccess = function (params) {
+    if(location.hostname!=='empathia-seychelles.com'&&location.hostname!=='www.empathia-seychelles.com')return;
+    var receipt=params&&params.lead_reference;
+    if(!/^site:empathia-(en|ru):[1-9]\d*$/.test(receipt||''))return;
+    if(reportedReceipts[receipt])return;reportedReceipts[receipt]=true;
     try { window.evTrack('lead_submit_success', params); } catch (error) {}
     if (typeof window.gtag === 'function') {
       // Called only after /api/lead confirms delivery. Never send form values
@@ -58,7 +72,8 @@
         });
       }
       window.gtag('event', 'conversion', {
-        send_to: 'AW-18528545143/7NAqCKzfqqQdEPfSjINF'
+        send_to: 'AW-18528545143/7NAqCKzfqqQdEPfSjINF',
+        transaction_id: receipt
       });
     }
   };

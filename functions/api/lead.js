@@ -5,6 +5,7 @@
 //   TELEGRAM_CHAT_ID    — chat id that should receive the lead
 //   WEB3FORMS_KEY       — access key from web3forms.com (sends email)
 import {deliveryResult} from '../_lib/delivery-result.js';
+import {leadAttribution} from '../_lib/lead-attribution.js';
 import {leadSource} from '../_lib/lead-source.js';
 
 // Preflight for cross-origin form posts from approved campaign or language pages.
@@ -39,6 +40,8 @@ export async function onRequestPost({ request, env }) {
     utm_campaign: clean(data.utm_campaign),
   };
 
+  const attribution=leadAttribution(data);
+  for(const key of ['utm_source','utm_medium','utm_campaign'])if(attribution[key])lead[key]=attribution[key];
   const phoneDigits = lead.phone.replace(/\D/g, '');
   if (phoneDigits.length < 7) {
     return json({ ok: false, error: 'phone_required' }, 400);
@@ -56,10 +59,10 @@ export async function onRequestPost({ request, env }) {
     const type = interest.toLowerCase().includes('agent') || lead.page.includes('agent')
       ? 'agent' : 'client';
     dbPromise = Promise.resolve().then(() => env.DB.prepare(
-      `INSERT INTO leads (source, name, phone, email, interest, message, page, type, utm_source, utm_medium, utm_campaign)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      `INSERT INTO leads (source, name, phone, email, interest, message, page, type, utm_source, utm_medium, utm_campaign, attribution_json)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).bind(src, lead.name, lead.phone, lead.email, interest, lead.message, lead.page, type,
-        lead.utm_source, lead.utm_medium, lead.utm_campaign)
+        lead.utm_source, lead.utm_medium, lead.utm_campaign, JSON.stringify(attribution))
       .run()).then((result) => { status.crm = 'ok'; const id=Number(result?.meta?.last_row_id); if(Number.isSafeInteger(id)&&id>0) leadReference=site.refPrefix+id; })
       .catch(e => { console.error('CRM D1 insert failed:', e); status.crm = 'failed'; });
   }
@@ -74,6 +77,8 @@ export async function onRequestPost({ request, env }) {
     lead.name && `Имя: ${lead.name}`,
     lead.phone && `Телефон: ${lead.phone}`,
     lead.email && `Email: ${lead.email}`,
+    (attribution.gclid||attribution.gbraid||attribution.wbraid)&&'Реклама: Google Ads · есть метка перехода',
+    attribution.utm_campaign&&`Кампания: ${attribution.utm_campaign}`,
     lead.interest && `Интерес: ${lead.interest}`,
     lead.message && `Сообщение: ${lead.message}`,
     '',
@@ -180,7 +185,7 @@ export async function onRequestPost({ request, env }) {
 
   // Always 200 so Cloudflare doesn't replace the JSON body with its
   // generic 5xx error page; the client checks the `ok` field.
-  return json({ ok: delivered, status });
+  return json({ ok: delivered, status, lead_reference:leadReference||null });
 }
 
 function json(obj, status = 200) {

@@ -75,7 +75,7 @@
   ]
 }
 </script>
-<script src="/marketing-events.js?v=20261026" defer></script>
+<script src="/marketing-events.js?v=20261030-ads" defer></script>
 <link rel="alternate" hreflang="ru" href="https://empathiavillage.ru/contact.html">
 <link rel="alternate" hreflang="en" href="https://empathia-seychelles.com/contact">
 <link rel="stylesheet" href="site-header-20261005.css">
@@ -271,16 +271,16 @@ async function submitForm(){
   const btn=document.querySelector('button[onclick="submitForm()"]');
   if(btn&&btn.disabled)return;
   if(btn){btn.disabled=true;btn.textContent='Sending...';}
-  let ok=false;
+  let ok=false,leadReference=null;
   try{
     const r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({name:document.getElementById('fn').value.trim(),email:email.value.trim(),phone:p,interest:interest,page:'Contact'},_utm()))});
-    ok=r.ok&&(await r.json()).ok===true;
+    const result=await r.json();ok=r.ok&&result.ok===true;leadReference=result.lead_reference;
   }catch(err){}
   if(btn){btn.disabled=false;btn.textContent='Send Price List';}
   if(ok){
     setFormStatus('contact-status','success','Thank you. Our advisor will contact you shortly and send the current price list and available plots.');
     ['fn','fe','fp','fv'].forEach(id=>{document.getElementById(id).value='';});
-    if(window.evTrackLeadSuccess)window.evTrackLeadSuccess({interest:interest,page_title:document.title});
+    if(window.evTrackLeadSuccess)window.evTrackLeadSuccess({lead_reference:leadReference});
   }else{
     setFormStatus('contact-status','error','Sorry, the form could not be sent right now. Please contact us directly: WhatsApp +248 271 51 02 or info@empathia-seychelles.com.');
   }

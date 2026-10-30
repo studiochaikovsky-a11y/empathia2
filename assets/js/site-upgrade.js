@@ -39,12 +39,13 @@
   function ensureMarketingEvents() {
     if (window.evTrack || document.querySelector('script[src*="marketing-events.js"]')) return;
     const script = document.createElement('script');
-    script.src = '/marketing-events.js?v=20261030-ga4';
+    script.src = '/marketing-events.js?v=20261030-ads';
     script.defer = true;
     document.head.appendChild(script);
   }
 
   function tracking() {
+    if(window.evLeadAttribution){const a=window.evLeadAttribution();return Object.assign({},a,{attribution:a});}
     const params = new URLSearchParams(location.search);
     ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (key) {
       if (params.get(key)) sessionStorage.setItem(key, params.get(key));
@@ -170,7 +171,7 @@
           if (!response.ok || result.ok !== true) throw new Error('Delivery failed');
           form.reset();
           message('success', t.success);
-          if (window.evTrackLeadSuccess) window.evTrackLeadSuccess({ interest: payload.interest || '', page_title: document.title });
+          if (window.evTrackLeadSuccess) window.evTrackLeadSuccess({ lead_reference:result.lead_reference });
         } catch (error) {
           message('error', t.error);
         } finally {
