@@ -624,3 +624,11 @@ body.upgrade-page {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Villa collection and commercial scope */
+.upgrade-villa-price-basis{margin:-.45rem 0 .9rem;color:#d3c8b6;font-size:.78rem;line-height:1.4}
+.villa-scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:28px}
+.villa-scope-grid p{line-height:1.7}
+@media(min-width:1200px){.upgrade-villa-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:901px) and (max-width:1199px){.upgrade-villa-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.villa-scope-grid{grid-template-columns:1fr}}

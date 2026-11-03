@@ -1,19 +1,77 @@
 {
-  "lastReviewed": "2026-10-01",
+  "lastReviewed": "2026-11-03",
   "name": "Empathia Village",
   "location": "Baie Lazare, Mahé, Seychelles",
   "developer": "Kensington Construction & Development",
-  "contractorLicence": { "class": "Class I", "number": "322704", "verification": "buyer should request current licence copy" },
-  "privatePlots": { "approximately": 30, "mayChangeIfCombined": true },
+  "contractorLicence": {
+    "class": "Class I",
+    "number": "322704",
+    "verification": "buyer should request current licence copy"
+  },
+  "privatePlots": {
+    "approximately": 30,
+    "mayChangeIfCombined": true
+  },
   "minimumPlotAreaSqm": 600,
   "villas": {
-    "jane": { "name": "Villa Jane", "priceFromUsd": 990000, "houseAreaFromSqm": 140, "plotAreaFromSqm": 600, "bedrooms": 2 },
-    "anna": { "name": "Villa Anna", "priceFromUsd": 1500000, "houseAreaFromSqm": 240, "plotAreaFromSqm": 600, "bedrooms": 3 },
-    "georgette": { "name": "Villa Georgette", "priceFromUsd": 2100000, "houseAreaFromSqm": 350, "plotAreaFromSqm": 1500, "bedrooms": 4 }
+    "jane": {
+      "name": "Villa Jane",
+      "priceFromUsd": 890000,
+      "houseAreaFromSqm": 140,
+      "plotAreaFromSqm": 600,
+      "bedrooms": 2
+    },
+    "anna": {
+      "name": "Villa Anna",
+      "priceFromUsd": 1300000,
+      "houseAreaFromSqm": 240,
+      "plotAreaFromSqm": 600,
+      "bedrooms": 3
+    },
+    "georgette": {
+      "name": "Villa Georgette",
+      "priceFromUsd": 1800000,
+      "houseAreaFromSqm": 350,
+      "plotAreaFromSqm": 1500,
+      "bedrooms": 4,
+      "houseAreaMaxSqm": 450
+    },
+    "florance": {
+      "name": "Villa Florance",
+      "priceFromUsd": 2000000,
+      "houseAreaFromSqm": 350,
+      "plotAreaFromSqm": 1500,
+      "bedrooms": 6,
+      "floors": 2,
+      "layoutStatus": "proposed"
+    }
   },
-  "baseScope": ["plot", "villa construction", "finished interior", "fencing", "fitted kitchen", "parking", "specified utility connections"],
-  "baseScopeToConfirmInContract": ["exact fencing and works specification"],
-  "optionalAtAdditionalCost": ["pool", "furniture", "premium finishes", "professional landscaping", "garage or carport", "extensions", "design changes"],
+  "baseScope": [
+    "levelled building plot",
+    "villa construction",
+    "finished façade and roof",
+    "windows and entrance doors",
+    "connections to central estate utilities",
+    "internal plumbing, water, drainage and electrical distribution",
+    "walls, floors and ceilings prepared for final finishes"
+  ],
+  "baseScopeToConfirmInContract": [
+    "selected plot and exact works specification"
+  ],
+  "optionalAtAdditionalCost": [
+    "tile, marble, granite or timber flooring",
+    "paint and decorative wall finishes",
+    "lighting, chandeliers and accent lighting",
+    "kitchen equipment",
+    "furnishings",
+    "smart home systems",
+    "air conditioning",
+    "pool",
+    "landscape design, trees, plants and automatic irrigation",
+    "garage or carport",
+    "extensions",
+    "design changes"
+  ],
   "taxesAndDuties": "government taxes, duties, registration charges and other applicable statutory transaction costs are not included in advertised villa prices and are payable separately by the purchaser; applicable charges are explained before proceeding",
   "governmentSanctionSupport": "Empathia Village assists with the Government Sanction process as part of transaction support; government charges are separate; approval is decided by the Seychelles authority",
   "reservationRefund": "if Government Sanction cannot be obtained despite buyer meeting agreed conditions, the amount paid to reserve the plot is refunded; terms and procedure are set out in the reservation agreement",
@@ -24,5 +82,6 @@
   "rental": "owner may choose to let the villa; letting is not prohibited within the estate; applicable licences and taxes depend on intended rental use; no guaranteed return",
   "construction": "project reports 70% of plots prepared; first house roof and utilities underway; second house foundation started",
   "estateDevelopmentPlannedThrough": 2030,
-  "individualVillaCompletion": "contract-specific schedule"
+  "individualVillaCompletion": "contract-specific schedule",
+  "priceBasis": "Base construction specification before final interior finishes. Options quoted individually."
 }

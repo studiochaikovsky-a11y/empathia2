@@ -111,7 +111,7 @@
       document.querySelectorAll('[data-interest]').forEach(function (link) {
         link.addEventListener('click', function () {
           const value = link.getAttribute('data-interest');
-          if (villa && ['Villa Jane', 'Villa Anna', 'Villa Georgette'].includes(value)) villa.value = value;
+          if (villa && ['Villa Jane', 'Villa Anna', 'Villa Georgette', 'Villa Florance'].includes(value)) villa.value = value;
         });
       });
       const interest = form.querySelector('[name="interest"]');
@@ -196,6 +196,7 @@
       '@type': 'Offer',
       price: String(villa.price),
       priceCurrency: 'USD',
+      description: 'Starting price before final interior finishes. Options are quoted separately.',
       url: 'https://empathia-seychelles.com/' + villa.page.replace('.html', ''),
       itemOffered: {
         '@type': 'SingleFamilyResidence',
@@ -203,7 +204,7 @@
         numberOfBedrooms: villa.bedrooms,
         numberOfRooms: villa.bedrooms,
         numberOfFloors: villa.floors,
-        floorSize: { '@type': 'QuantitativeValue', value: villa.area, unitText: 'm²' },
+        floorSize: { '@type': 'QuantitativeValue', ...(villa.areaMax ? { minValue: villa.area, maxValue: villa.areaMax } : { minValue: villa.area }), unitText: 'm²' },
         additionalProperty: [
           { '@type': 'PropertyValue', name: 'Plot size from', value: villa.plot + ' m²' },
           { '@type': 'PropertyValue', name: 'Ownership', value: 'Freehold, subject to applicable approvals' }

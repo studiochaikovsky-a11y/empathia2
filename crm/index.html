@@ -278,7 +278,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
         <option value="">Все виллы</option>
         <option value="Villa Jane">Villa Jane</option>
         <option value="Villa Anna">Villa Anna</option>
-        <option value="Villa Georgette">Villa Georgette</option>
+        <option value="Villa Georgette">Villa Georgette</option><option value="Villa Florance">Villa Florance</option>
       </select>
       <button class="btn-gold btn-sm" onclick="openNewClient()">+ Клиент</button>
     </div>
@@ -311,7 +311,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
           <option value="">—</option>
           <option>Villa Jane</option>
           <option>Villa Anna</option>
-          <option>Villa Georgette</option>
+          <option>Villa Georgette</option><option value="Villa Florance">Villa Florance</option>
           <option value="agent">Агент</option>
         </select>
       </div>
@@ -351,7 +351,7 @@ main{max-width:1200px;margin:0 auto;padding:28px 24px}
             <option value="">—</option>
             <option>Villa Jane</option>
             <option>Villa Anna</option>
-            <option>Villa Georgette</option>
+            <option>Villa Georgette</option><option value="Villa Florance">Villa Florance</option>
           </select>
         </div>
         <div class="field" style="flex:1"><label>Участок</label><input class="input-base" id="cl-plot" type="text" placeholder="№"></div>
@@ -471,6 +471,7 @@ function villaTag(interest) {
   if (i.includes('jane')) label = 'Villa Jane';
   else if (i.includes('anna')) label = 'Villa Anna';
   else if (i.includes('georgette')) label = 'Villa Georgette';
+  else if (i.includes('florance')) label = 'Villa Florance';
   else if (i === 'agent') return '<span class="src-manual">Агент</span>';
   if (label !== interest && label.startsWith('Villa')) {
     return `<span class="villa-tag">${label}</span>`;
@@ -688,6 +689,7 @@ function renderStats(stats) {
     if (i.includes('jane')) lbl = 'Villa Jane';
     else if (i.includes('anna')) lbl = 'Villa Anna';
     else if (i.includes('georgette')) lbl = 'Villa Georgette';
+  else if (i.includes('florance')) lbl = 'Villa Florance';
     cards.push({ val: v.count, lbl, cls: '', action: '' });
   }
 
@@ -1149,7 +1151,7 @@ async function deleteClient(id, name) {
 }
 
 // ── NEW / CONVERT CLIENT MODAL
-const VILLA_DEFAULT_PRICE = { 'Villa Jane': 990000, 'Villa Anna': 1500000, 'Villa Georgette': 2100000 };
+const VILLA_DEFAULT_PRICE = { 'Villa Jane': 890000, 'Villa Anna': 1300000, 'Villa Georgette': 1800000, 'Villa Florance': 2000000 };
 
 function defaultMilestones(price) {
   const tpl = [
@@ -1229,6 +1231,7 @@ function openConvertModal(lead) {
   if (i.includes('jane')) villa = 'Villa Jane';
   else if (i.includes('anna')) villa = 'Villa Anna';
   else if (i.includes('georgette')) villa = 'Villa Georgette';
+  else if (i.includes('florance')) villa = 'Villa Florance';
   el('cl-villa').value = villa;
   el('cl-status').value = 'active';
 

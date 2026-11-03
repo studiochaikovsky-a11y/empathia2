@@ -33,7 +33,7 @@
       jane: {
         slug: 'jane',
         name: 'Villa Jane',
-        price: 990000,
+        price: 890000,
         area: 140,
         plot: 600,
         bedrooms: 2,
@@ -51,7 +51,7 @@
       anna: {
         slug: 'anna',
         name: 'Villa Anna',
-        price: 1500000,
+        price: 1300000,
         area: 240,
         plot: 600,
         bedrooms: 3,
@@ -69,8 +69,9 @@
       georgette: {
         slug: 'georgette',
         name: 'Villa Georgette',
-        price: 2100000,
+        price: 1800000,
         area: 350,
+        areaMax: 450,
         plot: 1500,
         bedrooms: 4,
         floors: 3,
@@ -83,6 +84,26 @@
           fr: 'La villa signature sur trois niveaux avec quatre chambres, terrasses panoramiques et vue sur l’océan Indien. Une piscine privée est disponible en option.',
           ar: 'الفيلا الرئيسية من ثلاثة طوابق، بأربع غرف نوم وتراسات بانورامية وإطلالات مرتفعة على المحيط الهندي. يتوفر مسبح خاص كخيار إضافي.'
         }
+      },
+      florance: {
+        "slug": "florance",
+        "name": "Villa Florance",
+        "price": 2000000,
+        "area": 350,
+        "plot": 1500,
+        "bedrooms": 6,
+        "floors": 2,
+        "image": "assets/images/villas/florance/front.webp",
+        "imageWidth": 1448,
+        "imageHeight": 1086,
+        "hero": "assets/images/villas/florance/exterior.webp",
+        "plan": "assets/images/villas/florance/ground-floor.webp",
+        "page": "villa-florance",
+        "description": "A two-storey classical villa with six bedrooms in the proposed plan and a central courtyard. A private pool is an optional upgrade.",
+        "descriptions": {
+          "fr": "Une villa classique sur deux niveaux, avec six chambres dans le plan proposé et une cour centrale. Piscine privée en option.",
+          "ar": "فيلا كلاسيكية من طابقين تضم ست غرف نوم في المخطط المقترح وفناءً مركزياً. المسبح الخاص خيار إضافي."
+        }
       }
     },
     legal: {
@@ -94,15 +115,15 @@
 
   const COPY = {
     en: {
-      from: 'From', area: 'House', plot: 'Plot', bedrooms: 'Bedrooms', floors: 'Floors',
+      from: 'From', priceBasis: 'Before final interior finishes', area: 'House', plot: 'Plot', bedrooms: 'Bedrooms', floors: 'Floors',
       view: 'View Villa', request: 'Request Details', residence: 'Residence'
     },
     fr: {
-      from: 'À partir de', area: 'Maison', plot: 'Terrain', bedrooms: 'Chambres', floors: 'Niveaux',
+      from: 'À partir de', priceBasis: 'Hors finitions intérieures', area: 'Maison', plot: 'Terrain', bedrooms: 'Chambres', floors: 'Niveaux',
       view: 'Voir la villa', request: 'Recevoir les détails', residence: 'Résidence'
     },
     ar: {
-      from: 'ابتداءً من', area: 'مساحة المنزل', plot: 'مساحة الأرض', bedrooms: 'غرف النوم', floors: 'الطوابق',
+      from: 'ابتداءً من', priceBasis: 'من دون التشطيب النهائي', area: 'مساحة المنزل', plot: 'مساحة الأرض', bedrooms: 'غرف النوم', floors: 'الطوابق',
       view: 'عرض الفيلا', request: 'طلب التفاصيل', residence: 'فيلا'
     }
   };
@@ -125,12 +146,13 @@
     const prefix = rootPrefix();
     return '<article class="upgrade-villa-card">' +
       '<a class="upgrade-villa-image" href="' + prefix + villa.page + '">' +
-        '<img src="' + prefix + villa.image + '" alt="' + villa.name + ' at Empathia Village in Baie Lazare" loading="lazy" decoding="async" width="1254" height="1254">' +
+        '<img src="' + prefix + villa.image + '" alt="' + villa.name + ' at Empathia Village in Baie Lazare" loading="lazy" decoding="async" width="' + (villa.imageWidth || 1254) + '" height="' + (villa.imageHeight || 1254) + '">' +
       '</a>' +
       '<div class="upgrade-villa-copy">' +
         '<p class="upgrade-kicker">' + c.residence + '</p>' +
         '<h3>' + villa.name + '</h3>' +
         '<p class="upgrade-villa-price">' + c.from + ' ' + money(villa.price) + '</p>' +
+        '<p class="upgrade-villa-price-basis">' + c.priceBasis + '</p>' +
         '<dl class="upgrade-specs">' +
           '<div><dt>' + c.area + '</dt><dd>' + villa.area + ' m²+</dd></div>' +
           '<div><dt>' + c.plot + '</dt><dd>' + villa.plot.toLocaleString('en-US') + ' m²+</dd></div>' +
@@ -166,7 +188,7 @@
     nodes.forEach(function (node) {
       const field = node.getAttribute('data-villa-field');
       if (field === 'price') node.textContent = money(villa.price);
-      else if (field === 'area') node.textContent = villa.area + ' m²+';
+      else if (field === 'area') node.textContent = (villa.areaMax ? villa.area + '–' + villa.areaMax + ' m²' : villa.area + ' m²+');
       else if (field === 'plot') node.textContent = villa.plot.toLocaleString('en-US') + ' m²+';
       else if (field === 'floors') node.textContent = villa.floors;
       else node.textContent = villa[field] || '';
@@ -210,14 +232,14 @@
   }
 
   function renderLegacyVillaSources() {
-    const cardOrder = ['jane', 'anna', 'georgette'];
+    const cardOrder = ['jane', 'anna', 'georgette', 'florance'];
     document.querySelectorAll('.res-card').forEach(function (card, index) {
       const villa = DATA.villas[cardOrder[index]];
       if (!villa) return;
       const price = card.querySelector('.res-card-price');
       const meta = card.querySelector('.res-card-meta');
       if (price) price.textContent = 'From ' + money(villa.price);
-      if (meta) meta.textContent = villa.bedrooms + ' bedrooms · ' + villa.floors + ' ' + (villa.floors === 1 ? 'floor' : 'floors') + ' · from ' + villa.area + ' m² · plot from ' + villa.plot.toLocaleString('en-US') + ' m²';
+      if (meta) meta.textContent = villa.bedrooms + ' bedrooms · ' + villa.floors + ' ' + (villa.floors === 1 ? 'floor' : 'floors') + ' · ' + (villa.areaMax ? villa.area + '–' + villa.areaMax : 'from ' + villa.area) + ' m² · plot from ' + villa.plot.toLocaleString('en-US') + ' m²';
       card.href = villa.page;
     });
 
@@ -230,7 +252,7 @@
         const specs = section.querySelector('.res-specs');
         const description = section.querySelector('.body');
         if (price) price.textContent = 'From ' + money(villa.price);
-        if (note) note.textContent = 'Plot from ' + villa.plot.toLocaleString('en-US') + ' m² · Not a public offer';
+        if (note) note.textContent = 'Before final interior finishes · Plot from ' + villa.plot.toLocaleString('en-US') + ' m² · Not a public offer';
         if (specs) specs.innerHTML =
           '<div class="res-spec"><div class="res-spec-v">from ' + villa.area + '</div><div class="res-spec-k">m² Area</div></div>' +
           '<div class="res-spec"><div class="res-spec-v">' + villa.bedrooms + '</div><div class="res-spec-k">Bedrooms</div></div>' +
@@ -253,7 +275,7 @@
           '<div class="vs"><div class="vs-n">' + villa.floors + '</div><div class="vs-l">Floors</div></div>' +
           '<div class="vs"><div class="vs-n">from ' + villa.plot.toLocaleString('en-US') + '</div><div class="vs-l">m² Plot</div></div>';
         if (price) price.textContent = 'from ' + money(villa.price);
-        if (note) note.textContent = 'Starting price · Plot from ' + villa.plot.toLocaleString('en-US') + ' m² · Not a public offer';
+        if (note) note.textContent = 'Before final interior finishes · Plot from ' + villa.plot.toLocaleString('en-US') + ' m² · Not a public offer';
         if (description) description.textContent = villa.description;
       }
     });
