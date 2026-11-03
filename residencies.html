@@ -143,16 +143,26 @@ body{padding-top:112px}
 .res-custom-note{background:rgba(196,163,90,.06);border:1px solid rgba(196,163,90,.18);padding:20px 24px;border-radius:2px;font-size:13px;color:rgba(255,255,255,.5);line-height:1.65;margin-top:20px}
 .res-badge{display:inline-flex;align-items:center;gap:8px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .res-badge::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
-.cards-intro{background:var(--ink);padding:80px 0 0}
-.cards-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;max-width:1280px;margin:48px auto 0;padding:0 72px}
-.res-card{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer}
-.res-card img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;transition:transform .7s var(--ease)}
-.res-card:hover img{transform:scale(1.04)}
-.res-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,10,.82) 0%,transparent 55%)}
-.res-card-body{position:absolute;bottom:28px;left:28px;right:28px}
-.res-card-name{font-family:var(--serif);font-size:26px;font-style:italic;color:var(--white);margin-bottom:6px}
-.res-card-price{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.res-card-meta{font-size:12px;color:rgba(255,255,255,.5)}
+.cards-intro{background:var(--ink);padding:clamp(48px,7vw,88px) 0}
+.cards-intro-heading,.cards-grid{max-width:1280px;margin-inline:auto;padding-inline:clamp(20px,5.6vw,72px)}
+.cards-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,1.65vw,24px);margin-top:34px}
+.res-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;border-radius:18px;border:1px solid #41473b;background:#17201a;text-decoration:none;transition:border-color .25s,box-shadow .25s}
+.res-card:hover{border-color:#a89060;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.res-card:focus-visible{outline:2px solid #dfc589;outline-offset:4px}
+.res-card-media{aspect-ratio:4/3;overflow:hidden;background:#202820}
+.res-card-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .5s ease}
+.res-card:hover img{transform:scale(1.025)}
+.res-card-body{display:flex;flex:1;flex-direction:column;padding:clamp(17px,1.55vw,23px)}
+.res-card-name{margin:0 0 10px;font-family:var(--serif);font-size:clamp(27px,2.4vw,34px);font-style:italic;font-weight:400;line-height:1.06;color:#fbf6e9}
+.res-card-price{margin:0 0 3px;color:#eed094;font-size:18px;line-height:1.35;font-weight:600;font-variant-numeric:tabular-nums}
+.res-card-basis{margin:0;color:#d0c9b9;font-size:13px;line-height:1.5}
+.res-card-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;border-top:1px solid #424b3f;padding-top:15px;margin:17px 0 18px}
+.res-card-facts dt{color:#c3c9be;font-size:12px;line-height:1.35}
+.res-card-facts dd{margin:3px 0 0;color:#f5f2e9;font-size:14px;line-height:1.35;font-weight:600}
+.res-card-link{display:flex;justify-content:space-between;gap:12px;margin-top:auto;padding-top:13px;border-top:1px solid #424b3f;color:#eed094;font-size:14px;line-height:1.45}
+@media(max-width:1100px){.cards-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.cards-grid{grid-template-columns:1fr;gap:20px;margin-top:25px}.res-card-body{padding:20px}}
+@media(prefers-reduced-motion:reduce){.res-card,.res-card-media img{transition:none}.res-card:hover img{transform:none}}
 .customisation-bar{background:var(--charcoal);padding:64px 0}
 .customisation-inner{max-width:1280px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .res-interiors{max-width:1280px;margin:64px auto 0;padding:0 72px}
@@ -166,9 +176,6 @@ body{padding-top:112px}
 .res-plan-caption{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:12px}
 @media(max-width:900px){
   .res-grid{grid-template-columns:1fr;padding:0 24px;gap:40px}
-  .cards-grid{grid-template-columns:1fr;padding:0 24px}
-  /* card images are square — keep their native shape, no cropping */
-  .res-card{aspect-ratio:1/1}
   .res-img img{aspect-ratio:auto}
   .res-specs{grid-template-columns:repeat(2,1fr)}
   .villa-hero-text{padding:0 24px;bottom:32px}
@@ -176,7 +183,6 @@ body{padding-top:112px}
   .res-interiors{padding:0 24px;margin-top:40px}
   .res-int-grid{grid-template-columns:1fr}
 }
-.res-card-basis{font-size:11px;line-height:1.45;color:#f1dec1;margin:4px 0 8px}
 </style>
 
 <script type="application/ld+json">
@@ -245,45 +251,75 @@ body{padding-top:112px}
 </section>
 
 <!-- ══ CARDS OVERVIEW ══ -->
-<div class="cards-intro">
-  <div style="max-width:1280px;margin:0 auto;padding:0 72px">
-    <div style="padding-top:80px">
+<section class="cards-intro" aria-label="Villa collection">
+  <div class="cards-intro-heading">
       <div class="ew">Empathia Village</div>
       <h2 class="h2" style="margin-bottom:14px">Select Your Residence</h2>
       <p class="body" style="max-width:600px">Each residence is conceived for maximum privacy, panoramic views and effortless tropical living. Every plot is a minimum of 600 m². Projects can be individually adapted to your requirements.</p>
-    </div>
   </div>
   <div class="cards-grid">
-    <a href="#jane" class="res-card" style="text-decoration:none">
-      <img src="assets/images/villas/jane/villa-jane-card.webp" alt="Villa Jane at Empathia Village, Seychelles" loading="lazy" decoding="async" width="1254" height="1254">
-      <div class="res-card-overlay"></div>
+    <a href="/villa-jane" class="res-card" aria-labelledby="card-title-jane">
+      <div class="res-card-media"><img src="/assets/images/villas/jane/villa-jane-card.webp" alt="Villa Jane exterior" loading="lazy" decoding="async" width="1254" height="1254"></div>
       <div class="res-card-body">
-        <div class="res-card-name">Villa Jane</div>
-        <div class="res-card-price">From $890,000</div><div class="res-card-basis">Before final interior finishes</div>
-        <div class="res-card-meta">2 bedrooms · from 140 m² · plot from 600 m²</div>
+        <h3 class="res-card-name" id="card-title-jane">Villa Jane</h3>
+        <p class="res-card-price">From $890,000</p>
+        <p class="res-card-basis">Before final interior finishes</p>
+        <dl class="res-card-facts">
+          <div><dt>House from</dt><dd>140 m²</dd></div>
+          <div><dt>Plot from</dt><dd>600 m²</dd></div>
+          <div><dt>Bedrooms</dt><dd>2</dd></div>
+          <div><dt>Floors</dt><dd>1</dd></div>
+        </dl>
+        <span class="res-card-link">Explore villa <span aria-hidden="true">↗</span></span>
       </div>
     </a>
-    <a href="#anna" class="res-card" style="text-decoration:none">
-      <img src="assets/images/villas/anna/villa-anna-card.webp" alt="Villa Anna at Empathia Village, Seychelles" loading="lazy" decoding="async" width="1254" height="1254">
-      <div class="res-card-overlay"></div>
+    <a href="/villa-anna" class="res-card" aria-labelledby="card-title-anna">
+      <div class="res-card-media"><img src="/assets/images/villas/anna/villa-anna-card.webp" alt="Villa Anna exterior" loading="lazy" decoding="async" width="1254" height="1254"></div>
       <div class="res-card-body">
-        <div class="res-card-name">Villa Anna</div>
-        <div class="res-card-price">From $1,300,000</div><div class="res-card-basis">Before final interior finishes</div>
-        <div class="res-card-meta">from 240 m² · plot from 600 m²</div>
+        <h3 class="res-card-name" id="card-title-anna">Villa Anna</h3>
+        <p class="res-card-price">From $1,300,000</p>
+        <p class="res-card-basis">Before final interior finishes</p>
+        <dl class="res-card-facts">
+          <div><dt>House from</dt><dd>240 m²</dd></div>
+          <div><dt>Plot from</dt><dd>600 m²</dd></div>
+          <div><dt>Bedrooms</dt><dd>3</dd></div>
+          <div><dt>Floors</dt><dd>2</dd></div>
+        </dl>
+        <span class="res-card-link">Explore villa <span aria-hidden="true">↗</span></span>
       </div>
     </a>
-    <a href="#georgette" class="res-card" style="text-decoration:none">
-      <img src="assets/images/villas/georgette/villa-georgette-card.webp" alt="Villa Georgette — flagship villa at Empathia Village" loading="lazy" decoding="async" width="1254" height="1254">
-      <div class="res-card-overlay"></div>
+    <a href="/villa-georgette" class="res-card" aria-labelledby="card-title-georgette">
+      <div class="res-card-media"><img src="/assets/images/villas/georgette/villa-georgette-card.webp" alt="Villa Georgette exterior" loading="lazy" decoding="async" width="1254" height="1254"></div>
       <div class="res-card-body">
-        <div class="res-card-name">Villa Georgette</div>
-        <div class="res-card-price">From $1,800,000</div><div class="res-card-basis">Before final interior finishes</div>
-        <div class="res-card-meta">4 bedrooms · 350–450 m² · plot from 1,500 m²</div>
+        <h3 class="res-card-name" id="card-title-georgette">Villa Georgette</h3>
+        <p class="res-card-price">From $1,800,000</p>
+        <p class="res-card-basis">Before final interior finishes</p>
+        <dl class="res-card-facts">
+          <div><dt>House area</dt><dd>350–450 m²</dd></div>
+          <div><dt>Plot from</dt><dd>1,500 m²</dd></div>
+          <div><dt>Bedrooms</dt><dd>4</dd></div>
+          <div><dt>Floors</dt><dd>3</dd></div>
+        </dl>
+        <span class="res-card-link">Explore villa <span aria-hidden="true">↗</span></span>
       </div>
     </a>
-    <a href="/villa-florance" class="res-card" style="text-decoration:none"><img src="/assets/images/villas/florance/front.webp" alt="Villa Florance concept exterior" width="1448" height="1086" loading="lazy" decoding="async"><div class="res-card-overlay"></div><div class="res-card-body"><div class="res-card-name">Villa Florance</div><div class="res-card-price">From $2,000,000</div><div class="res-card-basis">Before final interior finishes</div><div class="res-card-meta">6 proposed bedrooms · from 350 m² · plot from 1,500 m²</div></div></a>
+    <a href="/villa-florance" class="res-card" aria-labelledby="card-title-florance">
+      <div class="res-card-media"><img src="/assets/images/villas/florance/front.webp" alt="Villa Florance exterior" loading="lazy" decoding="async" width="1448" height="1086"></div>
+      <div class="res-card-body">
+        <h3 class="res-card-name" id="card-title-florance">Villa Florance</h3>
+        <p class="res-card-price">From $2,000,000</p>
+        <p class="res-card-basis">Before final interior finishes</p>
+        <dl class="res-card-facts">
+          <div><dt>House from</dt><dd>350 m²</dd></div>
+          <div><dt>Plot from</dt><dd>1,500 m²</dd></div>
+          <div><dt>Bedrooms</dt><dd>6 (proposed)</dd></div>
+          <div><dt>Floors</dt><dd>2</dd></div>
+        </dl>
+        <span class="res-card-link">Explore villa <span aria-hidden="true">↗</span></span>
+      </div>
+    </a>
   </div>
-</div>
+</section>
 
 <!-- ══ VILLA JANE ══ -->
 <section class="res-section" id="jane">
