@@ -17,7 +17,7 @@
     { id: 'H8', area: null, x: 65.0, y: 40, status: 'sold' },
     { id: 'H7', area: 600, areaIsMinimum: true, publishedArea: 593.80, x: 69.0, y: 32 },
     { id: 'H6', area: null, x: 72.2, y: 41, status: 'sold' },
-    { id: 'H4', area: 652.48, x: 74.6, y: 35 },
+    { id: 'H4', area: 652.48, x: 74.6, y: 35, status: 'reserved' },
     { id: 'H5', area: 792.77, x: 77.0, y: 42 },
     { id: 'H1', area: 600, areaIsMinimum: true, publishedArea: 564.00, x: 86.1, y: 31 },
     { id: 'H2', area: 600, areaIsMinimum: true, publishedArea: 536.93, x: 86.1, y: 39 },
@@ -39,6 +39,15 @@
     return value ? value.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' m²' : 'Confirmed in the current plot pack';
   }
 
+  function plotStatus(plot) {
+    return plot.status || 'available';
+  }
+
+  function plotStatusLabel(plot) {
+    if (plot.status === 'reserved') return 'Reserved — not available for sale';
+    return plot.status === 'sold' ? 'Sold on the published masterplan' : 'Shown as on sale';
+  }
+
   function init() {
     var root = document.querySelector('[data-interactive-masterplan]');
     if (!root) return;
@@ -57,14 +66,16 @@
       active = button;
       if (active) active.classList.add('is-active');
       title.textContent = 'Plot ' + plot.id;
-      status.textContent = plot.status === 'sold' ? 'Sold on the published masterplan' : 'Shown as on sale';
-      status.className = 'upgrade-plot-status ' + (plot.status === 'sold' ? 'is-sold' : 'is-available');
+      status.textContent = plotStatusLabel(plot);
+      status.className = 'upgrade-plot-status is-' + plotStatus(plot);
       area.textContent = moneyArea(plot.area, plot.areaIsMinimum);
-      note.textContent = plot.status === 'sold'
+      note.textContent = plot.status === 'reserved'
+        ? 'This plot is reserved and is not available for sale. Our advisor can help you choose another available plot.'
+        : plot.status === 'sold'
         ? 'Ask our advisor to compare neighbouring available plots with a similar position.'
         : 'Availability, exact surveyed area, suitable villa design and the option to combine adjacent plots are confirmed individually.';
-      action.textContent = plot.status === 'sold' ? 'Explore available plots' : 'Request plot ' + plot.id;
-      action.setAttribute('data-interest', plot.status === 'sold' ? 'Available plots' : 'Plot ' + plot.id);
+      action.textContent = plotStatus(plot) !== 'available' ? 'Explore available plots' : 'Request plot ' + plot.id;
+      action.setAttribute('data-interest', plotStatus(plot) !== 'available' ? 'Available plots' : 'Plot ' + plot.id);
       var interest = document.getElementById('lead-interest');
       if (interest) interest.value = action.getAttribute('data-interest');
       if (window.evTrack) window.evTrack('masterplan_plot_select', { interest: plot.id, plot_status: plot.status || 'available' });
@@ -73,18 +84,21 @@
     plots.forEach(function (plot) {
       var marker = document.createElement('button');
       marker.type = 'button';
-      marker.className = 'upgrade-plot-marker ' + (plot.status === 'sold' ? 'is-sold' : 'is-available');
+      marker.className = 'upgrade-plot-marker is-' + plotStatus(plot);
       marker.style.left = plot.x + '%';
       marker.style.top = plot.y + '%';
       marker.textContent = plot.id; marker.dataset.plotId = plot.id;
-      marker.setAttribute('aria-label', 'Plot ' + plot.id + ', ' + (plot.status === 'sold' ? 'sold' : 'shown as on sale'));
+      marker.setAttribute('aria-label', 'Plot ' + plot.id + ', ' + plotStatusLabel(plot));
+      marker.title = 'Plot ' + plot.id + ': ' + plotStatusLabel(plot);
       marker.addEventListener('click', function () { select(plot, marker); });
       canvas.appendChild(marker);
 
       var chip = document.createElement('button');
       chip.type = 'button';
-      chip.className = 'upgrade-plot-chip ' + (plot.status === 'sold' ? 'is-sold' : 'is-available');
+      chip.className = 'upgrade-plot-chip is-' + plotStatus(plot);
       chip.textContent = plot.id; chip.dataset.plotId = plot.id;
+      chip.setAttribute('aria-label', marker.getAttribute('aria-label'));
+      chip.title = marker.title;
       chip.addEventListener('click', function () { select(plot, marker); var scroller=canvas.parentElement;scroller.scrollTo({left:canvas.offsetWidth*plot.x/100-scroller.clientWidth/2,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); });
       list.appendChild(chip);
     });

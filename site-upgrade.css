@@ -301,6 +301,7 @@ body.upgrade-page {
   cursor: pointer;
 }
 .upgrade-plot-marker.is-sold { background: rgba(159, 62, 51, .92); }
+.upgrade-plot-marker.is-reserved { background: #b59450; color: #101b15; border: 2px dashed #f5e3b8; }
 .upgrade-plot-marker:hover,
 .upgrade-plot-marker.is-active { transform: translate(-50%, -50%) scale(1.25); background: var(--gold); color: var(--ink); }
 
@@ -315,6 +316,7 @@ body.upgrade-page {
 .upgrade-plot-status { margin: 0 0 28px; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; }
 .upgrade-plot-status.is-available { color: #9bc9a4; }
 .upgrade-plot-status.is-sold { color: #e4a098; }
+.upgrade-plot-panel .upgrade-plot-status.is-reserved { color: #e5c982; }
 .upgrade-plot-fact { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.1); }
 .upgrade-plot-fact span { display: block; margin-bottom: 4px; color: rgba(255,255,255,.36); font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
 .upgrade-plot-fact strong { color: #fff; font: italic 300 21px/1.25 var(--serif); }
@@ -323,6 +325,7 @@ body.upgrade-page {
 .upgrade-plot-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
 .upgrade-plot-chip { min-width: 39px; padding: 8px 9px; border: 1px solid rgba(255,255,255,.12); background: transparent; color: rgba(255,255,255,.68); font: 500 9px/1 var(--sans); cursor: pointer; }
 .upgrade-plot-chip.is-sold { color: #d78e85; border-color: rgba(215,142,133,.28); }
+.upgrade-plot-chip.is-reserved { color: #e5c982; border: 1px dashed #b59450; }
 
 .upgrade-confidence-grid {
   display: grid;
