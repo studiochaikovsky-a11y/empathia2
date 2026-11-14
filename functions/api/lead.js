@@ -7,6 +7,7 @@
 import {deliveryResult} from '../_lib/delivery-result.js';
 import {leadAttribution} from '../_lib/lead-attribution.js';
 import {leadSource} from '../_lib/lead-source.js';
+import {deliverWebsiteReply, websiteReplyMode} from '../_lib/website-autoreply.js';
 
 // Preflight for cross-origin form posts from approved campaign or language pages.
 export function onRequestOptions() {
@@ -49,6 +50,17 @@ export async function onRequestPost({ request, env }) {
 
   const status = { telegram: 'not configured', email: 'not configured', crm: 'not configured' };
   const site=leadSource(request,data);
+  const replyMode = websiteReplyMode(request, lead, site, env);
+  if (replyMode === 'test') {
+    if (!env.WEBSITE_REPLY_URL || !env.WEBSITE_REPLY_KEY) {
+      return json({ok: false, test: true, autoreply: 'not_configured'}, 503);
+    }
+    const reference = site.refPrefix + Date.now();
+    const reply = await deliverWebsiteReply({lead, site, reference, mode: 'test', env})
+      .catch(() => ({ok: false, code: 'network_uncertain'}));
+    // An internal test ends here before CRM, alerts or conversion tracking.
+    return json({ok: false, test: true, autoreply: reply.code, lead_reference: reference});
+  }
   const diagnostics={};
   let leadReference='';
   // Save first so all delivery channels carry the same durable receipt number.
@@ -68,6 +80,11 @@ export async function onRequestPost({ request, env }) {
   }
 
   await dbPromise;
+
+  const replyPromise = leadReference && replyMode
+    ? deliverWebsiteReply({lead, site, reference: leadReference, mode: replyMode, env})
+        .catch(() => ({ok: false, httpStatus: null, code: 'network_uncertain'}))
+    : Promise.resolve(null);
 
   const lines = [
     `🌴 Новая заявка — ${site.label}`,
@@ -136,10 +153,11 @@ export async function onRequestPost({ request, env }) {
     return json({ ok: false, error: 'not configured' }, 503);
   }
 
-  const [results] = await Promise.all([Promise.allSettled(tasks), dbPromise]);
+  const [results, reply] = await Promise.all([Promise.allSettled(tasks), replyPromise]);
+  if (reply) diagnostics.autoreply = reply;
   const delivered = results.some((r) => r.status === 'fulfilled' && r.value === true);
   if(leadReference&&env.DB){
-    try{await env.DB.batch(Object.entries(diagnostics).map(([channel,d])=>env.DB.prepare('INSERT INTO lead_delivery(lead_id,channel,state,http_status,code,updated_at) VALUES(?,?,?,?,?,?) ON CONFLICT(lead_id,channel) DO UPDATE SET state=excluded.state,http_status=excluded.http_status,code=excluded.code,updated_at=excluded.updated_at').bind(Number(leadReference.split(':').at(-1)),channel,d.ok?'accepted':d.code==='network_uncertain'?'uncertain':'failed',d.httpStatus,d.code,new Date().toISOString())));}
+    try{await env.DB.batch(Object.entries(diagnostics).map(([channel,d])=>env.DB.prepare('INSERT INTO lead_delivery(lead_id,channel,state,http_status,code,updated_at) VALUES(?,?,?,?,?,?) ON CONFLICT(lead_id,channel) DO UPDATE SET state=excluded.state,http_status=excluded.http_status,code=excluded.code,updated_at=excluded.updated_at').bind(Number(leadReference.split(':').at(-1)),channel,d.ok?'accepted':['network_uncertain','uncertain'].includes(d.code)?'uncertain':'failed',d.httpStatus,d.code,new Date().toISOString())));}
     catch{console.error('Lead delivery audit unavailable');}
   }
 

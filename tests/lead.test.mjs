@@ -2,6 +2,43 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { onRequestPost } from '../functions/api/lead.js';
 
+test('each website can send one isolated test to the sales mailbox only', async (t) => {
+  const calls = [];
+  t.mock.method(globalThis, 'fetch', async (_url, options) => {
+    const envelope = JSON.parse(options.body);
+    assert.match(envelope.signature, /^[0-9a-f]{64}$/);
+    calls.push(JSON.parse(envelope.payload));
+    return Response.json({code: 'sent'});
+  });
+  const env = {
+    WEBSITE_REPLY_URL: 'https://script.google.com/macros/s/example/exec',
+    WEBSITE_REPLY_KEY: 'fixture-key',
+    DB: {prepare() { assert.fail('test must bypass the CRM'); }},
+    TELEGRAM_BOT_TOKEN: 'fixture-token',
+    TELEGRAM_CHAT_ID: 'fixture-chat',
+  };
+
+  for (const [domain, locale] of [['empathiavillage.ru', 'ru'], ['empathia-seychelles.com', 'en']]) {
+    const response = await onRequestPost({
+      request: new Request('https://empathia-seychelles.com/api/lead', {
+        method: 'POST',
+        headers: {Origin: 'https://' + domain},
+        body: JSON.stringify({name: 'TEST Empathia Apps Script', phone: '0000000000', email: 'sales@empathia-seychelles.com'}),
+      }),
+      env,
+    });
+    const result = await response.json();
+    assert.equal(result.ok, false);
+    assert.equal(result.test, true);
+    assert.equal(result.autoreply, 'sent');
+    assert.match(result.lead_reference, new RegExp('^site:empathia-' + locale + ':[0-9]+$'));
+  }
+  assert.deepEqual(calls.map(({site, email, test}) => ({site, email, test})), [
+    {site: 'empathiavillage.ru', email: 'sales@empathia-seychelles.com', test: true},
+    {site: 'empathia-seychelles.com', email: 'sales@empathia-seychelles.com', test: true},
+  ]);
+});
+
 async function submit({ telegramOk = true, emailOk = true, crmOk = true, source, origin, attribution } = {}) {
   const calls = [];let savedAttribution=null;
   const originalFetch = globalThis.fetch;
