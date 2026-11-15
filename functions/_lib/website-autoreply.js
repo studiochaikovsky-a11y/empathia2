@@ -1,6 +1,4 @@
 const salesEmail = 'sales@empathia-seychelles.com';
-const contactPaths = new Set(['/contact', '/contact/', '/contact.html']);
-const contactPages = new Set(['Contact', 'RU Контакты']);
 const testName = 'TEST Empathia Apps Script';
 const validEmail = /^[a-z0-9_+%-]+(?:\.[a-z0-9_+%-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i;
 
@@ -10,12 +8,7 @@ export function websiteReplyMode(request, lead, site, env) {
   if (lead.name === testName && lead.email.toLowerCase() === salesEmail) return 'test';
   if (!env.WEBSITE_REPLY_URL || !env.WEBSITE_REPLY_KEY) return null;
   if (env.WEBSITE_REPLY_MODE !== 'live' || lead.email.length > 254 || !validEmail.test(lead.email) ||
-      lead.interest.toLowerCase().includes('agent') || lead.page.toLowerCase().includes('agent')) return null;
-  // The two main contact forms share this handler. Keep other call sites out of the mailing workflow.
-  if (!contactPages.has(lead.page)) {
-    const referer = request.headers.get('Referer');
-    if (!referer || !contactPaths.has(URL.parse(referer)?.pathname)) return null;
-  }
+      /agent|агент/i.test(lead.interest + ' ' + lead.page)) return null;
   return 'live';
 }
 
